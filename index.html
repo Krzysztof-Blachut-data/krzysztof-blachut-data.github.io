@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Krzysztofa Blachuta — analiza danych, mapowanie procesów laboratoryjnych, optymalizacja workflow i monitorowanie KPI.">
+    <title>Krzysztof Blachut | Analiza danych &amp; optymalizacja procesów</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a href="#" class="logo">KB<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#o-mnie">O mnie</a></li>
+                <li><a href="#doswiadczenie">Doświadczenie</a></li>
+                <li><a href="#umiejetnosci">Umiejętności</a></li>
+                <li><a href="#projekty">Projekty</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-grid">
+            <div>
+                <span class="hero-label">// analiza danych · procesy · KPI</span>
+                <h1>Krzysztof Blachut</h1>
+                <p class="hero-tagline">
+                    Mapowanie procesów · Analiza danych · Optymalizacja workflow laboratoryjnego
+                </p>
+                <div class="hero-cta">
+                    <a href="#projekty" class="btn btn-primary">Zobacz projekty</a>
+                    <a href="#kontakt" class="btn btn-outline">Skontaktuj się</a>
+                </div>
+            </div>
+            <div class="hero-code" aria-hidden="true">
+                <span class="comment"># agregacja KPI z systemu LIMS</span><br>
+                <span class="keyword">SELECT</span> sekcja, <span class="func">COUNT</span>(*) <span class="keyword">AS</span> probki,<br>
+                &nbsp;&nbsp;<span class="func">AVG</span>(czas_realizacji_h) <span class="keyword">AS</span> avg_czas<br>
+                <span class="keyword">FROM</span> zlecenia_lims<br>
+                <span class="keyword">WHERE</span> status = <span class="string">'zakonczone'</span><br>
+                <span class="keyword">GROUP BY</span> sekcja<br>
+                <span class="keyword">ORDER BY</span> avg_czas <span class="keyword">DESC</span>;
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="o-mnie">
+            <div class="container">
+                <div class="section-header">
+                    <h2>O mnie</h2>
+                    <p>Specjalista ds. mapowania procesów w międzynarodowym środowisku analitycznym.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            Specjalista z doświadczeniem w koordynacji procesów laboratoryjnych,
+                            analizie danych oraz optymalizacji pracy laboratorium w międzynarodowym
+                            środowisku analitycznym. Odpowiadam za monitorowanie KPI, mapowanie
+                            procesów oraz identyfikację obszarów wymagających usprawnień i standaryzacji.
+                        </p>
+                        <p>
+                            Od ponad 7 lat pracuję w laboratorium analitycznym i2 Analytical
+                            (Ruda Śląska), współpracując z zespołami w Polsce i Wielkiej Brytanii.
+                            Obecnie zajmuję się mapowaniem procesów end-to-end, digitalizacją workflow
+                            oraz budową narzędzi analitycznych wspierających decyzje operacyjne.
+                        </p>
+                        <div class="education-list">
+                            <div class="education-item">
+                                <div class="period">2018 – 2019</div>
+                                <h4>Magister inżynier — Politechnika Śląska</h4>
+                                <p>Inżynieria Środowiska i Energetyki</p>
+                            </div>
+                            <div class="education-item">
+                                <div class="period">2013 – 2018</div>
+                                <h4>Inżynier — Politechnika Śląska</h4>
+                                <p>Inżynieria Środowiska i Energetyki</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-card">
+                            <span class="number">7+</span>
+                            <span class="label">lat w branży analitycznej</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="number">ISO</span>
+                            <span class="label">17025 &amp; GLP</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="number">EN</span>
+                            <span class="label">średnio zaawansowany</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="doswiadczenie">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Doświadczenie zawodowe</h2>
+                    <p>Od analityka laboratoryjnego po mapowanie procesów i tworzenie systemów analitycznych.</p>
+                </div>
+                <div class="timeline">
+
+                    <article class="timeline-item current">
+                        <div class="timeline-period">04.2026 – obecnie</div>
+                        <h3>Specjalista ds. Mapowania Procesów Laboratoryjnych</h3>
+                        <p class="timeline-company">i2 Analytical Limited Sp. z o.o. · Ruda Śląska</p>
+                        <ul>
+                            <li>Mapowanie procesów laboratoryjnych z wykorzystaniem BPMN i diagramów przepływu</li>
+                            <li>Analiza procesów end-to-end — identyfikacja wąskich gardeł i nieefektywności</li>
+                            <li>Gromadzenie i analiza danych procesowych: systemy, czasy realizacji, role, workflow</li>
+                            <li>Wsparcie digitalizacji procesów oraz wdrożeń systemów LIMS</li>
+                            <li>Prezentowanie wyników mapowania i rekomendowanie usprawnień operacyjnych</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-period">04.2021 – 03.2026</div>
+                        <h3>Zastępca Koordynatora Sekcji Przyjęcia Próbek</h3>
+                        <p class="timeline-company">i2 Analytical Limited Sp. z o.o. · Ruda Śląska</p>
+                        <ul>
+                            <li>Koordynacja sekcji przyjęcia próbek i nadzór nad workflow laboratoryjnym</li>
+                            <li>Zarządzanie delegowaniem zadań, priorytetami i organizacją pracy zespołu</li>
+                            <li>Monitorowanie wydajności procesów i wdrażanie usprawnień operacyjnych</li>
+                            <li>Współpraca z centralą w Wielkiej Brytanii w zakresie statusów zleceń i obsługi klienta</li>
+                            <li>Wdrażanie działań korygujących zgodnie z systemem zarządzania jakością</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-period">07.2019 – 03.2021</div>
+                        <h3>Analityk Laboratoryjny</h3>
+                        <p class="timeline-company">i2 Analytical Limited Sp. z o.o. · Ruda Śląska</p>
+                        <ul>
+                            <li>Przygotowywanie próbek środowiskowych do analiz fizykochemicznych</li>
+                            <li>Rejestrowanie i dystrybucja próbek w systemie workflow LIMS</li>
+                            <li>Raportowanie wyników i współpraca z zespołami w Polsce i Wielkiej Brytanii</li>
+                            <li>Zapewnienie zgodności z normą ISO 17025, zasadami GLP i procedurami wewnętrznymi</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-period">02.2018</div>
+                        <h3>Stażysta Analityk Laboratoryjny</h3>
+                        <p class="timeline-company">Starol Sp. z o.o. · Chorzów</p>
+                        <ul>
+                            <li>Analizy fizykochemiczne paliw alternatywnych</li>
+                            <li>Weryfikacja dostaw, pobieranie próbek i kontrola jakości produktów</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="umiejetnosci">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Umiejętności</h2>
+                    <p>Obszary kompetencji w analizie danych, procesach i systemach laboratoryjnych.</p>
+                </div>
+                <div class="skills-grid">
+                    <span class="skill-tag">Analiza danych</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Monitorowanie KPI</span>
+                    <span class="skill-tag">BPMN</span>
+                    <span class="skill-tag">Optymalizacja procesów</span>
+                    <span class="skill-tag">Analiza workflow</span>
+                    <span class="skill-tag">LIMS</span>
+                    <span class="skill-tag">Root Cause Analysis</span>
+                    <span class="skill-tag">Standaryzacja procesów</span>
+                    <span class="skill-tag">ISO 17025</span>
+                    <span class="skill-tag">Doskonalenie operacyjne</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">REST API</span>
+                    <span class="skill-tag">Ruby on Rails</span>
+                    <span class="skill-tag">JavaScript</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projekty">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Projekty</h2>
+                    <p>Narzędzia i inicjatywy, które łączą dane operacyjne z decyzjami biznesowymi.</p>
+                </div>
+                <div class="projects-grid">
+
+                    <article class="project-card">
+                        <h3>Lab Dashboard</h3>
+                        <div class="project-tags">
+                            <span>Ruby on Rails</span>
+                            <span>MySQL</span>
+                            <span>JavaScript</span>
+                            <span>REST API</span>
+                        </div>
+                        <p>
+                            Wewnętrzna aplikacja webowa wspierająca analizę procesów laboratoryjnych
+                            i monitorowanie KPI na podstawie danych z systemu LIMS. Integracja danych
+                            przez REST API, agregacja operacyjna, interaktywne dashboardy z funkcją
+                            drill-down na poziomie próbek i zleceń oraz modułowy system uprawnień.
+                        </p>
+                        <a href="#kontakt" class="project-link">Zapytaj o szczegóły →</a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Mapowanie procesów laboratoryjnych</h3>
+                        <div class="project-tags">
+                            <span>BPMN</span>
+                            <span>Analiza workflow</span>
+                            <span>KPI</span>
+                        </div>
+                        <p>
+                            Kompleksowa analiza procesów end-to-end w laboratorium analitycznym —
+                            od identyfikacji wąskich gardeł, przez dokumentację procesową,
+                            po rekomendacje usprawnień operacyjnych i standaryzację workflow.
+                        </p>
+                        <a href="#doswiadczenie" class="project-link">Zobacz doświadczenie →</a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Analiza czasów realizacji zleceń</h3>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Power BI</span>
+                        </div>
+                        <p>
+                            Przykładowe case study — szablon do prezentacji opracowań danych
+                            z opisem problemu, metodologii, wyników i wniosków.
+                        </p>
+                        <a href="projects/analiza-czasow-realizacji/index.html" class="project-link">Zobacz case study →</a>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-tags">
+                            <span>Root Cause Analysis</span>
+                            <span>ISO 17025</span>
+                            <span>LIMS</span>
+                        </div>
+                        <p>
+                            Koordynacja workflow sekcji przyjęcia próbek — monitorowanie wydajności,
+                            wdrażanie działań korygujących, zarządzanie priorytetami operacyjnymi
+                            i współpraca z działem jakości oraz kierownictwem laboratorium.
+                        </p>
+                        <a href="#doswiadczenie" class="project-link">Zobacz doświadczenie →</a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt" class="contact">
+            <div class="container contact-inner">
+                <div class="section-header">
+                    <h2>Kontakt</h2>
+                    <p>Gliwice, Polska — chętnie odpowiem na pytania dotyczące współpracy.</p>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:krzy.blachut@gmail.com">✉ krzy.blachut@gmail.com</a>
+                    <a href="tel:+48509537526">📞 +48 509 537 526</a>
+                    <a href="https://github.com/krzysztof-blachut-data" target="_blank" rel="noopener">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Krzysztof Blachut. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
