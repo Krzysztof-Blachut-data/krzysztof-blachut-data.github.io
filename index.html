@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="pl" data-lang="pl"
-    data-title-pl="Krzysztof Blachut | Analiza danych &amp; optymalizacja procesów"
-    data-title-en="Krzysztof Blachut | Data analysis &amp; process optimisation"
-    data-desc-pl="Portfolio Krzysztofa Blachuta — analiza danych, mapowanie procesów laboratoryjnych, optymalizacja workflow i monitorowanie KPI."
-    data-desc-en="Krzysztof Blachut's portfolio — data analysis, laboratory process mapping, workflow optimisation and KPI monitoring.">
+    data-title-pl="Krzysztof Blachut | Analityk danych"
+    data-title-en="Krzysztof Blachut | Data analyst"
+    data-desc-pl="Portfolio analityka danych — czyszczenie danych, Python, SQL, KPI i dashboardy. Projekty: laboratorium i e-commerce."
+    data-desc-en="Data analyst portfolio — data cleaning, Python, SQL, KPIs and dashboards. Projects: lab and e-commerce.">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio Krzysztofa Blachuta — analiza danych, mapowanie procesów laboratoryjnych, optymalizacja workflow i monitorowanie KPI.">
-    <title>Krzysztof Blachut | Analiza danych &amp; optymalizacja procesów</title>
+    <meta name="description" content="Portfolio analityka danych — czyszczenie danych, Python, SQL, KPI i dashboardy. Projekty: laboratorium i e-commerce.">
+    <title>Krzysztof Blachut | Analityk danych</title>
     <link rel="stylesheet" href="styles.css">
     <script>
         (function () {
@@ -44,45 +44,70 @@
     <header class="hero">
         <div class="container">
             <p class="hero-eyebrow">
-                <span class="lang-pl">Analiza danych · Procesy laboratoryjne · KPI</span>
-                <span class="lang-en">Data analysis · Laboratory processes · KPI</span>
+                <span class="lang-pl">Analiza danych · Czyszczenie danych · Python · SQL · KPI</span>
+                <span class="lang-en">Data analysis · Data cleaning · Python · SQL · KPI</span>
             </p>
             <h1 class="hero-title">
                 <span class="hero-title-line">KRZYSZTOF</span>
                 <span class="hero-title-line accent">BLACHUT</span>
             </h1>
             <p class="hero-tagline lang-pl">
-                Przekształcam dane operacyjne z laboratorium w <strong>KPI, mapy procesów i rekomendacje</strong> —
-                od LIMS i workflow po dashboardy i usprawnienia end-to-end.
+                Porządkuję brudne dane operacyjne i przygotowuję je do analizy —
+                <strong>czyszczenie, łączenie tabel, KPI, wykresy i wnioski</strong>.
             </p>
             <p class="hero-tagline lang-en">
-                I turn laboratory operational data into <strong>KPIs, process maps and recommendations</strong> —
-                from LIMS and workflow to dashboards and end-to-end improvements.
+                I clean messy operational data and prepare it for analysis —
+                <strong>scrubbing, joining tables, KPIs, charts and conclusions</strong>.
             </p>
             <div class="hero-cta">
                 <a href="#projekty" class="btn btn-primary"><span class="lang-pl">Zobacz projekty</span><span class="lang-en">View projects</span></a>
                 <a href="#kontakt" class="btn btn-outline"><span class="lang-pl">Skontaktuj się</span><span class="lang-en">Get in touch</span></a>
             </div>
             <div class="hero-code" aria-hidden="true">
-                <span class="comment"># agregacja KPI z systemu LIMS</span><br>
-                <span class="keyword">SELECT</span> sekcja, <span class="func">COUNT</span>(*) <span class="keyword">AS</span> probki,<br>
-                &nbsp;&nbsp;<span class="func">AVG</span>(czas_realizacji_h) <span class="keyword">AS</span> avg_czas<br>
-                <span class="keyword">FROM</span> zlecenia_lims<br>
-                <span class="keyword">WHERE</span> status = <span class="string">'zakonczone'</span><br>
-                <span class="keyword">GROUP BY</span> sekcja<br>
-                <span class="keyword">ORDER BY</span> avg_czas <span class="keyword">DESC</span>;
+                <span class="comment"># data cleaning → analysis-ready</span><br>
+                <span class="keyword">df</span>[<span class="string">"quality_flag"</span>] = <span class="string">"valid"</span><br>
+                <span class="keyword">df</span>.loc[df[<span class="string">"test_value"</span>] > 40, <span class="string">"quality_flag"</span>] = <span class="string">"implausible_value"</span><br>
+                <span class="keyword">analysis</span> = df.loc[df[<span class="string">"quality_flag"</span>] == <span class="string">"valid"</span>]
             </div>
         </div>
         <div class="skill-marquee" aria-hidden="true">
-            <div class="skill-marquee-track">
-                <span>Power BI</span><span>Python</span><span>SQL</span><span>BPMN</span>
-                <span>LIMS</span><span>KPI</span><span>MySQL</span><span>REST API</span>
-                <span>ISO 17025</span><span>Ruby on Rails</span>
-                <span class="lang-pl">Analiza workflow</span><span class="lang-en">Workflow analysis</span>
-                <span>Power BI</span><span>Python</span><span>SQL</span><span>BPMN</span>
-                <span>LIMS</span><span>KPI</span><span>MySQL</span><span>REST API</span>
-                <span>ISO 17025</span><span>Ruby on Rails</span>
-                <span class="lang-pl">Analiza workflow</span><span class="lang-en">Workflow analysis</span>
+            <div class="skill-marquee-viewport">
+                <div class="skill-marquee-inner">
+                    <div class="skill-marquee-track">
+                        <span class="skill-chip accent">Python</span>
+                        <span class="skill-chip accent">Pandas</span>
+                        <span class="skill-chip accent">SQL</span>
+                        <span class="skill-chip">Power BI</span>
+                        <span class="skill-chip lang-pl">Czyszczenie danych</span>
+                        <span class="skill-chip lang-en">Data cleaning</span>
+                        <span class="skill-chip">KPI</span>
+                        <span class="skill-chip">MySQL</span>
+                        <span class="skill-chip">ETL</span>
+                        <span class="skill-chip lang-pl">Jakość danych</span>
+                        <span class="skill-chip lang-en">Data quality</span>
+                        <span class="skill-chip lang-pl">Łączenie tabel</span>
+                        <span class="skill-chip lang-en">Table joins</span>
+                        <span class="skill-chip lang-pl">Wizualizacja</span>
+                        <span class="skill-chip lang-en">Visualisation</span>
+                    </div>
+                    <div class="skill-marquee-track" aria-hidden="true">
+                        <span class="skill-chip accent">Python</span>
+                        <span class="skill-chip accent">Pandas</span>
+                        <span class="skill-chip accent">SQL</span>
+                        <span class="skill-chip">Power BI</span>
+                        <span class="skill-chip lang-pl">Czyszczenie danych</span>
+                        <span class="skill-chip lang-en">Data cleaning</span>
+                        <span class="skill-chip">KPI</span>
+                        <span class="skill-chip">MySQL</span>
+                        <span class="skill-chip">ETL</span>
+                        <span class="skill-chip lang-pl">Jakość danych</span>
+                        <span class="skill-chip lang-en">Data quality</span>
+                        <span class="skill-chip lang-pl">Łączenie tabel</span>
+                        <span class="skill-chip lang-en">Table joins</span>
+                        <span class="skill-chip lang-pl">Wizualizacja</span>
+                        <span class="skill-chip lang-en">Visualisation</span>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -91,80 +116,120 @@
 
         <section id="projekty" class="section-alt">
             <div class="container">
+                <div class="section-label"><span class="lang-pl">Portfolio</span><span class="lang-en">Portfolio</span></div>
                 <div class="section-header">
                     <h2><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></h2>
-                    <p class="lang-pl">Wybrane opracowania — kliknij, żeby rozwinąć notatkę na tej samej stronie.</p>
-                    <p class="lang-en">Selected case notes — click to expand the write-up on this same page.</p>
+                    <p class="lang-pl">Dwa projekty z czyszczenia danych — kliknij, żeby zobaczyć problemy, kroki naprawy, wykresy i wnioski.</p>
+                    <p class="lang-en">Two data-cleaning projects — click to see the issues, fix steps, charts and takeaways.</p>
                 </div>
                 <div class="featured-projects">
-                    <article class="featured-project" id="project-data-cleaning">
+                    <article class="featured-project" id="project-data-cleaning-hub">
                         <div class="featured-project-header">
-                            <span class="project-index">01 / DATA CLEANING</span>
+                            <span class="project-index"><span class="lang-pl">CZYSZCZENIE DANYCH</span><span class="lang-en">DATA CLEANING</span></span>
                             <h3>
-                                <span class="lang-pl">Wyniki laboratoryjne z trzech szpitali</span>
-                                <span class="lang-en">Lab results from three hospitals</span>
+                                <span class="lang-pl">Czyszczenie danych — dwa projekty</span>
+                                <span class="lang-en">Data cleaning — two projects</span>
                             </h3>
                         </div>
                         <p class="lang-pl">
-                            1 500 wyników z trzech szpitali. W surowym pliku są ujemne kody (−999),
-                            tekst „not collected”, mieszane jednostki (mmol/L i mg/dL), 9 nazw na 3 badania
-                            i liczby z kilkunastoma miejscami po przecinku.
+                            Dwa interaktywne projekty w jednym miejscu. Pierwszy to jedna tabela laboratoryjna (1 500 wierszy).
+                            Drugi to pięć powiązanych plików ze sklepu internetowego (880 500 wierszy).
                         </p>
                         <p class="lang-en">
-                            1,500 results from three hospitals. The raw file has negative sentinels (−999),
-                            “not collected” text, mixed units (mmol/L and mg/dL), 9 names for 3 tests
-                            and values with many decimal places.
+                            Two interactive projects in one place. The first is a single lab table (1,500 rows).
+                            The second is five linked e-commerce files (880,500 rows).
                         </p>
+
+                        <div class="case-preview-grid">
+                            <button type="button" class="case-preview js-open-hub" data-case="data-cleaning">
+                                <span class="case-preview-num">01</span>
+                                <strong class="lang-pl">Wyniki laboratoryjne</strong>
+                                <strong class="lang-en">Lab results</strong>
+                                <span class="lang-pl">1 500 wierszy · jednostki, wartości odstające</span>
+                                <span class="lang-en">1,500 rows · units, outliers</span>
+                            </button>
+                            <button type="button" class="case-preview js-open-hub" data-case="ecom-cleaning">
+                                <span class="case-preview-num">02</span>
+                                <strong class="lang-pl">Dane e-commerce</strong>
+                                <strong class="lang-en">E-commerce data</strong>
+                                <span class="lang-pl">880 500 wierszy · CRM, łączenie tabel</span>
+                                <span class="lang-en">880,500 rows · CRM, table joins</span>
+                            </button>
+                        </div>
+
                         <div class="project-tags">
                             <span>Python</span>
                             <span>Pandas</span>
-                            <span>Data cleaning</span>
+                            <span class="lang-pl">Czyszczenie danych</span>
+                            <span class="lang-en">Data cleaning</span>
+                            <span class="lang-pl">Tożsamość danych</span>
+                            <span class="lang-en">Data identity</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#data-cleaning" class="project-link js-open-project" data-target="data-cleaning">
-                                <span class="lang-pl js-open-label">Zobacz projekt ↓</span>
-                                <span class="lang-en js-open-label">View project ↓</span>
+                            <a href="#data-cleaning" class="project-link js-open-hub" data-case="data-cleaning">
+                                <span class="lang-pl">Zobacz projekty ↓</span>
+                                <span class="lang-en">View projects ↓</span>
                             </a>
                         </div>
                     </article>
                 </div>
 
-                <div class="project-detail" id="data-cleaning" hidden>
+                <div class="project-detail" id="data-cleaning-hub" hidden>
                     <div class="project-detail-inner">
                         <div class="project-detail-bar">
-                            <span class="project-index">01 / DATA CLEANING</span>
-                            <a href="#projekty" class="project-link js-close-project">
+                            <span class="project-index"><span class="lang-pl">CZYSZCZENIE DANYCH</span><span class="lang-en">DATA CLEANING</span></span>
+                            <a href="#projekty" class="project-link js-close-hub">
                                 <span class="lang-pl">Zwiń ↑</span>
                                 <span class="lang-en">Collapse ↑</span>
                             </a>
                         </div>
 
+                        <p class="hub-intro lang-pl">
+                            Wybierz projekt poniżej. Oba mają ten sam układ: najpierw problemy w danych, potem czyszczenie krok po kroku, wykresy i wnioski.
+                        </p>
+                        <p class="hub-intro lang-en">
+                            Pick a project below. Both follow the same layout: data issues first, then step-by-step cleaning, charts and takeaways.
+                        </p>
+
+                        <div class="case-tabs" role="tablist" aria-label="Data cleaning cases">
+                            <button type="button" class="case-tab active" data-case="data-cleaning" role="tab" aria-selected="true">
+                                <span class="case-tab-num">01</span>
+                                <span class="lang-pl">Laboratorium · 1 500 wierszy</span>
+                                <span class="lang-en">Lab · 1,500 rows</span>
+                            </button>
+                            <button type="button" class="case-tab" data-case="ecom-cleaning" role="tab" aria-selected="false">
+                                <span class="case-tab-num">02</span>
+                                <span class="lang-pl">E-commerce · 880 500 wierszy</span>
+                                <span class="lang-en">E-commerce · 880,500 rows</span>
+                            </button>
+                        </div>
+
+                        <div id="data-cleaning" class="case-panel" role="tabpanel">
+                        <p class="case-panel-label"><span class="lang-pl">Projekt 01</span><span class="lang-en">Project 01</span></p>
                         <h3>
                             <span class="lang-pl">Wyniki laboratoryjne z trzech szpitali</span>
                             <span class="lang-en">Lab results from three hospitals</span>
                         </h3>
                         <p class="lead lang-pl">
-                            1 500 wyników glukozy, cholesterolu i HbA1c z trzech szpitali.
-                            Zestaw wygląda jak typowy eksport z kilku systemów: te same badania zapisane
-                            inaczej, liczby pomieszane z tekstem, jednostki i zakresy niedopasowane.
+                            1 500 wyników badań (glukoza, cholesterol, HbA1c) z trzech szpitali.
+                            Te same badania zapisane na różne sposoby, liczby pomieszane z tekstem,
+                            różne jednostki i błędne zakresy referencyjne.
                         </p>
                         <p class="lead lang-en">
-                            1,500 glucose, cholesterol and HbA1c results from three hospitals.
-                            The file looks like a typical multi-system export: the same tests recorded
-                            differently, numbers mixed with text, units and ranges out of sync.
+                            1,500 test results (glucose, cholesterol, HbA1c) from three hospitals.
+                            The same tests recorded in different ways, numbers mixed with text,
+                            mixed units and wrong reference ranges.
                         </p>
 
                         <section class="content-block dc-problems">
                             <h2><span class="lang-pl">Co jest nie tak w tych danych</span><span class="lang-en">What is wrong with this dataset</span></h2>
                             <p class="lang-pl">
-                                Kolumna <code>test_value</code> nie jest jedną miarą. Obok siebie stoją wartości ujemne,
-                                tekst, braki i liczby z kilkunastoma miejscami po przecinku. Dopóki tego nie uporządkujemy,
-                                nie da się policzyć średniej ani porównać szpitali.
+                                Kolumna <code>test_value</code> zawiera na raz ujemne kody, tekst, puste komórki i liczby
+                                z wieloma miejscami po przecinku. Bez uporządkowania nie da się liczyć średnich ani porównywać szpitali.
                             </p>
                             <p class="lang-en">
-                                The <code>test_value</code> column is not a single measure. Negatives, text, blanks and
-                                values with many decimal places sit side by side. Until that is cleaned,
-                                averages and hospital comparisons are not valid.
+                                The <code>test_value</code> column mixes negative codes, text, blanks and numbers
+                                with too many decimal places. Without cleaning, averages and hospital comparisons are not valid.
                             </p>
                             <ul class="lang-pl">
                                 <li>Wartości ujemne (−999) — to nie wynik laboratoryjny, tylko kod braku (wartość strażnicza).</li>
@@ -173,7 +238,7 @@
                                 <li>Mieszane jednostki: mmol/L i mg/dL dla tego samego badania — surowych liczb nie da się porównać.</li>
                                 <li>9 różnych nazw na 3 anality (Blood Sugar, Fasting Glucose, HbA1c, Glycated Hemoglobin…).</li>
                                 <li>Zakres referencyjny często nie pasuje do jednostki (70–99 przy mmol/L albo 3.9–5.5 przy mg/dL).</li>
-                                <li>Niemożliwe outliery (500, 1860 mmol/L glukozy) — błąd zapisu, nie fizjologia.</li>
+                                <li>Niemożliwe wartości (500, 1860 mmol/L glukozy) — błąd zapisu, nie wynik pacjenta.</li>
                             </ul>
                             <ul class="lang-en">
                                 <li>Negative values (−999) — not a lab result, a missing-value sentinel.</li>
@@ -255,14 +320,14 @@
                                         <tr>
                                             <td>Hospital_B</td><td>1567</td><td>Fasting Glucose</td>
                                             <td class="dc-cell outlier">500</td><td>mmol/L</td><td>70-99</td>
-                                            <td class="dc-issue-note lang-pl">Outlier — 500 mmol/L glukozy jest niemożliwe</td>
-                                            <td class="dc-issue-note lang-en">Outlier — 500 mmol/L glucose is impossible</td>
+                                            <td class="dc-issue-note lang-pl">Mało prawdopodobna wartość — 500 mmol/L glukozy jest niemożliwe</td>
+                                            <td class="dc-issue-note lang-en">Implausible value — 500 mmol/L glucose is impossible</td>
                                         </tr>
                                         <tr>
                                             <td>Hospital_B</td><td>1932</td><td>Fasting Glucose</td>
                                             <td class="dc-cell outlier">1860</td><td>mmol/L</td><td>70-99</td>
-                                            <td class="dc-issue-note lang-pl">Outlier — 1860 mmol/L, błąd zapisu</td>
-                                            <td class="dc-issue-note lang-en">Outlier — 1860 mmol/L, a recording error</td>
+                                            <td class="dc-issue-note lang-pl">Mało prawdopodobna wartość — 1860 mmol/L, błąd zapisu</td>
+                                            <td class="dc-issue-note lang-en">Implausible value — 1860 mmol/L, a recording error</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -275,7 +340,7 @@
                                 <span class="dc-swatch mismatch"></span>
                                 <span class="lang-pl">zakres ≠ jednostka</span><span class="lang-en">range ≠ unit</span>
                                 <span class="dc-swatch outlier"></span>
-                                <span>outlier</span>
+                                <span class="lang-pl">mało prawdopodobna wartość</span><span class="lang-en">implausible value</span>
                             </p>
                             <p class="dc-download">
                                 <a href="projects/data-cleaning/multi_hospital_lab_results.csv" download>
@@ -295,46 +360,51 @@
                             <li><button type="button" class="dc-step" data-step="2">3. Names</button></li>
                             <li><button type="button" class="dc-step" data-step="3">4. Units</button></li>
                             <li><button type="button" class="dc-step" data-step="4">5. Ranges</button></li>
-                            <li><button type="button" class="dc-step" data-step="5">6. Outliers</button></li>
+                            <li><button type="button" class="dc-step" data-step="5"><span class="lang-pl">6. Flagi</span><span class="lang-en">6. Flag</span></button></li>
                             <li><button type="button" class="dc-step" data-step="6">7. Clean</button></li>
+                            <li><button type="button" class="dc-step" data-step="7"><span class="lang-pl">8. Analiza</span><span class="lang-en">8. Analysis</span></button></li>
+                            <li><button type="button" class="dc-step" data-step="8">9. Insights</button></li>
                         </ol>
 
                         <div class="dc-panel">
                             <div class="dc-panel-head">
                                 <h2 id="dc-step-title">Surowe dane</h2>
-                                <span class="dc-progress" id="dc-progress">1 / 7</span>
+                                <span class="dc-progress" id="dc-progress">1 / 9</span>
                             </div>
                             <p id="dc-step-body" class="dc-body">
                                 <span class="lang-pl">W tabeli widać te same problemy co na liście powyżej. Żółte komórki to braki i ujemne strażniki, niebieskie — za długa precyzja, fioletowe — zakres niedopasowany do jednostki.</span>
                                 <span class="lang-en">The table shows the same issues listed above. Yellow cells are missing values and negative sentinels, blue is excess precision, purple is a range that does not match the unit.</span>
                             </p>
                             <ul id="dc-issues" class="dc-issues"></ul>
-                            <pre class="hero-code dc-code"><code id="dc-code"></code></pre>
+                            <pre class="hero-code dc-code" id="dc-code-wrap"><code id="dc-code"></code></pre>
                         </div>
                         </div>
 
+                        <div id="dc-viz" class="dc-viz" hidden></div>
+                        <div id="dc-insights" class="dc-insights" hidden></div>
+
+                        <div id="dc-data-view">
                         <div class="dc-metrics">
                             <div class="metric">
                                 <span class="metric-value" id="m-rows">—</span>
-                                <span class="metric-label lang-pl">wiersze</span>
-                                <span class="metric-label lang-en">rows</span>
+                                <span class="metric-label" id="m-rows-label"></span>
                             </div>
                             <div class="metric">
                                 <span class="metric-value" id="m-names">—</span>
-                                <span class="metric-label lang-pl">unikalne nazwy</span>
-                                <span class="metric-label lang-en">unique names</span>
+                                <span class="metric-label" id="m-names-label"></span>
                             </div>
                             <div class="metric">
                                 <span class="metric-value" id="m-missing">—</span>
-                                <span class="metric-label lang-pl">braki</span>
-                                <span class="metric-label lang-en">missing</span>
+                                <span class="metric-label" id="m-missing-label"></span>
                             </div>
                             <div class="metric">
                                 <span class="metric-value" id="m-outliers">—</span>
-                                <span class="metric-label lang-pl">outliery</span>
-                                <span class="metric-label lang-en">outliers</span>
+                                <span class="metric-label" id="m-outliers-label"></span>
                             </div>
                         </div>
+                        <p id="dc-metrics-summary" class="dc-metrics-summary" hidden></p>
+                        <div id="dc-quality-panel" class="dc-quality-panel"></div>
+                        <div id="dc-story-panel" class="dc-story-panel" hidden></div>
 
                         <p class="dc-caption" id="dc-caption"></p>
                         <div class="dc-table-wrap">
@@ -351,8 +421,9 @@
                             <span class="dc-swatch changed"></span>
                             <span class="lang-pl">zmienione</span><span class="lang-en">changed</span>
                             <span class="dc-swatch outlier"></span>
-                            <span>outlier</span>
+                            <span class="lang-pl">mało prawdopodobna wartość</span><span class="lang-en">implausible value</span>
                         </p>
+                        </div>
 
                         <div class="dc-nav">
                             <button type="button" class="btn btn-outline" id="dc-prev" disabled>
@@ -364,6 +435,157 @@
                                 <span class="lang-en">Next step →</span>
                             </button>
                         </div>
+                        </div><!-- /case-panel data-cleaning -->
+
+                        <div id="ecom-cleaning" class="case-panel" role="tabpanel" hidden>
+                        <p class="case-panel-label"><span class="lang-pl">Projekt 02</span><span class="lang-en">Project 02</span></p>
+                        <h3>
+                            <span class="lang-pl">Sklep internetowy — pięć powiązanych plików</span>
+                            <span class="lang-en">Online shop — five linked files</span>
+                        </h3>
+                        <p class="lead lang-pl">
+                            Pięć plików: CRM (50 000), katalog (500), zamówienia (300 000), tickety (30 000) i clickstream (500 000).
+                            Żeby policzyć sprzedaż, sposoby płatności i konwersję, trzeba najpierw ujednolicić klucze, nazwy i daty między plikami.
+                            Poniżej widać przykładowe wiersze; liczby KPI pochodzą z pełnych plików.
+                        </p>
+                        <p class="lead lang-en">
+                            Five files: CRM (50,000), catalog (500), orders (300,000), tickets (30,000) and clickstream (500,000).
+                            To calculate sales, payment methods and conversion, keys, labels and dates must be aligned across files first.
+                            Below are sample rows; KPI figures come from the full files.
+                        </p>
+
+                        <div class="ecom-sources">
+                            <div class="ecom-source">
+                                <strong>50 000</strong>
+                                <span class="lang-pl">CRM · 1 800 duplikatów</span>
+                                <span class="lang-en">CRM · 1,800 duplicates</span>
+                            </div>
+                            <div class="ecom-source">
+                                <strong>500</strong>
+                                <span class="lang-pl">Katalog · 47 kategorii</span>
+                                <span class="lang-en">Catalog · 47 categories</span>
+                            </div>
+                            <div class="ecom-source">
+                                <strong>300 000</strong>
+                                <span class="lang-pl">Zamówienia · 10 statusów</span>
+                                <span class="lang-en">Orders · 10 statuses</span>
+                            </div>
+                            <div class="ecom-source">
+                                <strong>30 000</strong>
+                                <span class="lang-pl">Tickety · 35 typów</span>
+                                <span class="lang-en">Tickets · 35 types</span>
+                            </div>
+                            <div class="ecom-source">
+                                <strong>500 000</strong>
+                                <span class="lang-pl">Clickstream · 30% bez klienta</span>
+                                <span class="lang-en">Clickstream · 30% without customer</span>
+                            </div>
+                        </div>
+
+                        <section class="content-block dc-problems">
+                            <h2><span class="lang-pl">Co jest nie tak w tych danych</span><span class="lang-en">What is wrong with this dataset</span></h2>
+                            <p class="lang-pl">
+                                Projekt 01 to jedna tabela. Tutaj każdy plik ma inne błędy, a przy łączeniu danych błędy się sumują —
+                                np. zdublowany klient, literówka w płatności i niemożliwa data w jednym raporcie.
+                            </p>
+                            <p class="lang-en">
+                                Project 01 was one table. Here each file has different errors, and when you join the data the errors add up —
+                                e.g. a duplicated customer, a payment typo and an impossible date in one report.
+                            </p>
+                            <ul class="lang-pl">
+                                <li>CRM: 1 800 zdublowanych <code>customer_id</code>, imiona <code>mARIA</code> / <code>KKeevvin</code>, 1 040 pustych e-maili.</li>
+                                <li>Katalog: 47 nazw kategorii zamiast 8 (<code>clo</code>, <code>3l3ctronics</code>, <code>hom3</code>), cena <code>1,200</code> i wartość strażnicza <code>−100</code>.</li>
+                                <li>Zamówienia: 10 statusów, 11 metod płatności (<code>CRAD</code>, <code>c@rd</code>, <code>wall-et</code>), ilość <code>five</code> / <code>−3</code>, data <code>2024/31/01</code>.</li>
+                                <li>Tickety: <code>tnemyap</code> (słowo „payment” wspak), <code>n3gativ3</code>, godzina <code>T28:77:10</code>.</li>
+                                <li>Clickstream: 150 553 zdarzeń bez powiązanego klienta (także logowanie i dodanie do koszyka), zegar <code>25:61:00</code>.</li>
+                            </ul>
+                            <ul class="lang-en">
+                                <li>CRM: 1,800 duplicated <code>customer_id</code>s, names like <code>mARIA</code> / <code>KKeevvin</code>, 1,040 blank emails.</li>
+                                <li>Catalog: 47 labels for 8 departments (<code>clo</code>, <code>3l3ctronics</code>, <code>hom3</code>), price <code>1,200</code> and sentinel <code>−100</code>.</li>
+                                <li>Orders: 10 statuses, 11 payments (<code>CRAD</code>, <code>c@rd</code>, <code>wall-et</code>), quantity <code>five</code> / <code>−3</code>, date <code>2024/31/01</code>.</li>
+                                <li>Tickets: <code>tnemyap</code> (payment reversed), <code>n3gativ3</code>, time <code>T28:77:10</code>.</li>
+                                <li>Clickstream: 150,553 events with no customer (including login and add_to_cart), clock <code>25:61:00</code>.</li>
+                            </ul>
+                        </section>
+
+                        <div id="ecom-walkthrough" class="dc-walkthrough">
+                            <p class="dc-walkthrough-label lang-pl">Jak te problemy są usuwane, krok po kroku</p>
+                            <p class="dc-walkthrough-label lang-en">How these issues are fixed, step by step</p>
+
+                            <ol class="dc-steps" aria-label="Cleaning steps">
+                                <li><button type="button" class="dc-step active" data-step="0">1. Raw</button></li>
+                                <li><button type="button" class="dc-step" data-step="1">2. Identity</button></li>
+                                <li><button type="button" class="dc-step" data-step="2">3. Catalog</button></li>
+                                <li><button type="button" class="dc-step" data-step="3">4. Orders</button></li>
+                                <li><button type="button" class="dc-step" data-step="4">5. Tickets</button></li>
+                                <li><button type="button" class="dc-step" data-step="5">6. Click</button></li>
+                                <li><button type="button" class="dc-step" data-step="6">7. Join</button></li>
+                                <li><button type="button" class="dc-step" data-step="7"><span class="lang-pl">8. Analiza</span><span class="lang-en">8. Analysis</span></button></li>
+                                <li><button type="button" class="dc-step" data-step="8">9. Insights</button></li>
+                            </ol>
+
+                            <div class="dc-panel">
+                                <div class="dc-panel-head">
+                                    <h2 id="ecom-step-title">Pięć brudnych eksportów</h2>
+                                    <span class="dc-progress" id="ecom-progress">1 / 9</span>
+                                </div>
+                                <p id="ecom-step-body" class="dc-body"></p>
+                                <pre class="hero-code dc-code" id="ecom-code-wrap"><code id="ecom-code"></code></pre>
+                            </div>
+                        </div>
+
+                        <div id="ecom-viz" class="dc-viz" hidden></div>
+                        <div id="ecom-insights" class="dc-insights" hidden></div>
+
+                        <div id="ecom-data-view">
+                            <div class="dc-metrics">
+                                <div class="metric">
+                                    <span class="metric-value" id="ecom-m-a">—</span>
+                                    <span class="metric-label" id="ecom-m-a-label"></span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value" id="ecom-m-b">—</span>
+                                    <span class="metric-label" id="ecom-m-b-label"></span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value" id="ecom-m-c">—</span>
+                                    <span class="metric-label" id="ecom-m-c-label"></span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value" id="ecom-m-d">—</span>
+                                    <span class="metric-label" id="ecom-m-d-label"></span>
+                                </div>
+                            </div>
+                            <p id="ecom-metrics-summary" class="dc-metrics-summary" hidden></p>
+                            <p class="dc-caption" id="ecom-caption"></p>
+                            <div class="dc-table-wrap">
+                                <table class="dc-table" id="ecom-table"></table>
+                            </div>
+                            <p class="dc-legend">
+                                <span class="dc-swatch invalid"></span>
+                                <span class="lang-pl">brak / niemożliwa data</span><span class="lang-en">missing / impossible date</span>
+                                <span class="dc-swatch noisy"></span>
+                                <span class="lang-pl">pisownia / wielkość liter</span><span class="lang-en">spelling / casing</span>
+                                <span class="dc-swatch mismatch"></span>
+                                <span class="lang-pl">słownik / duplikat</span><span class="lang-en">dictionary / duplicate</span>
+                                <span class="dc-swatch changed"></span>
+                                <span class="lang-pl">zmienione</span><span class="lang-en">changed</span>
+                                <span class="dc-swatch outlier"></span>
+                                <span class="lang-pl">strażnik / ujemna wartość</span><span class="lang-en">sentinel / negative</span>
+                            </p>
+                        </div>
+
+                        <div class="dc-nav">
+                            <button type="button" class="btn btn-outline" id="ecom-prev" disabled>
+                                <span class="lang-pl">← Poprzedni krok</span>
+                                <span class="lang-en">← Previous step</span>
+                            </button>
+                            <button type="button" class="btn btn-primary" id="ecom-next">
+                                <span class="lang-pl">Następny krok →</span>
+                                <span class="lang-en">Next step →</span>
+                            </button>
+                        </div>
+                        </div><!-- /case-panel ecom-cleaning -->
                     </div>
                 </div>
             </div>
@@ -371,40 +593,40 @@
 
         <section id="o-mnie">
             <div class="container">
-                <div class="section-label">Background</div>
+                <div class="section-label"><span class="lang-pl">Profil</span><span class="lang-en">Profile</span></div>
                 <div class="section-header">
                     <h2><span class="lang-pl">O mnie</span><span class="lang-en">About</span></h2>
-                    <p class="lang-pl">Specjalista łączący analizę danych operacyjnych z mapowaniem procesów laboratoryjnych.</p>
-                    <p class="lang-en">A specialist connecting operational data analysis with laboratory process mapping.</p>
+                    <p class="lang-pl">Analityk danych — od jakości danych i SQL po KPI i dashboardy.</p>
+                    <p class="lang-en">Data analyst — from data quality and SQL to KPIs and dashboards.</p>
                 </div>
                 <div class="about-content">
                     <p class="lang-pl">
-                        Specjalizuję się w przekształcaniu danych z LIMS i workflow laboratoryjnego
-                        w mierzalne KPI, mapy procesów i rekomendacje operacyjne. Pracuję na styku
-                        analityki, optymalizacji procesów i systemów laboratoryjnych w międzynarodowym
-                        środowisku (PL / UK).
+                        Pracuję z brudnymi eksportami z wielu systemów. Czyszczę dane, łączę tabele i ujednolicam nazwy,
+                        żeby wskaźniki KPI były wiarygodne. Projekty na tej stronie pokazują ten sam proces:
+                        problemy → czyszczenie w Pythonie → wykresy → wnioski.
+                        Doświadczenie w procesach laboratoryjnych (LIMS, workflow) pomaga mi rozumieć dane operacyjne, nie tylko same tabele.
                     </p>
                     <p class="lang-en">
-                        I specialise in turning LIMS and laboratory workflow data into measurable KPIs,
-                        process maps and operational recommendations. I work at the intersection of
-                        analytics, process optimisation and laboratory systems in an international
-                        environment (PL / UK).
+                        I work with messy exports from multiple systems. I clean data, join tables and standardise labels
+                        so KPIs can be trusted. The projects on this site show the same process:
+                        issues → cleaning in Python → charts → takeaways.
+                        A background in laboratory processes (LIMS, workflow) helps me understand operational data, not just the tables.
                     </p>
                     <div class="focus-pillars">
                         <div class="pillar">
                             <h4><span class="lang-pl">Analiza danych</span><span class="lang-en">Data analysis</span></h4>
-                            <p class="lang-pl">KPI, dashboardy, agregacja danych z LIMS, identyfikacja trendów i odchyleń.</p>
-                            <p class="lang-en">KPIs, dashboards, LIMS data aggregation, trend and variance detection.</p>
+                            <p class="lang-pl">Czyszczenie danych, Python, Pandas, SQL, łączenie tabel, wartości odstające.</p>
+                            <p class="lang-en">Data cleaning, Python, Pandas, SQL, table joins, outliers.</p>
                         </div>
                         <div class="pillar">
-                            <h4><span class="lang-pl">Procesy</span><span class="lang-en">Processes</span></h4>
-                            <p class="lang-pl">BPMN, mapowanie end-to-end, analiza workflow, wąskie gardła, standaryzacja.</p>
-                            <p class="lang-en">BPMN, end-to-end mapping, workflow analysis, bottlenecks, standardisation.</p>
+                            <h4><span class="lang-pl">Wizualizacja</span><span class="lang-en">Visualisation</span></h4>
+                            <p class="lang-pl">Power BI, dashboardy KPI, wykresy przed i po czyszczeniu.</p>
+                            <p class="lang-en">Power BI, KPI dashboards, before-and-after charts.</p>
                         </div>
                         <div class="pillar">
-                            <h4><span class="lang-pl">Operacje lab.</span><span class="lang-en">Lab operations</span></h4>
-                            <p class="lang-pl">ISO 17025, GLP, koordynacja sekcji, RCA, doskonalenie operacyjne.</p>
-                            <p class="lang-en">ISO 17025, GLP, section coordination, RCA, operational improvement.</p>
+                            <h4><span class="lang-pl">Procesy i domena</span><span class="lang-en">Processes &amp; domain</span></h4>
+                            <p class="lang-pl">Mapowanie workflow, LIMS, ISO 17025 — kontekst, z którego pochodzą dane.</p>
+                            <p class="lang-en">Workflow mapping, LIMS, ISO 17025 — the context behind the data.</p>
                         </div>
                     </div>
                     <p class="about-linkedin lang-pl">
@@ -421,11 +643,11 @@
 
         <section id="umiejetnosci" class="section-alt">
             <div class="container">
-                <div class="section-label">Technical Skillset</div>
+                <div class="section-label"><span class="lang-pl">Umiejętności</span><span class="lang-en">Skills</span></div>
                 <div class="section-header">
                     <h2><span class="lang-pl">Umiejętności</span><span class="lang-en">Skills</span></h2>
-                    <p class="lang-pl">Obszary kompetencji pogrupowane według zastosowania w projektach analitycznych.</p>
-                    <p class="lang-en">Competency areas grouped by how they are used in analytical projects.</p>
+                    <p class="lang-pl">Narzędzia i obszary, które wykorzystuję w projektach analitycznych.</p>
+                    <p class="lang-en">Tools and areas I use in analytical projects.</p>
                 </div>
                 <div class="skills-categories">
 
@@ -443,10 +665,10 @@
                         <h3><span class="lang-pl">Analiza danych</span><span class="lang-en">Data analysis</span></h3>
                         <ul>
                             <li>Python / Pandas</li>
-                            <li>Data cleaning</li>
+                            <li><span class="lang-pl">Czyszczenie danych</span><span class="lang-en">Data cleaning</span></li>
                             <li>MySQL / SQL</li>
+                            <li><span class="lang-pl">Łączenie tabel i jakość danych</span><span class="lang-en">Table joins &amp; data quality</span></li>
                             <li>REST API</li>
-                            <li><span class="lang-pl">Agregacja danych LIMS</span><span class="lang-en">LIMS data aggregation</span></li>
                         </ul>
                     </div>
 
@@ -476,11 +698,11 @@
 
         <section id="kontakt" class="contact">
             <div class="container contact-inner">
-                <div class="section-label">Let's Talk</div>
+                <div class="section-label"><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></div>
                 <div class="section-header">
                     <h2><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></h2>
-                    <p class="lang-pl">Otwarty na współpracę w obszarze analizy danych, procesów laboratoryjnych i optymalizacji operacyjnej.</p>
-                    <p class="lang-en">Open to collaboration in data analysis, laboratory processes and operational optimisation.</p>
+                    <p class="lang-pl">Otwarty na współpracę w analizie danych, czyszczeniu danych, SQL/Python i dashboardach KPI.</p>
+                    <p class="lang-en">Open to collaboration in data analysis, data cleaning, SQL/Python and KPI dashboards.</p>
                 </div>
                 <span class="availability-badge lang-pl">Dostępny do współpracy</span>
                 <span class="availability-badge lang-en">Open to collaboration</span>
@@ -522,47 +744,80 @@
     <script src="lang.js"></script>
     <script src="projects/data-cleaning/raw-data.js"></script>
     <script src="projects/data-cleaning/cleaning.js"></script>
+    <script src="projects/ecom-cleaning/ecom-data.js"></script>
+    <script src="projects/ecom-cleaning/ecom.js"></script>
     <script>
         (function () {
-            var detail = document.getElementById("data-cleaning");
-            var card = document.getElementById("project-data-cleaning");
-            if (!detail) return;
+            var hub = document.getElementById("data-cleaning-hub");
+            var hubCard = document.getElementById("project-data-cleaning-hub");
+            var cases = ["data-cleaning", "ecom-cleaning"];
+            var activeCase = "data-cleaning";
 
-            function openProject() {
-                detail.hidden = false;
-                if (card) card.classList.add("is-open");
-                if (history.replaceState) history.replaceState(null, "", "#data-cleaning");
+            function panelFor(id) {
+                return document.getElementById(id);
+            }
+
+            function setActiveTab(id) {
+                activeCase = id;
+                document.querySelectorAll(".case-tab").forEach(function (btn) {
+                    var on = btn.getAttribute("data-case") === id;
+                    btn.classList.toggle("active", on);
+                    btn.setAttribute("aria-selected", on ? "true" : "false");
+                });
+                cases.forEach(function (caseId) {
+                    var panel = panelFor(caseId);
+                    if (panel) panel.hidden = caseId !== id;
+                });
+                if (history.replaceState) history.replaceState(null, "", "#" + id);
+            }
+
+            function openHub(caseId) {
+                if (!hub) return;
+                hub.hidden = false;
+                if (hubCard) hubCard.classList.add("is-open");
+                setActiveTab(caseId || activeCase);
                 requestAnimationFrame(function () {
-                    detail.scrollIntoView({ behavior: "smooth", block: "start" });
+                    hub.scrollIntoView({ behavior: "smooth", block: "start" });
                 });
             }
 
-            function closeProject() {
-                detail.hidden = true;
-                if (card) card.classList.remove("is-open");
+            function closeHub() {
+                if (hub) hub.hidden = true;
+                if (hubCard) hubCard.classList.remove("is-open");
                 if (history.replaceState) history.replaceState(null, "", "#projekty");
             }
 
-            document.querySelectorAll(".js-open-project").forEach(function (el) {
+            document.querySelectorAll(".js-open-hub").forEach(function (el) {
                 el.addEventListener("click", function (e) {
                     e.preventDefault();
-                    if (!detail.hidden) {
-                        detail.scrollIntoView({ behavior: "smooth", block: "start" });
+                    var caseId = el.getAttribute("data-case") || "data-cleaning";
+                    if (!hub.hidden && activeCase === caseId) {
+                        hub.scrollIntoView({ behavior: "smooth", block: "start" });
                         return;
                     }
-                    openProject();
+                    openHub(caseId);
                 });
             });
 
-            document.querySelectorAll(".js-close-project").forEach(function (el) {
+            document.querySelectorAll(".js-close-hub").forEach(function (el) {
                 el.addEventListener("click", function (e) {
                     e.preventDefault();
-                    closeProject();
-                    if (card) card.scrollIntoView({ behavior: "smooth", block: "start" });
+                    closeHub();
+                    if (hubCard) hubCard.scrollIntoView({ behavior: "smooth", block: "start" });
                 });
             });
 
-            if (location.hash === "#data-cleaning") openProject();
+            document.querySelectorAll(".case-tab").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    var caseId = btn.getAttribute("data-case");
+                    if (!caseId) return;
+                    if (hub.hidden) openHub(caseId);
+                    else setActiveTab(caseId);
+                });
+            });
+
+            var hash = location.hash.replace("#", "");
+            if (cases.indexOf(hash) !== -1) openHub(hash);
         })();
     </script>
 </body>
