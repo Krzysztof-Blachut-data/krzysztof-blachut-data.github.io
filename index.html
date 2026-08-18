@@ -278,8 +278,8 @@
                                         <tr>
                                             <td>Hospital_C</td><td>1826</td><td>Glucose</td>
                                             <td class="dc-cell invalid">-999</td><td>mmol/L</td><td>70-99</td>
-                                            <td class="dc-issue-note lang-pl">Ujemny strażnik (−999) zamiast wyniku</td>
-                                            <td class="dc-issue-note lang-en">Negative sentinel (−999) instead of a result</td>
+                                            <td class="dc-issue-note lang-pl">Ujemny <span class="dc-term" tabindex="0" data-tip="Umowny kod (tu −999) wpisywany zamiast braku wyniku. To nie jest prawdziwa wartość laboratoryjna.">strażnik</span> (−999) zamiast wyniku</td>
+                                            <td class="dc-issue-note lang-en">Negative <span class="dc-term" tabindex="0" data-tip="A placeholder code (here −999) stored instead of a missing result. It is not a real lab value.">sentinel</span> (−999) instead of a result</td>
                                         </tr>
                                         <tr>
                                             <td>Hospital_A</td><td>1135</td><td>HbA1c</td>
@@ -334,13 +334,16 @@
                             </div>
                             <p class="dc-legend">
                                 <span class="dc-swatch invalid"></span>
-                                <span class="lang-pl">brak / ujemny strażnik</span><span class="lang-en">missing / negative sentinel</span>
+                                <span class="lang-pl">brak / ujemny <span class="dc-term" tabindex="0" data-tip="Umowny kod (tu −999) wpisywany zamiast braku wyniku. To nie jest prawdziwa wartość laboratoryjna.">strażnik</span></span>
+                                <span class="lang-en">missing / negative <span class="dc-term" tabindex="0" data-tip="A placeholder code (here −999) stored instead of a missing result. It is not a real lab value.">sentinel</span></span>
                                 <span class="dc-swatch noisy"></span>
                                 <span class="lang-pl">za dużo miejsc po przecinku</span><span class="lang-en">too many decimals</span>
                                 <span class="dc-swatch mismatch"></span>
-                                <span class="lang-pl">zakres ≠ jednostka</span><span class="lang-en">range ≠ unit</span>
+                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Zakres referencyjny nie pasuje do jednostki wyniku — np. 70–99 przy mmol/L.">zakres ≠ jednostka</span></span>
+                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="The reference range does not match the result unit — e.g. 70–99 with mmol/L.">range ≠ unit</span></span>
                                 <span class="dc-swatch outlier"></span>
-                                <span class="lang-pl">mało prawdopodobna wartość</span><span class="lang-en">implausible value</span>
+                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Wartość liczbowa, ale skrajnie mało prawdopodobna (np. 500 mmol/L glukozy). Pipeline najpierw ją flaguje.">mało prawdopodobna wartość</span></span>
+                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="A numeric value that is extremely unlikely (e.g. 500 mmol/L glucose). The pipeline flags it first.">implausible value</span></span>
                             </p>
                             <p class="dc-download">
                                 <a href="projects/data-cleaning/multi_hospital_lab_results.csv" download>
@@ -411,17 +414,20 @@
                             <table class="dc-table" id="dc-table"></table>
                         </div>
 
-                        <p class="dc-legend">
-                            <span class="dc-swatch invalid"></span>
-                            <span class="lang-pl">brak / ujemny strażnik</span><span class="lang-en">missing / negative sentinel</span>
-                            <span class="dc-swatch noisy"></span>
-                            <span class="lang-pl">za dużo miejsc po przecinku</span><span class="lang-en">too many decimals</span>
-                            <span class="dc-swatch mismatch"></span>
-                            <span class="lang-pl">zakres ≠ jednostka</span><span class="lang-en">range ≠ unit</span>
-                            <span class="dc-swatch changed"></span>
-                            <span class="lang-pl">zmienione</span><span class="lang-en">changed</span>
-                            <span class="dc-swatch outlier"></span>
-                            <span class="lang-pl">mało prawdopodobna wartość</span><span class="lang-en">implausible value</span>
+                            <p class="dc-legend">
+                                <span class="dc-swatch invalid"></span>
+                                <span class="lang-pl">brak / ujemny <span class="dc-term" tabindex="0" data-tip="Umowny kod (tu −999) wpisywany zamiast braku wyniku. To nie jest prawdziwa wartość laboratoryjna.">strażnik</span></span>
+                                <span class="lang-en">missing / negative <span class="dc-term" tabindex="0" data-tip="A placeholder code (here −999) stored instead of a missing result. It is not a real lab value.">sentinel</span></span>
+                                <span class="dc-swatch noisy"></span>
+                                <span class="lang-pl">za dużo miejsc po przecinku</span><span class="lang-en">too many decimals</span>
+                                <span class="dc-swatch mismatch"></span>
+                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Zakres referencyjny nie pasuje do jednostki wyniku — np. 70–99 przy mmol/L.">zakres ≠ jednostka</span></span>
+                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="The reference range does not match the result unit — e.g. 70–99 with mmol/L.">range ≠ unit</span></span>
+                                <span class="dc-swatch changed"></span>
+                                <span class="lang-pl">zmienione</span><span class="lang-en">changed</span>
+                                <span class="dc-swatch outlier"></span>
+                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Wartość liczbowa, ale skrajnie mało prawdopodobna (np. 500 mmol/L glukozy). Pipeline najpierw ją flaguje.">mało prawdopodobna wartość</span></span>
+                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="A numeric value that is extremely unlikely (e.g. 500 mmol/L glucose). The pipeline flags it first.">implausible value</span></span>
                         </p>
                         </div>
 
@@ -571,7 +577,8 @@
                                 <span class="dc-swatch changed"></span>
                                 <span class="lang-pl">zmienione</span><span class="lang-en">changed</span>
                                 <span class="dc-swatch outlier"></span>
-                                <span class="lang-pl">strażnik / ujemna wartość</span><span class="lang-en">sentinel / negative</span>
+                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Umowny kod (tu −100) wpisywany zamiast brakującej lub błędnej ceny. To nie jest prawdziwa cena produktu.">strażnik</span> / ujemna wartość</span>
+                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="A placeholder code (here −100) stored instead of a missing or invalid price. It is not a real product price.">sentinel</span> / negative</span>
                             </p>
                         </div>
 
@@ -742,6 +749,7 @@
     </footer>
 
     <script src="lang.js"></script>
+    <script src="glossary.js"></script>
     <script src="projects/data-cleaning/raw-data.js"></script>
     <script src="projects/data-cleaning/cleaning.js"></script>
     <script src="projects/ecom-cleaning/ecom-data.js"></script>

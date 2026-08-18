@@ -96,6 +96,10 @@
         return document.documentElement.getAttribute("data-lang") === "en" ? "en" : "pl";
     }
 
+    function term(key, text) {
+        return window.dqTerm ? window.dqTerm(key, text) : text;
+    }
+
     function fmtInt(n) {
         return Number(n).toLocaleString(lang() === "en" ? "en-US" : "pl-PL");
     }
@@ -349,7 +353,7 @@
         return [
             { source: "CRM", id: "0d244537", field: "first_name", value: "mARIA", issue: en ? "mixed case" : "mieszana wielkość liter", flags: { value: "noisy" } },
             { source: "CRM", id: "00682ed4", field: "customer_id", value: "×2 rows", issue: en ? "duplicate ID" : "zdublowane ID", flags: { value: "mismatch" } },
-            { source: "Catalog", id: "PROD-0003", field: "category / price", value: "3l3ctronics / −100", issue: en ? "leetspeak + sentinel" : "leetspeak + strażnik", flags: { value: "outlier" } },
+            { source: "Catalog", id: "PROD-0003", field: "category / price", value: "3l3ctronics / −100", issue: (en ? "leetspeak + " : "leetspeak + ") + term("sentinel_price", en ? "sentinel" : "strażnik"), flags: { value: "outlier" } },
             { source: "Orders", id: "06b5aa88", field: "payment_method", value: "wall-et", issue: en ? "typo vs wallet" : "literówka vs wallet", flags: { value: "mismatch" } },
             { source: "Orders", id: "5b10b856", field: "order_date", value: "2024/31/01", issue: en ? "impossible date" : "niemożliwa data", flags: { value: "invalid" } },
             { source: "Orders", id: "b05c45b2", field: "quantity", value: "−3", issue: en ? "negative quantity" : "ujemna ilość", flags: { value: "outlier" } },
@@ -425,19 +429,19 @@
                 [fmtInt(T.rows), en ? "rows in 5 tables" : "wiersze w 5 tabelach"],
                 [String(T.tables), en ? "source files" : "pliki źródłowe"],
                 [String(T.categoriesRaw), en ? "category labels" : "etykiety kategorii"],
-                [fmtInt(T.crmDups), en ? "CRM duplicate rows" : "duplikaty CRM"]
+                [fmtInt(T.crmDups), en ? "CRM duplicate rows" : "duplikaty CRM", "duplicate"]
             ],
             [
                 [fmtInt(T.crm), en ? "CRM rows" : "wiersze CRM"],
                 [fmtInt(T.crmUnique), en ? "unique customers" : "unikalni klienci"],
-                [fmtInt(T.crmDups), en ? "duplicates dropped" : "duplikaty do usunięcia"],
+                [fmtInt(T.crmDups), en ? "duplicates dropped" : "duplikaty do usunięcia", "duplicate"],
                 [fmtInt(T.emailMissing), en ? "missing emails" : "braki e-mail"]
             ],
             [
                 [fmtInt(T.catalog), en ? "products" : "produkty"],
                 [String(T.categoriesRaw), en ? "raw categories" : "kategorie surowe"],
-                [String(T.categoriesClean), en ? "canonical categories" : "kategorie kanoniczne"],
-                ["−100", en ? "price sentinel" : "strażnik ceny"]
+                [String(T.categoriesClean), en ? "canonical categories" : "kategorie kanoniczne", "canonical"],
+                ["−100", en ? "price sentinel" : "strażnik ceny", "sentinel_price"]
             ],
             [
                 [fmtInt(T.orders), en ? "orders" : "zamówienia"],
@@ -453,14 +457,14 @@
             ],
             [
                 [fmtInt(T.click), en ? "events" : "zdarzenia"],
-                [fmtInt(T.clickAnon), en ? "anonymous" : "anonimowe"],
+                [fmtInt(T.clickAnon), en ? "anonymous" : "anonimowe", "anonymous"],
                 ["30%", en ? "share without customer" : "udział bez klienta"],
                 ["25:61", en ? "invalid clock" : "zły zegar"]
             ],
             [
                 [fmtInt(T.crm) + " → " + fmtInt(T.crmUnique), en ? "unique customers" : "unikalni klienci"],
-                [fmtInt(T.crmDups) + " → 0", en ? "CRM dupes in grain" : "dupl. CRM w ziarnie"],
-                [fmtInt(T.clickAnon), en ? "anonymous flagged" : "anonimowe oznaczone"],
+                [fmtInt(T.crmDups) + " → 0", en ? "CRM dupes in grain" : "dupl. CRM w ziarnie", "grain"],
+                [fmtInt(T.clickAnon), en ? "anonymous flagged" : "anonimowe oznaczone", "anonymous"],
                 [fmtInt(T.orders), en ? "orders joinable" : "zamówienia do joinów"]
             ]
         ];
@@ -471,7 +475,7 @@
         var spec = metricSpec(n);
         ["ecom-m-a", "ecom-m-b", "ecom-m-c", "ecom-m-d"].forEach(function (id, i) {
             document.getElementById(id).textContent = spec[i][0];
-            document.getElementById(id + "-label").textContent = spec[i][1];
+            document.getElementById(id + "-label").innerHTML = spec[i][2] ? term(spec[i][2], spec[i][1]) : spec[i][1];
         });
         renderMetricsSummary(n);
     }
@@ -500,20 +504,21 @@
             "<div class=\"dc-funnel-step\"><strong>" + fmtInt(pipe.rawRows) + "</strong><span>" +
             (en ? "rows across 5 source files" : "wierszy w 5 plikach źródłowych") + "</span></div>" +
             "<div class=\"dc-funnel-arrow\">↓ " + fmtInt(pipe.crmDups) + " " +
-            (en ? "CRM duplicate rows" : "zdublowanych wierszy CRM") + "</div>" +
+            term("duplicate", en ? "CRM duplicate rows" : "zdublowanych wierszy CRM") + "</div>" +
             "<div class=\"dc-funnel-step\"><strong>" + fmtInt(pipe.crmUnique) + "</strong><span>" +
             (en ? "unique customers for joins" : "unikalnych klientów do joinów") + "</span></div>" +
             "<div class=\"dc-funnel-arrow\">↓ " + fmtInt(pipe.clickAnon) + " " +
-            (en ? "anonymous events flagged (retained)" : "anonimowych eventów oznaczonych (zachowanych)") + "</div>" +
+            term("anonymous", en ? "anonymous events flagged (retained)" : "anonimowych eventów oznaczonych (zachowanych)") + "</div>" +
             "<div class=\"dc-funnel-step highlight\"><strong>" + fmtInt(pipe.analysisRows) + "</strong><span>" +
-            (en ? "rows in join-ready grain" : "wierszy w ziarnie gotowym do joinów") + "</span></div>" +
+            term("grain", en ? "rows in join-ready grain" : "wierszy w ziarnie gotowym do joinów") + "</span></div>" +
             "</div>";
     }
 
     function renderExecutiveSummaryTable() {
         var en = lang() === "en";
-        function row(label, rawVal, cleanVal) {
-            return "<tr><td>" + label + "</td><td>" + fmtInt(rawVal) + "</td>" +
+        function row(label, rawVal, cleanVal, tipKey) {
+            var name = tipKey ? term(tipKey, label) : label;
+            return "<tr><td>" + name + "</td><td>" + fmtInt(rawVal) + "</td>" +
                 "<td class=\"dc-cell changed\">" + (typeof cleanVal === "number" ? fmtInt(cleanVal) : cleanVal) + "</td></tr>";
         }
         return "<h3>" + (en ? "Pipeline executive summary" : "Podsumowanie pipeline'u") + "</h3>" +
@@ -523,14 +528,14 @@
             "</p>" +
             "<table class=\"dc-table dc-progress-table dc-executive-table\">" +
             "<thead><tr><th>" + (en ? "Problem" : "Problem") + "</th><th>Raw</th><th>" + (en ? "Analysis" : "Analiza") + "</th></tr></thead><tbody>" +
-            row(en ? "CRM duplicate rows" : "Duplikaty CRM", T.crmDups, 0) +
-            row(en ? "Category labels" : "Etykiety kategorii", T.categoriesRaw, T.categoriesClean) +
+            row(en ? "CRM duplicate rows" : "Duplikaty CRM", T.crmDups, 0, "duplicate") +
+            row(en ? "Category labels" : "Etykiety kategorii", T.categoriesRaw, T.categoriesClean, "canonical") +
             row(en ? "Payment methods" : "Metody płatności", T.paymentRaw, T.paymentClean) +
             row(en ? "Order statuses" : "Statusy zamówień", T.statusRaw, T.statusClean) +
             row(en ? "Issue types" : "Typy zgłoszeń", T.issueRaw, T.issueClean) +
             row(en ? "Sentiment labels" : "Etykiety sentymentu", T.sentimentRaw, T.sentimentClean) +
-            row(en ? "Anonymous click events" : "Anonimowe eventy clickstream", T.clickAnon, T.clickAnon + " " + (en ? "(flagged)" : "(ozn.)")) +
-            row(en ? "Unique customers" : "Unikalni klienci", T.crm, T.crmUnique) +
+            row(en ? "Anonymous click events" : "Anonimowe eventy clickstream", T.clickAnon, T.clickAnon + " " + (en ? "(flagged)" : "(ozn.)"), "anonymous") +
+            row(en ? "Unique customers" : "Unikalni klienci", T.crm, T.crmUnique, "grain") +
             row(en ? "Rows in dataset" : "Rekordy w secie", T.rows, T.rows - T.crmDups) +
             "</tbody></table>";
     }

@@ -549,6 +549,60 @@ section {
     color: var(--text-muted);
 }
 
+.dc-term {
+    border-bottom: 1px dotted color-mix(in srgb, var(--text-muted) 70%, transparent);
+    cursor: help;
+    position: relative;
+}
+
+.dc-term:hover,
+.dc-term:focus {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+    outline: none;
+}
+
+.dc-term::after {
+    content: attr(data-tip);
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 0.45rem);
+    z-index: 30;
+    width: max-content;
+    max-width: min(18rem, 72vw);
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-elevated);
+    color: var(--text);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.4;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(0.2rem);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+    white-space: normal;
+}
+
+.dc-term:hover::after,
+.dc-term:focus::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dc-quality-panel,
+.dc-metrics,
+.dc-legend,
+.dc-pipeline-funnel,
+.dc-table-wrap:has(.dc-progress-table),
+.dc-progress-table td:first-child {
+    overflow: visible;
+}
+
 .project-actions {
     display: flex;
     flex-wrap: wrap;

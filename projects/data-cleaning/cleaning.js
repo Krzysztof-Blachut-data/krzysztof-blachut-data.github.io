@@ -338,13 +338,13 @@
             "<div class=\"dc-funnel-step\"><strong>1 500</strong><span>" +
             (en ? "raw records" : "rekordów surowych") + "</span></div>" +
             "<div class=\"dc-funnel-arrow\">↓ " + pipe.excludedInvalid + " " +
-            (en ? "missing / invalid" : "braków / invalid") + "</div>" +
+            term("missing_invalid", en ? "missing / invalid" : "braków / invalid") + "</div>" +
             "<div class=\"dc-funnel-step\"><strong>" + (1500 - pipe.excludedInvalid).toLocaleString("pl-PL") + "</strong><span>" +
             (en ? "after missing handling" : "po obsłudze braków") + "</span></div>" +
             "<div class=\"dc-funnel-arrow\">↓ " + pipe.excludedImplausible + " " +
-            (en ? "implausible values" : "wartości mało prawdopodobnych") + "</div>" +
+            term("implausible", en ? "implausible values" : "wartości mało prawdopodobnych") + "</div>" +
             "<div class=\"dc-funnel-step highlight\"><strong>" + pipe.retained.toLocaleString("pl-PL") + "</strong><span>" +
-            (en ? "analysis-ready records" : "rekordów gotowych do analizy") + "</span></div>" +
+            term("analysis_ready", en ? "analysis-ready records" : "rekordów gotowych do analizy") + "</span></div>" +
             "</div>";
     }
 
@@ -352,8 +352,9 @@
         var raw = getRawSnapshot();
         var analysis = getAnalysisSnapshot();
         var en = lang() === "en";
-        function row(label, rawVal, analysisVal) {
-            return "<tr><td>" + label + "</td><td>" + rawVal.toLocaleString("pl-PL") + "</td>" +
+        function row(label, rawVal, analysisVal, tipKey) {
+            var name = tipKey && window.dqTerm ? window.dqTerm(tipKey, label) : label;
+            return "<tr><td>" + name + "</td><td>" + rawVal.toLocaleString("pl-PL") + "</td>" +
                 "<td class=\"dc-cell changed\">" + analysisVal.toLocaleString("pl-PL") + "</td></tr>";
         }
         return "<h3>" + (en ? "Pipeline executive summary" : "Podsumowanie pipeline'u") + "</h3>" +
@@ -363,13 +364,13 @@
             "</p>" +
             "<table class=\"dc-table dc-progress-table dc-executive-table\">" +
             "<thead><tr><th>" + (en ? "Problem" : "Problem") + "</th><th>Raw</th><th>" + (en ? "Analysis" : "Analiza") + "</th></tr></thead><tbody>" +
-            row(en ? "Missing / invalid test values" : "Braki / invalid wartości", raw.missingTestValues, 0) +
-            row(en ? "Sentinel −999" : "Strażnik −999", raw.sentinelRaw, 0) +
-            row(en ? "Non-numeric values" : "Wartości nienumeryczne", raw.nonNumeric, 0) +
+            row(en ? "Missing / invalid test values" : "Braki / invalid wartości", raw.missingTestValues, 0, "missing_invalid") +
+            row(en ? "Sentinel −999" : "Strażnik −999", raw.sentinelRaw, 0, "sentinel") +
+            row(en ? "Non-numeric values" : "Wartości nienumeryczne", raw.nonNumeric, 0, "non_numeric") +
             row(en ? "Test-name variants" : "Warianty nazw", raw.names, analysis.names) +
             row(en ? "mg/dL records" : "Rekordy mg/dL", raw.mgdl, 0) +
-            row(en ? "Range / unit mismatches" : "Niedopas. zakres / jednostka", raw.rangeMismatch, 0) +
-            row(en ? "Implausible values" : "Mało prawdopodobne", raw.implausible, 0) +
+            row(en ? "Range / unit mismatches" : "Niedopas. zakres / jednostka", raw.rangeMismatch, 0, "range_mismatch") +
+            row(en ? "Implausible values" : "Mało prawdopodobne", raw.implausible, 0, "implausible") +
             row(en ? "Total excluded from analysis" : "Łącznie wykluczone z analizy", raw.missingTestValues + raw.implausible, 0) +
             row(en ? "Records in dataset" : "Rekordy w secie", raw.rows, analysis.rows) +
             "</tbody></table>";
@@ -560,7 +561,7 @@
                     var isCanonical = v === canonical;
                     return "<li class=\"" + (isCanonical ? "canonical" : "variant") + "\">" +
                         prefix + v +
-                        (isCanonical ? " <span class=\"dc-name-tree-tag\">canonical</span>" : "") +
+                        (isCanonical ? " <span class=\"dc-name-tree-tag\">" + term("canonical", "canonical") + "</span>" : "") +
                         "</li>";
                 }).join("") +
                 "</ul></div>";
@@ -571,59 +572,70 @@
         return document.documentElement.getAttribute("data-lang") === "en" ? "en" : "pl";
     }
 
+    function term(key, text) {
+        return window.dqTerm ? window.dqTerm(key, text) : text;
+    }
+
+    function setMetricLabel(id, text, tipKey) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.innerHTML = tipKey ? term(tipKey, text) : text;
+    }
+
     function updateMetricLabels(currentStep) {
         var en = lang() === "en";
         if (currentStep === 1) {
-            document.getElementById("m-rows-label").textContent = en ? "records" : "rekordów";
-            document.getElementById("m-names-label").textContent = en ? "empty" : "pustych";
-            document.getElementById("m-missing-label").textContent = "not collected";
-            document.getElementById("m-outliers-label").textContent = en ? "sentinel −999" : "strażnik −999";
+            setMetricLabel("m-rows-label", en ? "records" : "rekordów");
+            setMetricLabel("m-names-label", en ? "empty" : "pustych", "empty");
+            setMetricLabel("m-missing-label", "not collected", "not_collected");
+            setMetricLabel("m-outliers-label", en ? "sentinel −999" : "strażnik −999", "sentinel");
             return;
         }
         if (currentStep === 2) {
-            document.getElementById("m-rows-label").textContent = en ? "records" : "rekordów";
-            document.getElementById("m-names-label").textContent = en ? "raw labels" : "etykiet surowych";
-            document.getElementById("m-missing-label").textContent = en ? "canonical analytes" : "anality kanoniczne";
-            document.getElementById("m-outliers-label").textContent = en ? "labels standardized" : "etykiet ustandaryz.";
+            setMetricLabel("m-rows-label", en ? "records" : "rekordów");
+            setMetricLabel("m-names-label", en ? "raw labels" : "etykiet surowych");
+            setMetricLabel("m-missing-label", en ? "canonical analytes" : "anality kanoniczne", "canonical");
+            setMetricLabel("m-outliers-label", en ? "labels standardized" : "etykiet ustandaryz.");
             return;
         }
         if (currentStep === 3) {
-            document.getElementById("m-rows-label").textContent = en ? "records" : "rekordów";
-            document.getElementById("m-names-label").textContent = en ? "mg/dL rows remaining" : "wierszy mg/dL";
-            document.getElementById("m-missing-label").textContent = en ? "values converted" : "wartości przeliczonych";
-            document.getElementById("m-outliers-label").textContent = en ? "range mismatches left" : "niedopas. zakresów";
+            setMetricLabel("m-rows-label", en ? "records" : "rekordów");
+            setMetricLabel("m-names-label", en ? "mg/dL rows remaining" : "wierszy mg/dL");
+            setMetricLabel("m-missing-label", en ? "values converted" : "wartości przeliczonych");
+            setMetricLabel("m-outliers-label", en ? "range mismatches left" : "niedopas. zakresów", "range_mismatch");
             return;
         }
         if (currentStep === 5) {
-            document.getElementById("m-rows-label").textContent = en ? "records" : "rekordów";
-            document.getElementById("m-names-label").textContent = en ? "invalid flagged" : "ozn. invalid";
-            document.getElementById("m-missing-label").textContent = en ? "implausible flagged" : "flag. mało prawd.";
-            document.getElementById("m-outliers-label").textContent = en ? "still in audit set" : "w secie audytowym";
+            setMetricLabel("m-rows-label", en ? "records" : "rekordów");
+            setMetricLabel("m-names-label", en ? "invalid flagged" : "ozn. invalid", "missing_invalid");
+            setMetricLabel("m-missing-label", en ? "implausible flagged" : "flag. mało prawd.", "implausible");
+            setMetricLabel("m-outliers-label", en ? "still in audit set" : "w secie audytowym", "quality_flag");
             return;
         }
         if (currentStep === 6) {
-            document.getElementById("m-rows-label").textContent = en ? "raw records" : "rekordów raw";
-            document.getElementById("m-names-label").textContent = en ? "analysis records" : "rekordów analiza";
-            document.getElementById("m-missing-label").textContent = en ? "invalid in analysis" : "invalid w analizie";
-            document.getElementById("m-outliers-label").textContent = en ? "implausible in analysis" : "mało prawd. w analizie";
+            setMetricLabel("m-rows-label", en ? "raw records" : "rekordów raw");
+            setMetricLabel("m-names-label", en ? "analysis records" : "rekordów analiza", "analysis_ready");
+            setMetricLabel("m-missing-label", en ? "invalid in analysis" : "invalid w analizie", "missing_invalid");
+            setMetricLabel("m-outliers-label", en ? "implausible in analysis" : "mało prawd. w analizie", "implausible");
             return;
         }
-        document.getElementById("m-rows-label").textContent = en ? "rows" : "wierszy";
-        document.getElementById("m-names-label").textContent = en ? "test names" : "nazw badań";
+        setMetricLabel("m-rows-label", en ? "rows" : "wierszy");
+        setMetricLabel("m-names-label", en ? "test names" : "nazw badań");
         if (currentStep === 0) {
-            document.getElementById("m-missing-label").textContent = en ? "invalid / missing values" : "invalid / braków";
-            document.getElementById("m-outliers-label").textContent = en ? "flagged implausible" : "flag. mało prawd.";
+            setMetricLabel("m-missing-label", en ? "invalid / missing values" : "invalid / braków", "missing_invalid");
+            setMetricLabel("m-outliers-label", en ? "flagged implausible" : "flag. mało prawd.", "implausible");
         } else if (currentStep >= 6) {
-            document.getElementById("m-missing-label").textContent = en ? "invalid in analysis set" : "invalid w secie analizy";
-            document.getElementById("m-outliers-label").textContent = en ? "implausible in analysis set" : "mało prawd. w analizie";
+            setMetricLabel("m-missing-label", en ? "invalid in analysis set" : "invalid w secie analizy", "missing_invalid");
+            setMetricLabel("m-outliers-label", en ? "implausible in analysis set" : "mało prawd. w analizie", "implausible");
         } else {
-            document.getElementById("m-missing-label").textContent = en ? "invalid test values" : "invalid wartości";
-            document.getElementById("m-outliers-label").textContent = en ? "flagged implausible" : "flag. mało prawd.";
+            setMetricLabel("m-missing-label", en ? "invalid test values" : "invalid wartości", "missing_invalid");
+            setMetricLabel("m-outliers-label", en ? "flagged implausible" : "flag. mało prawd.", "implausible");
         }
     }
 
-    function progressRow(label, rawVal, currentVal) {
-        return "<tr><td>" + label + "</td><td>" + rawVal.toLocaleString("pl-PL") + "</td>" +
+    function progressRow(label, rawVal, currentVal, tipKey) {
+        var name = tipKey ? term(tipKey, label) : label;
+        return "<tr><td>" + name + "</td><td>" + rawVal.toLocaleString("pl-PL") + "</td>" +
             "<td class=\"dc-cell changed\">" + currentVal.toLocaleString("pl-PL") + "</td></tr>";
     }
 
@@ -642,13 +654,13 @@
             "</p>" +
             "<table class=\"dc-table dc-progress-table\">" +
             "<thead><tr><th>" + (en ? "Metric" : "Metryka") + "</th><th>Raw</th><th>" + stepLabel + "</th></tr></thead><tbody>" +
-            progressRow(en ? "Missing / invalid test values" : "Braki / invalid wartości", raw.missingTestValues, profile.missingTestValues) +
-            progressRow(en ? "Sentinel −999 (raw cells)" : "Strażnik −999 (surowe komórki)", raw.sentinelRaw, profile.sentinelRaw) +
-            progressRow(en ? "Non-numeric text (e.g. N/A)" : "Tekst nienumeryczny (np. N/A)", raw.nonNumeric, profile.nonNumeric) +
+            progressRow(en ? "Missing / invalid test values" : "Braki / invalid wartości", raw.missingTestValues, profile.missingTestValues, "missing_invalid") +
+            progressRow(en ? "Sentinel −999 (raw cells)" : "Strażnik −999 (surowe komórki)", raw.sentinelRaw, profile.sentinelRaw, "sentinel") +
+            progressRow(en ? "Non-numeric text (e.g. N/A)" : "Tekst nienumeryczny (np. N/A)", raw.nonNumeric, profile.nonNumeric, "non_numeric") +
             progressRow(en ? "Test-name variants" : "Warianty nazw badań", raw.names, profile.names) +
             progressRow(en ? "mg/dL rows" : "Wiersze mg/dL", raw.mgdl, profile.mgdl) +
-            progressRow(en ? "Range / unit mismatch" : "Niedopas. zakres / jednostka", raw.rangeMismatch, profile.rangeMismatch) +
-            progressRow(en ? "Implausible values" : "Mało prawdopodobne", raw.implausible, profile.implausible) +
+            progressRow(en ? "Range / unit mismatch" : "Niedopas. zakres / jednostka", raw.rangeMismatch, profile.rangeMismatch, "range_mismatch") +
+            progressRow(en ? "Implausible values" : "Mało prawdopodobne", raw.implausible, profile.implausible, "implausible") +
             "</tbody></table>";
     }
 
@@ -799,9 +811,10 @@
         return profile;
     }
 
-    function qualityItem(label, value) {
+    function qualityItem(label, value, tipKey) {
         var display = typeof value === "number" ? value.toLocaleString("pl-PL") : String(value);
-        return "<div class=\"dc-quality-item\"><span>" + label + "</span><strong>" + display + "</strong></div>";
+        var name = tipKey ? term(tipKey, label) : label;
+        return "<div class=\"dc-quality-item\"><span>" + name + "</span><strong>" + display + "</strong></div>";
     }
 
     function renderQualityPanel(currentStep, profile) {
@@ -813,12 +826,12 @@
             panel.innerHTML =
                 "<h3>" + (en ? "Missing-value breakdown" : "Rozbicie brakujących wyników") + "</h3>" +
                 "<div class=\"dc-missing-breakdown\">" +
-                qualityItem("EMPTY", bd.blank) +
-                qualityItem("NOT COLLECTED", bd.notCollected) +
-                qualityItem("−999", bd.sentinel) +
-                (bd.nullish ? qualityItem("NULL / NaN", bd.nullish) : "") +
+                qualityItem("EMPTY", bd.blank, "empty") +
+                qualityItem("NOT COLLECTED", bd.notCollected, "not_collected") +
+                qualityItem("−999", bd.sentinel, "sentinel") +
+                (bd.nullish ? qualityItem("NULL / NaN", bd.nullish, "nan") : "") +
                 "<div class=\"dc-quality-item dc-quality-total\"><span>TOTAL</span><strong>" + bd.totalStandardized.toLocaleString("pl-PL") + "</strong></div>" +
-                (bd.nonNumeric ? qualityItem(en ? "Non-numeric (e.g. N/A)" : "Nienumeryczne (np. N/A)", bd.nonNumeric) : "") +
+                (bd.nonNumeric ? qualityItem(en ? "Non-numeric (e.g. N/A)" : "Nienumeryczne (np. N/A)", bd.nonNumeric, "non_numeric") : "") +
                 "</div>";
             return;
         }
@@ -859,18 +872,18 @@
         }
         var title = en ? "Issues detected in raw data" : "Problemy wykryte w surowych danych";
         var items = [
-            [en ? "Missing / invalid test values" : "Braki / invalid wartości", profile.missingTestValues],
-            [en ? "Sentinel −999" : "Strażnik −999", profile.sentinelRaw],
-            [en ? "Non-numeric text" : "Tekst nienumeryczny", profile.nonNumeric],
-            [en ? "Implausible values" : "Mało prawdopodobne", profile.implausible],
+            [en ? "Missing / invalid test values" : "Braki / invalid wartości", profile.missingTestValues, "missing_invalid"],
+            [en ? "Sentinel −999" : "Strażnik −999", profile.sentinelRaw, "sentinel"],
+            [en ? "Non-numeric text" : "Tekst nienumeryczny", profile.nonNumeric, "non_numeric"],
+            [en ? "Implausible values" : "Mało prawdopodobne", profile.implausible, "implausible"],
             [en ? "Test-name variants" : "Warianty nazw badań", profile.names],
             [en ? "mg/dL rows" : "Wiersze mg/dL", profile.mgdl],
-            [en ? "Range / unit mismatch" : "Niedopas. zakres / jednostka", profile.rangeMismatch]
+            [en ? "Range / unit mismatch" : "Niedopas. zakres / jednostka", profile.rangeMismatch, "range_mismatch"]
         ];
         items.push([en ? "Valid records (before cleaning)" : "Poprawne rekordy (przed czyszczeniem)", profile.valid]);
         panel.innerHTML = "<h3>" + title + "</h3><div class=\"dc-quality-grid\">" +
             items.map(function (pair) {
-                return qualityItem(pair[0], pair[1]);
+                return qualityItem(pair[0], pair[1], pair[2]);
             }).join("") +
             "</div>";
     }
