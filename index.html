@@ -2,13 +2,13 @@
 <html lang="pl" data-lang="pl"
     data-title-pl="Krzysztof Blachut | Analityk danych"
     data-title-en="Krzysztof Blachut | Data analyst"
-    data-desc-pl="Portfolio analityka danych — czyszczenie danych, Python, SQL, KPI i dashboardy. Projekty: laboratorium i e-commerce."
-    data-desc-en="Data analyst portfolio — data cleaning, Python, SQL, KPIs and dashboards. Projects: lab and e-commerce.">
+    data-desc-pl="Portfolio analityka danych — jakość danych, dashboardy BI, pipeline ETL z API. Python, SQL, Pandas, REST API."
+    data-desc-en="Data analyst portfolio — data quality, BI dashboards, API ETL pipelines. Python, SQL, Pandas, REST API.">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio analityka danych — czyszczenie danych, Python, SQL, KPI i dashboardy. Projekty: laboratorium i e-commerce.">
+    <meta name="description" content="Portfolio analityka danych — jakość danych, dashboardy BI, pipeline ETL z API. Python, SQL, Pandas, REST API.">
     <title>Krzysztof Blachut | Analityk danych</title>
     <link rel="stylesheet" href="styles.css">
     <script>
@@ -119,25 +119,49 @@
                 <div class="section-label"><span class="lang-pl">Portfolio</span><span class="lang-en">Portfolio</span></div>
                 <div class="section-header">
                     <h2><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></h2>
-                    <p class="lang-pl">Dwa projekty z czyszczenia danych — kliknij, żeby zobaczyć problemy, kroki naprawy, wykresy i wnioski.</p>
-                    <p class="lang-en">Two data-cleaning projects — click to see the issues, fix steps, charts and takeaways.</p>
+                    <p class="lang-pl">Cztery projekty — każdy pokazuje inną kompetencję: jakość danych, BI, automatyzacja ETL i (wkrótce) optymalizacja procesów.</p>
+                    <p class="lang-en">Four projects — each demonstrates a different skill: data quality, BI, ETL automation and (soon) process optimisation.</p>
                 </div>
+
+                <div class="portfolio-matrix" aria-label="Portfolio competencies">
+                    <div class="portfolio-matrix-item">
+                        <strong>01 · Data Quality</strong>
+                        <span class="lang-pl">Czy potrafisz oczyścić brudne dane?</span>
+                        <span class="lang-en">Can you clean messy data?</span>
+                    </div>
+                    <div class="portfolio-matrix-item">
+                        <strong>02 · BI / Visualisation</strong>
+                        <span class="lang-pl">Czy potrafisz analizować i komunikować?</span>
+                        <span class="lang-en">Can you analyse and communicate?</span>
+                    </div>
+                    <div class="portfolio-matrix-item">
+                        <strong>03 · ETL / Automation</strong>
+                        <span class="lang-pl">Czy potrafisz pozyskać i zautomatyzować dane?</span>
+                        <span class="lang-en">Can you acquire and automate data?</span>
+                    </div>
+                    <div class="portfolio-matrix-item">
+                        <strong>04 · Process Improvement</strong>
+                        <span class="lang-pl">Czy potrafisz rozwiązać problem biznesowy?</span>
+                        <span class="lang-en">Can you solve a business problem?</span>
+                    </div>
+                </div>
+
                 <div class="featured-projects">
                     <article class="featured-project" id="project-data-cleaning-hub">
                         <div class="featured-project-header">
-                            <span class="project-index"><span class="lang-pl">CZYSZCZENIE DANYCH</span><span class="lang-en">DATA CLEANING</span></span>
+                            <span class="project-index">01</span>
                             <h3>
-                                <span class="lang-pl">Czyszczenie danych — dwa projekty</span>
-                                <span class="lang-en">Data cleaning — two projects</span>
+                                <span class="lang-pl">Laboratory Data Cleaning</span>
+                                <span class="lang-en">Laboratory Data Cleaning</span>
                             </h3>
                         </div>
                         <p class="lang-pl">
-                            Dwa interaktywne projekty w jednym miejscu. Pierwszy to jedna tabela laboratoryjna (1 500 wierszy).
-                            Drugi to pięć powiązanych plików ze sklepu internetowego (880 500 wierszy).
+                            Interaktywne case study z brudnego CSV laboratoryjnego (1 500 wierszy): braki, strażniki, jednostki, wartości odstające.
+                            Bonus: drugi projekt e-commerce (880 500 wierszy) w tym samym hubie.
                         </p>
                         <p class="lang-en">
-                            Two interactive projects in one place. The first is a single lab table (1,500 rows).
-                            The second is five linked e-commerce files (880,500 rows).
+                            Interactive case study from a messy lab CSV (1,500 rows): missing values, sentinels, units, outliers.
+                            Bonus: a second e-commerce project (880,500 rows) in the same hub.
                         </p>
 
                         <div class="case-preview-grid">
@@ -149,7 +173,7 @@
                                 <span class="lang-en">1,500 rows · units, outliers</span>
                             </button>
                             <button type="button" class="case-preview js-open-hub" data-case="ecom-cleaning">
-                                <span class="case-preview-num">02</span>
+                                <span class="case-preview-num">+</span>
                                 <strong class="lang-pl">Dane e-commerce</strong>
                                 <strong class="lang-en">E-commerce data</strong>
                                 <span class="lang-pl">880 500 wierszy · CRM, łączenie tabel</span>
@@ -172,12 +196,145 @@
                             </a>
                         </div>
                     </article>
+
+                    <article class="featured-project" id="project-dashboards-hub">
+                        <div class="featured-project-header">
+                            <span class="project-index">02</span>
+                            <h3>
+                                <span class="lang-pl">Interactive Dashboard</span>
+                                <span class="lang-en">Interactive Dashboard</span>
+                            </h3>
+                        </div>
+                        <p class="lang-pl">
+                            BI i wizualizacja — interaktywne KPI i wykresy z publicznych API.
+                            OpenSky: ruch lotniczy nad Polską. BLS: rynek pracy USA.
+                            Cel: opowiedzieć historię danych, nie tylko pokazać liczby.
+                        </p>
+                        <p class="lang-en">
+                            BI and visualisation — interactive KPIs and charts from public APIs.
+                            OpenSky: air traffic over Poland. BLS: US labour market.
+                            Goal: tell the data story, not just show numbers.
+                        </p>
+
+                        <div class="case-preview-grid">
+                            <button type="button" class="case-preview js-open-dash-hub" data-dash="opensky-live">
+                                <span class="case-preview-num">01</span>
+                                <strong class="lang-pl">Ruch lotniczy · Polska</strong>
+                                <strong class="lang-en">Air traffic · Poland</strong>
+                                <span class="lang-pl">OpenSky · GET /states/all · KPI + mapa</span>
+                                <span class="lang-en">OpenSky · GET /states/all · KPI + map</span>
+                            </button>
+                            <button type="button" class="case-preview js-open-dash-hub" data-dash="bls-labor">
+                                <span class="case-preview-num">02</span>
+                                <strong class="lang-pl">Rynek pracy · USA</strong>
+                                <strong class="lang-en">Labor market · US</strong>
+                                <span class="lang-pl">BLS · POST /timeseries/data · KPI + wykresy</span>
+                                <span class="lang-en">BLS · POST /timeseries/data · KPI + charts</span>
+                            </button>
+                        </div>
+
+                        <div class="project-tags">
+                            <span>SQL</span>
+                            <span>REST API</span>
+                            <span>JavaScript</span>
+                            <span>KPI</span>
+                            <span class="lang-pl">Wizualizacja</span>
+                            <span class="lang-en">Visualisation</span>
+                            <span>BLS</span>
+                            <span>OpenSky</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#opensky-live" class="project-link js-open-dash-hub" data-dash="opensky-live">
+                                <span class="lang-pl">Zobacz dashboardy ↓</span>
+                                <span class="lang-en">View dashboards ↓</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="featured-project" id="project-energy-pipeline-hub">
+                        <div class="featured-project-header">
+                            <span class="project-index">03</span>
+                            <h3>
+                                <span class="lang-pl">Automated API Data Pipeline</span>
+                                <span class="lang-en">Automated API Data Pipeline</span>
+                            </h3>
+                        </div>
+                        <p class="lang-pl">
+                            Pipeline ETL — nie kolejny dashboard. EIA (Brent/WTI) + NBP (USD/PLN) + bulletin KE (Pb95/diesel)
+                            → warstwa RAW → transformacja → walidacja (pytest) → SQLite.
+                            Temat: ropa i paliwa w Polsce (beczka → dystrybutor).
+                        </p>
+                        <p class="lang-en">
+                            ETL pipeline — not another dashboard. EIA (Brent/WTI) + NBP (USD/PLN) + EC bulletin (Pb95/diesel)
+                            → RAW layer → transform → validation (pytest) → SQLite.
+                            Topic: oil and fuel in Poland (barrel → pump).
+                        </p>
+
+                        <div class="case-preview-grid">
+                            <button type="button" class="case-preview js-open-pipeline-hub">
+                                <span class="case-preview-num">ETL</span>
+                                <strong class="lang-pl">From Barrel to Pump</strong>
+                                <strong class="lang-en">From Barrel to Pump</strong>
+                                <span class="lang-pl">API · JSON · RAW layer · SQL · testy</span>
+                                <span class="lang-en">API · JSON · RAW layer · SQL · tests</span>
+                            </button>
+                        </div>
+
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>REST API</span>
+                            <span>JSON</span>
+                            <span>ETL</span>
+                            <span>SQL</span>
+                            <span>pytest</span>
+                            <span>EIA</span>
+                            <span>NBP</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#energy-pipeline" class="project-link js-open-pipeline-hub">
+                                <span class="lang-pl">Zobacz pipeline ↓</span>
+                                <span class="lang-en">View pipeline ↓</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="featured-project is-soon" id="project-process-opt">
+                        <div class="featured-project-header">
+                            <span class="project-index">04</span>
+                            <h3>
+                                <span class="lang-pl">Process Optimization</span>
+                                <span class="lang-en">Process Optimization</span>
+                            </h3>
+                        </div>
+                        <p class="lang-pl">
+                            W planach: analiza biznesowa i mapowanie procesu — nie technologia dla technologii,
+                            lecz rozwiązanie problemu operacyjnego (Python · BI · process mapping).
+                        </p>
+                        <p class="lang-en">
+                            Planned: business analysis and process mapping — not technology for its own sake,
+                            but solving an operational problem (Python · BI · process mapping).
+                        </p>
+
+                        <div class="project-tags">
+                            <span>BPMN</span>
+                            <span class="lang-pl">Mapowanie procesów</span>
+                            <span class="lang-en">Process mapping</span>
+                            <span class="lang-pl">Analiza biznesowa</span>
+                            <span class="lang-en">Business analysis</span>
+                        </div>
+                        <div class="project-actions">
+                            <span class="project-link">
+                                <span class="lang-pl">Wkrótce</span>
+                                <span class="lang-en">Coming soon</span>
+                            </span>
+                        </div>
+                    </article>
                 </div>
 
                 <div class="project-detail" id="data-cleaning-hub" hidden>
                     <div class="project-detail-inner">
                         <div class="project-detail-bar">
-                            <span class="project-index"><span class="lang-pl">CZYSZCZENIE DANYCH</span><span class="lang-en">DATA CLEANING</span></span>
+                            <span class="project-index">01 · DATA QUALITY</span>
                             <a href="#projekty" class="project-link js-close-hub">
                                 <span class="lang-pl">Zwiń ↑</span>
                                 <span class="lang-en">Collapse ↑</span>
@@ -595,6 +752,172 @@
                         </div><!-- /case-panel ecom-cleaning -->
                     </div>
                 </div>
+
+                <div class="project-detail" id="dashboards-hub" hidden>
+                    <div class="project-detail-inner">
+                        <div class="project-detail-bar">
+                            <span class="project-index">02 · BI / VISUALISATION</span>
+                            <a href="#projekty" class="project-link js-close-dash-hub">
+                                <span class="lang-pl">Zwiń ↑</span>
+                                <span class="lang-en">Collapse ↑</span>
+                            </a>
+                        </div>
+
+                        <p class="hub-intro lang-pl">
+                            Każdy dashboard ma <strong>cel, opis wykresów i wnioski</strong> — nie tylko „ściepkę” danych.
+                            OpenSky i BLS. Wizualizacje w JavaScript + SVG/Canvas, bez Power BI i bez Timelimp.
+                        </p>
+                        <p class="hub-intro lang-en">
+                            Each dashboard has a <strong>purpose, chart descriptions and takeaways</strong> — not just a data dump.
+                            OpenSky and BLS. Visuals built with JavaScript + SVG/Canvas — not Power BI, not Timelimp.
+                        </p>
+
+                        <div class="case-tabs" role="tablist" aria-label="Dashboard cases">
+                            <button type="button" class="case-tab dash-tab active" data-dash-case="opensky-live" role="tab" aria-selected="true">
+                                <span class="case-tab-num">01</span>
+                                <span class="lang-pl">OpenSky · Polska</span>
+                                <span class="lang-en">OpenSky · Poland</span>
+                            </button>
+                            <button type="button" class="case-tab dash-tab" data-dash-case="bls-labor" role="tab" aria-selected="false">
+                                <span class="case-tab-num">02</span>
+                                <span class="lang-pl">BLS · rynek pracy USA</span>
+                                <span class="lang-en">BLS · US labor market</span>
+                            </button>
+                        </div>
+
+                        <div id="opensky-live" class="case-panel dash-panel-root" role="tabpanel">
+                            <p class="case-panel-label"><span class="lang-pl">Dashboard 01</span><span class="lang-en">Dashboard 01</span></p>
+                            <h3>
+                                <span class="lang-pl">Ruch lotniczy nad Polską — OpenSky ADS-B</span>
+                                <span class="lang-en">Air traffic over Poland — OpenSky ADS-B</span>
+                            </h3>
+                            <p class="lead lang-pl">
+                                <strong>Cel:</strong> pokazać, ile samolotów leci nad Polską w danej chwili, skąd pochodzą i jak wygląda ruch w przestrzeni.
+                                <strong>Technologia:</strong> JavaScript + Canvas, dane z API OpenSky (nie Power BI, nie Timelimp).
+                            </p>
+                            <p class="lead lang-en">
+                                <strong>Purpose:</strong> show how many aircraft are flying over Poland right now, where they come from and how traffic is distributed.
+                                <strong>Stack:</strong> JavaScript + Canvas, data from the OpenSky API (not Power BI, not Timelimp).
+                            </p>
+                            <div id="opensky-dashboard" class="dash-root"></div>
+                        </div>
+
+                        <div id="bls-labor" class="case-panel dash-panel-root" role="tabpanel" hidden>
+                            <p class="case-panel-label"><span class="lang-pl">Dashboard 02</span><span class="lang-en">Dashboard 02</span></p>
+                            <h3>
+                                <span class="lang-pl">Rynek pracy USA — BLS Public Data API</span>
+                                <span class="lang-en">US labor market — BLS Public Data API</span>
+                            </h3>
+                            <p class="lead lang-pl">
+                                <strong>Cel:</strong> opowiedzieć historię rynku pracy USA od 2018 — pandemia, odbicie, inflacja i płace.
+                                <strong>Technologia:</strong> JavaScript + Canvas, dane miesięczne z API BLS (nie Power BI, nie Timelimp).
+                            </p>
+                            <p class="lead lang-en">
+                                <strong>Purpose:</strong> tell the story of the US labour market since 2018 — pandemic shock, recovery, inflation and wages.
+                                <strong>Stack:</strong> JavaScript + Canvas, monthly data from the BLS API (not Power BI, not Timelimp).
+                            </p>
+                            <div id="bls-dashboard" class="dash-root"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-detail" id="energy-pipeline-hub" hidden>
+                    <div class="project-detail-inner">
+                        <div class="project-detail-bar">
+                            <span class="project-index">03 · ETL / AUTOMATION</span>
+                            <a href="#projekty" class="project-link js-close-pipeline-hub">
+                                <span class="lang-pl">Zwiń ↑</span>
+                                <span class="lang-en">Collapse ↑</span>
+                            </a>
+                        </div>
+
+                        <div id="energy-pipeline" class="case-panel" role="tabpanel">
+                            <p class="case-panel-label"><span class="lang-pl">Projekt 03</span><span class="lang-en">Project 03</span></p>
+                            <h3>
+                                <span class="lang-pl">From Barrel to Pump — automated API data pipeline</span>
+                                <span class="lang-en">From Barrel to Pump — automated API data pipeline</span>
+                            </h3>
+                            <p class="lead lang-pl">
+                                <strong>Cel:</strong> pokazać produkcyjny pipeline danych — nie notebook ani dashboard.
+                                <strong>Stack:</strong> Python · requests · JSON · pandas · SQLite · pytest.
+                                Źródła: EIA (Brent/WTI), NBP (USD/PLN), Weekly Oil Bulletin KE (Pb95/diesel).
+                            </p>
+                            <p class="lead lang-en">
+                                <strong>Goal:</strong> demonstrate a production-style data pipeline — not a notebook or dashboard.
+                                <strong>Stack:</strong> Python · requests · JSON · pandas · SQLite · pytest.
+                                Sources: EIA (Brent/WTI), NBP (USD/PLN), EC Weekly Oil Bulletin (Pb95/diesel).
+                            </p>
+
+                            <section class="content-block">
+                                <h2><span class="lang-pl">Co ten projekt pokazuje inaczej</span><span class="lang-en">What this project shows differently</span></h2>
+                                <ul class="lang-pl">
+                                    <li><strong>API integration</strong> — endpointy, parametry, status codes, timeout.</li>
+                                    <li><strong>JSON parsing</strong> — odpowiedź API → DataFrame.</li>
+                                    <li><strong>RAW layer</strong> — surowe pliki z datą uruchomienia (data lineage).</li>
+                                    <li><strong>ETL</strong> — Extract → Transform → Load do SQL.</li>
+                                    <li><strong>Validation</strong> — pytest kontroluje jakość przed zapisem.</li>
+                                    <li><strong>Automation</strong> — <code>python pipeline.py</code> można uruchamiać cyklicznie.</li>
+                                </ul>
+                                <ul class="lang-en">
+                                    <li><strong>API integration</strong> — endpoints, parameters, status codes, timeout.</li>
+                                    <li><strong>JSON parsing</strong> — API response → DataFrame.</li>
+                                    <li><strong>RAW layer</strong> — raw files with run date (data lineage).</li>
+                                    <li><strong>ETL</strong> — Extract → Transform → Load to SQL.</li>
+                                    <li><strong>Validation</strong> — pytest checks quality before load.</li>
+                                    <li><strong>Automation</strong> — <code>python pipeline.py</code> can run on a schedule.</li>
+                                </ul>
+                            </section>
+
+                            <div id="ep-walkthrough" class="dc-walkthrough">
+                                <p class="dc-walkthrough-label lang-pl">Pipeline krok po kroku</p>
+                                <p class="dc-walkthrough-label lang-en">Pipeline step by step</p>
+
+                                <ol class="dc-steps" aria-label="Pipeline steps">
+                                    <li><button type="button" class="dc-step ep-step active" data-step="0">1. Arch</button></li>
+                                    <li><button type="button" class="dc-step ep-step" data-step="1">2. RAW</button></li>
+                                    <li><button type="button" class="dc-step ep-step" data-step="2">3. Extract</button></li>
+                                    <li><button type="button" class="dc-step ep-step" data-step="3">4. Transform</button></li>
+                                    <li><button type="button" class="dc-step ep-step" data-step="4">5. Validate</button></li>
+                                    <li><button type="button" class="dc-step ep-step" data-step="5">6. SQL</button></li>
+                                    <li><button type="button" class="dc-step ep-step" data-step="6">7. Analysis</button></li>
+                                </ol>
+
+                                <div class="dc-panel">
+                                    <div class="dc-panel-head">
+                                        <h2 id="ep-step-title">Architektura pipeline</h2>
+                                        <span class="dc-progress" id="ep-progress">1 / 7</span>
+                                    </div>
+                                    <p id="ep-step-body" class="dc-body"></p>
+                                    <div id="ep-extra"></div>
+                                    <pre class="hero-code dc-code"><code id="ep-code"></code></pre>
+                                </div>
+                            </div>
+
+                            <div class="dc-nav">
+                                <button type="button" class="btn btn-outline" id="ep-prev" disabled>
+                                    <span class="lang-pl">← Poprzedni krok</span>
+                                    <span class="lang-en">← Previous step</span>
+                                </button>
+                                <button type="button" class="btn btn-primary" id="ep-next">
+                                    <span class="lang-pl">Następny krok →</span>
+                                    <span class="lang-en">Next step →</span>
+                                </button>
+                            </div>
+
+                            <p class="dc-download" style="margin-top: 1.5rem;">
+                                <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/energy-pipeline" target="_blank" rel="noopener">
+                                    <span class="lang-pl">Kod pipeline na GitHubie →</span>
+                                    <span class="lang-en">Pipeline code on GitHub →</span>
+                                </a>
+                                ·
+                                <a href="projects/energy-pipeline/data/processed/energy_market.csv" download>
+                                    <span class="lang-pl">Pobierz energy_market.csv →</span>
+                                    <span class="lang-en">Download energy_market.csv →</span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -609,14 +932,14 @@
                 <div class="about-content">
                     <p class="lang-pl">
                         Pracuję z brudnymi eksportami z wielu systemów. Czyszczę dane, łączę tabele i ujednolicam nazwy,
-                        żeby wskaźniki KPI były wiarygodne. Projekty na tej stronie pokazują ten sam proces:
-                        problemy → czyszczenie w Pythonie → wykresy → wnioski.
+                        żeby wskaźniki KPI były wiarygodne.                         Projekty na tej stronie pokazują trzy różne kompetencje: jakość danych (01), BI (02) i pipeline ETL (03).
+                        Czwarty projekt — optymalizacja procesów — w planach.
                         Doświadczenie w procesach laboratoryjnych (LIMS, workflow) pomaga mi rozumieć dane operacyjne, nie tylko same tabele.
                     </p>
                     <p class="lang-en">
                         I work with messy exports from multiple systems. I clean data, join tables and standardise labels
-                        so KPIs can be trusted. The projects on this site show the same process:
-                        issues → cleaning in Python → charts → takeaways.
+                        so KPIs can be trusted.                         The projects on this site show three distinct skills: data quality (01), BI (02) and ETL pipelines (03).
+                        A fourth project — process optimisation — is planned.
                         A background in laboratory processes (LIMS, workflow) helps me understand operational data, not just the tables.
                     </p>
                     <div class="focus-pillars">
@@ -754,6 +1077,12 @@
     <script src="projects/data-cleaning/cleaning.js"></script>
     <script src="projects/ecom-cleaning/ecom-data.js"></script>
     <script src="projects/ecom-cleaning/ecom.js"></script>
+    <script src="projects/opensky-live/snapshot.js"></script>
+    <script src="projects/opensky-live/dashboard.js"></script>
+    <script src="projects/bls-labor/snapshot.js"></script>
+    <script src="projects/bls-labor/dashboard.js"></script>
+    <script src="projects/energy-pipeline/pipeline-data.js"></script>
+    <script src="projects/energy-pipeline/pipeline.js"></script>
     <script>
         (function () {
             var hub = document.getElementById("data-cleaning-hub");
@@ -826,6 +1155,125 @@
 
             var hash = location.hash.replace("#", "");
             if (cases.indexOf(hash) !== -1) openHub(hash);
+        })();
+
+        (function () {
+            var hub = document.getElementById("dashboards-hub");
+            var hubCard = document.getElementById("project-dashboards-hub");
+            var dashCases = ["opensky-live", "bls-labor"];
+            var activeDash = "opensky-live";
+
+            function panelFor(id) {
+                return document.getElementById(id);
+            }
+
+            function setActiveDashTab(id) {
+                activeDash = id;
+                document.querySelectorAll(".dash-tab").forEach(function (btn) {
+                    var on = btn.getAttribute("data-dash-case") === id;
+                    btn.classList.toggle("active", on);
+                    btn.setAttribute("aria-selected", on ? "true" : "false");
+                });
+                dashCases.forEach(function (caseId) {
+                    var panel = panelFor(caseId);
+                    if (panel) panel.hidden = caseId !== id;
+                });
+                if (history.replaceState) history.replaceState(null, "", "#" + id);
+                requestAnimationFrame(function () {
+                    if (id === "bls-labor" && window.__blsRerender) window.__blsRerender();
+                    if (id === "opensky-live" && window.__openskyRerender) window.__openskyRerender();
+                });
+            }
+
+            function openDashHub(id) {
+                if (!hub) return;
+                hub.hidden = false;
+                if (hubCard) hubCard.classList.add("is-open");
+                setActiveDashTab(id || activeDash);
+                requestAnimationFrame(function () {
+                    hub.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            }
+
+            function closeDashHub() {
+                if (hub) hub.hidden = true;
+                if (hubCard) hubCard.classList.remove("is-open");
+                if (history.replaceState) history.replaceState(null, "", "#projekty");
+            }
+
+            document.querySelectorAll(".js-open-dash-hub").forEach(function (el) {
+                el.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    var id = el.getAttribute("data-dash") || "opensky-live";
+                    if (!hub.hidden && activeDash === id) {
+                        hub.scrollIntoView({ behavior: "smooth", block: "start" });
+                        return;
+                    }
+                    openDashHub(id);
+                });
+            });
+
+            document.querySelectorAll(".dash-tab").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    var caseId = btn.getAttribute("data-dash-case");
+                    if (!caseId) return;
+                    if (hub.hidden) openDashHub(caseId);
+                    else setActiveDashTab(caseId);
+                });
+            });
+
+            document.querySelectorAll(".js-close-dash-hub").forEach(function (el) {
+                el.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    closeDashHub();
+                    if (hubCard) hubCard.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            });
+
+            var hash = location.hash.replace("#", "");
+            if (dashCases.indexOf(hash) !== -1) openDashHub(hash);
+        })();
+
+        (function () {
+            var hub = document.getElementById("energy-pipeline-hub");
+            var hubCard = document.getElementById("project-energy-pipeline-hub");
+
+            function openPipelineHub() {
+                if (!hub) return;
+                hub.hidden = false;
+                if (hubCard) hubCard.classList.add("is-open");
+                if (history.replaceState) history.replaceState(null, "", "#energy-pipeline");
+                requestAnimationFrame(function () {
+                    hub.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            }
+
+            function closePipelineHub() {
+                if (hub) hub.hidden = true;
+                if (hubCard) hubCard.classList.remove("is-open");
+                if (history.replaceState) history.replaceState(null, "", "#projekty");
+            }
+
+            document.querySelectorAll(".js-open-pipeline-hub").forEach(function (el) {
+                el.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    if (!hub.hidden) {
+                        hub.scrollIntoView({ behavior: "smooth", block: "start" });
+                        return;
+                    }
+                    openPipelineHub();
+                });
+            });
+
+            document.querySelectorAll(".js-close-pipeline-hub").forEach(function (el) {
+                el.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    closePipelineHub();
+                    if (hubCard) hubCard.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            });
+
+            if (location.hash.replace("#", "") === "energy-pipeline") openPipelineHub();
         })();
     </script>
 </body>
