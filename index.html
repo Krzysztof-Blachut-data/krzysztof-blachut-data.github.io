@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-lang="pl"
+    data-title-pl="Krzysztof Blachut | Analiza danych &amp; optymalizacja procesów"
+    data-title-en="Krzysztof Blachut | Data analysis &amp; process optimisation"
+    data-desc-pl="Portfolio Krzysztofa Blachuta — analiza danych, mapowanie procesów laboratoryjnych, optymalizacja workflow i monitorowanie KPI."
+    data-desc-en="Krzysztof Blachut's portfolio — data analysis, laboratory process mapping, workflow optimisation and KPI monitoring.">
 
 <head>
     <meta charset="UTF-8">
@@ -7,35 +11,57 @@
     <meta name="description" content="Portfolio Krzysztofa Blachuta — analiza danych, mapowanie procesów laboratoryjnych, optymalizacja workflow i monitorowanie KPI.">
     <title>Krzysztof Blachut | Analiza danych &amp; optymalizacja procesów</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        (function () {
+            var q = new URLSearchParams(location.search).get("lang");
+            var l = q || localStorage.getItem("lang") || "pl";
+            l = l === "en" ? "en" : "pl";
+            document.documentElement.lang = l;
+            document.documentElement.setAttribute("data-lang", l);
+        })();
+    </script>
 </head>
 
 <body>
 
     <nav class="nav">
         <div class="container nav-inner">
-            <a href="#" class="logo">KB<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#o-mnie">O mnie</a></li>
-                <li><a href="#doswiadczenie">Doświadczenie</a></li>
-                <li><a href="#umiejetnosci">Umiejętności</a></li>
-                <li><a href="#projekty">Projekty</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#projekty"><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></a></li>
+                    <li><a href="#o-mnie"><span class="lang-pl">O mnie</span><span class="lang-en">About</span></a></li>
+                    <li><a href="#umiejetnosci"><span class="lang-pl">Umiejętności</span><span class="lang-en">Skills</span></a></li>
+                    <li><a href="#kontakt"><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></a></li>
+                </ul>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" data-set-lang="pl" aria-pressed="true">PL</button>
+                    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+                </div>
+            </div>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="container hero-grid">
-            <div>
-                <span class="hero-label">// analiza danych · procesy · KPI</span>
-                <h1>Krzysztof Blachut</h1>
-                <p class="hero-tagline">
-                    Mapowanie procesów · Analiza danych · Optymalizacja workflow laboratoryjnego
-                </p>
-                <div class="hero-cta">
-                    <a href="#projekty" class="btn btn-primary">Zobacz projekty</a>
-                    <a href="#kontakt" class="btn btn-outline">Skontaktuj się</a>
-                </div>
+        <div class="container">
+            <p class="hero-eyebrow">
+                <span class="lang-pl">Analiza danych · Procesy laboratoryjne · KPI</span>
+                <span class="lang-en">Data analysis · Laboratory processes · KPI</span>
+            </p>
+            <h1 class="hero-title">
+                <span class="hero-title-line">KRZYSZTOF</span>
+                <span class="hero-title-line accent">BLACHUT</span>
+            </h1>
+            <p class="hero-tagline lang-pl">
+                Przekształcam dane operacyjne z laboratorium w <strong>KPI, mapy procesów i rekomendacje</strong> —
+                od LIMS i workflow po dashboardy i usprawnienia end-to-end.
+            </p>
+            <p class="hero-tagline lang-en">
+                I turn laboratory operational data into <strong>KPIs, process maps and recommendations</strong> —
+                from LIMS and workflow to dashboards and end-to-end improvements.
+            </p>
+            <div class="hero-cta">
+                <a href="#projekty" class="btn btn-primary"><span class="lang-pl">Zobacz projekty</span><span class="lang-en">View projects</span></a>
+                <a href="#kontakt" class="btn btn-outline"><span class="lang-pl">Skontaktuj się</span><span class="lang-en">Get in touch</span></a>
             </div>
             <div class="hero-code" aria-hidden="true">
                 <span class="comment"># agregacja KPI z systemu LIMS</span><br>
@@ -47,214 +73,402 @@
                 <span class="keyword">ORDER BY</span> avg_czas <span class="keyword">DESC</span>;
             </div>
         </div>
+        <div class="skill-marquee" aria-hidden="true">
+            <div class="skill-marquee-track">
+                <span>Power BI</span><span>Python</span><span>SQL</span><span>BPMN</span>
+                <span>LIMS</span><span>KPI</span><span>MySQL</span><span>REST API</span>
+                <span>ISO 17025</span><span>Ruby on Rails</span>
+                <span class="lang-pl">Analiza workflow</span><span class="lang-en">Workflow analysis</span>
+                <span>Power BI</span><span>Python</span><span>SQL</span><span>BPMN</span>
+                <span>LIMS</span><span>KPI</span><span>MySQL</span><span>REST API</span>
+                <span>ISO 17025</span><span>Ruby on Rails</span>
+                <span class="lang-pl">Analiza workflow</span><span class="lang-en">Workflow analysis</span>
+            </div>
+        </div>
     </header>
 
     <main>
 
-        <section id="o-mnie">
+        <section id="projekty" class="section-alt">
             <div class="container">
                 <div class="section-header">
-                    <h2>O mnie</h2>
-                    <p>Specjalista ds. mapowania procesów w międzynarodowym środowisku analitycznym.</p>
+                    <h2><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></h2>
+                    <p class="lang-pl">Wybrane opracowania — kliknij, żeby rozwinąć notatkę na tej samej stronie.</p>
+                    <p class="lang-en">Selected case notes — click to expand the write-up on this same page.</p>
                 </div>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p>
-                            Specjalista z doświadczeniem w koordynacji procesów laboratoryjnych,
-                            analizie danych oraz optymalizacji pracy laboratorium w międzynarodowym
-                            środowisku analitycznym. Odpowiadam za monitorowanie KPI, mapowanie
-                            procesów oraz identyfikację obszarów wymagających usprawnień i standaryzacji.
+                <div class="featured-projects">
+                    <article class="featured-project" id="project-data-cleaning">
+                        <div class="featured-project-header">
+                            <span class="project-index">01 / DATA CLEANING</span>
+                            <h3>
+                                <span class="lang-pl">Wyniki laboratoryjne z trzech szpitali</span>
+                                <span class="lang-en">Lab results from three hospitals</span>
+                            </h3>
+                        </div>
+                        <p class="lang-pl">
+                            1 500 wyników z trzech szpitali. W surowym pliku są ujemne kody (−999),
+                            tekst „not collected”, mieszane jednostki (mmol/L i mg/dL), 9 nazw na 3 badania
+                            i liczby z kilkunastoma miejscami po przecinku.
                         </p>
-                        <p>
-                            Od ponad 7 lat pracuję w laboratorium analitycznym i2 Analytical
-                            (Ruda Śląska), współpracując z zespołami w Polsce i Wielkiej Brytanii.
-                            Obecnie zajmuję się mapowaniem procesów end-to-end, digitalizacją workflow
-                            oraz budową narzędzi analitycznych wspierających decyzje operacyjne.
+                        <p class="lang-en">
+                            1,500 results from three hospitals. The raw file has negative sentinels (−999),
+                            “not collected” text, mixed units (mmol/L and mg/dL), 9 names for 3 tests
+                            and values with many decimal places.
                         </p>
-                        <div class="education-list">
-                            <div class="education-item">
-                                <div class="period">2018 – 2019</div>
-                                <h4>Magister inżynier — Politechnika Śląska</h4>
-                                <p>Inżynieria Środowiska i Energetyki</p>
-                            </div>
-                            <div class="education-item">
-                                <div class="period">2013 – 2018</div>
-                                <h4>Inżynier — Politechnika Śląska</h4>
-                                <p>Inżynieria Środowiska i Energetyki</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stats">
-                        <div class="stat-card">
-                            <span class="number">7+</span>
-                            <span class="label">lat w branży analitycznej</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="number">ISO</span>
-                            <span class="label">17025 &amp; GLP</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="number">EN</span>
-                            <span class="label">średnio zaawansowany</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="doswiadczenie">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Doświadczenie zawodowe</h2>
-                    <p>Od analityka laboratoryjnego po mapowanie procesów i tworzenie systemów analitycznych.</p>
-                </div>
-                <div class="timeline">
-
-                    <article class="timeline-item current">
-                        <div class="timeline-period">04.2026 – obecnie</div>
-                        <h3>Specjalista ds. Mapowania Procesów Laboratoryjnych</h3>
-                        <p class="timeline-company">i2 Analytical Limited Sp. z o.o. · Ruda Śląska</p>
-                        <ul>
-                            <li>Mapowanie procesów laboratoryjnych z wykorzystaniem BPMN i diagramów przepływu</li>
-                            <li>Analiza procesów end-to-end — identyfikacja wąskich gardeł i nieefektywności</li>
-                            <li>Gromadzenie i analiza danych procesowych: systemy, czasy realizacji, role, workflow</li>
-                            <li>Wsparcie digitalizacji procesów oraz wdrożeń systemów LIMS</li>
-                            <li>Prezentowanie wyników mapowania i rekomendowanie usprawnień operacyjnych</li>
-                        </ul>
-                    </article>
-
-                    <article class="timeline-item">
-                        <div class="timeline-period">04.2021 – 03.2026</div>
-                        <h3>Zastępca Koordynatora Sekcji Przyjęcia Próbek</h3>
-                        <p class="timeline-company">i2 Analytical Limited Sp. z o.o. · Ruda Śląska</p>
-                        <ul>
-                            <li>Koordynacja sekcji przyjęcia próbek i nadzór nad workflow laboratoryjnym</li>
-                            <li>Zarządzanie delegowaniem zadań, priorytetami i organizacją pracy zespołu</li>
-                            <li>Monitorowanie wydajności procesów i wdrażanie usprawnień operacyjnych</li>
-                            <li>Współpraca z centralą w Wielkiej Brytanii w zakresie statusów zleceń i obsługi klienta</li>
-                            <li>Wdrażanie działań korygujących zgodnie z systemem zarządzania jakością</li>
-                        </ul>
-                    </article>
-
-                    <article class="timeline-item">
-                        <div class="timeline-period">07.2019 – 03.2021</div>
-                        <h3>Analityk Laboratoryjny</h3>
-                        <p class="timeline-company">i2 Analytical Limited Sp. z o.o. · Ruda Śląska</p>
-                        <ul>
-                            <li>Przygotowywanie próbek środowiskowych do analiz fizykochemicznych</li>
-                            <li>Rejestrowanie i dystrybucja próbek w systemie workflow LIMS</li>
-                            <li>Raportowanie wyników i współpraca z zespołami w Polsce i Wielkiej Brytanii</li>
-                            <li>Zapewnienie zgodności z normą ISO 17025, zasadami GLP i procedurami wewnętrznymi</li>
-                        </ul>
-                    </article>
-
-                    <article class="timeline-item">
-                        <div class="timeline-period">02.2018</div>
-                        <h3>Stażysta Analityk Laboratoryjny</h3>
-                        <p class="timeline-company">Starol Sp. z o.o. · Chorzów</p>
-                        <ul>
-                            <li>Analizy fizykochemiczne paliw alternatywnych</li>
-                            <li>Weryfikacja dostaw, pobieranie próbek i kontrola jakości produktów</li>
-                        </ul>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="umiejetnosci">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Umiejętności</h2>
-                    <p>Obszary kompetencji w analizie danych, procesach i systemach laboratoryjnych.</p>
-                </div>
-                <div class="skills-grid">
-                    <span class="skill-tag">Analiza danych</span>
-                    <span class="skill-tag">Power BI</span>
-                    <span class="skill-tag">Monitorowanie KPI</span>
-                    <span class="skill-tag">BPMN</span>
-                    <span class="skill-tag">Optymalizacja procesów</span>
-                    <span class="skill-tag">Analiza workflow</span>
-                    <span class="skill-tag">LIMS</span>
-                    <span class="skill-tag">Root Cause Analysis</span>
-                    <span class="skill-tag">Standaryzacja procesów</span>
-                    <span class="skill-tag">ISO 17025</span>
-                    <span class="skill-tag">Doskonalenie operacyjne</span>
-                    <span class="skill-tag">MySQL</span>
-                    <span class="skill-tag">REST API</span>
-                    <span class="skill-tag">Ruby on Rails</span>
-                    <span class="skill-tag">JavaScript</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="projekty">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Projekty</h2>
-                    <p>Narzędzia i inicjatywy, które łączą dane operacyjne z decyzjami biznesowymi.</p>
-                </div>
-                <div class="projects-grid">
-
-                    <article class="project-card">
-                        <h3>Lab Dashboard</h3>
-                        <div class="project-tags">
-                            <span>Ruby on Rails</span>
-                            <span>MySQL</span>
-                            <span>JavaScript</span>
-                            <span>REST API</span>
-                        </div>
-                        <p>
-                            Wewnętrzna aplikacja webowa wspierająca analizę procesów laboratoryjnych
-                            i monitorowanie KPI na podstawie danych z systemu LIMS. Integracja danych
-                            przez REST API, agregacja operacyjna, interaktywne dashboardy z funkcją
-                            drill-down na poziomie próbek i zleceń oraz modułowy system uprawnień.
-                        </p>
-                        <a href="#kontakt" class="project-link">Zapytaj o szczegóły →</a>
-                    </article>
-
-                    <article class="project-card">
-                        <h3>Mapowanie procesów laboratoryjnych</h3>
-                        <div class="project-tags">
-                            <span>BPMN</span>
-                            <span>Analiza workflow</span>
-                            <span>KPI</span>
-                        </div>
-                        <p>
-                            Kompleksowa analiza procesów end-to-end w laboratorium analitycznym —
-                            od identyfikacji wąskich gardeł, przez dokumentację procesową,
-                            po rekomendacje usprawnień operacyjnych i standaryzację workflow.
-                        </p>
-                        <a href="#doswiadczenie" class="project-link">Zobacz doświadczenie →</a>
-                    </article>
-
-                    <article class="project-card">
-                        <h3>Analiza czasów realizacji zleceń</h3>
                         <div class="project-tags">
                             <span>Python</span>
                             <span>Pandas</span>
-                            <span>Power BI</span>
+                            <span>Data cleaning</span>
                         </div>
-                        <p>
-                            Przykładowe case study — szablon do prezentacji opracowań danych
-                            z opisem problemu, metodologii, wyników i wniosków.
-                        </p>
-                        <a href="projects/analiza-czasow-realizacji/index.html" class="project-link">Zobacz case study →</a>
+                        <div class="project-actions">
+                            <a href="#data-cleaning" class="project-link js-open-project" data-target="data-cleaning">
+                                <span class="lang-pl js-open-label">Zobacz projekt ↓</span>
+                                <span class="lang-en js-open-label">View project ↓</span>
+                            </a>
+                        </div>
                     </article>
+                </div>
 
-                    <article class="project-card">
-                        <div class="project-tags">
-                            <span>Root Cause Analysis</span>
-                            <span>ISO 17025</span>
-                            <span>LIMS</span>
+                <div class="project-detail" id="data-cleaning" hidden>
+                    <div class="project-detail-inner">
+                        <div class="project-detail-bar">
+                            <span class="project-index">01 / DATA CLEANING</span>
+                            <a href="#projekty" class="project-link js-close-project">
+                                <span class="lang-pl">Zwiń ↑</span>
+                                <span class="lang-en">Collapse ↑</span>
+                            </a>
                         </div>
-                        <p>
-                            Koordynacja workflow sekcji przyjęcia próbek — monitorowanie wydajności,
-                            wdrażanie działań korygujących, zarządzanie priorytetami operacyjnymi
-                            i współpraca z działem jakości oraz kierownictwem laboratorium.
+
+                        <h3>
+                            <span class="lang-pl">Wyniki laboratoryjne z trzech szpitali</span>
+                            <span class="lang-en">Lab results from three hospitals</span>
+                        </h3>
+                        <p class="lead lang-pl">
+                            1 500 wyników glukozy, cholesterolu i HbA1c z trzech szpitali.
+                            Zestaw wygląda jak typowy eksport z kilku systemów: te same badania zapisane
+                            inaczej, liczby pomieszane z tekstem, jednostki i zakresy niedopasowane.
                         </p>
-                        <a href="#doswiadczenie" class="project-link">Zobacz doświadczenie →</a>
-                    </article>
+                        <p class="lead lang-en">
+                            1,500 glucose, cholesterol and HbA1c results from three hospitals.
+                            The file looks like a typical multi-system export: the same tests recorded
+                            differently, numbers mixed with text, units and ranges out of sync.
+                        </p>
+
+                        <section class="content-block dc-problems">
+                            <h2><span class="lang-pl">Co jest nie tak w tych danych</span><span class="lang-en">What is wrong with this dataset</span></h2>
+                            <p class="lang-pl">
+                                Kolumna <code>test_value</code> nie jest jedną miarą. Obok siebie stoją wartości ujemne,
+                                tekst, braki i liczby z kilkunastoma miejscami po przecinku. Dopóki tego nie uporządkujemy,
+                                nie da się policzyć średniej ani porównać szpitali.
+                            </p>
+                            <p class="lang-en">
+                                The <code>test_value</code> column is not a single measure. Negatives, text, blanks and
+                                values with many decimal places sit side by side. Until that is cleaned,
+                                averages and hospital comparisons are not valid.
+                            </p>
+                            <ul class="lang-pl">
+                                <li>Wartości ujemne (−999) — to nie wynik laboratoryjny, tylko kod braku (wartość strażnicza).</li>
+                                <li>Tekst w kolumnie liczbowej: „not collected” oraz puste komórki — średnia i wykres się sypią.</li>
+                                <li>Nadmiar miejsc po przecinku (np. 80.77415407811968) — ślad po eksporcie, nie po pomiarze.</li>
+                                <li>Mieszane jednostki: mmol/L i mg/dL dla tego samego badania — surowych liczb nie da się porównać.</li>
+                                <li>9 różnych nazw na 3 anality (Blood Sugar, Fasting Glucose, HbA1c, Glycated Hemoglobin…).</li>
+                                <li>Zakres referencyjny często nie pasuje do jednostki (70–99 przy mmol/L albo 3.9–5.5 przy mg/dL).</li>
+                                <li>Niemożliwe outliery (500, 1860 mmol/L glukozy) — błąd zapisu, nie fizjologia.</li>
+                            </ul>
+                            <ul class="lang-en">
+                                <li>Negative values (−999) — not a lab result, a missing-value sentinel.</li>
+                                <li>Text in a numeric column: “not collected” and empty cells — averages and charts break.</li>
+                                <li>Excessive decimals (e.g. 80.77415407811968) — an export artefact, not a measurement.</li>
+                                <li>Mixed units: mmol/L and mg/dL for the same test — raw numbers are not comparable.</li>
+                                <li>9 different labels for 3 analytes (Blood Sugar, Fasting Glucose, HbA1c, Glycated Hemoglobin…).</li>
+                                <li>Reference range often mismatches the unit (70–99 next to mmol/L, or 3.9–5.5 next to mg/dL).</li>
+                                <li>Impossible outliers (500, 1860 mmol/L glucose) — recording errors, not physiology.</li>
+                            </ul>
+                        </section>
+
+                        <section class="content-block dc-preview-block">
+                            <h2><span class="lang-pl">Podgląd surowego setu</span><span class="lang-en">Raw dataset preview</span></h2>
+                            <p class="lang-pl">
+                                Wycinek z pliku <code>multi_hospital_lab_results.csv</code> (1 500 wierszy).
+                                Każdy wiersz pokazuje inny typ błędu.
+                            </p>
+                            <p class="lang-en">
+                                A slice of <code>multi_hospital_lab_results.csv</code> (1,500 rows).
+                                Each row shows a different error type.
+                            </p>
+                            <div class="dc-table-wrap">
+                                <table class="dc-table dc-preview-table">
+                                    <thead>
+                                        <tr>
+                                            <th>hospital</th>
+                                            <th>patient_id</th>
+                                            <th>test_name</th>
+                                            <th>test_value</th>
+                                            <th>unit</th>
+                                            <th>reference_range</th>
+                                            <th><span class="lang-pl">problem</span><span class="lang-en">issue</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hospital_C</td><td>1826</td><td>Glucose</td>
+                                            <td class="dc-cell invalid">-999</td><td>mmol/L</td><td>70-99</td>
+                                            <td class="dc-issue-note lang-pl">Ujemny strażnik (−999) zamiast wyniku</td>
+                                            <td class="dc-issue-note lang-en">Negative sentinel (−999) instead of a result</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_A</td><td>1135</td><td>HbA1c</td>
+                                            <td class="dc-cell invalid">not collected</td><td>%</td><td>&lt;5.7%</td>
+                                            <td class="dc-issue-note lang-pl">Tekst w kolumnie liczbowej</td>
+                                            <td class="dc-issue-note lang-en">Text in a numeric column</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_B</td><td>1164</td><td>Serum Cholesterol</td>
+                                            <td class="dc-cell invalid">NaN</td><td>mg/dL</td><td>3.2-5.2</td>
+                                            <td class="dc-issue-note lang-pl">Pusta komórka (brak wartości)</td>
+                                            <td class="dc-issue-note lang-en">Empty cell (missing value)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_B</td><td>1149</td><td>Blood Sugar</td>
+                                            <td class="dc-cell noisy">80.77415407811968</td><td>mg/dL</td><td>70-99</td>
+                                            <td class="dc-issue-note lang-pl">Za dużo miejsc po przecinku + inna nazwa glukozy</td>
+                                            <td class="dc-issue-note lang-en">Too many decimals + another name for glucose</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_A</td><td>1335</td><td>Total Chol</td>
+                                            <td class="dc-cell noisy">208.94318817997245</td><td>mg/dL</td><td>125-200</td>
+                                            <td class="dc-issue-note lang-pl">Skrót nazwy + jednostka mg/dL</td>
+                                            <td class="dc-issue-note lang-en">Abbreviated name + mg/dL unit</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_A</td><td>1966</td><td>Fasting Glucose</td>
+                                            <td>8.56</td><td>mmol/L</td><td class="dc-cell mismatch">70-99</td>
+                                            <td class="dc-issue-note lang-pl">Zakres 70–99 nie pasuje do mmol/L</td>
+                                            <td class="dc-issue-note lang-en">Range 70–99 does not match mmol/L</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_B</td><td>1661</td><td>Glucose</td>
+                                            <td class="dc-cell noisy">132.91942730033406</td><td>mg/dL</td><td class="dc-cell mismatch">3.9-5.5</td>
+                                            <td class="dc-issue-note lang-pl">Zakres 3.9–5.5 nie pasuje do mg/dL</td>
+                                            <td class="dc-issue-note lang-en">Range 3.9–5.5 does not match mg/dL</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_B</td><td>1567</td><td>Fasting Glucose</td>
+                                            <td class="dc-cell outlier">500</td><td>mmol/L</td><td>70-99</td>
+                                            <td class="dc-issue-note lang-pl">Outlier — 500 mmol/L glukozy jest niemożliwe</td>
+                                            <td class="dc-issue-note lang-en">Outlier — 500 mmol/L glucose is impossible</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_B</td><td>1932</td><td>Fasting Glucose</td>
+                                            <td class="dc-cell outlier">1860</td><td>mmol/L</td><td>70-99</td>
+                                            <td class="dc-issue-note lang-pl">Outlier — 1860 mmol/L, błąd zapisu</td>
+                                            <td class="dc-issue-note lang-en">Outlier — 1860 mmol/L, a recording error</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="dc-legend">
+                                <span class="dc-swatch invalid"></span>
+                                <span class="lang-pl">brak / ujemny strażnik</span><span class="lang-en">missing / negative sentinel</span>
+                                <span class="dc-swatch noisy"></span>
+                                <span class="lang-pl">za dużo miejsc po przecinku</span><span class="lang-en">too many decimals</span>
+                                <span class="dc-swatch mismatch"></span>
+                                <span class="lang-pl">zakres ≠ jednostka</span><span class="lang-en">range ≠ unit</span>
+                                <span class="dc-swatch outlier"></span>
+                                <span>outlier</span>
+                            </p>
+                            <p class="dc-download">
+                                <a href="projects/data-cleaning/multi_hospital_lab_results.csv" download>
+                                    <span class="lang-pl">Pobierz pełny surowy CSV (1 500 wierszy) →</span>
+                                    <span class="lang-en">Download the full raw CSV (1,500 rows) →</span>
+                                </a>
+                            </p>
+                        </section>
+
+                        <div id="dc-walkthrough" class="dc-walkthrough">
+                        <p class="dc-walkthrough-label lang-pl">Jak te problemy są usuwane, krok po kroku</p>
+                        <p class="dc-walkthrough-label lang-en">How these issues are fixed, step by step</p>
+
+                        <ol class="dc-steps" aria-label="Cleaning steps">
+                            <li><button type="button" class="dc-step active" data-step="0">1. Raw</button></li>
+                            <li><button type="button" class="dc-step" data-step="1">2. Missing</button></li>
+                            <li><button type="button" class="dc-step" data-step="2">3. Names</button></li>
+                            <li><button type="button" class="dc-step" data-step="3">4. Units</button></li>
+                            <li><button type="button" class="dc-step" data-step="4">5. Ranges</button></li>
+                            <li><button type="button" class="dc-step" data-step="5">6. Outliers</button></li>
+                            <li><button type="button" class="dc-step" data-step="6">7. Clean</button></li>
+                        </ol>
+
+                        <div class="dc-panel">
+                            <div class="dc-panel-head">
+                                <h2 id="dc-step-title">Surowe dane</h2>
+                                <span class="dc-progress" id="dc-progress">1 / 7</span>
+                            </div>
+                            <p id="dc-step-body" class="dc-body">
+                                <span class="lang-pl">W tabeli widać te same problemy co na liście powyżej. Żółte komórki to braki i ujemne strażniki, niebieskie — za długa precyzja, fioletowe — zakres niedopasowany do jednostki.</span>
+                                <span class="lang-en">The table shows the same issues listed above. Yellow cells are missing values and negative sentinels, blue is excess precision, purple is a range that does not match the unit.</span>
+                            </p>
+                            <ul id="dc-issues" class="dc-issues"></ul>
+                            <pre class="hero-code dc-code"><code id="dc-code"></code></pre>
+                        </div>
+                        </div>
+
+                        <div class="dc-metrics">
+                            <div class="metric">
+                                <span class="metric-value" id="m-rows">—</span>
+                                <span class="metric-label lang-pl">wiersze</span>
+                                <span class="metric-label lang-en">rows</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value" id="m-names">—</span>
+                                <span class="metric-label lang-pl">unikalne nazwy</span>
+                                <span class="metric-label lang-en">unique names</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value" id="m-missing">—</span>
+                                <span class="metric-label lang-pl">braki</span>
+                                <span class="metric-label lang-en">missing</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value" id="m-outliers">—</span>
+                                <span class="metric-label lang-pl">outliery</span>
+                                <span class="metric-label lang-en">outliers</span>
+                            </div>
+                        </div>
+
+                        <p class="dc-caption" id="dc-caption"></p>
+                        <div class="dc-table-wrap">
+                            <table class="dc-table" id="dc-table"></table>
+                        </div>
+
+                        <p class="dc-legend">
+                            <span class="dc-swatch invalid"></span>
+                            <span class="lang-pl">brak / ujemny strażnik</span><span class="lang-en">missing / negative sentinel</span>
+                            <span class="dc-swatch noisy"></span>
+                            <span class="lang-pl">za dużo miejsc po przecinku</span><span class="lang-en">too many decimals</span>
+                            <span class="dc-swatch mismatch"></span>
+                            <span class="lang-pl">zakres ≠ jednostka</span><span class="lang-en">range ≠ unit</span>
+                            <span class="dc-swatch changed"></span>
+                            <span class="lang-pl">zmienione</span><span class="lang-en">changed</span>
+                            <span class="dc-swatch outlier"></span>
+                            <span>outlier</span>
+                        </p>
+
+                        <div class="dc-nav">
+                            <button type="button" class="btn btn-outline" id="dc-prev" disabled>
+                                <span class="lang-pl">← Poprzedni krok</span>
+                                <span class="lang-en">← Previous step</span>
+                            </button>
+                            <button type="button" class="btn btn-primary" id="dc-next">
+                                <span class="lang-pl">Następny krok →</span>
+                                <span class="lang-en">Next step →</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="o-mnie">
+            <div class="container">
+                <div class="section-label">Background</div>
+                <div class="section-header">
+                    <h2><span class="lang-pl">O mnie</span><span class="lang-en">About</span></h2>
+                    <p class="lang-pl">Specjalista łączący analizę danych operacyjnych z mapowaniem procesów laboratoryjnych.</p>
+                    <p class="lang-en">A specialist connecting operational data analysis with laboratory process mapping.</p>
+                </div>
+                <div class="about-content">
+                    <p class="lang-pl">
+                        Specjalizuję się w przekształcaniu danych z LIMS i workflow laboratoryjnego
+                        w mierzalne KPI, mapy procesów i rekomendacje operacyjne. Pracuję na styku
+                        analityki, optymalizacji procesów i systemów laboratoryjnych w międzynarodowym
+                        środowisku (PL / UK).
+                    </p>
+                    <p class="lang-en">
+                        I specialise in turning LIMS and laboratory workflow data into measurable KPIs,
+                        process maps and operational recommendations. I work at the intersection of
+                        analytics, process optimisation and laboratory systems in an international
+                        environment (PL / UK).
+                    </p>
+                    <div class="focus-pillars">
+                        <div class="pillar">
+                            <h4><span class="lang-pl">Analiza danych</span><span class="lang-en">Data analysis</span></h4>
+                            <p class="lang-pl">KPI, dashboardy, agregacja danych z LIMS, identyfikacja trendów i odchyleń.</p>
+                            <p class="lang-en">KPIs, dashboards, LIMS data aggregation, trend and variance detection.</p>
+                        </div>
+                        <div class="pillar">
+                            <h4><span class="lang-pl">Procesy</span><span class="lang-en">Processes</span></h4>
+                            <p class="lang-pl">BPMN, mapowanie end-to-end, analiza workflow, wąskie gardła, standaryzacja.</p>
+                            <p class="lang-en">BPMN, end-to-end mapping, workflow analysis, bottlenecks, standardisation.</p>
+                        </div>
+                        <div class="pillar">
+                            <h4><span class="lang-pl">Operacje lab.</span><span class="lang-en">Lab operations</span></h4>
+                            <p class="lang-pl">ISO 17025, GLP, koordynacja sekcji, RCA, doskonalenie operacyjne.</p>
+                            <p class="lang-en">ISO 17025, GLP, section coordination, RCA, operational improvement.</p>
+                        </div>
+                    </div>
+                    <p class="about-linkedin lang-pl">
+                        Pełne doświadczenie zawodowe —
+                        <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">profil LinkedIn →</a>
+                    </p>
+                    <p class="about-linkedin lang-en">
+                        Full professional experience —
+                        <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">LinkedIn profile →</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="umiejetnosci" class="section-alt">
+            <div class="container">
+                <div class="section-label">Technical Skillset</div>
+                <div class="section-header">
+                    <h2><span class="lang-pl">Umiejętności</span><span class="lang-en">Skills</span></h2>
+                    <p class="lang-pl">Obszary kompetencji pogrupowane według zastosowania w projektach analitycznych.</p>
+                    <p class="lang-en">Competency areas grouped by how they are used in analytical projects.</p>
+                </div>
+                <div class="skills-categories">
+
+                    <div class="skill-category">
+                        <h3><span class="lang-pl">Wizualizacja i raportowanie</span><span class="lang-en">Visualisation &amp; reporting</span></h3>
+                        <ul>
+                            <li>Power BI</li>
+                            <li><span class="lang-pl">Monitorowanie KPI</span><span class="lang-en">KPI monitoring</span></li>
+                            <li><span class="lang-pl">Dashboardy operacyjne</span><span class="lang-en">Operational dashboards</span></li>
+                            <li><span class="lang-pl">Analiza danych</span><span class="lang-en">Data analysis</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><span class="lang-pl">Analiza danych</span><span class="lang-en">Data analysis</span></h3>
+                        <ul>
+                            <li>Python / Pandas</li>
+                            <li>Data cleaning</li>
+                            <li>MySQL / SQL</li>
+                            <li>REST API</li>
+                            <li><span class="lang-pl">Agregacja danych LIMS</span><span class="lang-en">LIMS data aggregation</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><span class="lang-pl">Procesy i systemy</span><span class="lang-en">Processes &amp; systems</span></h3>
+                        <ul>
+                            <li>BPMN</li>
+                            <li><span class="lang-pl">Mapowanie procesów</span><span class="lang-en">Process mapping</span></li>
+                            <li>LIMS</li>
+                            <li><span class="lang-pl">Optymalizacja workflow</span><span class="lang-en">Workflow optimisation</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><span class="lang-pl">Jakość i development</span><span class="lang-en">Quality &amp; development</span></h3>
+                        <ul>
+                            <li>ISO 17025 / GLP</li>
+                            <li>Root Cause Analysis</li>
+                            <li>Ruby on Rails</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
 
                 </div>
             </div>
@@ -262,14 +476,36 @@
 
         <section id="kontakt" class="contact">
             <div class="container contact-inner">
+                <div class="section-label">Let's Talk</div>
                 <div class="section-header">
-                    <h2>Kontakt</h2>
-                    <p>Gliwice, Polska — chętnie odpowiem na pytania dotyczące współpracy.</p>
+                    <h2><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></h2>
+                    <p class="lang-pl">Otwarty na współpracę w obszarze analizy danych, procesów laboratoryjnych i optymalizacji operacyjnej.</p>
+                    <p class="lang-en">Open to collaboration in data analysis, laboratory processes and operational optimisation.</p>
                 </div>
-                <div class="contact-links">
-                    <a href="mailto:krzy.blachut@gmail.com">✉ krzy.blachut@gmail.com</a>
-                    <a href="tel:+48509537526">📞 +48 509 537 526</a>
-                    <a href="https://github.com/krzysztof-blachut-data" target="_blank" rel="noopener">GitHub</a>
+                <span class="availability-badge lang-pl">Dostępny do współpracy</span>
+                <span class="availability-badge lang-en">Open to collaboration</span>
+                <div class="contact-grid">
+                    <a href="mailto:krzy.blachut@gmail.com" class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">krzy.blachut@gmail.com</span>
+                    </a>
+                    <a href="tel:+48509537526" class="contact-item">
+                        <span class="contact-label"><span class="lang-pl">Telefon</span><span class="lang-en">Phone</span></span>
+                        <span class="contact-value">+48 509 537 526</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener" class="contact-item">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">krzysztof-blachut</span>
+                    </a>
+                    <a href="https://github.com/krzysztof-blachut-data" target="_blank" rel="noopener" class="contact-item">
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">krzysztof-blachut-data</span>
+                    </a>
+                    <div class="contact-item static">
+                        <span class="contact-label"><span class="lang-pl">Lokalizacja</span><span class="lang-en">Location</span></span>
+                        <span class="contact-value lang-pl">Gliwice, Polska</span>
+                        <span class="contact-value lang-en">Gliwice, Poland</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -278,10 +514,57 @@
 
     <footer>
         <div class="container">
-            <p>© 2026 Krzysztof Blachut. Wszystkie prawa zastrzeżone.</p>
+            <p class="lang-pl">© 2026 Krzysztof Blachut. Wszystkie prawa zastrzeżone.</p>
+            <p class="lang-en">© 2026 Krzysztof Blachut. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="lang.js"></script>
+    <script src="projects/data-cleaning/raw-data.js"></script>
+    <script src="projects/data-cleaning/cleaning.js"></script>
+    <script>
+        (function () {
+            var detail = document.getElementById("data-cleaning");
+            var card = document.getElementById("project-data-cleaning");
+            if (!detail) return;
+
+            function openProject() {
+                detail.hidden = false;
+                if (card) card.classList.add("is-open");
+                if (history.replaceState) history.replaceState(null, "", "#data-cleaning");
+                requestAnimationFrame(function () {
+                    detail.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            }
+
+            function closeProject() {
+                detail.hidden = true;
+                if (card) card.classList.remove("is-open");
+                if (history.replaceState) history.replaceState(null, "", "#projekty");
+            }
+
+            document.querySelectorAll(".js-open-project").forEach(function (el) {
+                el.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    if (!detail.hidden) {
+                        detail.scrollIntoView({ behavior: "smooth", block: "start" });
+                        return;
+                    }
+                    openProject();
+                });
+            });
+
+            document.querySelectorAll(".js-close-project").forEach(function (el) {
+                el.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    closeProject();
+                    if (card) card.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            });
+
+            if (location.hash === "#data-cleaning") openProject();
+        })();
+    </script>
 </body>
 
 </html>

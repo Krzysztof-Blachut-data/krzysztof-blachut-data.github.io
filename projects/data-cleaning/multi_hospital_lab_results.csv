@@ -1,0 +1,1501 @@
+hospital,patient_id,test_name,test_value,unit,reference_range,collection_date
+Hospital_A,1966,Fasting Glucose,8.56,mmol/L,70-99,2025-08-15
+Hospital_C,1826,Glucose,-999,mmol/L,70-99,2024-07-04
+Hospital_A,1606,Cholesterol,6.45,mmol/L,125-200,2024-11-13
+Hospital_B,1277,Fasting Glucose,-999,mmol/L,3.9-5.5,2024-04-29
+Hospital_A,1841,Serum Cholesterol,5.61,mmol/L,<200,2024-08-05
+Hospital_A,1738,Glycated Hemoglobin,7.0,%,<5.7%,2024-12-23
+Hospital_C,1061,Hemoglobin A1c,5.2,%,4.0-5.6%,2025-05-22
+Hospital_C,1752,Glycated Hemoglobin,6.9,%,Normal < 6,2024-08-30
+Hospital_B,1149,Blood Sugar,80.77415407811968,mg/dL,70-99,2026-01-21
+Hospital_A,1335,Total Chol,208.94318817997245,mg/dL,125-200,2025-09-08
+Hospital_C,1681,Serum Cholesterol,5.66,mmol/L,125-200,2025-11-12
+Hospital_C,1622,Cholesterol,6.52,mmol/L,125-200,2025-03-04
+Hospital_A,1135,HbA1c,not collected,%,<5.7%,2024-08-16
+Hospital_B,1336,Blood Sugar,9.98,mmol/L,Normal: <100,2024-05-24
+Hospital_C,1477,HbA1c,9.5,%,Normal < 6,2024-03-28
+Hospital_C,1435,Cholesterol,160.5837069037201,mg/dL,3.2-5.2,2024-09-06
+Hospital_C,1990,HbA1c,9.9,%,4.0-5.6%,2024-04-19
+Hospital_A,1638,Serum Cholesterol,4.53,mmol/L,125-200,2025-12-08
+Hospital_B,1904,Glucose,141.2006240521488,mg/dL,Normal: <100,2025-05-03
+Hospital_A,1024,Cholesterol,5.15,mmol/L,125-200,2025-05-21
+Hospital_A,1278,HbA1c,6.9,%,<5.7%,2024-07-23
+Hospital_C,1478,Serum Cholesterol,7.18,mmol/L,125-200,2026-02-25
+Hospital_A,1021,Cholesterol,4.8,mmol/L,<200,2025-01-04
+Hospital_B,1918,Glucose,158.47942875565644,mg/dL,Normal: <100,2025-07-19
+Hospital_C,1614,Cholesterol,228.26228336434457,mg/dL,<200,2024-06-20
+Hospital_B,1508,Blood Sugar,4.94,mmol/L,Normal: <100,2025-12-23
+Hospital_C,1104,Blood Sugar,151.95285925359957,mg/dL,70-99,2025-12-05
+Hospital_C,1758,Total Chol,4.68,mmol/L,125-200,2025-09-13
+Hospital_A,1944,Serum Cholesterol,4.23,mmol/L,<200,2025-10-22
+Hospital_A,1589,Glucose,7.28,mmol/L,Normal: <100,2025-06-28
+Hospital_B,1447,Blood Sugar,164.5613251482635,mg/dL,70-99,2025-05-22
+Hospital_C,1770,Glucose,7.92,mmol/L,70-99,2024-09-10
+Hospital_B,1719,Serum Cholesterol,4.83,mmol/L,3.2-5.2,2024-08-20
+Hospital_C,1212,Glycated Hemoglobin,8.5,%,4.0-5.6%,2025-07-14
+Hospital_A,1771,Cholesterol,5.26,mmol/L,3.2-5.2,2025-01-27
+Hospital_B,1567,Fasting Glucose,500,mmol/L,70-99,2024-11-17
+Hospital_B,1871,Hemoglobin A1c,6.4,%,4.0-5.6%,2025-07-14
+Hospital_A,1974,Hemoglobin A1c,5.1,%,4.0-5.6%,2025-10-12
+Hospital_B,1037,Hemoglobin A1c,4.5,%,Normal < 6,2025-04-25
+Hospital_B,1770,Hemoglobin A1c,7.3,%,4.0-5.6%,2025-04-08
+Hospital_B,1885,HbA1c,6.1,%,<5.7%,2025-07-14
+Hospital_A,1782,Fasting Glucose,6.06,mmol/L,70-99,2024-11-16
+Hospital_B,1835,Blood Sugar,6.82,mmol/L,Normal: <100,2025-06-15
+Hospital_C,1465,Blood Sugar,4.72,mmol/L,Normal: <100,2024-12-20
+Hospital_B,1661,Glucose,132.91942730033406,mg/dL,3.9-5.5,2025-01-29
+Hospital_A,1010,Blood Sugar,126.1743864577549,mg/dL,3.9-5.5,2024-10-27
+Hospital_A,1356,Hemoglobin A1c,9.4,%,<5.7%,2025-06-16
+Hospital_B,1386,Serum Cholesterol,281.04306877343095,mg/dL,3.2-5.2,2025-10-02
+Hospital_A,1236,Cholesterol,4.19,mmol/L,<200,2024-09-08
+Hospital_B,1952,Hemoglobin A1c,5.0,%,<5.7%,2025-02-11
+Hospital_B,1090,Blood Sugar,110.79186386469283,mg/dL,Normal: <100,2025-10-17
+Hospital_A,1543,Cholesterol,7.13,mmol/L,3.2-5.2,2025-03-28
+Hospital_A,1644,HbA1c,5.8,%,<5.7%,2024-07-04
+Hospital_C,1339,Glucose,174.32134235443507,mg/dL,70-99,2025-01-12
+Hospital_C,1803,Total Chol,288.97272167531696,mg/dL,3.2-5.2,2024-07-14
+Hospital_A,1813,Glycated Hemoglobin,6.9,%,4.0-5.6%,2024-08-21
+Hospital_A,1754,Hemoglobin A1c,6.1,%,4.0-5.6%,2025-02-02
+Hospital_B,1283,Total Chol,4.89,mmol/L,3.2-5.2,2026-01-22
+Hospital_B,1583,Blood Sugar,5.46,mmol/L,3.9-5.5,2026-03-25
+Hospital_C,1917,HbA1c,5.4,%,Normal < 6,2025-07-06
+Hospital_C,1504,Cholesterol,277.20158936339476,mg/dL,125-200,2026-02-14
+Hospital_A,1950,Glycated Hemoglobin,9.1,%,Normal < 6,2026-03-21
+Hospital_C,1820,Glucose,7.61,mmol/L,3.9-5.5,2025-06-25
+Hospital_B,1265,Fasting Glucose,8.57,mmol/L,Normal: <100,2025-07-06
+Hospital_A,1700,Serum Cholesterol,6.26,mmol/L,3.2-5.2,2024-07-13
+Hospital_B,1928,Hemoglobin A1c,8.9,%,Normal < 6,2025-07-22
+Hospital_C,1687,Cholesterol,4.69,mmol/L,125-200,2026-01-31
+Hospital_A,1307,Blood Sugar,161.35479185999577,mg/dL,Normal: <100,2025-11-21
+Hospital_B,1713,Fasting Glucose,4.48,mmol/L,70-99,2025-01-13
+Hospital_C,1156,Cholesterol,292.6938210869373,mg/dL,125-200,2024-04-24
+Hospital_C,1484,Glucose,9.13,mmol/L,70-99,2025-08-08
+Hospital_A,1102,Serum Cholesterol,not collected,mmol/L,<200,2024-08-06
+Hospital_A,1833,Serum Cholesterol,6.92,mmol/L,125-200,2024-10-06
+Hospital_C,1457,Serum Cholesterol,4.18,mmol/L,<200,2024-12-30
+Hospital_C,1409,Cholesterol,258.53707901167724,mg/dL,<200,2025-05-25
+Hospital_A,1923,HbA1c,5.6,%,4.0-5.6%,2025-09-09
+Hospital_C,1660,Hemoglobin A1c,9.2,%,Normal < 6,2024-06-29
+Hospital_C,1095,Hemoglobin A1c,5.2,%,<5.7%,2024-05-06
+Hospital_B,2000,Blood Sugar,103.91887401295023,mg/dL,3.9-5.5,2025-06-30
+Hospital_A,1779,HbA1c,5.2,%,<5.7%,2024-06-15
+Hospital_C,1567,HbA1c,6.9,%,Normal < 6,2024-08-23
+Hospital_A,1196,Fasting Glucose,4.75,mmol/L,70-99,2024-10-16
+Hospital_B,1957,Cholesterol,7.55,mmol/L,125-200,2026-01-20
+Hospital_C,1813,Total Chol,6.66,mmol/L,<200,2024-07-01
+Hospital_B,1801,Cholesterol,4.58,mmol/L,<200,2025-08-12
+Hospital_B,1136,Glycated Hemoglobin,10.2,%,Normal < 6,2024-07-08
+Hospital_A,1161,Glycated Hemoglobin,8.5,%,<5.7%,2025-06-22
+Hospital_B,1683,Glucose,171.21078778950212,mg/dL,70-99,2026-02-07
+Hospital_A,1622,HbA1c,8.0,%,<5.7%,2025-08-09
+Hospital_B,1164,Serum Cholesterol,,mg/dL,3.2-5.2,2024-05-25
+Hospital_C,1079,Cholesterol,6.49,mmol/L,125-200,2025-01-15
+Hospital_B,1621,Blood Sugar,8.38,mmol/L,70-99,2026-01-15
+Hospital_B,1661,Glucose,128.8667504582965,mg/dL,70-99,2025-06-04
+Hospital_B,1990,Hemoglobin A1c,4.5,%,4.0-5.6%,2024-10-08
+Hospital_C,1688,Fasting Glucose,7.06,mmol/L,3.9-5.5,2025-12-31
+Hospital_C,1810,Glucose,8.23,mmol/L,3.9-5.5,2024-07-27
+Hospital_A,1161,Total Chol,182.25311842105322,mg/dL,<200,2025-11-11
+Hospital_A,1876,HbA1c,9.0,%,<5.7%,2025-03-22
+Hospital_C,1843,Blood Sugar,89.75359208133897,mg/dL,Normal: <100,2024-11-14
+Hospital_A,1088,Glucose,134.85313095376642,mg/dL,Normal: <100,2026-01-02
+Hospital_C,1136,HbA1c,9.3,%,<5.7%,2025-04-10
+Hospital_A,1248,Blood Sugar,5.87,mmol/L,3.9-5.5,2024-05-05
+Hospital_B,1736,Blood Sugar,89.63955738811666,mg/dL,70-99,2024-06-27
+Hospital_C,1454,Fasting Glucose,6.34,mmol/L,70-99,2025-01-17
+Hospital_C,1921,Glycated Hemoglobin,5.8,%,<5.7%,2024-11-02
+Hospital_B,1257,Glucose,8.96,mmol/L,70-99,2024-06-16
+Hospital_B,1804,Serum Cholesterol,5.68,mmol/L,<200,2026-02-09
+Hospital_C,1916,HbA1c,5.1,%,4.0-5.6%,2026-03-20
+Hospital_C,1382,Glycated Hemoglobin,5.2,%,<5.7%,2026-03-12
+Hospital_C,1597,Blood Sugar,8.61,mmol/L,Normal: <100,2025-08-13
+Hospital_C,1203,Hemoglobin A1c,7.5,%,4.0-5.6%,2024-11-01
+Hospital_C,1270,Cholesterol,7.36,mmol/L,<200,2025-06-06
+Hospital_B,1170,Hemoglobin A1c,8.6,%,<5.7%,2024-10-15
+Hospital_B,1793,Glycated Hemoglobin,5.8,%,Normal < 6,2024-11-29
+Hospital_B,1679,Cholesterol,7.62,mmol/L,3.2-5.2,2025-12-09
+Hospital_A,1728,Blood Sugar,7.03,mmol/L,70-99,2025-09-14
+Hospital_B,1086,Fasting Glucose,162.1375641566091,mg/dL,Normal: <100,2025-05-13
+Hospital_B,1587,Blood Sugar,136.9894407108372,mg/dL,70-99,2024-10-29
+Hospital_B,1901,Total Chol,154.3304163662495,mg/dL,<200,2025-08-15
+Hospital_B,1145,Hemoglobin A1c,6.8,%,4.0-5.6%,2025-09-16
+Hospital_B,1186,Hemoglobin A1c,-999,%,4.0-5.6%,2024-08-27
+Hospital_C,1511,Total Chol,5.47,mmol/L,3.2-5.2,2024-07-19
+Hospital_C,1866,Total Chol,4.28,mmol/L,3.2-5.2,2026-03-07
+Hospital_B,1088,Total Chol,205.33790387288238,mg/dL,125-200,2025-09-02
+Hospital_B,1990,Glycated Hemoglobin,9.3,%,4.0-5.6%,2024-12-24
+Hospital_B,1225,Total Chol,7.57,mmol/L,3.2-5.2,2025-08-29
+Hospital_B,1383,Hemoglobin A1c,9.9,%,<5.7%,2024-12-21
+Hospital_C,1541,Blood Sugar,6.5,mmol/L,3.9-5.5,2025-11-04
+Hospital_A,1418,Glucose,9.59,mmol/L,Normal: <100,2024-12-30
+Hospital_B,1093,Serum Cholesterol,4.6,mmol/L,125-200,2025-01-26
+Hospital_B,1646,Blood Sugar,8.19,mmol/L,Normal: <100,2024-06-11
+Hospital_A,1636,Glucose,122.09171670407409,mg/dL,Normal: <100,2026-02-23
+Hospital_A,1452,Glycated Hemoglobin,7.2,%,Normal < 6,2025-04-10
+Hospital_A,1758,Serum Cholesterol,255.23589984148492,mg/dL,3.2-5.2,2025-05-04
+Hospital_C,1157,Blood Sugar,4.12,mmol/L,Normal: <100,2024-07-11
+Hospital_B,1390,Total Chol,7.65,mmol/L,<200,2024-06-11
+Hospital_A,1351,Serum Cholesterol,252.9477166399007,mg/dL,125-200,2024-08-25
+Hospital_B,1808,HbA1c,10.4,%,<5.7%,2025-07-31
+Hospital_A,1266,Blood Sugar,177.63682621766526,mg/dL,Normal: <100,2025-08-16
+Hospital_C,1600,Glucose,143.68173613824143,mg/dL,70-99,2024-09-26
+Hospital_C,1081,Glucose,6.94,mmol/L,3.9-5.5,2024-05-01
+Hospital_B,1294,Fasting Glucose,9.36,mmol/L,70-99,2025-08-11
+Hospital_B,1195,Fasting Glucose,8.99,mmol/L,3.9-5.5,2025-06-06
+Hospital_B,1843,Cholesterol,295.8569597270649,mg/dL,125-200,2025-06-20
+Hospital_C,1757,Total Chol,7.14,mmol/L,3.2-5.2,2025-01-11
+Hospital_A,1908,Glucose,74.51428282649636,mg/dL,70-99,2025-01-23
+Hospital_A,1369,Serum Cholesterol,7.07,mmol/L,<200,2025-12-11
+Hospital_C,1320,HbA1c,8.9,%,4.0-5.6%,2026-01-18
+Hospital_C,1739,Glycated Hemoglobin,4.6,%,Normal < 6,2024-11-27
+Hospital_B,1144,Total Chol,175.69124632095122,mg/dL,125-200,2025-06-27
+Hospital_C,1849,Glycated Hemoglobin,8.8,%,4.0-5.6%,2024-04-29
+Hospital_B,1384,Serum Cholesterol,4.16,mmol/L,125-200,2025-12-03
+Hospital_C,1680,Serum Cholesterol,5.8,mmol/L,3.2-5.2,2025-02-12
+Hospital_A,1102,Glycated Hemoglobin,7.2,%,Normal < 6,2025-09-09
+Hospital_C,1029,Serum Cholesterol,222.46194845482484,mg/dL,125-200,2025-05-19
+Hospital_B,1169,Fasting Glucose,6.54,mmol/L,Normal: <100,2025-09-26
+Hospital_C,1187,Serum Cholesterol,209.03269763884478,mg/dL,<200,2025-08-01
+Hospital_C,1315,Glucose,9.9,mmol/L,70-99,2026-02-20
+Hospital_B,1099,Glycated Hemoglobin,6.4,%,Normal < 6,2024-06-13
+Hospital_C,1215,Total Chol,253.12456932019958,mg/dL,3.2-5.2,2026-03-19
+Hospital_C,1637,Blood Sugar,7.5,mmol/L,70-99,2025-11-18
+Hospital_B,1450,Hemoglobin A1c,6.3,%,Normal < 6,2025-07-02
+Hospital_A,1444,Cholesterol,not collected,mg/dL,125-200,2024-11-09
+Hospital_A,1795,Glycated Hemoglobin,5.2,%,4.0-5.6%,2025-12-11
+Hospital_C,1216,Glycated Hemoglobin,5.4,%,4.0-5.6%,2025-06-29
+Hospital_B,1618,HbA1c,5.9,%,Normal < 6,2024-10-27
+Hospital_A,1341,Cholesterol,6.07,mmol/L,<200,2025-12-29
+Hospital_A,1141,Hemoglobin A1c,9.9,%,Normal < 6,2025-03-20
+Hospital_C,1208,Hemoglobin A1c,8.4,%,Normal < 6,2026-02-07
+Hospital_C,1402,HbA1c,8.3,%,4.0-5.6%,2024-03-26
+Hospital_B,1666,Fasting Glucose,7.67,mmol/L,3.9-5.5,2024-07-28
+Hospital_C,1136,Cholesterol,-999,mmol/L,125-200,2025-12-05
+Hospital_C,1390,Total Chol,4.09,mmol/L,<200,2024-10-14
+Hospital_B,1865,Hemoglobin A1c,9.5,%,4.0-5.6%,2025-01-19
+Hospital_C,1036,Cholesterol,244.6741525281961,mg/dL,<200,2024-11-18
+Hospital_C,1186,Blood Sugar,161.45298871142955,mg/dL,70-99,2026-01-12
+Hospital_C,1640,Glucose,6.53,mmol/L,Normal: <100,2024-04-28
+Hospital_A,1061,Glycated Hemoglobin,8.7,%,4.0-5.6%,2026-03-14
+Hospital_C,1031,Blood Sugar,7.52,mmol/L,3.9-5.5,2026-01-03
+Hospital_C,1204,Glucose,6.38,mmol/L,70-99,2025-06-03
+Hospital_A,1423,Glycated Hemoglobin,5.1,%,4.0-5.6%,2024-06-07
+Hospital_B,1131,Serum Cholesterol,165.00675859131343,mg/dL,<200,2025-04-15
+Hospital_B,1787,Hemoglobin A1c,10.3,%,Normal < 6,2024-06-29
+Hospital_A,1388,Blood Sugar,9.55,mmol/L,3.9-5.5,2025-03-18
+Hospital_B,1410,Total Chol,177.60995105311335,mg/dL,<200,2024-12-12
+Hospital_B,1296,Glucose,not collected,mmol/L,3.9-5.5,2026-02-02
+Hospital_B,1687,HbA1c,8.0,%,Normal < 6,2024-06-04
+Hospital_C,1813,Blood Sugar,8.13,mmol/L,Normal: <100,2025-01-11
+Hospital_B,1585,HbA1c,5.2,%,<5.7%,2024-07-02
+Hospital_B,1428,Total Chol,5.94,mmol/L,125-200,2025-12-03
+Hospital_C,1969,Blood Sugar,152.31262454060726,mg/dL,Normal: <100,2025-01-13
+Hospital_C,1343,Glycated Hemoglobin,8.4,%,<5.7%,2025-03-21
+Hospital_C,1835,Blood Sugar,150.35243448745473,mg/dL,70-99,2025-07-23
+Hospital_C,1673,Cholesterol,7.55,mmol/L,3.2-5.2,2025-02-14
+Hospital_B,1636,Cholesterol,249.16209066466587,mg/dL,125-200,2025-02-22
+Hospital_C,1261,HbA1c,4.9,%,4.0-5.6%,2025-11-19
+Hospital_B,1183,Glycated Hemoglobin,4.7,%,<5.7%,2025-06-01
+Hospital_C,1402,Cholesterol,275.22324175030735,mg/dL,125-200,2026-01-17
+Hospital_B,1081,Serum Cholesterol,186.706975715795,mg/dL,3.2-5.2,2024-05-09
+Hospital_A,1088,HbA1c,-999,%,4.0-5.6%,2024-11-26
+Hospital_A,1880,Blood Sugar,9.19,mmol/L,Normal: <100,2025-09-11
+Hospital_C,1019,Serum Cholesterol,7.55,mmol/L,3.2-5.2,2025-05-07
+Hospital_C,1286,Glucose,168.7016219124605,mg/dL,Normal: <100,2025-02-24
+Hospital_A,1770,Serum Cholesterol,162.85609677598757,mg/dL,3.2-5.2,2024-08-20
+Hospital_C,1397,Serum Cholesterol,199.80698210224253,mg/dL,3.2-5.2,2025-04-08
+Hospital_B,1110,Blood Sugar,6.93,mmol/L,70-99,2026-02-05
+Hospital_B,1793,Glycated Hemoglobin,9.2,%,4.0-5.6%,2026-03-25
+Hospital_C,1481,Glucose,8.88,mmol/L,3.9-5.5,2025-11-10
+Hospital_C,1518,Total Chol,268.6081375573889,mg/dL,3.2-5.2,2025-11-08
+Hospital_B,1054,Glucose,145.37681298565855,mg/dL,70-99,2025-07-13
+Hospital_B,1409,Glucose,168.19258088325032,mg/dL,Normal: <100,2024-07-09
+Hospital_B,1461,Blood Sugar,not collected,mg/dL,Normal: <100,2025-05-16
+Hospital_A,1818,Total Chol,4.06,mmol/L,3.2-5.2,2024-08-14
+Hospital_A,1330,Serum Cholesterol,4.76,mmol/L,3.2-5.2,2025-06-23
+Hospital_B,1339,Cholesterol,6.14,mmol/L,3.2-5.2,2025-10-01
+Hospital_B,1801,Blood Sugar,9.66,mmol/L,3.9-5.5,2025-01-21
+Hospital_A,1009,Blood Sugar,-999,mg/dL,3.9-5.5,2026-01-02
+Hospital_C,1638,Serum Cholesterol,4.32,mmol/L,3.2-5.2,2024-05-29
+Hospital_A,1135,Glucose,,mmol/L,70-99,2024-08-19
+Hospital_A,1140,Glucose,9.05,mmol/L,3.9-5.5,2024-08-28
+Hospital_C,1561,HbA1c,10.2,%,Normal < 6,2024-05-24
+Hospital_B,1348,Glucose,87.00104061791389,mg/dL,3.9-5.5,2026-03-19
+Hospital_A,1531,Total Chol,233.65514247201142,mg/dL,3.2-5.2,2025-12-02
+Hospital_A,1550,Serum Cholesterol,6.39,mmol/L,3.2-5.2,2025-07-30
+Hospital_C,1794,HbA1c,5.7,%,4.0-5.6%,2024-04-20
+Hospital_B,1992,Blood Sugar,9.28,mmol/L,Normal: <100,2026-01-25
+Hospital_B,1827,Cholesterol,247.82173409977833,mg/dL,<200,2025-01-31
+Hospital_C,1321,Cholesterol,5.85,mmol/L,125-200,2024-08-31
+Hospital_A,1616,Serum Cholesterol,151.8506081216752,mg/dL,3.2-5.2,2024-06-20
+Hospital_A,1055,Glucose,5.54,mmol/L,70-99,2025-12-23
+Hospital_C,1579,Serum Cholesterol,202.5505702561158,mg/dL,3.2-5.2,2025-07-25
+Hospital_A,1596,Total Chol,not collected,mg/dL,<200,2025-08-31
+Hospital_C,2000,Cholesterol,5.76,mmol/L,<200,2025-02-16
+Hospital_A,1405,Blood Sugar,9.32,mmol/L,Normal: <100,2025-09-07
+Hospital_A,1126,HbA1c,9.7,%,4.0-5.6%,2024-11-19
+Hospital_B,1787,Glucose,5.97,mmol/L,Normal: <100,2024-06-24
+Hospital_A,1115,Total Chol,4.44,mmol/L,<200,2026-02-23
+Hospital_C,1390,Serum Cholesterol,7.01,mmol/L,<200,2024-05-11
+Hospital_C,1784,Cholesterol,5.34,mmol/L,3.2-5.2,2025-06-17
+Hospital_A,1499,Blood Sugar,159.53949596701221,mg/dL,Normal: <100,2026-03-18
+Hospital_C,1053,Blood Sugar,158.48062969758917,mg/dL,3.9-5.5,2025-02-16
+Hospital_A,1842,Hemoglobin A1c,5.4,%,<5.7%,2026-03-24
+Hospital_C,1231,Blood Sugar,4.63,mmol/L,Normal: <100,2025-10-05
+Hospital_A,1571,Glycated Hemoglobin,9.2,%,<5.7%,2025-05-21
+Hospital_B,1051,Cholesterol,5.44,mmol/L,125-200,2026-02-22
+Hospital_C,1741,Cholesterol,5.89,mmol/L,3.2-5.2,2025-12-16
+Hospital_A,1785,Hemoglobin A1c,7.5,%,<5.7%,2024-12-22
+Hospital_B,1780,Cholesterol,4.18,mmol/L,125-200,2025-05-05
+Hospital_C,1279,Blood Sugar,4.98,mmol/L,3.9-5.5,2025-05-26
+Hospital_C,1979,Glycated Hemoglobin,8.7,%,Normal < 6,2025-02-07
+Hospital_C,1414,Serum Cholesterol,5.05,mmol/L,3.2-5.2,2025-07-10
+Hospital_C,1500,Hemoglobin A1c,7.9,%,Normal < 6,2026-01-12
+Hospital_A,1619,Glucose,7.13,mmol/L,70-99,2024-11-10
+Hospital_C,1720,Glucose,8.33,mmol/L,Normal: <100,2025-06-02
+Hospital_A,1620,HbA1c,10.2,%,4.0-5.6%,2026-01-17
+Hospital_B,1565,Hemoglobin A1c,9.9,%,Normal < 6,2024-05-30
+Hospital_B,1500,Glucose,-999,mg/dL,3.9-5.5,2025-03-21
+Hospital_C,1201,Glycated Hemoglobin,8.9,%,Normal < 6,2025-08-25
+Hospital_B,1808,Glycated Hemoglobin,not collected,%,4.0-5.6%,2025-12-30
+Hospital_A,1891,Blood Sugar,8.89,mmol/L,3.9-5.5,2025-12-07
+Hospital_B,1524,Total Chol,5.63,mmol/L,125-200,2025-03-31
+Hospital_A,1626,Glucose,6.32,mmol/L,Normal: <100,2024-09-04
+Hospital_B,1480,HbA1c,10.4,%,Normal < 6,2026-03-24
+Hospital_B,1957,Serum Cholesterol,228.34043786002104,mg/dL,<200,2025-09-03
+Hospital_C,1501,Hemoglobin A1c,5.9,%,<5.7%,2024-09-20
+Hospital_B,1210,Blood Sugar,N/A,mg/dL,Normal: <100,2024-06-10
+Hospital_C,1266,Serum Cholesterol,6.42,mmol/L,125-200,2024-04-30
+Hospital_A,1028,HbA1c,9.2,%,<5.7%,2025-04-03
+Hospital_B,1301,HbA1c,5.4,%,4.0-5.6%,2024-07-26
+Hospital_A,1023,Fasting Glucose,8.03,mmol/L,Normal: <100,2024-04-19
+Hospital_C,1660,Serum Cholesterol,7.63,mmol/L,125-200,2024-09-21
+Hospital_C,1766,Fasting Glucose,6.37,mmol/L,70-99,2025-09-07
+Hospital_A,1309,Fasting Glucose,115.4916227091484,mg/dL,3.9-5.5,2025-04-10
+Hospital_C,1079,Blood Sugar,93.37230184260079,mg/dL,Normal: <100,2024-04-03
+Hospital_B,1064,Serum Cholesterol,5.82,mmol/L,125-200,2024-06-17
+Hospital_C,1165,Fasting Glucose,9.09,mmol/L,3.9-5.5,2024-06-08
+Hospital_C,1011,Total Chol,219.80649408042717,mg/dL,<200,2024-06-21
+Hospital_C,1692,Fasting Glucose,98.74637683181405,mg/dL,Normal: <100,2024-06-10
+Hospital_C,1144,Total Chol,6.19,mmol/L,125-200,2024-07-15
+Hospital_A,1515,Glucose,8.98,mmol/L,3.9-5.5,2024-06-30
+Hospital_A,1241,Cholesterol,6.69,mmol/L,3.2-5.2,2024-07-06
+Hospital_A,1123,Blood Sugar,100.12478030431171,mg/dL,70-99,2025-06-30
+Hospital_A,1249,Glucose,N/A,mg/dL,Normal: <100,2024-06-17
+Hospital_C,1523,Serum Cholesterol,164.14306913063263,mg/dL,<200,2024-11-13
+Hospital_C,1990,Glycated Hemoglobin,8.8,%,<5.7%,2025-12-01
+Hospital_C,1407,Cholesterol,262.1721292619832,mg/dL,3.2-5.2,2026-01-27
+Hospital_A,1686,Serum Cholesterol,246.90372311002318,mg/dL,125-200,2025-04-09
+Hospital_C,1838,Cholesterol,294.8521565555584,mg/dL,<200,2025-06-01
+Hospital_C,1791,Glycated Hemoglobin,9.3,%,4.0-5.6%,2024-12-12
+Hospital_C,1247,Blood Sugar,71.70830713873468,mg/dL,3.9-5.5,2024-11-26
+Hospital_C,1648,Glycated Hemoglobin,8.0,%,<5.7%,2025-11-15
+Hospital_B,1965,Cholesterol,7.02,mmol/L,125-200,2024-09-27
+Hospital_B,1710,Hemoglobin A1c,9.4,%,<5.7%,2024-07-11
+Hospital_C,1608,Hemoglobin A1c,6.1,%,Normal < 6,2024-10-19
+Hospital_B,1545,Hemoglobin A1c,6.1,%,4.0-5.6%,2026-02-13
+Hospital_B,1589,Glucose,97.45639224946683,mg/dL,3.9-5.5,2024-12-10
+Hospital_C,1008,Serum Cholesterol,7.17,mmol/L,<200,2025-01-01
+Hospital_A,1037,Glucose,9.12,mmol/L,3.9-5.5,2025-12-27
+Hospital_C,1835,Total Chol,255.84639564607372,mg/dL,3.2-5.2,2025-10-26
+Hospital_B,1625,Total Chol,4.93,mmol/L,125-200,2025-11-01
+Hospital_B,1595,Fasting Glucose,150.40251312357583,mg/dL,Normal: <100,2024-11-30
+Hospital_A,1099,Cholesterol,201.2035671865258,mg/dL,125-200,2024-09-08
+Hospital_A,1068,Glucose,127.18048170696943,mg/dL,70-99,2024-10-31
+Hospital_B,1323,Blood Sugar,106.81763968615962,mg/dL,3.9-5.5,2025-03-26
+Hospital_B,1273,HbA1c,10.3,%,4.0-5.6%,2025-08-29
+Hospital_C,1188,Fasting Glucose,6.31,mmol/L,Normal: <100,2025-12-08
+Hospital_C,1524,HbA1c,4.8,%,4.0-5.6%,2026-03-20
+Hospital_A,1195,Glucose,164.49132332913342,mg/dL,3.9-5.5,2025-01-22
+Hospital_B,1845,Serum Cholesterol,239.28468038393703,mg/dL,3.2-5.2,2024-07-12
+Hospital_C,1080,Serum Cholesterol,4.09,mmol/L,<200,2025-08-25
+Hospital_A,1012,Glucose,91.79463386985717,mg/dL,3.9-5.5,2026-01-24
+Hospital_A,1613,Hemoglobin A1c,6.1,%,Normal < 6,2025-04-20
+Hospital_B,1123,Total Chol,217.78756153766926,mg/dL,<200,2024-10-18
+Hospital_A,1416,Cholesterol,225.47537493808397,mg/dL,<200,2025-12-27
+Hospital_B,1370,Cholesterol,157.04469711847568,mg/dL,3.2-5.2,2024-12-27
+Hospital_C,1043,Serum Cholesterol,187.99691105026335,mg/dL,<200,2026-03-22
+Hospital_A,1013,Fasting Glucose,9.56,mmol/L,3.9-5.5,2024-07-26
+Hospital_C,1858,Total Chol,not collected,mmol/L,<200,2025-01-30
+Hospital_C,1374,Hemoglobin A1c,6.9,%,4.0-5.6%,2025-07-05
+Hospital_B,1668,Glucose,172.68574976473434,mg/dL,3.9-5.5,2025-08-02
+Hospital_C,1593,HbA1c,5.3,%,<5.7%,2025-08-15
+Hospital_B,1665,Total Chol,160.0996902795062,mg/dL,125-200,2025-07-10
+Hospital_C,1826,Serum Cholesterol,4.98,mmol/L,125-200,2025-06-25
+Hospital_A,1306,Total Chol,244.5925586173414,mg/dL,<200,2026-01-02
+Hospital_C,1952,Glycated Hemoglobin,7.2,%,<5.7%,2026-02-01
+Hospital_A,1301,Blood Sugar,135.34540817403663,mg/dL,Normal: <100,2025-07-23
+Hospital_B,1902,HbA1c,7.9,%,<5.7%,2025-05-26
+Hospital_A,1920,Glucose,4.74,mmol/L,70-99,2025-11-07
+Hospital_A,1451,Hemoglobin A1c,7.0,%,Normal < 6,2026-03-18
+Hospital_A,1465,Serum Cholesterol,5.49,mmol/L,125-200,2024-10-27
+Hospital_B,1087,Glycated Hemoglobin,7.8,%,<5.7%,2024-09-24
+Hospital_A,1451,Hemoglobin A1c,5.7,%,Normal < 6,2025-01-24
+Hospital_A,1861,Total Chol,7.21,mmol/L,125-200,2025-12-22
+Hospital_B,1092,Blood Sugar,164.53584110682561,mg/dL,Normal: <100,2025-07-02
+Hospital_B,1763,Cholesterol,,mg/dL,<200,2025-08-11
+Hospital_C,1369,Hemoglobin A1c,8.2,%,<5.7%,2026-02-15
+Hospital_B,1279,Blood Sugar,9.32,mmol/L,Normal: <100,2025-04-14
+Hospital_A,1673,Total Chol,4.09,mmol/L,3.2-5.2,2025-10-25
+Hospital_A,1505,Blood Sugar,5.79,mmol/L,Normal: <100,2024-10-15
+Hospital_B,1497,Hemoglobin A1c,8.7,%,Normal < 6,2026-01-19
+Hospital_A,1353,HbA1c,8.6,%,Normal < 6,2025-07-02
+Hospital_C,1986,Serum Cholesterol,7.33,mmol/L,3.2-5.2,2025-05-23
+Hospital_B,1683,HbA1c,5.0,%,Normal < 6,2024-05-12
+Hospital_B,1143,Hemoglobin A1c,,%,4.0-5.6%,2025-09-03
+Hospital_B,1113,Glycated Hemoglobin,5.5,%,Normal < 6,2025-03-14
+Hospital_C,1188,Total Chol,150.46137057318745,mg/dL,125-200,2024-05-13
+Hospital_A,1683,Blood Sugar,4.86,mmol/L,3.9-5.5,2025-12-10
+Hospital_C,1927,Fasting Glucose,79.51217655305993,mg/dL,70-99,2025-01-04
+Hospital_B,1104,Serum Cholesterol,194.65634026543404,mg/dL,125-200,2025-01-22
+Hospital_B,1071,Glucose,173.2101979290262,mg/dL,3.9-5.5,2024-09-03
+Hospital_A,1948,Glucose,6.86,mmol/L,70-99,2025-03-15
+Hospital_C,1109,Blood Sugar,75.83714994585483,mg/dL,70-99,2025-09-09
+Hospital_C,1962,Serum Cholesterol,4.31,mmol/L,125-200,2025-03-28
+Hospital_C,1685,Fasting Glucose,171.92953082985764,mg/dL,70-99,2025-06-02
+Hospital_C,1525,Cholesterol,4.34,mmol/L,<200,2024-04-06
+Hospital_B,1115,Total Chol,171.31312198585138,mg/dL,125-200,2025-03-12
+Hospital_B,1183,Glycated Hemoglobin,6.0,%,<5.7%,2024-07-20
+Hospital_B,1467,Serum Cholesterol,6.54,mmol/L,<200,2025-04-14
+Hospital_A,1102,Fasting Glucose,8.69,mmol/L,3.9-5.5,2024-05-14
+Hospital_A,1660,Fasting Glucose,6.72,mmol/L,70-99,2024-12-21
+Hospital_B,1536,Blood Sugar,105.95147904205453,mg/dL,3.9-5.5,2025-12-11
+Hospital_A,1372,Blood Sugar,135.4456912938002,mg/dL,Normal: <100,2025-11-20
+Hospital_A,1754,Blood Sugar,6.01,mmol/L,Normal: <100,2025-12-13
+Hospital_A,1386,Blood Sugar,107.6367109512041,mg/dL,3.9-5.5,2025-02-17
+Hospital_A,1625,Total Chol,6.34,mmol/L,3.2-5.2,2025-07-10
+Hospital_C,1874,Hemoglobin A1c,6.7,%,<5.7%,2025-07-21
+Hospital_B,1842,HbA1c,10.3,%,<5.7%,2024-05-18
+Hospital_C,1558,Blood Sugar,6.09,mmol/L,70-99,2024-08-22
+Hospital_C,1767,Glucose,177.38266362240591,mg/dL,70-99,2025-06-06
+Hospital_C,1714,Blood Sugar,137.7915267714876,mg/dL,3.9-5.5,2025-11-20
+Hospital_A,1271,Glucose,7.1,mmol/L,Normal: <100,2025-05-16
+Hospital_C,1556,HbA1c,6.2,%,<5.7%,2025-03-02
+Hospital_C,1629,Glucose,8.48,mmol/L,Normal: <100,2025-04-17
+Hospital_A,1986,HbA1c,7.4,%,<5.7%,2025-09-07
+Hospital_C,1760,Hemoglobin A1c,9.5,%,Normal < 6,2025-03-30
+Hospital_B,1363,Glucose,7.58,mmol/L,70-99,2024-06-18
+Hospital_C,1877,Cholesterol,5.02,mmol/L,<200,2025-02-05
+Hospital_A,1831,Serum Cholesterol,5.52,mmol/L,<200,2024-09-25
+Hospital_C,1040,Glycated Hemoglobin,4.9,%,<5.7%,2024-09-04
+Hospital_C,1439,Total Chol,5.0,mmol/L,125-200,2024-05-04
+Hospital_B,1761,Fasting Glucose,6.76,mmol/L,3.9-5.5,2025-09-18
+Hospital_B,1694,Hemoglobin A1c,6.8,%,<5.7%,2025-04-02
+Hospital_B,1982,Glycated Hemoglobin,9.3,%,4.0-5.6%,2025-10-02
+Hospital_A,1783,Total Chol,4.26,mmol/L,125-200,2024-12-05
+Hospital_C,1114,Cholesterol,248.87334605304878,mg/dL,<200,2025-08-09
+Hospital_C,1104,Cholesterol,5.14,mmol/L,125-200,2025-04-13
+Hospital_B,1127,Serum Cholesterol,4.53,mmol/L,<200,2025-07-09
+Hospital_A,1250,HbA1c,6.3,%,Normal < 6,2025-07-02
+Hospital_C,1502,Cholesterol,5.34,mmol/L,125-200,2024-07-18
+Hospital_C,1673,Blood Sugar,142.17900327190856,mg/dL,3.9-5.5,2024-08-31
+Hospital_C,1120,Cholesterol,6.42,mmol/L,125-200,2025-03-24
+Hospital_A,1415,Glucose,91.11076126283004,mg/dL,Normal: <100,2025-10-23
+Hospital_A,1179,Serum Cholesterol,6.16,mmol/L,<200,2024-10-08
+Hospital_C,1031,Serum Cholesterol,6.86,mmol/L,<200,2025-09-30
+Hospital_B,1494,Hemoglobin A1c,4.5,%,<5.7%,2025-01-05
+Hospital_A,1264,Blood Sugar,144.460427367161,mg/dL,Normal: <100,2024-06-16
+Hospital_B,1862,Cholesterol,162.18342823400548,mg/dL,3.2-5.2,2025-09-20
+Hospital_C,1372,HbA1c,5.6,%,<5.7%,2024-04-18
+Hospital_A,1070,Hemoglobin A1c,8.6,%,Normal < 6,2026-03-02
+Hospital_C,1238,Total Chol,,mg/dL,3.2-5.2,2024-07-10
+Hospital_B,1203,Glycated Hemoglobin,4.8,%,Normal < 6,2024-07-23
+Hospital_A,1250,Blood Sugar,6.23,mmol/L,70-99,2025-04-16
+Hospital_A,1620,Fasting Glucose,126.97944139161645,mg/dL,Normal: <100,2025-05-20
+Hospital_B,1973,Cholesterol,5.63,mmol/L,125-200,2025-08-23
+Hospital_C,1080,Hemoglobin A1c,7.7,%,4.0-5.6%,2025-09-27
+Hospital_B,1283,Glucose,6.0,mmol/L,70-99,2024-09-19
+Hospital_B,1395,Glucose,7.79,mmol/L,70-99,2024-10-10
+Hospital_A,1199,Glycated Hemoglobin,7.0,%,Normal < 6,2025-06-06
+Hospital_B,1620,Cholesterol,7.37,mmol/L,<200,2025-04-10
+Hospital_A,1001,Glucose,116.98489764624935,mg/dL,70-99,2025-07-28
+Hospital_A,1741,Glucose,7.02,mmol/L,3.9-5.5,2025-10-29
+Hospital_C,1720,Blood Sugar,130.72872218025958,mg/dL,3.9-5.5,2024-11-27
+Hospital_A,1877,Cholesterol,196.11424854995033,mg/dL,<200,2024-05-28
+Hospital_C,1452,HbA1c,8.3,%,4.0-5.6%,2026-01-11
+Hospital_A,1701,HbA1c,-999,%,<5.7%,2026-01-01
+Hospital_A,1182,Glucose,123.39073159603649,mg/dL,Normal: <100,2024-04-28
+Hospital_B,1880,Total Chol,,mmol/L,<200,2024-06-22
+Hospital_B,1318,Serum Cholesterol,172.11135939082922,mg/dL,125-200,2024-04-13
+Hospital_B,1192,Glucose,101.8554829220414,mg/dL,Normal: <100,2025-05-25
+Hospital_B,1262,Glycated Hemoglobin,10.1,%,<5.7%,2025-10-22
+Hospital_C,1942,Glycated Hemoglobin,8.7,%,Normal < 6,2024-05-11
+Hospital_B,1908,Fasting Glucose,177.06014664785658,mg/dL,70-99,2024-08-25
+Hospital_B,1082,Serum Cholesterol,248.03011476280528,mg/dL,<200,2024-10-12
+Hospital_A,1443,Serum Cholesterol,222.28945159809606,mg/dL,3.2-5.2,2025-03-04
+Hospital_B,1470,Glucose,131.23332055311806,mg/dL,3.9-5.5,2025-04-26
+Hospital_A,1245,HbA1c,9.6,%,<5.7%,2026-03-25
+Hospital_B,1359,Fasting Glucose,97.23753240561804,mg/dL,3.9-5.5,2025-09-11
+Hospital_A,1824,Fasting Glucose,7.14,mmol/L,3.9-5.5,2025-04-12
+Hospital_B,1706,Fasting Glucose,6.13,mmol/L,Normal: <100,2024-08-24
+Hospital_B,1627,Blood Sugar,8.15,mmol/L,70-99,2024-12-08
+Hospital_B,1931,Total Chol,5.98,mmol/L,<200,2025-12-10
+Hospital_C,1993,Glucose,8.66,mmol/L,Normal: <100,2025-11-24
+Hospital_B,1865,Glycated Hemoglobin,7.9,%,4.0-5.6%,2024-08-15
+Hospital_A,1525,Hemoglobin A1c,7.9,%,<5.7%,2024-11-14
+Hospital_C,1353,Cholesterol,225.58401585648744,mg/dL,125-200,2026-03-06
+Hospital_C,1309,Fasting Glucose,8.85,mmol/L,70-99,2024-12-02
+Hospital_A,1268,Glycated Hemoglobin,5.2,%,<5.7%,2025-04-06
+Hospital_A,1456,Hemoglobin A1c,9.1,%,Normal < 6,2025-02-13
+Hospital_C,1673,HbA1c,8.9,%,4.0-5.6%,2025-04-29
+Hospital_B,1573,Hemoglobin A1c,5.7,%,4.0-5.6%,2025-11-20
+Hospital_C,1934,HbA1c,5.7,%,4.0-5.6%,2024-04-25
+Hospital_C,1522,Glycated Hemoglobin,9.8,%,<5.7%,2025-04-11
+Hospital_B,1712,Fasting Glucose,-999,mmol/L,70-99,2025-07-13
+Hospital_C,1166,Total Chol,4.98,mmol/L,3.2-5.2,2025-05-10
+Hospital_B,1179,Glucose,7.13,mmol/L,Normal: <100,2024-08-26
+Hospital_A,1674,Cholesterol,191.24437919269172,mg/dL,3.2-5.2,2026-01-23
+Hospital_B,1764,Hemoglobin A1c,7.1,%,4.0-5.6%,2025-09-05
+Hospital_C,1665,Serum Cholesterol,296.90596995537254,mg/dL,125-200,2026-03-20
+Hospital_B,1871,Total Chol,200.26578271871296,mg/dL,3.2-5.2,2026-02-13
+Hospital_B,1683,Hemoglobin A1c,8.7,%,<5.7%,2025-04-22
+Hospital_C,1419,Cholesterol,221.11458097940172,mg/dL,<200,2024-08-22
+Hospital_B,1047,Blood Sugar,3.96,mmol/L,3.9-5.5,2024-05-09
+Hospital_C,1038,Total Chol,239.58696616074428,mg/dL,<200,2024-10-08
+Hospital_A,1808,HbA1c,6.7,%,4.0-5.6%,2025-04-03
+Hospital_A,1037,HbA1c,,%,4.0-5.6%,2024-11-18
+Hospital_A,1094,Blood Sugar,122.38783786912474,mg/dL,3.9-5.5,2025-12-28
+Hospital_B,1962,Glycated Hemoglobin,6.8,%,Normal < 6,2024-06-01
+Hospital_A,1346,Hemoglobin A1c,7.1,%,4.0-5.6%,2026-03-22
+Hospital_A,1701,HbA1c,9.4,%,<5.7%,2025-08-21
+Hospital_A,1240,Cholesterol,5.64,mmol/L,3.2-5.2,2025-09-27
+Hospital_C,1684,Blood Sugar,98.10019790183873,mg/dL,3.9-5.5,2025-04-04
+Hospital_C,1690,Glucose,8.94,mmol/L,3.9-5.5,2024-07-19
+Hospital_B,1689,Serum Cholesterol,5.94,mmol/L,<200,2025-09-13
+Hospital_A,1290,Serum Cholesterol,,mmol/L,3.2-5.2,2025-12-06
+Hospital_A,1696,Fasting Glucose,4.44,mmol/L,Normal: <100,2025-11-28
+Hospital_B,1352,Blood Sugar,108.61995388128268,mg/dL,3.9-5.5,2026-02-08
+Hospital_C,1387,Glycated Hemoglobin,7.6,%,4.0-5.6%,2025-01-06
+Hospital_A,1570,Glucose,9.27,mmol/L,3.9-5.5,2024-09-06
+Hospital_B,1699,HbA1c,8.6,%,Normal < 6,2025-04-18
+Hospital_C,1743,Total Chol,166.45991760232886,mg/dL,<200,2025-12-06
+Hospital_C,1092,HbA1c,7.2,%,4.0-5.6%,2024-07-23
+Hospital_A,1523,Total Chol,6.82,mmol/L,<200,2025-05-31
+Hospital_B,1693,Total Chol,6.81,mmol/L,3.2-5.2,2024-08-25
+Hospital_B,1825,Glucose,127.6823941348398,mg/dL,Normal: <100,2025-07-01
+Hospital_C,1802,Total Chol,205.70979949548504,mg/dL,<200,2025-05-09
+Hospital_A,1935,Glycated Hemoglobin,9.1,%,4.0-5.6%,2025-11-14
+Hospital_B,1502,Serum Cholesterol,4.16,mmol/L,3.2-5.2,2025-06-04
+Hospital_B,1109,Blood Sugar,7.4,mmol/L,3.9-5.5,2025-07-02
+Hospital_A,1018,Cholesterol,183.93985669336251,mg/dL,125-200,2026-02-07
+Hospital_B,1389,Fasting Glucose,6.79,mmol/L,3.9-5.5,2025-06-10
+Hospital_B,1638,HbA1c,5.9,%,Normal < 6,2025-07-26
+Hospital_A,1645,Cholesterol,6.91,mmol/L,3.2-5.2,2026-01-25
+Hospital_A,1016,Glycated Hemoglobin,5.5,%,Normal < 6,2025-01-06
+Hospital_A,1340,HbA1c,8.5,%,4.0-5.6%,2025-11-28
+Hospital_A,1429,Hemoglobin A1c,6.2,%,4.0-5.6%,2025-05-09
+Hospital_B,1009,Hemoglobin A1c,9.3,%,4.0-5.6%,2024-12-06
+Hospital_B,1702,Blood Sugar,4.34,mmol/L,70-99,2025-03-13
+Hospital_C,1610,Fasting Glucose,8.63,mmol/L,70-99,2024-06-10
+Hospital_A,1935,HbA1c,9.1,%,<5.7%,2025-09-14
+Hospital_B,1621,Blood Sugar,-999,mmol/L,3.9-5.5,2024-06-03
+Hospital_C,1653,Glucose,142.3361809038842,mg/dL,70-99,2025-10-29
+Hospital_C,1511,Glycated Hemoglobin,9.0,%,<5.7%,2025-11-28
+Hospital_B,1904,Cholesterol,not collected,mg/dL,125-200,2026-03-19
+Hospital_A,1649,Glycated Hemoglobin,4.7,%,4.0-5.6%,2025-12-01
+Hospital_B,1439,Serum Cholesterol,215.1492772402536,mg/dL,125-200,2025-01-26
+Hospital_A,1912,Serum Cholesterol,4.4,mmol/L,<200,2025-07-22
+Hospital_C,1834,Blood Sugar,500,mmol/L,Normal: <100,2024-11-16
+Hospital_C,1678,HbA1c,6.4,%,<5.7%,2026-02-07
+Hospital_A,1404,Fasting Glucose,5.82,mmol/L,70-99,2025-01-18
+Hospital_C,1120,Blood Sugar,150.11842058698483,mg/dL,Normal: <100,2025-12-23
+Hospital_A,1997,Glucose,142.25508635138578,mg/dL,3.9-5.5,2024-03-28
+Hospital_C,1004,Hemoglobin A1c,9.5,%,Normal < 6,2024-08-07
+Hospital_B,1874,Hemoglobin A1c,5.6,%,Normal < 6,2025-11-23
+Hospital_B,1714,Fasting Glucose,500,mmol/L,Normal: <100,2025-07-02
+Hospital_B,1827,Hemoglobin A1c,4.5,%,4.0-5.6%,2024-07-11
+Hospital_A,1275,Cholesterol,-999,mmol/L,125-200,2025-03-23
+Hospital_C,1607,Blood Sugar,173.99572072671168,mg/dL,3.9-5.5,2025-06-16
+Hospital_C,1314,Glucose,116.17974262031298,mg/dL,70-99,2024-11-04
+Hospital_B,1161,HbA1c,5.9,%,4.0-5.6%,2025-06-19
+Hospital_C,1439,Hemoglobin A1c,10.5,%,<5.7%,2025-08-06
+Hospital_C,1453,Hemoglobin A1c,8.1,%,<5.7%,2024-04-27
+Hospital_A,1308,Glycated Hemoglobin,8.5,%,Normal < 6,2025-08-06
+Hospital_C,1623,Fasting Glucose,9.78,mmol/L,3.9-5.5,2024-03-27
+Hospital_B,1029,Glycated Hemoglobin,6.6,%,Normal < 6,2024-03-31
+Hospital_B,1056,Glycated Hemoglobin,4.9,%,Normal < 6,2024-07-27
+Hospital_C,1910,Total Chol,249.829750421215,mg/dL,125-200,2024-07-04
+Hospital_A,1406,Cholesterol,3.95,mmol/L,125-200,2026-03-08
+Hospital_A,1008,Total Chol,298.2232364196408,mg/dL,<200,2025-11-28
+Hospital_A,1945,Glycated Hemoglobin,10.1,%,<5.7%,2025-06-09
+Hospital_A,1275,Hemoglobin A1c,8.8,%,4.0-5.6%,2025-03-06
+Hospital_B,1769,Hemoglobin A1c,6.4,%,<5.7%,2024-05-06
+Hospital_A,1800,Serum Cholesterol,,mg/dL,<200,2025-06-13
+Hospital_C,1475,Blood Sugar,7.1,mmol/L,Normal: <100,2024-08-02
+Hospital_C,1952,Blood Sugar,95.83475091231762,mg/dL,70-99,2026-02-19
+Hospital_A,1343,Glucose,100.86645703774067,mg/dL,Normal: <100,2024-11-27
+Hospital_B,1237,Glucose,9.47,mmol/L,3.9-5.5,2024-09-03
+Hospital_A,1194,Hemoglobin A1c,9.8,%,<5.7%,2025-06-21
+Hospital_A,1686,Glucose,5.63,mmol/L,Normal: <100,2024-06-24
+Hospital_B,1352,Cholesterol,not collected,mg/dL,<200,2025-01-18
+Hospital_A,1708,Cholesterol,165.53309416853514,mg/dL,3.2-5.2,2025-11-04
+Hospital_A,1276,Glucose,109.89717920385985,mg/dL,70-99,2024-09-21
+Hospital_B,1901,Serum Cholesterol,6.03,mmol/L,<200,2025-12-26
+Hospital_B,1432,Glucose,169.26568699454103,mg/dL,Normal: <100,2025-10-16
+Hospital_A,1158,Blood Sugar,not collected,mmol/L,Normal: <100,2025-10-29
+Hospital_A,1139,Total Chol,7.6,mmol/L,3.2-5.2,2024-03-28
+Hospital_B,1179,Total Chol,179.88863421902778,mg/dL,125-200,2025-09-12
+Hospital_A,1850,Glucose,5.98,mmol/L,Normal: <100,2026-02-11
+Hospital_B,1567,Serum Cholesterol,186.9474143866207,mg/dL,<200,2024-04-20
+Hospital_C,1559,Glucose,9.27,mmol/L,Normal: <100,2026-03-05
+Hospital_C,1924,Cholesterol,174.68057348741326,mg/dL,125-200,2025-11-29
+Hospital_C,1646,Cholesterol,296.3873811172066,mg/dL,125-200,2025-01-21
+Hospital_C,1349,Glycated Hemoglobin,8.4,%,<5.7%,2025-12-21
+Hospital_B,1965,Cholesterol,6.97,mmol/L,<200,2025-08-30
+Hospital_C,1822,Total Chol,4.05,mmol/L,<200,2024-10-29
+Hospital_A,1668,Blood Sugar,128.89589423276666,mg/dL,Normal: <100,2024-12-03
+Hospital_A,1717,Hemoglobin A1c,9.8,%,Normal < 6,2024-07-17
+Hospital_C,1415,Hemoglobin A1c,9.3,%,4.0-5.6%,2024-10-23
+Hospital_A,1419,Serum Cholesterol,6.44,mmol/L,<200,2026-02-28
+Hospital_B,1356,Blood Sugar,155.31948148688508,mg/dL,3.9-5.5,2025-12-02
+Hospital_B,1619,Serum Cholesterol,7.64,mmol/L,3.2-5.2,2026-01-15
+Hospital_C,1570,Glucose,,mg/dL,3.9-5.5,2024-12-18
+Hospital_A,1547,Glucose,7.76,mmol/L,3.9-5.5,2025-09-05
+Hospital_C,1402,Glycated Hemoglobin,5.8,%,<5.7%,2025-09-19
+Hospital_C,1398,Fasting Glucose,78.55895846709315,mg/dL,Normal: <100,2024-04-28
+Hospital_B,1262,Serum Cholesterol,3.97,mmol/L,125-200,2026-03-10
+Hospital_C,1941,Glucose,169.14002549270435,mg/dL,Normal: <100,2024-09-11
+Hospital_A,1938,Serum Cholesterol,228.59166231061192,mg/dL,<200,2025-12-28
+Hospital_A,1884,Glycated Hemoglobin,8.5,%,<5.7%,2025-02-26
+Hospital_B,1673,Glycated Hemoglobin,6.1,%,Normal < 6,2025-09-15
+Hospital_B,1146,HbA1c,9.0,%,Normal < 6,2024-09-28
+Hospital_C,1543,Blood Sugar,6.66,mmol/L,Normal: <100,2024-12-18
+Hospital_C,1344,Serum Cholesterol,6.63,mmol/L,<200,2025-05-03
+Hospital_A,1676,Glycated Hemoglobin,5.8,%,<5.7%,2024-08-22
+Hospital_C,1454,HbA1c,6.3,%,4.0-5.6%,2025-10-18
+Hospital_C,1924,Cholesterol,249.13220906542585,mg/dL,125-200,2025-11-06
+Hospital_C,1697,Fasting Glucose,169.37440744802646,mg/dL,Normal: <100,2024-10-22
+Hospital_C,1118,Glycated Hemoglobin,8.0,%,Normal < 6,2025-07-11
+Hospital_B,1370,Glucose,7.87,mmol/L,Normal: <100,2024-07-01
+Hospital_C,1683,Total Chol,261.15772490875315,mg/dL,<200,2025-05-02
+Hospital_A,1210,Cholesterol,5.38,mmol/L,<200,2024-07-31
+Hospital_A,1985,Fasting Glucose,111.49180497579101,mg/dL,70-99,2024-11-25
+Hospital_A,1593,Glycated Hemoglobin,5.0,%,Normal < 6,2025-11-03
+Hospital_B,1189,Hemoglobin A1c,6.5,%,Normal < 6,2024-05-28
+Hospital_A,1758,Total Chol,267.9265638987066,mg/dL,<200,2026-02-20
+Hospital_B,1313,Glycated Hemoglobin,5.5,%,<5.7%,2024-09-08
+Hospital_A,1154,Serum Cholesterol,7.15,mmol/L,<200,2025-02-13
+Hospital_A,1508,Glycated Hemoglobin,4.8,%,4.0-5.6%,2025-06-25
+Hospital_C,1231,Glycated Hemoglobin,8.4,%,4.0-5.6%,2025-05-05
+Hospital_B,1354,Blood Sugar,173.11513972485733,mg/dL,3.9-5.5,2025-04-01
+Hospital_C,1469,Glucose,4.7,mmol/L,3.9-5.5,2024-08-24
+Hospital_B,1020,Glycated Hemoglobin,5.7,%,<5.7%,2025-04-23
+Hospital_C,1637,HbA1c,,%,4.0-5.6%,2026-01-01
+Hospital_A,1442,Cholesterol,4.73,mmol/L,125-200,2025-11-03
+Hospital_C,1691,Glycated Hemoglobin,7.4,%,Normal < 6,2025-08-11
+Hospital_C,1661,Fasting Glucose,7.33,mmol/L,70-99,2025-04-02
+Hospital_B,1323,Blood Sugar,128.83178070671022,mg/dL,3.9-5.5,2025-04-15
+Hospital_A,1779,Fasting Glucose,123.85347996930182,mg/dL,3.9-5.5,2026-03-16
+Hospital_A,1506,Serum Cholesterol,5.62,mmol/L,<200,2025-01-23
+Hospital_A,1714,Hemoglobin A1c,5.4,%,<5.7%,2025-04-02
+Hospital_C,1341,Serum Cholesterol,4.32,mmol/L,3.2-5.2,2025-01-22
+Hospital_C,1922,Serum Cholesterol,168.042281213315,mg/dL,<200,2025-12-08
+Hospital_B,1675,HbA1c,7.7,%,4.0-5.6%,2024-11-11
+Hospital_C,1470,Cholesterol,4.18,mmol/L,3.2-5.2,2025-07-02
+Hospital_A,1502,Total Chol,197.4734919656944,mg/dL,3.2-5.2,2025-06-10
+Hospital_C,1881,Glycated Hemoglobin,5.7,%,<5.7%,2024-11-02
+Hospital_A,1464,Glucose,8.93,mmol/L,70-99,2024-04-07
+Hospital_A,1469,Serum Cholesterol,160.98910816494495,mg/dL,125-200,2024-10-02
+Hospital_C,1602,Blood Sugar,7.91,mmol/L,Normal: <100,2026-03-26
+Hospital_C,1172,Serum Cholesterol,175.68009345836884,mg/dL,3.2-5.2,2024-12-07
+Hospital_B,1281,Fasting Glucose,170.16786490905815,mg/dL,Normal: <100,2024-05-08
+Hospital_C,1116,Glycated Hemoglobin,7.4,%,Normal < 6,2024-08-02
+Hospital_C,1620,HbA1c,9.7,%,Normal < 6,2024-11-27
+Hospital_A,1753,Blood Sugar,-999,mg/dL,70-99,2024-05-21
+Hospital_B,1062,Hemoglobin A1c,-999,%,4.0-5.6%,2025-07-27
+Hospital_A,1577,HbA1c,6.4,%,4.0-5.6%,2025-03-11
+Hospital_C,1562,Blood Sugar,97.57563762964504,mg/dL,Normal: <100,2025-07-29
+Hospital_B,1295,Glucose,9.56,mmol/L,3.9-5.5,2025-07-12
+Hospital_B,1807,Hemoglobin A1c,4.7,%,<5.7%,2025-03-27
+Hospital_B,1493,Glycated Hemoglobin,10.3,%,Normal < 6,2024-07-05
+Hospital_C,1359,Serum Cholesterol,4.52,mmol/L,<200,2025-12-10
+Hospital_C,1480,HbA1c,-999,%,Normal < 6,2024-05-20
+Hospital_A,1057,Fasting Glucose,72.19207888774079,mg/dL,3.9-5.5,2025-12-15
+Hospital_C,1049,Blood Sugar,162.67991885078834,mg/dL,70-99,2024-07-18
+Hospital_C,1681,Cholesterol,256.97956487983714,mg/dL,3.2-5.2,2025-10-24
+Hospital_C,1710,Glucose,151.3303749441725,mg/dL,70-99,2025-07-23
+Hospital_B,1010,Blood Sugar,131.01607667409496,mg/dL,3.9-5.5,2025-06-09
+Hospital_A,1139,Cholesterol,165.84866251540367,mg/dL,125-200,2025-01-09
+Hospital_A,1367,HbA1c,9.0,%,4.0-5.6%,2024-04-27
+Hospital_C,1893,Fasting Glucose,9.63,mmol/L,70-99,2025-12-06
+Hospital_B,1352,Blood Sugar,7.19,mmol/L,70-99,2025-02-17
+Hospital_B,1942,Glycated Hemoglobin,5.5,%,<5.7%,2025-04-03
+Hospital_C,1833,Glucose,76.48802714415439,mg/dL,Normal: <100,2026-03-19
+Hospital_B,1160,Glucose,6.81,mmol/L,70-99,2024-07-05
+Hospital_A,1146,Serum Cholesterol,N/A,mmol/L,125-200,2025-09-17
+Hospital_B,1404,Serum Cholesterol,234.1751414716208,mg/dL,3.2-5.2,2025-05-22
+Hospital_B,1529,Fasting Glucose,96.97544345237071,mg/dL,3.9-5.5,2024-11-23
+Hospital_C,1416,Blood Sugar,160.55175584361132,mg/dL,Normal: <100,2024-11-21
+Hospital_B,1910,HbA1c,9.4,%,4.0-5.6%,2025-10-09
+Hospital_C,1913,Total Chol,7.36,mmol/L,125-200,2026-01-02
+Hospital_B,1359,Cholesterol,287.98411869821314,mg/dL,125-200,2024-09-22
+Hospital_C,1871,Cholesterol,177.59890841780748,mg/dL,125-200,2024-05-02
+Hospital_B,1847,Total Chol,183.67259246881721,mg/dL,125-200,2026-03-19
+Hospital_A,1048,Blood Sugar,4.27,mmol/L,3.9-5.5,2025-09-24
+Hospital_C,1644,Serum Cholesterol,7.68,mmol/L,125-200,2025-12-04
+Hospital_A,1981,Serum Cholesterol,180.98660693600257,mg/dL,125-200,2025-09-15
+Hospital_C,1467,Hemoglobin A1c,9.4,%,<5.7%,2024-09-03
+Hospital_A,1537,HbA1c,-999,%,4.0-5.6%,2024-12-25
+Hospital_B,1561,HbA1c,8.0,%,Normal < 6,2025-03-23
+Hospital_B,1446,Serum Cholesterol,5.13,mmol/L,<200,2024-12-04
+Hospital_A,1594,Total Chol,255.4639969996179,mg/dL,<200,2025-09-30
+Hospital_A,1383,Fasting Glucose,91.78225817912696,mg/dL,Normal: <100,2024-04-09
+Hospital_B,1846,Total Chol,6.54,mmol/L,<200,2024-08-15
+Hospital_A,1035,Total Chol,7.23,mmol/L,3.2-5.2,2026-03-02
+Hospital_A,1871,Blood Sugar,N/A,mmol/L,Normal: <100,2024-08-31
+Hospital_B,1788,Blood Sugar,8.05,mmol/L,Normal: <100,2024-04-22
+Hospital_A,1341,Glucose,9.87,mmol/L,3.9-5.5,2026-03-01
+Hospital_A,1665,Fasting Glucose,4.52,mmol/L,3.9-5.5,2025-06-26
+Hospital_B,1581,Hemoglobin A1c,9.6,%,4.0-5.6%,2025-09-17
+Hospital_C,1490,Glucose,9.59,mmol/L,3.9-5.5,2025-08-04
+Hospital_C,1277,Blood Sugar,77.32575716637794,mg/dL,3.9-5.5,2026-03-01
+Hospital_C,1439,HbA1c,5.7,%,4.0-5.6%,2024-07-05
+Hospital_C,1671,Total Chol,291.85737867684117,mg/dL,3.2-5.2,2025-07-11
+Hospital_C,1027,Cholesterol,4.73,mmol/L,<200,2024-07-10
+Hospital_C,1906,Glycated Hemoglobin,-999,%,<5.7%,2024-05-16
+Hospital_A,1216,Fasting Glucose,152.1567150201866,mg/dL,3.9-5.5,2026-01-23
+Hospital_C,1826,Fasting Glucose,9.45,mmol/L,3.9-5.5,2025-06-07
+Hospital_B,1487,Serum Cholesterol,7.71,mmol/L,<200,2024-04-02
+Hospital_B,1360,Cholesterol,187.7150194395916,mg/dL,125-200,2025-02-20
+Hospital_B,1382,Glycated Hemoglobin,-999,%,Normal < 6,2024-12-26
+Hospital_C,1713,Fasting Glucose,6.97,mmol/L,70-99,2024-04-12
+Hospital_A,1096,Fasting Glucose,6.05,mmol/L,70-99,2024-11-20
+Hospital_A,1838,Fasting Glucose,8.99,mmol/L,70-99,2025-07-13
+Hospital_A,1426,Total Chol,6.16,mmol/L,3.2-5.2,2024-09-03
+Hospital_C,1776,Serum Cholesterol,296.0522833348632,mg/dL,125-200,2025-05-21
+Hospital_B,1407,Fasting Glucose,75.95629884176626,mg/dL,3.9-5.5,2024-06-16
+Hospital_C,1653,Fasting Glucose,79.50250114655859,mg/dL,3.9-5.5,2024-06-24
+Hospital_C,1345,Serum Cholesterol,,mg/dL,<200,2024-07-29
+Hospital_A,1629,Fasting Glucose,109.57139981030097,mg/dL,70-99,2024-08-25
+Hospital_C,1694,Hemoglobin A1c,10.4,%,4.0-5.6%,2024-12-23
+Hospital_C,1696,Cholesterol,296.2624223120676,mg/dL,125-200,2024-11-19
+Hospital_A,1069,Blood Sugar,126.5571731789448,mg/dL,3.9-5.5,2025-10-15
+Hospital_C,1075,Blood Sugar,111.79999923918014,mg/dL,Normal: <100,2025-01-24
+Hospital_C,1072,Cholesterol,5.46,mmol/L,125-200,2025-07-24
+Hospital_B,1215,Cholesterol,203.05179519219274,mg/dL,125-200,2026-02-21
+Hospital_B,1512,Total Chol,not collected,mmol/L,3.2-5.2,2024-07-19
+Hospital_B,1689,HbA1c,6.0,%,Normal < 6,2026-01-03
+Hospital_C,1446,Fasting Glucose,110.06436189593906,mg/dL,Normal: <100,2024-08-14
+Hospital_C,1513,Hemoglobin A1c,not collected,%,Normal < 6,2024-08-31
+Hospital_C,1361,Fasting Glucose,5.03,mmol/L,Normal: <100,2025-05-19
+Hospital_B,1956,Total Chol,192.425847492424,mg/dL,3.2-5.2,2024-10-17
+Hospital_A,1335,Glycated Hemoglobin,9.9,%,4.0-5.6%,2025-06-27
+Hospital_C,1038,Cholesterol,6.25,mmol/L,125-200,2026-01-06
+Hospital_B,1551,Serum Cholesterol,223.2344216325376,mg/dL,125-200,2025-08-31
+Hospital_C,1095,Hemoglobin A1c,8.4,%,<5.7%,2025-10-04
+Hospital_C,1216,Fasting Glucose,7.24,mmol/L,3.9-5.5,2024-10-23
+Hospital_C,1268,Fasting Glucose,,mmol/L,3.9-5.5,2025-05-25
+Hospital_B,1047,Total Chol,4.42,mmol/L,125-200,2026-01-28
+Hospital_B,1855,Glycated Hemoglobin,9.3,%,4.0-5.6%,2025-01-12
+Hospital_C,1484,Hemoglobin A1c,8.9,%,4.0-5.6%,2025-04-30
+Hospital_C,1688,Serum Cholesterol,159.8040937500051,mg/dL,<200,2024-10-16
+Hospital_C,1357,Serum Cholesterol,6.02,mmol/L,<200,2025-03-12
+Hospital_B,1728,Hemoglobin A1c,7.1,%,4.0-5.6%,2024-07-01
+Hospital_B,1820,Total Chol,278.48838362670256,mg/dL,<200,2025-01-19
+Hospital_C,1902,Glycated Hemoglobin,5.2,%,4.0-5.6%,2024-10-04
+Hospital_B,1022,Glucose,133.0835162487495,mg/dL,70-99,2024-12-24
+Hospital_B,1994,Cholesterol,276.1195749645376,mg/dL,125-200,2025-05-24
+Hospital_C,1156,Serum Cholesterol,188.5937583228017,mg/dL,125-200,2024-04-26
+Hospital_A,1673,Glucose,7.36,mmol/L,3.9-5.5,2025-01-16
+Hospital_B,1715,Glucose,4.62,mmol/L,3.9-5.5,2026-03-17
+Hospital_B,1152,Blood Sugar,174.19678592977462,mg/dL,Normal: <100,2025-07-29
+Hospital_C,1484,Cholesterol,192.5679607489541,mg/dL,3.2-5.2,2025-08-18
+Hospital_C,1023,Hemoglobin A1c,7.3,%,Normal < 6,2026-01-13
+Hospital_C,1563,Hemoglobin A1c,6.1,%,4.0-5.6%,2024-12-24
+Hospital_B,1903,Total Chol,4.85,mmol/L,3.2-5.2,2024-09-07
+Hospital_A,1271,Glycated Hemoglobin,5.9,%,4.0-5.6%,2024-04-02
+Hospital_C,1894,Blood Sugar,134.10134660450615,mg/dL,3.9-5.5,2025-06-28
+Hospital_C,1556,Total Chol,277.6589607866995,mg/dL,<200,2025-03-08
+Hospital_C,1272,Cholesterol,-999,mg/dL,3.2-5.2,2024-05-23
+Hospital_A,1023,Glycated Hemoglobin,8.6,%,Normal < 6,2024-11-23
+Hospital_C,1236,Hemoglobin A1c,7.3,%,4.0-5.6%,2025-12-19
+Hospital_A,1480,Glycated Hemoglobin,7.9,%,<5.7%,2025-10-17
+Hospital_C,1331,Glucose,5.97,mmol/L,70-99,2025-04-15
+Hospital_A,1341,Glucose,128.3665302849913,mg/dL,Normal: <100,2025-12-06
+Hospital_A,1980,HbA1c,8.2,%,4.0-5.6%,2026-01-05
+Hospital_B,1356,Hemoglobin A1c,8.5,%,<5.7%,2025-07-23
+Hospital_A,1961,Blood Sugar,167.868397770628,mg/dL,Normal: <100,2025-01-09
+Hospital_C,1520,Glycated Hemoglobin,8.0,%,Normal < 6,2026-01-01
+Hospital_A,1893,HbA1c,9.7,%,4.0-5.6%,2025-04-10
+Hospital_A,1657,HbA1c,5.5,%,<5.7%,2025-04-19
+Hospital_B,1656,Total Chol,7.52,mmol/L,125-200,2026-01-12
+Hospital_B,1516,Hemoglobin A1c,6.1,%,<5.7%,2025-06-03
+Hospital_C,1786,Glycated Hemoglobin,5.7,%,4.0-5.6%,2025-03-06
+Hospital_A,1429,Glycated Hemoglobin,9.1,%,<5.7%,2024-03-29
+Hospital_B,1679,Hemoglobin A1c,7.3,%,<5.7%,2025-09-09
+Hospital_A,1613,Total Chol,6.07,mmol/L,3.2-5.2,2026-01-01
+Hospital_C,1981,Cholesterol,165.42067916666443,mg/dL,<200,2025-01-06
+Hospital_A,1621,HbA1c,8.2,%,Normal < 6,2025-08-12
+Hospital_B,1039,Cholesterol,4.64,mmol/L,125-200,2024-06-21
+Hospital_A,1592,Blood Sugar,-999,mmol/L,70-99,2025-08-07
+Hospital_A,1849,Hemoglobin A1c,7.5,%,<5.7%,2025-04-05
+Hospital_A,1061,Blood Sugar,6.57,mmol/L,Normal: <100,2025-03-20
+Hospital_B,1220,HbA1c,5.1,%,Normal < 6,2024-06-07
+Hospital_A,1721,HbA1c,10.2,%,<5.7%,2025-12-27
+Hospital_C,1029,Glucose,162.06743453695645,mg/dL,Normal: <100,2024-08-19
+Hospital_C,1575,Glycated Hemoglobin,7.0,%,<5.7%,2024-06-28
+Hospital_B,1527,Cholesterol,4.82,mmol/L,125-200,2025-05-01
+Hospital_C,1422,Glycated Hemoglobin,6.8,%,<5.7%,2024-10-15
+Hospital_C,1971,Glycated Hemoglobin,8.4,%,Normal < 6,2025-09-28
+Hospital_C,1462,Fasting Glucose,89.77485310778339,mg/dL,3.9-5.5,2025-04-29
+Hospital_B,1802,Hemoglobin A1c,6.6,%,<5.7%,2024-12-28
+Hospital_B,1188,Blood Sugar,4.59,mmol/L,3.9-5.5,2024-03-30
+Hospital_A,1095,Hemoglobin A1c,9.9,%,<5.7%,2026-02-25
+Hospital_C,1866,Total Chol,4.59,mmol/L,125-200,2025-01-12
+Hospital_A,1955,Fasting Glucose,5.52,mmol/L,3.9-5.5,2026-02-14
+Hospital_B,1206,Glycated Hemoglobin,7.4,%,<5.7%,2025-11-10
+Hospital_A,1002,Hemoglobin A1c,6.2,%,Normal < 6,2025-01-13
+Hospital_A,1089,Hemoglobin A1c,7.0,%,Normal < 6,2026-01-08
+Hospital_C,1546,Blood Sugar,79.23422083782002,mg/dL,70-99,2025-10-22
+Hospital_A,1979,Hemoglobin A1c,8.2,%,4.0-5.6%,2026-02-03
+Hospital_A,1248,Glucose,84.0448826125514,mg/dL,3.9-5.5,2025-01-03
+Hospital_B,1996,Fasting Glucose,9.87,mmol/L,3.9-5.5,2025-04-06
+Hospital_A,1515,HbA1c,8.0,%,<5.7%,2024-09-19
+Hospital_B,1372,Cholesterol,7.67,mmol/L,<200,2024-08-04
+Hospital_C,1408,Glycated Hemoglobin,10.4,%,4.0-5.6%,2024-06-20
+Hospital_A,1325,Fasting Glucose,154.19785138261034,mg/dL,Normal: <100,2024-08-28
+Hospital_A,1405,Total Chol,214.384641113302,mg/dL,<200,2024-11-15
+Hospital_A,1242,HbA1c,7.8,%,Normal < 6,2024-10-18
+Hospital_C,1401,Glycated Hemoglobin,10.4,%,<5.7%,2025-04-19
+Hospital_B,1678,Glycated Hemoglobin,6.4,%,Normal < 6,2025-01-13
+Hospital_C,1390,Total Chol,5.46,mmol/L,<200,2026-03-22
+Hospital_B,1969,Fasting Glucose,124.82130551779147,mg/dL,Normal: <100,2024-10-07
+Hospital_C,1938,Hemoglobin A1c,7.6,%,<5.7%,2026-02-22
+Hospital_C,1810,Blood Sugar,not collected,mg/dL,70-99,2025-08-18
+Hospital_A,1144,Glucose,9.67,mmol/L,70-99,2024-12-05
+Hospital_B,1553,Glucose,not collected,mmol/L,3.9-5.5,2025-01-19
+Hospital_B,1396,Blood Sugar,7.19,mmol/L,3.9-5.5,2026-01-09
+Hospital_C,1020,Total Chol,3.9,mmol/L,125-200,2024-04-23
+Hospital_C,1603,Serum Cholesterol,7.68,mmol/L,125-200,2024-05-04
+Hospital_A,1647,Blood Sugar,120.18030522193646,mg/dL,70-99,2024-10-06
+Hospital_C,1802,Serum Cholesterol,4.48,mmol/L,<200,2024-08-30
+Hospital_C,1916,Serum Cholesterol,6.84,mmol/L,3.2-5.2,2025-02-11
+Hospital_B,1751,Total Chol,not collected,mg/dL,3.2-5.2,2024-10-20
+Hospital_B,1721,Total Chol,200.48416067112066,mg/dL,<200,2024-07-19
+Hospital_A,1992,Blood Sugar,107.30676597504365,mg/dL,70-99,2025-08-12
+Hospital_B,1433,Hemoglobin A1c,6.4,%,4.0-5.6%,2025-03-23
+Hospital_C,1021,HbA1c,4.6,%,Normal < 6,2026-01-03
+Hospital_A,1847,Cholesterol,-999,mg/dL,125-200,2025-01-18
+Hospital_A,1502,Glycated Hemoglobin,10.0,%,4.0-5.6%,2025-02-24
+Hospital_C,1957,Total Chol,257.1435493164189,mg/dL,125-200,2026-02-02
+Hospital_B,1229,Cholesterol,263.1349806089289,mg/dL,<200,2025-05-20
+Hospital_C,1156,HbA1c,8.2,%,<5.7%,2025-07-14
+Hospital_C,1787,HbA1c,10.0,%,4.0-5.6%,2026-01-18
+Hospital_B,1545,Glycated Hemoglobin,4.9,%,4.0-5.6%,2025-10-15
+Hospital_A,1441,Cholesterol,4.49,mmol/L,<200,2024-04-22
+Hospital_C,1706,Serum Cholesterol,212.60193861330822,mg/dL,<200,2024-06-06
+Hospital_C,1681,Blood Sugar,8.05,mmol/L,3.9-5.5,2025-11-15
+Hospital_A,1867,Serum Cholesterol,6.95,mmol/L,125-200,2025-10-13
+Hospital_B,1433,Hemoglobin A1c,7.6,%,4.0-5.6%,2025-02-18
+Hospital_B,1352,Serum Cholesterol,5.39,mmol/L,125-200,2024-05-09
+Hospital_C,1057,Total Chol,N/A,mmol/L,125-200,2025-07-08
+Hospital_C,1234,Fasting Glucose,8.8,mmol/L,70-99,2026-01-10
+Hospital_A,1301,Hemoglobin A1c,8.2,%,Normal < 6,2025-09-20
+Hospital_B,1067,Total Chol,150.9928301827542,mg/dL,125-200,2025-10-21
+Hospital_B,1659,Fasting Glucose,N/A,mmol/L,Normal: <100,2025-01-02
+Hospital_C,1067,Glycated Hemoglobin,8.9,%,4.0-5.6%,2025-02-05
+Hospital_C,1801,Fasting Glucose,90.75358956441792,mg/dL,70-99,2025-03-04
+Hospital_C,1417,Hemoglobin A1c,9.6,%,<5.7%,2025-06-04
+Hospital_B,1362,Hemoglobin A1c,10.3,%,Normal < 6,2025-08-18
+Hospital_C,1677,Blood Sugar,129.90186165816365,mg/dL,70-99,2025-10-02
+Hospital_C,1429,Fasting Glucose,89.51644027490623,mg/dL,3.9-5.5,2025-08-27
+Hospital_A,1451,Hemoglobin A1c,4.8,%,<5.7%,2025-06-07
+Hospital_A,1904,Fasting Glucose,8.63,mmol/L,3.9-5.5,2024-11-27
+Hospital_B,1062,Fasting Glucose,84.10178700136211,mg/dL,3.9-5.5,2025-01-22
+Hospital_C,1295,Serum Cholesterol,162.3371917696097,mg/dL,125-200,2024-06-07
+Hospital_C,1870,Blood Sugar,9.3,mmol/L,Normal: <100,2025-08-15
+Hospital_A,1338,Fasting Glucose,N/A,mmol/L,Normal: <100,2025-10-14
+Hospital_A,1318,Fasting Glucose,106.66187287387513,mg/dL,3.9-5.5,2024-09-06
+Hospital_B,1713,Cholesterol,4.72,mmol/L,<200,2026-02-09
+Hospital_B,1696,Total Chol,281.6940227475618,mg/dL,3.2-5.2,2026-03-03
+Hospital_C,1434,Blood Sugar,130.00218370791006,mg/dL,3.9-5.5,2025-04-17
+Hospital_C,1335,Cholesterol,245.31058835669086,mg/dL,3.2-5.2,2026-03-10
+Hospital_B,1649,Glycated Hemoglobin,10.5,%,4.0-5.6%,2024-06-11
+Hospital_B,1793,Total Chol,264.00061963384627,mg/dL,<200,2025-03-02
+Hospital_B,1756,Cholesterol,5.54,mmol/L,125-200,2025-12-01
+Hospital_B,1854,Hemoglobin A1c,7.2,%,4.0-5.6%,2025-09-30
+Hospital_B,1601,Fasting Glucose,10,mmol/L,Normal: <100,2025-12-15
+Hospital_B,1956,Serum Cholesterol,4.62,mmol/L,3.2-5.2,2024-06-26
+Hospital_B,1652,Glycated Hemoglobin,7.6,%,<5.7%,2025-04-18
+Hospital_C,1832,Hemoglobin A1c,8.0,%,4.0-5.6%,2024-04-26
+Hospital_A,1167,Hemoglobin A1c,10.4,%,Normal < 6,2024-06-22
+Hospital_A,1186,Total Chol,245.94701591754358,mg/dL,125-200,2025-09-03
+Hospital_B,1726,Serum Cholesterol,5.63,mmol/L,3.2-5.2,2025-05-16
+Hospital_C,1390,Glucose,6.02,mmol/L,70-99,2025-10-11
+Hospital_B,1566,HbA1c,7.5,%,<5.7%,2024-08-28
+Hospital_C,1169,Cholesterol,4.5,mmol/L,3.2-5.2,2024-05-15
+Hospital_A,1218,HbA1c,8.1,%,<5.7%,2024-12-11
+Hospital_C,1173,Fasting Glucose,5.0,mmol/L,70-99,2025-11-26
+Hospital_B,1517,Serum Cholesterol,6.83,mmol/L,125-200,2025-05-25
+Hospital_A,1794,Cholesterol,5.62,mmol/L,<200,2025-02-17
+Hospital_A,1382,Blood Sugar,161.48990466671555,mg/dL,Normal: <100,2025-11-15
+Hospital_C,1310,HbA1c,6.7,%,<5.7%,2025-12-06
+Hospital_A,1301,Serum Cholesterol,-999,mmol/L,3.2-5.2,2025-04-11
+Hospital_B,1885,Glucose,9.19,mmol/L,Normal: <100,2024-04-08
+Hospital_A,1087,Fasting Glucose,170.9206387069098,mg/dL,70-99,2024-12-08
+Hospital_C,1390,Total Chol,251.2254833062983,mg/dL,3.2-5.2,2025-07-10
+Hospital_A,1350,Glycated Hemoglobin,5.4,%,4.0-5.6%,2024-07-08
+Hospital_B,1279,Fasting Glucose,5.98,mmol/L,70-99,2024-03-27
+Hospital_A,1760,Cholesterol,159.9204486352334,mg/dL,125-200,2025-02-20
+Hospital_B,1581,Fasting Glucose,4.27,mmol/L,Normal: <100,2025-07-22
+Hospital_C,1554,Cholesterol,196.3497594243274,mg/dL,3.2-5.2,2024-04-02
+Hospital_C,1534,Glycated Hemoglobin,4.8,%,4.0-5.6%,2025-05-03
+Hospital_A,1132,Glycated Hemoglobin,7.5,%,<5.7%,2024-06-28
+Hospital_C,1084,Glycated Hemoglobin,8.5,%,4.0-5.6%,2024-08-02
+Hospital_C,1640,Fasting Glucose,8.45,mmol/L,3.9-5.5,2026-03-05
+Hospital_C,1054,Blood Sugar,176.9279805548528,mg/dL,70-99,2024-08-31
+Hospital_C,1891,Glucose,5.93,mmol/L,Normal: <100,2025-05-26
+Hospital_B,1707,Glucose,,mg/dL,70-99,2024-08-03
+Hospital_B,1365,Blood Sugar,136.89663306284243,mg/dL,Normal: <100,2025-10-11
+Hospital_B,1643,Glycated Hemoglobin,9.3,%,4.0-5.6%,2024-05-01
+Hospital_A,1875,Glucose,5.59,mmol/L,Normal: <100,2026-02-27
+Hospital_A,1797,Blood Sugar,80.78705471815928,mg/dL,Normal: <100,2025-07-21
+Hospital_B,1848,HbA1c,5.0,%,Normal < 6,2024-06-16
+Hospital_A,1547,HbA1c,5.2,%,<5.7%,2024-07-21
+Hospital_A,1356,Hemoglobin A1c,9.2,%,<5.7%,2025-11-22
+Hospital_C,1454,Glucose,121.78091369094076,mg/dL,70-99,2024-09-23
+Hospital_A,1026,Serum Cholesterol,6.23,mmol/L,3.2-5.2,2025-08-06
+Hospital_A,1946,Fasting Glucose,N/A,mmol/L,70-99,2025-07-31
+Hospital_C,1944,Cholesterol,296.6599464024688,mg/dL,3.2-5.2,2025-07-08
+Hospital_A,1367,Blood Sugar,156.44606255297919,mg/dL,70-99,2024-07-22
+Hospital_A,1938,Blood Sugar,9.33,mmol/L,70-99,2024-09-08
+Hospital_A,1039,Fasting Glucose,8.8,mmol/L,3.9-5.5,2025-12-14
+Hospital_A,1334,Serum Cholesterol,-999,mmol/L,3.2-5.2,2024-04-18
+Hospital_B,1172,Glycated Hemoglobin,7.8,%,4.0-5.6%,2024-05-21
+Hospital_B,1009,Fasting Glucose,153.4263098308801,mg/dL,70-99,2025-10-13
+Hospital_C,1359,Glucose,163.044767469777,mg/dL,Normal: <100,2026-01-02
+Hospital_A,1772,Fasting Glucose,9.8,mmol/L,Normal: <100,2025-08-23
+Hospital_B,1933,Total Chol,4.58,mmol/L,125-200,2026-03-20
+Hospital_A,1196,Total Chol,5.11,mmol/L,3.2-5.2,2024-12-03
+Hospital_C,1184,HbA1c,9.1,%,<5.7%,2024-05-30
+Hospital_B,1666,Cholesterol,5.89,mmol/L,<200,2025-12-05
+Hospital_B,1763,Hemoglobin A1c,10.0,%,4.0-5.6%,2025-03-12
+Hospital_A,1606,Glycated Hemoglobin,N/A,%,Normal < 6,2024-09-22
+Hospital_B,1872,HbA1c,9.0,%,<5.7%,2024-08-19
+Hospital_A,1780,Hemoglobin A1c,9.1,%,Normal < 6,2024-08-08
+Hospital_A,1687,Total Chol,5.87,mmol/L,<200,2024-09-28
+Hospital_C,1323,Cholesterol,7.34,mmol/L,125-200,2024-05-10
+Hospital_B,1972,Cholesterol,251.85930853700924,mg/dL,125-200,2024-09-04
+Hospital_C,1293,Hemoglobin A1c,6.3,%,<5.7%,2025-07-11
+Hospital_B,1725,Glycated Hemoglobin,9.6,%,4.0-5.6%,2025-11-19
+Hospital_A,1647,Serum Cholesterol,257.7816491688529,mg/dL,<200,2025-07-22
+Hospital_C,1262,HbA1c,9.2,%,<5.7%,2025-03-10
+Hospital_C,1968,Total Chol,282.8120675849369,mg/dL,125-200,2025-09-26
+Hospital_A,1586,Fasting Glucose,8.83,mmol/L,70-99,2025-01-06
+Hospital_B,1822,Hemoglobin A1c,9.3,%,<5.7%,2026-02-23
+Hospital_A,1580,Total Chol,4.69,mmol/L,3.2-5.2,2025-06-21
+Hospital_A,1288,HbA1c,8.9,%,4.0-5.6%,2025-11-18
+Hospital_B,1214,Hemoglobin A1c,6.7,%,4.0-5.6%,2024-07-09
+Hospital_B,1989,Cholesterol,261.5504949368624,mg/dL,125-200,2025-08-23
+Hospital_C,1502,Blood Sugar,6.91,mmol/L,70-99,2024-12-11
+Hospital_C,1009,Hemoglobin A1c,4.9,%,Normal < 6,2024-10-12
+Hospital_A,1265,Cholesterol,4.62,mmol/L,3.2-5.2,2025-03-01
+Hospital_B,1984,Serum Cholesterol,164.60464811069386,mg/dL,125-200,2025-01-25
+Hospital_B,1826,Hemoglobin A1c,6.1,%,Normal < 6,2025-08-31
+Hospital_A,1498,Serum Cholesterol,233.23688637487462,mg/dL,<200,2025-08-24
+Hospital_A,1105,Glycated Hemoglobin,5.5,%,<5.7%,2024-08-14
+Hospital_A,1431,Glucose,,mmol/L,3.9-5.5,2025-04-17
+Hospital_B,1648,Hemoglobin A1c,10.3,%,4.0-5.6%,2025-09-30
+Hospital_B,1686,Blood Sugar,9.02,mmol/L,3.9-5.5,2025-12-18
+Hospital_B,1116,Cholesterol,252.25689496951316,mg/dL,3.2-5.2,2025-09-04
+Hospital_B,1000,HbA1c,9.8,%,<5.7%,2025-02-15
+Hospital_C,1114,Fasting Glucose,5.39,mmol/L,3.9-5.5,2025-02-06
+Hospital_A,1528,Fasting Glucose,106.40886211084862,mg/dL,Normal: <100,2024-11-20
+Hospital_B,1953,HbA1c,10.1,%,Normal < 6,2024-11-25
+Hospital_A,1034,Fasting Glucose,76.25701027539074,mg/dL,70-99,2025-05-03
+Hospital_A,1079,Hemoglobin A1c,6.8,%,4.0-5.6%,2025-03-13
+Hospital_C,1243,Fasting Glucose,N/A,mmol/L,Normal: <100,2025-08-02
+Hospital_B,1789,HbA1c,5.0,%,4.0-5.6%,2025-05-30
+Hospital_B,1713,Glycated Hemoglobin,5.7,%,<5.7%,2024-11-20
+Hospital_B,1919,Total Chol,4.59,mmol/L,3.2-5.2,2025-10-09
+Hospital_A,1583,Glycated Hemoglobin,-999,%,4.0-5.6%,2025-12-14
+Hospital_C,1370,Blood Sugar,154.7167047194716,mg/dL,70-99,2025-02-06
+Hospital_C,1144,Cholesterol,5.61,mmol/L,125-200,2024-08-19
+Hospital_C,1610,Glucose,87.31508868178685,mg/dL,Normal: <100,2025-02-12
+Hospital_A,1339,Cholesterol,202.0215187024843,mg/dL,3.2-5.2,2025-12-23
+Hospital_B,1890,Blood Sugar,127.85461954883175,mg/dL,Normal: <100,2024-04-04
+Hospital_A,1452,Cholesterol,208.59275835418705,mg/dL,<200,2025-12-03
+Hospital_B,1152,Serum Cholesterol,151.74673010788712,mg/dL,3.2-5.2,2025-01-01
+Hospital_B,1883,Serum Cholesterol,219.6324010606832,mg/dL,<200,2025-06-14
+Hospital_A,1408,Total Chol,264.3049379455344,mg/dL,<200,2026-01-31
+Hospital_C,1728,Hemoglobin A1c,5.1,%,Normal < 6,2024-04-28
+Hospital_A,1938,Hemoglobin A1c,9.7,%,<5.7%,2024-11-24
+Hospital_B,1603,Glycated Hemoglobin,6.9,%,<5.7%,2025-08-25
+Hospital_C,1475,Serum Cholesterol,N/A,mg/dL,3.2-5.2,2024-11-28
+Hospital_A,1446,Serum Cholesterol,162.91403208030522,mg/dL,<200,2025-10-31
+Hospital_C,1134,Fasting Glucose,4.48,mmol/L,Normal: <100,2026-03-08
+Hospital_A,1976,HbA1c,9.7,%,<5.7%,2025-09-19
+Hospital_B,1510,Hemoglobin A1c,5.0,%,<5.7%,2026-02-16
+Hospital_A,1141,Glucose,not collected,mmol/L,Normal: <100,2025-11-30
+Hospital_B,1142,Fasting Glucose,9.04,mmol/L,Normal: <100,2024-07-12
+Hospital_C,1811,Glucose,78.68651857259941,mg/dL,70-99,2025-05-12
+Hospital_B,1629,Glucose,77.40199931784448,mg/dL,3.9-5.5,2025-05-23
+Hospital_B,1251,Glucose,6.16,mmol/L,Normal: <100,2024-12-01
+Hospital_A,1415,Hemoglobin A1c,-999,%,4.0-5.6%,2025-12-04
+Hospital_B,1992,Glycated Hemoglobin,7.4,%,4.0-5.6%,2025-09-17
+Hospital_A,1706,HbA1c,5.7,%,4.0-5.6%,2024-04-16
+Hospital_B,1054,Serum Cholesterol,220.8329523609125,mg/dL,<200,2024-10-15
+Hospital_B,1375,Serum Cholesterol,5.33,mmol/L,3.2-5.2,2025-04-04
+Hospital_A,1391,Hemoglobin A1c,6.0,%,4.0-5.6%,2025-01-04
+Hospital_C,1883,Glycated Hemoglobin,8.1,%,Normal < 6,2024-06-26
+Hospital_C,1367,Total Chol,276.09580418946,mg/dL,<200,2025-12-21
+Hospital_C,1590,Blood Sugar,3.99,mmol/L,70-99,2025-10-29
+Hospital_A,1089,Blood Sugar,7.29,mmol/L,70-99,2024-05-10
+Hospital_B,1997,Cholesterol,225.81416457911638,mg/dL,125-200,2025-04-17
+Hospital_B,1098,Serum Cholesterol,7.03,mmol/L,3.2-5.2,2026-01-21
+Hospital_C,1669,Cholesterol,210.39319231534031,mg/dL,<200,2026-02-11
+Hospital_A,1623,Blood Sugar,109.37140202058883,mg/dL,3.9-5.5,2026-01-15
+Hospital_B,1096,Serum Cholesterol,4.98,mmol/L,3.2-5.2,2025-11-12
+Hospital_C,1618,Cholesterol,4.73,mmol/L,3.2-5.2,2024-12-08
+Hospital_C,1657,Hemoglobin A1c,4.8,%,<5.7%,2025-02-02
+Hospital_A,1503,HbA1c,8.8,%,4.0-5.6%,2024-09-30
+Hospital_A,1224,HbA1c,9.4,%,<5.7%,2025-04-08
+Hospital_A,1279,Total Chol,5.24,mmol/L,<200,2025-08-14
+Hospital_A,1672,HbA1c,6.6,%,4.0-5.6%,2024-04-22
+Hospital_B,1646,Glucose,6.47,mmol/L,70-99,2024-09-22
+Hospital_B,1677,Hemoglobin A1c,7.0,%,Normal < 6,2025-09-02
+Hospital_C,1685,HbA1c,,%,<5.7%,2024-06-12
+Hospital_C,1315,Total Chol,166.39111075868485,mg/dL,125-200,2024-05-13
+Hospital_A,1648,Glycated Hemoglobin,8.5,%,4.0-5.6%,2024-11-22
+Hospital_A,1595,Glucose,6.71,mmol/L,70-99,2025-04-26
+Hospital_B,1192,Fasting Glucose,168.96557492200444,mg/dL,3.9-5.5,2024-12-30
+Hospital_A,1324,Glycated Hemoglobin,6.4,%,<5.7%,2024-12-13
+Hospital_A,1398,Glycated Hemoglobin,8.8,%,4.0-5.6%,2024-06-30
+Hospital_B,1993,Fasting Glucose,5.39,mmol/L,Normal: <100,2024-10-18
+Hospital_A,1179,Serum Cholesterol,276.2689493007391,mg/dL,<200,2025-06-08
+Hospital_A,1536,Total Chol,206.80179471188697,mg/dL,<200,2025-06-19
+Hospital_A,1959,Glycated Hemoglobin,4.7,%,4.0-5.6%,2026-02-23
+Hospital_C,1448,Cholesterol,-999,mg/dL,125-200,2025-11-11
+Hospital_B,1871,Fasting Glucose,157.3066022229503,mg/dL,70-99,2024-04-10
+Hospital_A,1440,Fasting Glucose,104.92458319261331,mg/dL,70-99,2024-10-10
+Hospital_A,1976,Serum Cholesterol,208.5680598840096,mg/dL,3.2-5.2,2025-03-17
+Hospital_B,1847,Hemoglobin A1c,8.9,%,<5.7%,2025-05-23
+Hospital_B,1934,Cholesterol,219.1724870032496,mg/dL,125-200,2024-08-22
+Hospital_C,1541,Total Chol,247.53725149774584,mg/dL,125-200,2025-02-21
+Hospital_B,1997,Blood Sugar,6.13,mmol/L,70-99,2024-04-20
+Hospital_A,1648,HbA1c,8.6,%,<5.7%,2025-09-17
+Hospital_C,1376,Glucose,8.0,mmol/L,3.9-5.5,2026-02-24
+Hospital_C,1778,Total Chol,7.23,mmol/L,<200,2024-03-29
+Hospital_C,1309,Serum Cholesterol,250.17948055688754,mg/dL,3.2-5.2,2024-05-18
+Hospital_C,1501,Serum Cholesterol,4.07,mmol/L,3.2-5.2,2025-03-23
+Hospital_C,1973,Fasting Glucose,7.41,mmol/L,3.9-5.5,2025-12-18
+Hospital_B,1134,Serum Cholesterol,5.65,mmol/L,<200,2025-08-18
+Hospital_B,1526,Glucose,176.87916468970764,mg/dL,3.9-5.5,2025-03-18
+Hospital_A,1730,Glycated Hemoglobin,8.9,%,4.0-5.6%,2025-02-08
+Hospital_C,1703,Glycated Hemoglobin,6.6,%,<5.7%,2025-02-17
+Hospital_B,1835,Cholesterol,188.95315365864263,mg/dL,<200,2024-09-21
+Hospital_C,1358,HbA1c,9.0,%,<5.7%,2024-09-15
+Hospital_A,1995,Glucose,74.69434906967906,mg/dL,70-99,2025-02-12
+Hospital_A,1361,Hemoglobin A1c,8.2,%,Normal < 6,2025-09-21
+Hospital_A,1400,Hemoglobin A1c,8.2,%,<5.7%,2024-04-11
+Hospital_A,1602,Cholesterol,151.07862584776404,mg/dL,<200,2024-05-29
+Hospital_B,1157,Glucose,8.97,mmol/L,Normal: <100,2025-07-31
+Hospital_A,1243,Serum Cholesterol,6.75,mmol/L,125-200,2025-07-10
+Hospital_B,1079,Total Chol,190.7572660623277,mg/dL,3.2-5.2,2025-12-11
+Hospital_A,1168,HbA1c,7.5,%,Normal < 6,2026-03-26
+Hospital_B,1144,Glucose,71.37254702009369,mg/dL,70-99,2026-02-09
+Hospital_C,1604,Fasting Glucose,104.45043193522677,mg/dL,Normal: <100,2025-08-10
+Hospital_C,1204,Total Chol,283.8009588296113,mg/dL,3.2-5.2,2026-02-14
+Hospital_B,1856,Glucose,106.90541004355555,mg/dL,Normal: <100,2024-05-09
+Hospital_C,1998,Hemoglobin A1c,8.3,%,<5.7%,2024-05-19
+Hospital_A,1814,Total Chol,295.2192870113735,mg/dL,125-200,2024-06-28
+Hospital_B,1453,Serum Cholesterol,4.47,mmol/L,<200,2025-08-04
+Hospital_B,1173,Glycated Hemoglobin,8.2,%,4.0-5.6%,2024-07-22
+Hospital_C,1753,Glycated Hemoglobin,5.7,%,Normal < 6,2025-04-12
+Hospital_C,1666,Cholesterol,217.69311287296122,mg/dL,<200,2024-06-17
+Hospital_B,1151,Cholesterol,235.8855407106189,mg/dL,<200,2026-01-15
+Hospital_A,1266,Hemoglobin A1c,7.2,%,<5.7%,2025-07-13
+Hospital_A,1526,Fasting Glucose,154.11583170589768,mg/dL,Normal: <100,2024-08-29
+Hospital_B,1204,Glucose,119.72469537699371,mg/dL,70-99,2026-03-04
+Hospital_A,1600,Cholesterol,276.9721331368702,mg/dL,<200,2024-08-20
+Hospital_A,1253,Glycated Hemoglobin,6.0,%,Normal < 6,2025-03-10
+Hospital_C,1664,Glycated Hemoglobin,not collected,%,4.0-5.6%,2025-03-02
+Hospital_A,1782,Hemoglobin A1c,5.2,%,<5.7%,2025-12-31
+Hospital_A,1891,Total Chol,172.9258902824452,mg/dL,3.2-5.2,2025-06-10
+Hospital_A,1699,Cholesterol,5.28,mmol/L,3.2-5.2,2024-06-18
+Hospital_A,1384,Serum Cholesterol,7.49,mmol/L,125-200,2025-11-17
+Hospital_B,1274,HbA1c,5.5,%,<5.7%,2025-11-04
+Hospital_C,1812,Total Chol,270.3211392581801,mg/dL,<200,2024-08-20
+Hospital_B,1244,Cholesterol,6.74,mmol/L,3.2-5.2,2025-05-14
+Hospital_A,1270,HbA1c,8.5,%,<5.7%,2025-10-07
+Hospital_B,1095,Fasting Glucose,-999,mmol/L,Normal: <100,2025-06-29
+Hospital_C,1711,Glucose,8.78,mmol/L,70-99,2025-07-11
+Hospital_B,1043,Glycated Hemoglobin,6.6,%,<5.7%,2025-03-30
+Hospital_C,1394,Glycated Hemoglobin,N/A,%,Normal < 6,2025-08-31
+Hospital_A,1709,Total Chol,169.90680026829878,mg/dL,3.2-5.2,2025-01-16
+Hospital_C,1638,Blood Sugar,6.73,mmol/L,70-99,2025-01-14
+Hospital_C,1996,HbA1c,9.5,%,Normal < 6,2025-07-17
+Hospital_B,1903,Glucose,8.7,mmol/L,Normal: <100,2025-08-09
+Hospital_A,1964,Cholesterol,242.90722654981545,mg/dL,3.2-5.2,2025-08-22
+Hospital_C,1898,Total Chol,7.4,mmol/L,<200,2024-05-22
+Hospital_A,1301,HbA1c,6.0,%,4.0-5.6%,2025-05-23
+Hospital_A,1207,Fasting Glucose,124.2277384992565,mg/dL,70-99,2024-09-07
+Hospital_A,1878,Hemoglobin A1c,10.0,%,<5.7%,2025-05-27
+Hospital_A,1167,Glucose,114.94480761959608,mg/dL,Normal: <100,2025-08-27
+Hospital_B,1536,Serum Cholesterol,204.58469395285692,mg/dL,125-200,2025-07-22
+Hospital_A,1945,Blood Sugar,5.79,mmol/L,3.9-5.5,2025-04-07
+Hospital_A,1749,Fasting Glucose,107.17456426727293,mg/dL,3.9-5.5,2026-03-23
+Hospital_A,1394,HbA1c,5.7,%,4.0-5.6%,2026-03-15
+Hospital_C,1066,Hemoglobin A1c,5.2,%,<5.7%,2024-08-05
+Hospital_C,1141,Fasting Glucose,111.52068615435785,mg/dL,Normal: <100,2025-11-22
+Hospital_C,1971,HbA1c,6.6,%,4.0-5.6%,2025-07-21
+Hospital_C,1822,Serum Cholesterol,4.75,mmol/L,3.2-5.2,2024-04-24
+Hospital_C,1598,Hemoglobin A1c,8.9,%,4.0-5.6%,2025-05-19
+Hospital_C,1374,Total Chol,6.81,mmol/L,3.2-5.2,2025-11-25
+Hospital_B,1640,HbA1c,6.1,%,<5.7%,2025-11-09
+Hospital_C,1922,Cholesterol,150.95668241277062,mg/dL,<200,2026-01-16
+Hospital_C,1360,HbA1c,5.6,%,4.0-5.6%,2024-12-13
+Hospital_C,1673,Blood Sugar,95.96452670032203,mg/dL,70-99,2025-05-04
+Hospital_C,1150,Glucose,9.53,mmol/L,3.9-5.5,2026-02-17
+Hospital_A,1615,Glycated Hemoglobin,,%,Normal < 6,2026-01-09
+Hospital_A,1247,Total Chol,6.03,mmol/L,125-200,2025-12-03
+Hospital_A,1509,Serum Cholesterol,159.46651675304793,mg/dL,125-200,2024-06-16
+Hospital_B,1563,Glucose,102.45528183054614,mg/dL,70-99,2026-02-15
+Hospital_A,1201,Blood Sugar,4.17,mmol/L,Normal: <100,2026-02-23
+Hospital_A,1003,Total Chol,218.7963986742805,mg/dL,3.2-5.2,2025-06-18
+Hospital_B,1807,Hemoglobin A1c,8.0,%,4.0-5.6%,2024-10-25
+Hospital_B,1067,Fasting Glucose,5.19,mmol/L,3.9-5.5,2025-09-14
+Hospital_C,1291,Cholesterol,4.68,mmol/L,<200,2026-03-08
+Hospital_B,1309,Serum Cholesterol,189.23297262230892,mg/dL,<200,2025-12-10
+Hospital_B,1419,Total Chol,164.43844458818495,mg/dL,<200,2025-08-26
+Hospital_C,1897,Serum Cholesterol,169.17920317268934,mg/dL,125-200,2024-11-05
+Hospital_C,1290,Glycated Hemoglobin,6.3,%,<5.7%,2024-07-17
+Hospital_C,1838,HbA1c,9.1,%,<5.7%,2025-08-15
+Hospital_A,1713,Glycated Hemoglobin,7.1,%,4.0-5.6%,2025-07-24
+Hospital_A,1281,Serum Cholesterol,5.36,mmol/L,125-200,2026-03-22
+Hospital_C,1999,Total Chol,5.72,mmol/L,3.2-5.2,2024-12-17
+Hospital_B,1391,Serum Cholesterol,225.51300665825812,mg/dL,<200,2025-09-04
+Hospital_C,1961,HbA1c,8.1,%,4.0-5.6%,2025-10-11
+Hospital_A,1696,Serum Cholesterol,4.21,mmol/L,<200,2025-07-22
+Hospital_B,1131,Total Chol,210.4678529175051,mg/dL,<200,2024-11-17
+Hospital_B,1943,Serum Cholesterol,4.39,mmol/L,3.2-5.2,2024-06-10
+Hospital_C,1140,HbA1c,6.2,%,<5.7%,2026-01-25
+Hospital_B,1925,Serum Cholesterol,203.8566388176981,mg/dL,125-200,2025-02-01
+Hospital_A,1198,Hemoglobin A1c,10.0,%,Normal < 6,2025-12-27
+Hospital_A,1494,Glycated Hemoglobin,5.5,%,4.0-5.6%,2025-10-06
+Hospital_C,1423,Cholesterol,241.80806173926356,mg/dL,3.2-5.2,2024-06-17
+Hospital_C,1366,HbA1c,5.2,%,4.0-5.6%,2025-01-13
+Hospital_A,1872,Fasting Glucose,106.15269086754331,mg/dL,Normal: <100,2025-04-02
+Hospital_C,1773,Serum Cholesterol,256.9423459228683,mg/dL,3.2-5.2,2026-02-28
+Hospital_A,1353,Blood Sugar,102.49754425702466,mg/dL,3.9-5.5,2025-01-09
+Hospital_A,1544,Fasting Glucose,4.29,mmol/L,Normal: <100,2025-05-01
+Hospital_C,1922,Cholesterol,252.79739876918347,mg/dL,125-200,2025-09-20
+Hospital_A,1926,HbA1c,not collected,%,Normal < 6,2025-03-31
+Hospital_B,1392,Total Chol,4.02,mmol/L,<200,2025-12-26
+Hospital_A,1850,Total Chol,6.33,mmol/L,<200,2026-03-13
+Hospital_C,1487,Cholesterol,5.87,mmol/L,125-200,2024-09-26
+Hospital_A,1158,Glucose,164.7820639988555,mg/dL,Normal: <100,2025-09-07
+Hospital_C,1928,Cholesterol,279.49182657377673,mg/dL,125-200,2025-01-03
+Hospital_B,1244,Fasting Glucose,100.30054252528511,mg/dL,Normal: <100,2026-03-24
+Hospital_C,1197,HbA1c,5.6,%,<5.7%,2025-08-13
+Hospital_A,1291,Serum Cholesterol,209.12547041500915,mg/dL,<200,2025-06-23
+Hospital_B,1450,Total Chol,7.07,mmol/L,<200,2025-02-16
+Hospital_A,1103,Cholesterol,4.61,mmol/L,<200,2024-10-04
+Hospital_C,1726,Cholesterol,188.04853242398275,mg/dL,125-200,2025-10-12
+Hospital_C,1002,HbA1c,7.7,%,4.0-5.6%,2024-11-14
+Hospital_A,1159,Glycated Hemoglobin,9.1,%,Normal < 6,2024-07-12
+Hospital_C,1559,Blood Sugar,5.66,mmol/L,Normal: <100,2024-07-16
+Hospital_B,1472,Blood Sugar,7.58,mmol/L,3.9-5.5,2024-11-14
+Hospital_A,1117,Fasting Glucose,163.65264946680216,mg/dL,Normal: <100,2024-05-05
+Hospital_A,1307,Glucose,4.02,mmol/L,Normal: <100,2025-11-25
+Hospital_C,1020,Glycated Hemoglobin,4.9,%,Normal < 6,2024-11-23
+Hospital_C,1281,Hemoglobin A1c,7.3,%,<5.7%,2025-10-31
+Hospital_A,1598,HbA1c,7.3,%,4.0-5.6%,2025-01-04
+Hospital_A,1881,HbA1c,7.1,%,Normal < 6,2024-10-09
+Hospital_C,1049,Cholesterol,,mg/dL,125-200,2024-07-22
+Hospital_A,1567,Blood Sugar,6.05,mmol/L,3.9-5.5,2025-07-26
+Hospital_C,1053,Hemoglobin A1c,6.1,%,<5.7%,2025-06-25
+Hospital_C,1110,Glycated Hemoglobin,10.4,%,4.0-5.6%,2025-12-15
+Hospital_A,1333,Serum Cholesterol,268.86464093117206,mg/dL,125-200,2024-10-04
+Hospital_C,1162,Glycated Hemoglobin,7.8,%,4.0-5.6%,2026-03-12
+Hospital_C,1501,Total Chol,7.32,mmol/L,<200,2024-11-15
+Hospital_C,1126,Serum Cholesterol,178.86401000078953,mg/dL,3.2-5.2,2024-12-08
+Hospital_C,1822,Glucose,97.86693127753249,mg/dL,3.9-5.5,2024-10-30
+Hospital_C,1520,Cholesterol,191.43711042330614,mg/dL,125-200,2025-02-21
+Hospital_B,1963,Serum Cholesterol,181.58572372076338,mg/dL,<200,2025-11-01
+Hospital_A,1854,Fasting Glucose,4.84,mmol/L,3.9-5.5,2025-02-25
+Hospital_A,1322,Glycated Hemoglobin,9.7,%,<5.7%,2026-01-14
+Hospital_B,1559,Glycated Hemoglobin,8.2,%,4.0-5.6%,2024-07-07
+Hospital_C,1533,Hemoglobin A1c,-999,%,Normal < 6,2024-07-28
+Hospital_A,1122,Blood Sugar,8.14,mmol/L,70-99,2024-10-10
+Hospital_A,1543,HbA1c,10.1,%,Normal < 6,2024-05-28
+Hospital_A,1778,HbA1c,8.1,%,Normal < 6,2025-06-01
+Hospital_A,1558,Blood Sugar,117.27653841688489,mg/dL,70-99,2024-12-10
+Hospital_A,1364,Fasting Glucose,-999,mmol/L,Normal: <100,2024-04-13
+Hospital_B,1744,Cholesterol,4.58,mmol/L,<200,2024-05-13
+Hospital_A,1303,Hemoglobin A1c,9.2,%,<5.7%,2024-12-17
+Hospital_B,1726,Blood Sugar,4.42,mmol/L,Normal: <100,2024-12-17
+Hospital_B,1151,Blood Sugar,4.62,mmol/L,70-99,2025-05-27
+Hospital_A,1094,HbA1c,9.6,%,4.0-5.6%,2024-12-19
+Hospital_A,1036,Hemoglobin A1c,8.7,%,<5.7%,2024-04-13
+Hospital_A,1779,HbA1c,8.9,%,<5.7%,2025-04-29
+Hospital_C,1233,Cholesterol,4.54,mmol/L,3.2-5.2,2025-10-14
+Hospital_A,1386,HbA1c,9.5,%,Normal < 6,2024-04-29
+Hospital_A,1969,HbA1c,6.5,%,<5.7%,2026-03-26
+Hospital_A,1825,Blood Sugar,171.06588660379265,mg/dL,70-99,2025-01-30
+Hospital_C,1873,Serum Cholesterol,4.09,mmol/L,<200,2024-03-26
+Hospital_B,1486,Serum Cholesterol,264.2926847247656,mg/dL,125-200,2024-11-13
+Hospital_A,1527,Total Chol,5.57,mmol/L,<200,2025-05-27
+Hospital_C,1393,Serum Cholesterol,223.7730862605114,mg/dL,<200,2025-03-30
+Hospital_C,1933,Fasting Glucose,7.29,mmol/L,3.9-5.5,2026-03-10
+Hospital_B,1763,HbA1c,4.7,%,Normal < 6,2024-12-28
+Hospital_C,1367,Hemoglobin A1c,7.6,%,4.0-5.6%,2025-08-31
+Hospital_C,1417,HbA1c,5.8,%,4.0-5.6%,2025-10-07
+Hospital_C,1046,Cholesterol,7.48,mmol/L,3.2-5.2,2025-06-22
+Hospital_B,1893,Blood Sugar,91.9530113028327,mg/dL,70-99,2025-09-12
+Hospital_A,1113,Glycated Hemoglobin,5.1,%,4.0-5.6%,2025-04-17
+Hospital_B,1501,Glycated Hemoglobin,4.6,%,<5.7%,2025-10-12
+Hospital_B,1071,HbA1c,5.6,%,4.0-5.6%,2024-12-01
+Hospital_B,1253,Blood Sugar,175.46829236662546,mg/dL,3.9-5.5,2024-06-10
+Hospital_A,1397,Total Chol,7.2,mmol/L,<200,2025-12-22
+Hospital_A,1791,Hemoglobin A1c,9.3,%,<5.7%,2024-05-09
+Hospital_A,1165,HbA1c,6.4,%,<5.7%,2024-04-25
+Hospital_B,1956,HbA1c,9.7,%,<5.7%,2025-04-28
+Hospital_B,1728,Cholesterol,7.28,mmol/L,3.2-5.2,2025-12-05
+Hospital_A,1517,Hemoglobin A1c,8.2,%,Normal < 6,2025-09-06
+Hospital_C,1940,Fasting Glucose,6.87,mmol/L,Normal: <100,2025-01-22
+Hospital_A,1705,Hemoglobin A1c,not collected,%,Normal < 6,2025-04-05
+Hospital_C,1161,Fasting Glucose,-999,mg/dL,Normal: <100,2025-08-27
+Hospital_B,2000,Glycated Hemoglobin,5.8,%,Normal < 6,2024-04-07
+Hospital_A,1421,Fasting Glucose,145.40495074580343,mg/dL,Normal: <100,2025-02-07
+Hospital_C,1150,HbA1c,7.2,%,<5.7%,2024-04-24
+Hospital_B,1170,HbA1c,8.9,%,4.0-5.6%,2024-09-29
+Hospital_C,1781,HbA1c,4.7,%,4.0-5.6%,2025-02-23
+Hospital_C,1785,Serum Cholesterol,6.66,mmol/L,125-200,2025-09-07
+Hospital_A,1688,Glycated Hemoglobin,10.3,%,<5.7%,2025-03-09
+Hospital_C,1606,HbA1c,8.9,%,4.0-5.6%,2025-03-12
+Hospital_B,1657,Hemoglobin A1c,9.3,%,<5.7%,2024-11-27
+Hospital_B,1352,Glucose,156.37901878002594,mg/dL,3.9-5.5,2025-03-23
+Hospital_A,1436,HbA1c,8.2,%,4.0-5.6%,2024-06-18
+Hospital_C,1662,Serum Cholesterol,5.04,mmol/L,<200,2024-12-30
+Hospital_C,1887,Glucose,109.4066507138186,mg/dL,70-99,2025-07-20
+Hospital_A,1590,HbA1c,6.1,%,Normal < 6,2025-06-06
+Hospital_A,1007,Glucose,6.43,mmol/L,3.9-5.5,2024-08-20
+Hospital_B,1798,Hemoglobin A1c,6.9,%,4.0-5.6%,2024-09-24
+Hospital_B,1555,Total Chol,235.00526009495562,mg/dL,125-200,2024-06-05
+Hospital_A,1215,Serum Cholesterol,279.74262835689467,mg/dL,<200,2024-04-16
+Hospital_B,1637,Fasting Glucose,6.51,mmol/L,3.9-5.5,2025-01-13
+Hospital_B,1003,Serum Cholesterol,7.65,mmol/L,3.2-5.2,2025-06-07
+Hospital_C,1082,Glycated Hemoglobin,10.2,%,<5.7%,2024-06-07
+Hospital_A,1732,Blood Sugar,169.18263206587704,mg/dL,70-99,2025-11-13
+Hospital_B,1734,HbA1c,8.7,%,<5.7%,2025-01-03
+Hospital_C,1021,Blood Sugar,142.5303604405342,mg/dL,70-99,2024-04-15
+Hospital_A,1461,Blood Sugar,125.50039016510532,mg/dL,Normal: <100,2025-02-21
+Hospital_A,1943,Fasting Glucose,163.9878976263219,mg/dL,70-99,2025-03-10
+Hospital_B,1999,HbA1c,9.9,%,Normal < 6,2025-01-15
+Hospital_A,1997,HbA1c,8.6,%,Normal < 6,2024-05-22
+Hospital_A,1948,Glucose,N/A,mmol/L,3.9-5.5,2025-02-04
+Hospital_B,1888,HbA1c,9.5,%,Normal < 6,2025-10-09
+Hospital_A,1820,Total Chol,4.22,mmol/L,<200,2024-12-29
+Hospital_C,1893,Glucose,114.24918858919969,mg/dL,70-99,2025-05-24
+Hospital_B,1099,HbA1c,8.9,%,4.0-5.6%,2025-11-02
+Hospital_C,1485,Fasting Glucose,74.81922167585427,mg/dL,Normal: <100,2024-06-10
+Hospital_A,1119,Glucose,7.81,mmol/L,3.9-5.5,2025-08-20
+Hospital_B,1089,Glucose,8.41,mmol/L,70-99,2025-06-17
+Hospital_B,1932,Fasting Glucose,1860,mmol/L,70-99,2026-03-22
+Hospital_B,1602,Serum Cholesterol,7.26,mmol/L,3.2-5.2,2024-05-12
+Hospital_B,1863,Glycated Hemoglobin,10.3,%,<5.7%,2024-04-29
+Hospital_C,1308,Glycated Hemoglobin,4.9,%,<5.7%,2024-10-12
+Hospital_C,1893,Glycated Hemoglobin,5.6,%,4.0-5.6%,2024-06-05
+Hospital_C,1738,Fasting Glucose,8.59,mmol/L,70-99,2025-09-18
+Hospital_C,1160,Total Chol,240.24003206079954,mg/dL,<200,2026-02-04
+Hospital_B,1824,Glucose,7.57,mmol/L,3.9-5.5,2024-12-21
+Hospital_A,1268,Cholesterol,248.22490133150245,mg/dL,125-200,2024-06-25
+Hospital_C,1423,Cholesterol,297.9272108205481,mg/dL,125-200,2025-03-05
+Hospital_C,1644,Serum Cholesterol,193.6054536717599,mg/dL,125-200,2025-09-22
+Hospital_C,1891,Cholesterol,215.66174151457227,mg/dL,3.2-5.2,2025-06-14
+Hospital_B,1516,Hemoglobin A1c,5.7,%,Normal < 6,2024-10-30
+Hospital_B,1857,Cholesterol,4.67,mmol/L,125-200,2025-09-22
+Hospital_A,1189,Blood Sugar,500,mmol/L,Normal: <100,2025-11-20
+Hospital_B,1630,Total Chol,180.84925228526828,mg/dL,125-200,2024-11-07
+Hospital_A,1744,Glycated Hemoglobin,6.1,%,4.0-5.6%,2025-01-12
+Hospital_A,1740,Serum Cholesterol,4.82,mmol/L,125-200,2024-11-20
+Hospital_C,1224,Blood Sugar,158.95192719301912,mg/dL,3.9-5.5,2025-07-12
+Hospital_A,1697,Fasting Glucose,,mg/dL,3.9-5.5,2025-04-28
+Hospital_B,1781,Fasting Glucose,128.24058696899186,mg/dL,70-99,2025-06-08
+Hospital_C,1535,Hemoglobin A1c,8.5,%,<5.7%,2024-11-16
+Hospital_A,1735,Cholesterol,167.12474082361166,mg/dL,125-200,2025-11-05
+Hospital_B,1348,HbA1c,9.9,%,Normal < 6,2025-05-11
+Hospital_C,1151,Total Chol,7.41,mmol/L,<200,2025-01-12
+Hospital_B,1724,Fasting Glucose,8.21,mmol/L,Normal: <100,2024-07-31
+Hospital_B,1932,Total Chol,5.4,mmol/L,125-200,2025-04-27
+Hospital_B,1554,Hemoglobin A1c,9.2,%,Normal < 6,2025-07-10
+Hospital_B,1269,Cholesterol,261.1563840403303,mg/dL,3.2-5.2,2025-02-20
+Hospital_A,1514,Hemoglobin A1c,7.2,%,Normal < 6,2026-02-06
+Hospital_B,1075,Glycated Hemoglobin,5.8,%,<5.7%,2024-12-03
+Hospital_B,1451,Serum Cholesterol,280.2542987873036,mg/dL,125-200,2025-11-15
+Hospital_B,1601,Fasting Glucose,171.43586095649616,mg/dL,Normal: <100,2025-07-08
+Hospital_C,1876,Cholesterol,206.4833688926676,mg/dL,3.2-5.2,2025-04-06
+Hospital_B,1960,Cholesterol,183.60215356331418,mg/dL,<200,2025-06-26
+Hospital_B,1922,Cholesterol,255.50311866406008,mg/dL,125-200,2026-02-15
+Hospital_B,1517,Total Chol,268.96441396524693,mg/dL,3.2-5.2,2025-01-18
+Hospital_A,1860,Cholesterol,4.91,mmol/L,3.2-5.2,2024-11-25
+Hospital_C,1511,Fasting Glucose,97.7134168557362,mg/dL,3.9-5.5,2024-11-02
+Hospital_B,1764,Cholesterol,6.53,mmol/L,125-200,2025-09-08
+Hospital_B,1841,Blood Sugar,6.2,mmol/L,Normal: <100,2024-12-09
+Hospital_C,1954,Fasting Glucose,9.32,mmol/L,3.9-5.5,2024-06-11
+Hospital_B,1369,Glycated Hemoglobin,4.8,%,Normal < 6,2025-07-14
+Hospital_C,1210,Fasting Glucose,134.5021391939718,mg/dL,70-99,2026-03-06
+Hospital_B,1096,Hemoglobin A1c,10.1,%,<5.7%,2024-10-03
+Hospital_B,1923,Hemoglobin A1c,5.5,%,<5.7%,2025-12-26
+Hospital_A,1851,Cholesterol,6.42,mmol/L,125-200,2024-08-09
+Hospital_B,1725,Glycated Hemoglobin,-999,%,<5.7%,2024-10-13
+Hospital_B,1719,HbA1c,10.0,%,Normal < 6,2024-03-29
+Hospital_B,1898,Hemoglobin A1c,6.7,%,Normal < 6,2025-08-02
+Hospital_C,1827,HbA1c,5.9,%,<5.7%,2025-05-22
+Hospital_B,1595,Glycated Hemoglobin,5.7,%,<5.7%,2024-10-13
+Hospital_A,1594,HbA1c,8.1,%,<5.7%,2024-05-05
+Hospital_B,1093,Cholesterol,157.58677659943095,mg/dL,<200,2025-05-12
+Hospital_A,1997,Fasting Glucose,6.28,mmol/L,3.9-5.5,2024-12-24
+Hospital_A,1362,HbA1c,6.9,%,<5.7%,2024-07-30
+Hospital_B,1054,Glycated Hemoglobin,5.9,%,<5.7%,2024-11-30
+Hospital_C,1930,HbA1c,6.3,%,Normal < 6,2026-01-05
+Hospital_A,1012,Serum Cholesterol,238.93297477373824,mg/dL,3.2-5.2,2025-09-17
+Hospital_B,1214,Total Chol,241.36965085004823,mg/dL,3.2-5.2,2024-05-07
+Hospital_B,1662,Cholesterol,194.78199909349354,mg/dL,3.2-5.2,2024-05-25
+Hospital_C,1377,Glycated Hemoglobin,9.2,%,4.0-5.6%,2024-03-27
+Hospital_A,1550,Hemoglobin A1c,7.6,%,4.0-5.6%,2024-05-30
+Hospital_C,1069,Hemoglobin A1c,not collected,%,Normal < 6,2024-06-21
+Hospital_C,1481,Glycated Hemoglobin,9.6,%,<5.7%,2024-10-11
+Hospital_C,1150,Serum Cholesterol,5.19,mmol/L,125-200,2025-04-08
+Hospital_A,1041,Glucose,5.18,mmol/L,70-99,2025-06-15
+Hospital_A,1771,Cholesterol,5.25,mmol/L,3.2-5.2,2026-03-13
+Hospital_A,1460,Glucose,7.48,mmol/L,3.9-5.5,2026-02-05
+Hospital_B,1449,Glucose,5.08,mmol/L,3.9-5.5,2025-07-10
+Hospital_A,1490,HbA1c,10.3,%,Normal < 6,2024-10-06
+Hospital_A,1179,Blood Sugar,126.50529324160567,mg/dL,Normal: <100,2024-04-06
+Hospital_C,1644,Fasting Glucose,5.51,mmol/L,3.9-5.5,2024-11-22
+Hospital_B,1101,Total Chol,4.11,mmol/L,<200,2024-08-26
+Hospital_C,1596,Glucose,156.43201933406453,mg/dL,Normal: <100,2026-02-09
+Hospital_B,1323,Cholesterol,251.1154590667252,mg/dL,<200,2026-01-04
+Hospital_A,1141,Total Chol,5.83,mmol/L,125-200,2025-06-04
+Hospital_A,1643,Cholesterol,242.71494639021444,mg/dL,<200,2025-03-31
+Hospital_B,1690,Serum Cholesterol,7.28,mmol/L,<200,2024-04-07
+Hospital_A,1942,Serum Cholesterol,5.3,mmol/L,125-200,2024-11-19
+Hospital_C,1533,Total Chol,151.10213590209975,mg/dL,125-200,2024-06-22
+Hospital_C,1013,HbA1c,4.9,%,Normal < 6,2025-09-21
+Hospital_A,1280,Serum Cholesterol,-999,mmol/L,125-200,2024-05-14
+Hospital_B,1664,HbA1c,not collected,%,4.0-5.6%,2025-04-12
+Hospital_B,1718,HbA1c,6.2,%,Normal < 6,2025-11-16
+Hospital_A,1707,Cholesterol,5.81,mmol/L,3.2-5.2,2024-12-30
+Hospital_C,1614,Hemoglobin A1c,10.3,%,4.0-5.6%,2025-03-05
+Hospital_A,1253,Total Chol,6.31,mmol/L,<200,2025-04-28
+Hospital_A,1456,Blood Sugar,6.73,mmol/L,70-99,2025-10-23
+Hospital_B,1069,Hemoglobin A1c,9.3,%,<5.7%,2024-07-31
+Hospital_B,1324,Hemoglobin A1c,5.6,%,Normal < 6,2025-09-06
+Hospital_A,1467,Total Chol,153.85206409012062,mg/dL,3.2-5.2,2025-05-22
+Hospital_C,1604,Glucose,6.24,mmol/L,3.9-5.5,2025-06-15
+Hospital_A,1270,Cholesterol,5.31,mmol/L,125-200,2025-04-10
+Hospital_B,1579,Cholesterol,280.32278062173054,mg/dL,3.2-5.2,2025-05-20
+Hospital_B,1616,Serum Cholesterol,,mmol/L,3.2-5.2,2025-12-31
+Hospital_A,1371,HbA1c,6.6,%,4.0-5.6%,2025-03-08
+Hospital_C,1828,Glucose,4.42,mmol/L,70-99,2024-09-20
+Hospital_A,1009,Glycated Hemoglobin,10.1,%,<5.7%,2025-10-05
+Hospital_C,1022,Hemoglobin A1c,9.0,%,4.0-5.6%,2024-08-30
+Hospital_C,1206,Cholesterol,190.3752018716626,mg/dL,3.2-5.2,2025-11-12
+Hospital_C,1699,Blood Sugar,71.83583419479419,mg/dL,70-99,2025-10-03
+Hospital_C,1386,Hemoglobin A1c,10.4,%,<5.7%,2024-07-22
+Hospital_C,1356,Serum Cholesterol,6.34,mmol/L,<200,2026-02-02
+Hospital_C,1244,Hemoglobin A1c,6.7,%,<5.7%,2024-04-18
+Hospital_A,1074,Fasting Glucose,500,mmol/L,3.9-5.5,2025-05-10
+Hospital_B,1074,Cholesterol,215.94082498806165,mg/dL,<200,2025-12-15
+Hospital_B,1280,HbA1c,6.6,%,<5.7%,2025-09-05
+Hospital_B,1236,Fasting Glucose,125.46827512250096,mg/dL,3.9-5.5,2026-03-02
+Hospital_B,1233,Fasting Glucose,122.18820769868455,mg/dL,Normal: <100,2025-04-26
+Hospital_B,1330,Hemoglobin A1c,7.9,%,<5.7%,2024-04-02
+Hospital_A,1654,Blood Sugar,99.7478341018566,mg/dL,70-99,2024-12-02
+Hospital_A,1211,Fasting Glucose,7.09,mmol/L,3.9-5.5,2025-09-08
+Hospital_B,1955,Glycated Hemoglobin,10.4,%,<5.7%,2024-10-19
+Hospital_B,1370,Total Chol,232.28451005687828,mg/dL,125-200,2025-07-26
+Hospital_C,1089,Total Chol,154.46958291571056,mg/dL,3.2-5.2,2024-10-09
+Hospital_A,1322,Hemoglobin A1c,10.3,%,Normal < 6,2025-02-13
+Hospital_B,1719,Total Chol,175.02139783553213,mg/dL,125-200,2025-12-20
+Hospital_C,1067,Hemoglobin A1c,7.7,%,<5.7%,2024-08-29
+Hospital_A,1889,HbA1c,5.5,%,4.0-5.6%,2026-02-05
+Hospital_B,1046,Cholesterol,261.1072795255484,mg/dL,3.2-5.2,2025-09-28
+Hospital_B,1009,Blood Sugar,5.1,mmol/L,Normal: <100,2024-04-05
+Hospital_A,1718,Fasting Glucose,122.45092266886003,mg/dL,70-99,2024-12-16
+Hospital_C,1145,Cholesterol,5.98,mmol/L,<200,2024-12-25
+Hospital_A,1312,HbA1c,9.4,%,Normal < 6,2025-12-08
+Hospital_C,1586,Hemoglobin A1c,9.3,%,<5.7%,2025-10-10
+Hospital_A,1452,Hemoglobin A1c,6.1,%,4.0-5.6%,2025-04-18
+Hospital_A,1981,Fasting Glucose,500,mmol/L,70-99,2024-08-25
+Hospital_C,1719,Hemoglobin A1c,-999,%,<5.7%,2024-12-07
+Hospital_B,1703,Cholesterol,171.52835399513916,mg/dL,125-200,2025-04-18
+Hospital_C,1502,HbA1c,5.5,%,<5.7%,2025-01-03
+Hospital_C,1098,Glycated Hemoglobin,6.1,%,Normal < 6,2025-11-05
+Hospital_A,1765,Serum Cholesterol,245.08306545475716,mg/dL,<200,2025-06-03
+Hospital_C,1520,Cholesterol,5.81,mmol/L,3.2-5.2,2025-09-12
+Hospital_A,1147,Glucose,176.69158235341462,mg/dL,3.9-5.5,2025-04-03
+Hospital_B,1231,Cholesterol,7.49,mmol/L,125-200,2025-11-18
+Hospital_C,1548,Fasting Glucose,5.41,mmol/L,Normal: <100,2025-05-29
+Hospital_A,1344,Hemoglobin A1c,7.6,%,<5.7%,2025-07-21
+Hospital_C,1311,Glycated Hemoglobin,8.0,%,<5.7%,2025-09-05
+Hospital_C,1488,Total Chol,175.5348861013865,mg/dL,<200,2025-06-08
+Hospital_B,1885,Total Chol,6.33,mmol/L,<200,2025-06-23
+Hospital_A,1285,HbA1c,10.2,%,4.0-5.6%,2024-09-12
+Hospital_A,1612,Fasting Glucose,-999,mmol/L,70-99,2024-05-11
+Hospital_A,1819,Cholesterol,7.0,mmol/L,125-200,2024-08-25
+Hospital_B,1817,Fasting Glucose,130.18718439868854,mg/dL,Normal: <100,2024-09-03
+Hospital_A,1933,Serum Cholesterol,6.81,mmol/L,3.2-5.2,2024-07-23
+Hospital_B,1093,Serum Cholesterol,7.49,mmol/L,3.2-5.2,2024-09-03
+Hospital_C,1663,HbA1c,not collected,%,Normal < 6,2025-05-01
+Hospital_C,1545,Total Chol,3.89,mmol/L,3.2-5.2,2024-05-08
+Hospital_A,1605,Hemoglobin A1c,8.9,%,Normal < 6,2024-08-03
+Hospital_A,1639,Fasting Glucose,9.63,mmol/L,Normal: <100,2025-03-24
+Hospital_A,1135,Serum Cholesterol,297.2353755784783,mg/dL,<200,2024-06-07
+Hospital_C,1452,Total Chol,6.89,mmol/L,<200,2025-03-08
+Hospital_C,1760,Total Chol,188.1433966877145,mg/dL,<200,2024-11-20
+Hospital_A,1210,Cholesterol,270.2177711062318,mg/dL,<200,2025-10-14
+Hospital_A,1903,HbA1c,6.4,%,Normal < 6,2025-02-26
+Hospital_B,1414,Blood Sugar,9.21,mmol/L,Normal: <100,2025-10-08
+Hospital_A,1395,Glucose,164.28223061821325,mg/dL,Normal: <100,2025-03-18
+Hospital_A,1369,Blood Sugar,,mg/dL,3.9-5.5,2024-10-26
+Hospital_B,1152,Fasting Glucose,9.03,mmol/L,70-99,2024-05-07
+Hospital_A,1357,Glucose,5.91,mmol/L,3.9-5.5,2024-12-11
+Hospital_C,1932,Glycated Hemoglobin,8.6,%,4.0-5.6%,2024-05-15
+Hospital_C,1549,Serum Cholesterol,228.09736368356232,mg/dL,<200,2024-07-29
+Hospital_A,1075,Glycated Hemoglobin,4.8,%,4.0-5.6%,2024-07-13
+Hospital_B,1186,Fasting Glucose,87.7380184543847,mg/dL,3.9-5.5,2025-05-27
+Hospital_B,1743,Blood Sugar,6.57,mmol/L,3.9-5.5,2024-12-23
+Hospital_C,1150,HbA1c,9.4,%,4.0-5.6%,2024-11-24
+Hospital_A,1391,Fasting Glucose,77.5252768274837,mg/dL,70-99,2024-05-01
+Hospital_C,1610,Hemoglobin A1c,9.4,%,<5.7%,2026-03-22
+Hospital_C,1919,Blood Sugar,74.40645477950636,mg/dL,70-99,2024-10-31
+Hospital_C,1401,Glycated Hemoglobin,9.2,%,4.0-5.6%,2026-01-07
+Hospital_A,1011,Cholesterol,N/A,mmol/L,3.2-5.2,2026-03-14
+Hospital_A,1372,Hemoglobin A1c,9.6,%,4.0-5.6%,2025-01-19
+Hospital_B,1696,HbA1c,5.4,%,Normal < 6,2024-10-07
+Hospital_B,1707,Serum Cholesterol,7.0,mmol/L,<200,2025-11-30
+Hospital_C,1351,HbA1c,7.0,%,<5.7%,2024-09-10
+Hospital_B,1808,Hemoglobin A1c,7.1,%,4.0-5.6%,2026-02-01
+Hospital_C,1464,Serum Cholesterol,282.1344852655418,mg/dL,3.2-5.2,2025-08-12
+Hospital_A,1203,Total Chol,155.96286048821224,mg/dL,125-200,2025-10-28
+Hospital_B,1238,Glycated Hemoglobin,9.3,%,4.0-5.6%,2025-05-27
+Hospital_C,1702,Glucose,159.22562839025522,mg/dL,70-99,2026-01-18
+Hospital_C,1128,Glucose,141.32281669771567,mg/dL,3.9-5.5,2024-06-19
+Hospital_A,1724,Fasting Glucose,88.02158940289483,mg/dL,3.9-5.5,2025-11-01
+Hospital_A,1499,Glycated Hemoglobin,not collected,%,<5.7%,2025-07-13
+Hospital_B,1728,HbA1c,8.7,%,4.0-5.6%,2024-08-13
+Hospital_C,1996,Hemoglobin A1c,9.8,%,<5.7%,2025-11-20
+Hospital_C,1980,Glucose,9.89,mmol/L,Normal: <100,2024-03-31
+Hospital_C,1319,Fasting Glucose,7.79,mmol/L,Normal: <100,2025-08-11
+Hospital_C,1789,Cholesterol,4.05,mmol/L,3.2-5.2,2025-11-06
+Hospital_B,1654,Glycated Hemoglobin,7.2,%,<5.7%,2025-10-26
+Hospital_C,1772,Hemoglobin A1c,5.4,%,<5.7%,2025-12-30
+Hospital_A,1955,HbA1c,6.7,%,Normal < 6,2024-12-10
+Hospital_A,1774,Hemoglobin A1c,7.1,%,4.0-5.6%,2024-05-12
+Hospital_A,1026,Cholesterol,5.89,mmol/L,<200,2025-03-28
+Hospital_B,1296,Total Chol,170.33833596420138,mg/dL,125-200,2026-02-16
+Hospital_C,1821,Cholesterol,252.0512879879097,mg/dL,<200,2024-05-24
+Hospital_C,1354,Serum Cholesterol,not collected,mg/dL,3.2-5.2,2024-05-31
+Hospital_B,1072,Blood Sugar,150.3839719940368,mg/dL,Normal: <100,2025-10-21
+Hospital_B,1372,Cholesterol,277.19727601558,mg/dL,3.2-5.2,2025-02-12
+Hospital_C,1617,HbA1c,5.7,%,<5.7%,2024-05-13
+Hospital_A,1554,Blood Sugar,90.0935818859264,mg/dL,Normal: <100,2026-03-24
+Hospital_C,1048,HbA1c,4.9,%,<5.7%,2025-09-11
+Hospital_B,1841,Serum Cholesterol,220.80059906925004,mg/dL,<200,2025-10-31
+Hospital_A,1719,Cholesterol,5.46,mmol/L,<200,2025-09-10
+Hospital_A,1872,Hemoglobin A1c,7.1,%,4.0-5.6%,2025-11-04
+Hospital_A,1180,Serum Cholesterol,4.07,mmol/L,<200,2024-05-03
+Hospital_B,1093,Glucose,139.0190645873399,mg/dL,70-99,2025-04-02
+Hospital_C,1004,Blood Sugar,172.1702607532365,mg/dL,70-99,2025-10-27
+Hospital_B,1305,Serum Cholesterol,217.9720740828443,mg/dL,3.2-5.2,2024-07-02
+Hospital_B,1676,Glycated Hemoglobin,8.8,%,<5.7%,2025-09-11
+Hospital_A,1283,Cholesterol,187.45158629072097,mg/dL,<200,2025-06-19
+Hospital_C,1075,Hemoglobin A1c,4.7,%,<5.7%,2025-10-19
+Hospital_C,1362,Fasting Glucose,7.06,mmol/L,70-99,2025-03-30
+Hospital_C,1643,Fasting Glucose,4.7,mmol/L,3.9-5.5,2025-03-19
+Hospital_C,1423,Fasting Glucose,130.27439190069012,mg/dL,Normal: <100,2024-11-14
+Hospital_C,1357,Glucose,6.83,mmol/L,Normal: <100,2025-05-29
+Hospital_A,1374,HbA1c,7.9,%,4.0-5.6%,2026-03-04
+Hospital_B,1369,Glucose,173.72562500766975,mg/dL,70-99,2025-04-19
+Hospital_A,1351,Cholesterol,-999,mmol/L,3.2-5.2,2025-03-20
+Hospital_B,1418,Glucose,6.18,mmol/L,Normal: <100,2025-02-11
+Hospital_C,1204,Hemoglobin A1c,7.4,%,<5.7%,2024-09-09
+Hospital_A,1325,HbA1c,9.3,%,Normal < 6,2024-05-27
+Hospital_B,1020,Hemoglobin A1c,4.9,%,<5.7%,2025-09-18
+Hospital_A,1651,Glucose,160.0405110560792,mg/dL,3.9-5.5,2024-06-23
+Hospital_A,1517,Blood Sugar,4.7,mmol/L,70-99,2024-06-05
+Hospital_B,1571,HbA1c,9.1,%,Normal < 6,2024-12-17
+Hospital_C,1060,Blood Sugar,121.80256657231538,mg/dL,3.9-5.5,2025-10-17
+Hospital_A,1992,Glycated Hemoglobin,9.0,%,4.0-5.6%,2024-10-23
+Hospital_C,1898,Serum Cholesterol,214.51049124995797,mg/dL,125-200,2024-05-17
+Hospital_A,1747,Glycated Hemoglobin,7.0,%,<5.7%,2025-05-07
+Hospital_A,1971,Glycated Hemoglobin,8.3,%,<5.7%,2025-11-04
+Hospital_C,1035,Glycated Hemoglobin,7.6,%,<5.7%,2025-06-27
+Hospital_C,1306,Hemoglobin A1c,5.1,%,4.0-5.6%,2024-12-31
+Hospital_C,1628,Cholesterol,252.38270411527918,mg/dL,<200,2026-03-10
+Hospital_B,1675,Blood Sugar,172.84734827141946,mg/dL,3.9-5.5,2024-07-02
+Hospital_C,1078,Fasting Glucose,126.17167425707345,mg/dL,3.9-5.5,2024-12-02
+Hospital_B,1638,Hemoglobin A1c,N/A,%,Normal < 6,2026-03-22
+Hospital_C,1391,Fasting Glucose,178.17556105485326,mg/dL,70-99,2025-09-02
+Hospital_A,1835,Serum Cholesterol,7.01,mmol/L,125-200,2026-01-22
+Hospital_C,1866,Cholesterol,4.2,mmol/L,125-200,2025-05-02
+Hospital_C,1753,Cholesterol,4.1,mmol/L,3.2-5.2,2025-11-29
+Hospital_B,1518,Blood Sugar,90.92328464547357,mg/dL,3.9-5.5,2025-08-23
+Hospital_B,1466,Serum Cholesterol,5.56,mmol/L,<200,2025-11-11
+Hospital_B,1638,Serum Cholesterol,195.54683993029386,mg/dL,125-200,2024-11-19
+Hospital_C,1843,Serum Cholesterol,3.93,mmol/L,<200,2025-11-27
+Hospital_A,1313,Serum Cholesterol,5.71,mmol/L,125-200,2024-11-29
+Hospital_B,1166,Cholesterol,N/A,mg/dL,<200,2026-02-11
+Hospital_A,1142,Serum Cholesterol,196.2123301157306,mg/dL,<200,2025-06-19
+Hospital_C,1486,Serum Cholesterol,167.20829271033978,mg/dL,<200,2024-12-19
+Hospital_C,1474,Fasting Glucose,174.81001242273226,mg/dL,3.9-5.5,2025-08-26
+Hospital_B,1794,HbA1c,9.4,%,Normal < 6,2024-10-31
+Hospital_A,1256,Fasting Glucose,4.65,mmol/L,3.9-5.5,2025-08-14
+Hospital_C,1438,Total Chol,4.73,mmol/L,3.2-5.2,2025-03-21
+Hospital_A,1016,Glycated Hemoglobin,6.3,%,4.0-5.6%,2024-05-12
+Hospital_C,1903,Blood Sugar,95.29898426294106,mg/dL,70-99,2024-06-25
+Hospital_A,1670,Hemoglobin A1c,6.7,%,4.0-5.6%,2024-05-08
+Hospital_B,1500,Total Chol,198.73315477865552,mg/dL,125-200,2024-12-03
+Hospital_C,1052,Glycated Hemoglobin,6.6,%,4.0-5.6%,2025-04-06
+Hospital_A,1861,Hemoglobin A1c,not collected,%,Normal < 6,2025-05-18
+Hospital_A,1059,Fasting Glucose,-999,mg/dL,70-99,2025-03-25
+Hospital_A,1914,Serum Cholesterol,6.93,mmol/L,3.2-5.2,2025-06-24
+Hospital_C,1833,Hemoglobin A1c,6.4,%,Normal < 6,2024-10-09
+Hospital_B,1944,Hemoglobin A1c,6.0,%,<5.7%,2024-05-20
+Hospital_B,1266,Glycated Hemoglobin,6.9,%,<5.7%,2024-10-31
+Hospital_A,1979,Fasting Glucose,156.48840632710932,mg/dL,Normal: <100,2024-07-16
+Hospital_B,1722,Total Chol,164.13638500691818,mg/dL,3.2-5.2,2026-02-21
+Hospital_C,1479,Glycated Hemoglobin,4.9,%,<5.7%,2025-09-03
+Hospital_B,1823,Fasting Glucose,148.94775273546992,mg/dL,Normal: <100,2025-08-17
+Hospital_B,1930,Serum Cholesterol,198.22901443206425,mg/dL,<200,2024-06-02
+Hospital_A,1660,Cholesterol,253.602368292351,mg/dL,<200,2025-01-17
+Hospital_C,1345,Cholesterol,7.5,mmol/L,3.2-5.2,2025-04-21
+Hospital_A,1233,Fasting Glucose,93.23092520794592,mg/dL,70-99,2024-03-31
+Hospital_A,1980,Serum Cholesterol,262.5837860358905,mg/dL,<200,2025-08-04
+Hospital_C,1623,Serum Cholesterol,4.03,mmol/L,125-200,2025-06-26
+Hospital_B,1428,Fasting Glucose,91.10931480620697,mg/dL,3.9-5.5,2025-07-25
+Hospital_A,1402,Hemoglobin A1c,4.6,%,Normal < 6,2026-03-06
+Hospital_A,1220,Total Chol,157.58106069418378,mg/dL,3.2-5.2,2026-01-28
+Hospital_C,1486,Cholesterol,5.93,mmol/L,<200,2026-03-01
+Hospital_C,1556,Glucose,81.30968429081611,mg/dL,Normal: <100,2024-10-04
+Hospital_A,1402,Serum Cholesterol,4.47,mmol/L,125-200,2025-08-14
+Hospital_B,1177,Blood Sugar,3.96,mmol/L,3.9-5.5,2025-09-30
+Hospital_C,1951,Blood Sugar,6.81,mmol/L,Normal: <100,2025-08-06
+Hospital_B,1170,Total Chol,7.64,mmol/L,3.2-5.2,2025-10-17
+Hospital_A,1099,Fasting Glucose,7.1,mmol/L,70-99,2026-02-26
+Hospital_C,1780,Glucose,-999,mg/dL,Normal: <100,2025-01-19
+Hospital_B,1998,Glucose,140.64671895394906,mg/dL,3.9-5.5,2025-09-14
+Hospital_C,1308,Hemoglobin A1c,6.9,%,<5.7%,2024-10-31
+Hospital_A,1468,Glucose,3.93,mmol/L,Normal: <100,2025-08-26
+Hospital_A,1493,Fasting Glucose,9.34,mmol/L,Normal: <100,2025-07-16
+Hospital_C,1993,HbA1c,8.9,%,Normal < 6,2025-03-22
+Hospital_A,1332,Blood Sugar,6.18,mmol/L,3.9-5.5,2024-07-25
+Hospital_B,1543,Hemoglobin A1c,7.2,%,Normal < 6,2024-08-28
+Hospital_A,1652,Total Chol,5.51,mmol/L,125-200,2024-05-07
+Hospital_B,1535,HbA1c,7.3,%,Normal < 6,2025-03-02
+Hospital_A,1506,HbA1c,5.8,%,<5.7%,2024-09-19
+Hospital_C,1142,Cholesterol,4.41,mmol/L,125-200,2024-06-17
+Hospital_A,1601,Fasting Glucose,9.57,mmol/L,3.9-5.5,2026-01-27
+Hospital_C,1376,Blood Sugar,10,mmol/L,70-99,2026-03-12
+Hospital_C,1703,Glycated Hemoglobin,,%,Normal < 6,2025-01-17
+Hospital_C,1675,HbA1c,7.7,%,Normal < 6,2025-11-01
+Hospital_A,1826,Blood Sugar,4.59,mmol/L,Normal: <100,2024-08-27
+Hospital_B,1359,Cholesterol,4.06,mmol/L,3.2-5.2,2026-01-27
+Hospital_B,1224,Fasting Glucose,146.25426132477924,mg/dL,Normal: <100,2025-04-13
+Hospital_A,1449,Total Chol,170.9811602015843,mg/dL,<200,2024-10-31
+Hospital_A,1106,Cholesterol,,mg/dL,<200,2025-07-20
+Hospital_B,1402,Glucose,6.91,mmol/L,3.9-5.5,2024-05-22
+Hospital_B,1377,Fasting Glucose,76.30494107389903,mg/dL,70-99,2024-04-05
