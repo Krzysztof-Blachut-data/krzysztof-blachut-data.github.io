@@ -1,0 +1,9 @@
+{
+  "source": "ec_weekly_oil_bulletin",
+  "country": "Poland",
+  "pb95_eur_per_1000l": 1480.8336577669313,
+  "diesel_eur_per_1000l": 1685.5407719552709,
+  "pb95_net_eur_per_1000l": 948.6705482410647,
+  "diesel_net_eur_per_1000l": 1167.4202194439893,
+  "fetched_at": "2026-08-19T17:20:00.121444+00:00"
+}

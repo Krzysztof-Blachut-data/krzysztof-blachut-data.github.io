@@ -1440,7 +1440,7 @@
         list.hidden = issues.length === 0;
         document.getElementById("dc-code").textContent = meta.code;
         document.getElementById("dc-progress").textContent = (step + 1) + " / " + STEPS.length;
-        document.querySelectorAll(".dc-step").forEach(function (btn) {
+        document.querySelectorAll("#dc-walkthrough .dc-step").forEach(function (btn) {
             var n = Number(btn.getAttribute("data-step"));
             btn.classList.toggle("active", n === step);
             btn.classList.toggle("done", n < step);
@@ -1477,7 +1477,7 @@
 
     document.getElementById("dc-prev").addEventListener("click", function () { go(step - 1); });
     document.getElementById("dc-next").addEventListener("click", function () { go(step + 1); });
-    document.querySelectorAll(".dc-step").forEach(function (btn) {
+    document.querySelectorAll("#dc-walkthrough .dc-step").forEach(function (btn) {
         btn.addEventListener("click", function () { go(Number(btn.getAttribute("data-step"))); });
     });
     document.querySelectorAll("[data-set-lang]").forEach(function (btn) {

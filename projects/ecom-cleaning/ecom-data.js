@@ -1,74 +1,685 @@
-window.ECOM_PREVIEW = {
-    crm: [
-        { customer_id: "0d244537", first_name: "mARIA", last_name: "day", email: "maria.day697@hotmail.com", phone: "449.977.1729x282", source: "referral" },
-        { customer_id: "66c5800b", first_name: "KKeevvin", last_name: " Cantu", email: "kevin.cantu968@gmail.com", phone: "501.347.4824x64633", source: "referral" },
-        { customer_id: "2e3d574b", first_name: "Caitlin", last_name: "Hernandez", email: "", phone: "864-894-1347", source: "web" },
-        { customer_id: "00682ed4", first_name: "Melissa", last_name: "Peck", email: "shared1349@hotmail.com", phone: "(522)382-8559", source: "app" },
-        { customer_id: "00682ed4", first_name: "Melissa", last_name: " PECK", email: "shared1349@hotmail.com", phone: "(522)382-8559", source: "app" },
-        { customer_id: "0070c246", first_name: "JOSEPH", last_name: "sMITH", email: "joseph.smith734@hotmail.com", phone: "489.732.5436", source: "web" }
-    ],
-    catalog: [
-        { product_id: "PROD-0001", product_name: "Open Beaautiful", category: "clo", price: "32309.95" },
-        { product_id: "PROD-0003", product_name: "MEAN YOUR", category: "3l3ctronics", price: "-100" },
-        { product_id: "PROD-0016", product_name: "StartWear", category: "hom3", price: "1,200" },
-        { product_id: "PROD-0020", product_name: "StockYard", category: "", price: "1,200" },
-        { product_id: "PROD-0005", product_name: "A Hot", category: "clothing", price: "19165.58" },
-        { product_id: "PROD-0002", product_name: "Race Third", category: "automotive", price: "47346.82" }
-    ],
-    orders: [
-        { order_id: "06b5aa88", customer_id: "0a331d4c", product_id: "PROD-0060", order_amount: "473.82", order_date: "2025-07-29", payment_method: "wall-et", status: "success", quantity: "1" },
-        { order_id: "5b10b856", customer_id: "9e48263f", product_id: "PROD-0393", order_amount: "17796.32", order_date: "2024/31/01", payment_method: "card", status: "success", quantity: "1" },
-        { order_id: "c6ae75af", customer_id: "abfda25e", product_id: "PROD-0059", order_amount: "42282.89", order_date: "", payment_method: "wallet", status: "refunded", quantity: "2" },
-        { order_id: "cc6dcafa", customer_id: "d7e5abd4", product_id: "PROD-0243", order_amount: "32901.99", order_date: "2025-02-27", payment_method: "upi", status: " FAILED", quantity: "5" },
-        { order_id: "9b1262e3", customer_id: "a802e40f", product_id: "PROD-0175", order_amount: "29184.75", order_date: "2024-02-17", payment_method: "CRAD", status: "success", quantity: "4" },
-        { order_id: "4b5d74d1", customer_id: "5b8f9a1d", product_id: "PROD-0214", order_amount: "-50", order_date: "2026-12-20T15:18:00", payment_method: "card", status: "refunded", quantity: " " },
-        { order_id: "b05c45b2", customer_id: "a28f3ed6", product_id: "PROD-0371", order_amount: "36547.44", order_date: "2023-12-17", payment_method: "cash", status: "success", quantity: "-3" },
-        { order_id: "a2376264", customer_id: "141ad63a", product_id: "PROD-0349", order_amount: "34334.22", order_date: "2025-05-04", payment_method: "c@rd", status: "fail", quantity: "3" },
-        { order_id: "aa11qty5", customer_id: "0a331d4c", product_id: "PROD-0005", order_amount: "19165.58", order_date: "2025/01/10 12:00", payment_method: " UPI ", status: "suc", quantity: "five" }
-    ],
-    tickets: [
-        { ticket_id: "b88e879e", customer_id: "0c27206e", issue_type: "payment", ticket_created: "", ticket_resolved: "2024-06-19T07:27:03", resolution_time_hours: "166", sentiment: "neutral" },
-        { ticket_id: "bc2183e9", customer_id: "d7e5abd4", issue_type: "delay", ticket_created: "2025-12-12T28:77:10", ticket_resolved: "2025-12-14T08:00:00", resolution_time_hours: "96", sentiment: "NEGATIVE" },
-        { ticket_id: "8a3b7124", customer_id: "0a331d4c", issue_type: "tnemyap", ticket_created: "2024-06-17T07:37:37", ticket_resolved: "2024-06-18T09:00:00", resolution_time_hours: "25", sentiment: "positive" },
-        { ticket_id: "356bf8bd", customer_id: "abfda25e", issue_type: "product", ticket_created: "2024-05-13T23:20:24", ticket_resolved: "2024-05-14T12:00:00", resolution_time_hours: "12", sentiment: "n3gativ3" },
-        { ticket_id: "f166a3ff", customer_id: "9e48263f", issue_type: "dnufer", ticket_created: "2024/31/01", ticket_resolved: "", resolution_time_hours: "48", sentiment: "neg" },
-        { ticket_id: "a11refund", customer_id: "141ad63a", issue_type: "refundx", ticket_created: "2024-11-04T01:32:32", ticket_resolved: "2024-11-05T01:32:32", resolution_time_hours: "24", sentiment: "pos" }
-    ],
-    clickstream: [
-        { event_id: "aa56e7fb", customer_id: "", event_type: "login", page_url: "https://shop.example.com/search?q=shoes", timestamp: "2025-09-26T16:03:31Z" },
-        { event_id: "c0f6a7b0", customer_id: "d8fde909", event_type: "search", page_url: "https://shop.example.com/", timestamp: "2024/31/01 25:61:00" },
-        { event_id: "393c9236", customer_id: "0a331d4c", event_type: "page_view", page_url: "", timestamp: "2025-10-06T19:03:15Z" },
-        { event_id: "9f0a4c33", customer_id: "", event_type: "add_to_cart", page_url: "https://shop.example.com/product/PROD-0201", timestamp: "2025-09-21T00:21:39Z" },
-        { event_id: "9ea31e17", customer_id: "ea0320ec", event_type: "page_view", page_url: "https://shop.example.com/product/PROD-0109", timestamp: "2025-10-15T12:27:28Z" },
-        { event_id: "b22login", customer_id: "0d244537", event_type: "login", page_url: "https://shop.example.com/", timestamp: "2025-09-03T07:46:34Z" }
-    ]
-};
-
-window.ECOM_STATS = {
-    totals: {
-        rows: 880500,
-        tables: 5,
-        crm: 50000,
-        crmUnique: 48200,
-        crmDups: 1800,
-        catalog: 500,
-        categoriesRaw: 47,
-        categoriesClean: 8,
-        orders: 300000,
-        statusRaw: 10,
-        statusClean: 3,
-        paymentRaw: 11,
-        paymentClean: 4,
-        tickets: 30000,
-        issueRaw: 35,
-        issueClean: 4,
-        sentimentRaw: 18,
-        sentimentClean: 3,
-        click: 500000,
-        clickAnon: 150553,
-        emailMissing: 1040,
-        orderAmountBad: 38537,
-        orderQtyBad: 44867,
-        orderDateBad: 36024
+// Generated by scripts/build_ecom_data.py — do not edit by hand.
+// Counts come from data/reports/quality_report.json; preview rows are real rows
+// taken from data/samples/, selected to show one instance of each defect.
+window.ECOM_DATA = {
+  "generatedAt": "2026-08-19T17:03:44+00:00",
+  "source": "full",
+  "totals": {
+    "rows": 880500,
+    "tables": 5,
+    "crm": 50000,
+    "crmUnique": 48200,
+    "crmDups": 1800,
+    "emailMissing": 1040,
+    "emailShared": 2597,
+    "nameFixes": 22804,
+    "catalog": 500,
+    "categoriesRaw": 46,
+    "categoriesClean": 8,
+    "categoriesBlank": 30,
+    "priceUnusable": 71,
+    "orders": 300000,
+    "statusRaw": 10,
+    "statusClean": 3,
+    "paymentRaw": 11,
+    "paymentClean": 4,
+    "orderDateBad": 17914,
+    "orderDateRescued": 36160,
+    "orderAmountBad": 51525,
+    "orderQtyBad": 59964,
+    "ordersAnalysable": 186928,
+    "ordersQuarantined": 113072,
+    "tickets": 30000,
+    "issueRaw": 35,
+    "issueClean": 4,
+    "sentimentRaw": 18,
+    "sentimentClean": 3,
+    "ticketsReversedTimeline": 2677,
+    "ticketsDurationDisagrees": 2905,
+    "click": 500000,
+    "clickAnon": 150553,
+    "clickIdentified": 349447
+  },
+  "kpis": {
+    "revenue_success": 7191352461.04,
+    "orders_success": 137804,
+    "aov": 52185.37,
+    "status_share": {
+      "success": 137804,
+      "refunded": 26688,
+      "failed": 22436
+    },
+    "refund_rate_pct": 14.28,
+    "failure_rate_pct": 12.0,
+    "visitors_identified": 48159,
+    "visitors_with_cart": 31871,
+    "visitors_who_bought": 29844,
+    "cart_to_purchase_pct": 93.64,
+    "unattributable_events": 150553,
+    "unattributable_pct": 30.1,
+    "session_funnel_possible": false,
+    "orphan_orders_customer": 0,
+    "orphan_orders_product": 0,
+    "orphan_tickets_customer": 0,
+    "orphan_visitors_customer": 0,
+    "ticket_resolution_median_h": 133.0,
+    "tickets_by_issue": {
+      "refund": 7572,
+      "product": 7542,
+      "payment": 7464,
+      "delay": 7422
+    },
+    "sentiment_share": {
+      "negative": 10019,
+      "positive": 10014,
+      "neutral": 9967
+    },
+    "top_payment": "card",
+    "top_category": "clothing"
+  },
+  "keys": {
+    "sessionIdIsValid": false,
+    "sessionsSeen": 8000,
+    "sessionsMultiCustomer": 8000,
+    "deviceIdJoinsToCrm": false,
+    "devicesInClickstream": 498949,
+    "devicesInCrm": 51854,
+    "eventsPerDevice": 1.0,
+    "orphanOrders": 0,
+    "orphanTickets": 0,
+    "orphanVisitors": 0
+  },
+  "rules": {
+    "category": {
+      "prefix": 22,
+      "exact": 362,
+      "leet": 23,
+      "punctuation": 17,
+      "case_or_padding": 46,
+      "missing": 30
+    },
+    "payment": {
+      "punctuation": 10631,
+      "exact": 225000,
+      "alias": 21436,
+      "case_or_padding": 32249,
+      "leet": 10684
+    },
+    "status": {
+      "exact": 210000,
+      "case_or_padding": 51465,
+      "prefix": 38535
+    },
+    "issue": {
+      "exact": 21261,
+      "prefix": 1109,
+      "leet": 857,
+      "punctuation": 2275,
+      "case_or_padding": 3371,
+      "reversal": 1127
+    },
+    "sentiment": {
+      "exact": 21000,
+      "case_or_padding": 3430,
+      "prefix": 4480,
+      "leet": 1090
     }
+  },
+  "dateFormats": {
+    "%Y/%d/%m": 18110,
+    "%d-%m-%Y": 18050
+  },
+  "byPayment": [
+    {
+      "payment_method": "card",
+      "orders": 40481,
+      "revenue": 2133098962.46
+    },
+    {
+      "payment_method": "upi",
+      "orders": 35680,
+      "revenue": 1869952306.85
+    },
+    {
+      "payment_method": "wallet",
+      "orders": 35760,
+      "revenue": 1865908685.79
+    },
+    {
+      "payment_method": "cash",
+      "orders": 25883,
+      "revenue": 1322392505.94
+    }
+  ],
+  "byCategory": [
+    {
+      "category": "clothing",
+      "orders": 19113,
+      "revenue": 990806628.2
+    },
+    {
+      "category": "kitchen",
+      "orders": 18746,
+      "revenue": 973636166.01
+    },
+    {
+      "category": "beauty",
+      "orders": 16802,
+      "revenue": 871249324.63
+    },
+    {
+      "category": "home",
+      "orders": 15885,
+      "revenue": 841098287.21
+    },
+    {
+      "category": "electronics",
+      "orders": 15790,
+      "revenue": 835073284.5
+    },
+    {
+      "category": "toys",
+      "orders": 14620,
+      "revenue": 772118657.88
+    },
+    {
+      "category": "sports",
+      "orders": 14198,
+      "revenue": 734409141.81
+    },
+    {
+      "category": "automotive",
+      "orders": 14226,
+      "revenue": 727242427.39
+    }
+  ],
+  "byMonth": [
+    {
+      "month": "2023-12",
+      "orders": 12953,
+      "revenue": 688794719.84
+    },
+    {
+      "month": "2024-01",
+      "orders": 13256,
+      "revenue": 695872413.36
+    },
+    {
+      "month": "2024-02",
+      "orders": 4102,
+      "revenue": 207383394.56
+    },
+    {
+      "month": "2024-03",
+      "orders": 4443,
+      "revenue": 221716979.46
+    },
+    {
+      "month": "2024-04",
+      "orders": 4103,
+      "revenue": 211657397.73
+    },
+    {
+      "month": "2024-05",
+      "orders": 4315,
+      "revenue": 238039028.9
+    },
+    {
+      "month": "2024-06",
+      "orders": 4194,
+      "revenue": 211979446.06
+    },
+    {
+      "month": "2024-07",
+      "orders": 4406,
+      "revenue": 229729693.24
+    },
+    {
+      "month": "2024-08",
+      "orders": 4315,
+      "revenue": 230756559.17
+    },
+    {
+      "month": "2024-09",
+      "orders": 4150,
+      "revenue": 222709776.98
+    },
+    {
+      "month": "2024-10",
+      "orders": 4310,
+      "revenue": 227180552.7
+    },
+    {
+      "month": "2024-11",
+      "orders": 4082,
+      "revenue": 219588146.08
+    },
+    {
+      "month": "2024-12",
+      "orders": 4399,
+      "revenue": 214683106.62
+    },
+    {
+      "month": "2025-01",
+      "orders": 13144,
+      "revenue": 677248659.57
+    },
+    {
+      "month": "2025-02",
+      "orders": 3981,
+      "revenue": 199843637.73
+    },
+    {
+      "month": "2025-03",
+      "orders": 4411,
+      "revenue": 232357540.99
+    },
+    {
+      "month": "2025-04",
+      "orders": 4192,
+      "revenue": 241642409.16
+    },
+    {
+      "month": "2025-05",
+      "orders": 4354,
+      "revenue": 218814534.11
+    },
+    {
+      "month": "2025-06",
+      "orders": 4161,
+      "revenue": 219436407.56
+    },
+    {
+      "month": "2025-07",
+      "orders": 4383,
+      "revenue": 239484186.38
+    },
+    {
+      "month": "2025-08",
+      "orders": 4352,
+      "revenue": 219080098.05
+    },
+    {
+      "month": "2025-09",
+      "orders": 4251,
+      "revenue": 217789532.05
+    },
+    {
+      "month": "2025-10",
+      "orders": 4448,
+      "revenue": 219020439.99
+    },
+    {
+      "month": "2025-11",
+      "orders": 4235,
+      "revenue": 230128388.12
+    },
+    {
+      "month": "2025-12",
+      "orders": 774,
+      "revenue": 36258330.26
+    },
+    {
+      "month": "2026-01",
+      "orders": 652,
+      "revenue": 29833703.08
+    },
+    {
+      "month": "2026-02",
+      "orders": 618,
+      "revenue": 30270956.36
+    },
+    {
+      "month": "2026-03",
+      "orders": 674,
+      "revenue": 29421367.74
+    },
+    {
+      "month": "2026-04",
+      "orders": 696,
+      "revenue": 44464438.22
+    },
+    {
+      "month": "2026-05",
+      "orders": 651,
+      "revenue": 35040236.25
+    },
+    {
+      "month": "2026-06",
+      "orders": 662,
+      "revenue": 36851149.47
+    },
+    {
+      "month": "2026-07",
+      "orders": 666,
+      "revenue": 31845274.06
+    },
+    {
+      "month": "2026-08",
+      "orders": 688,
+      "revenue": 34213915.91
+    },
+    {
+      "month": "2026-09",
+      "orders": 661,
+      "revenue": 38823383.93
+    },
+    {
+      "month": "2026-10",
+      "orders": 705,
+      "revenue": 38738646.36
+    },
+    {
+      "month": "2026-11",
+      "orders": 621,
+      "revenue": 31188778.75
+    },
+    {
+      "month": "2026-12",
+      "orders": 682,
+      "revenue": 33281861.12
+    },
+    {
+      "month": "2027-01",
+      "orders": 114,
+      "revenue": 6183371.12
+    }
+  ],
+  "preview": {
+    "crm": [
+      {
+        "customer_id": "66c5800b",
+        "first_name": "KKeevvin",
+        "last_name": " Cantu",
+        "email": "kevin.cantu968@gmail.com",
+        "phone": "501.347.4824x64633",
+        "source": "referral"
+      },
+      {
+        "customer_id": "0d244537",
+        "first_name": "mARIA",
+        "last_name": "day",
+        "email": "maria.day697@hotmail.com",
+        "phone": "449.977.1729x282",
+        "source": "referral"
+      },
+      {
+        "customer_id": "5004fa30",
+        "first_name": "Tho8mas",
+        "last_name": " Weeks",
+        "email": "thomas.weeks103@yahoo.com",
+        "phone": "(047)133-4446",
+        "source": "web"
+      },
+      {
+        "customer_id": "2e3d574b",
+        "first_name": " Caitlin",
+        "last_name": " Hernandez",
+        "email": "",
+        "phone": "+1-959-000-2424x3019",
+        "source": "web"
+      },
+      {
+        "customer_id": "ac2f0eed",
+        "first_name": " Denise",
+        "last_name": " Cooper",
+        "email": "diana.smith863@yahoo.com",
+        "phone": "8814749212",
+        "source": "referral"
+      },
+      {
+        "customer_id": "6ddc1772",
+        "first_name": "Toni",
+        "last_name": "Li",
+        "email": "toni.li092@gmail.com",
+        "phone": "(522)382-8559",
+        "source": "app"
+      },
+      {
+        "customer_id": "e7852eee",
+        "first_name": "Ronald",
+        "last_name": "Daniel",
+        "email": "ronald.daniel138@yahoo.com",
+        "phone": "+1-268-822-6332x26814",
+        "source": "web"
+      }
+    ],
+    "catalog": [
+      {
+        "product_id": "PROD-0003",
+        "product_name": "MEAN YOUR",
+        "category": "3l3ctronics",
+        "price": "-100"
+      },
+      {
+        "product_id": "PROD-0001",
+        "product_name": "Open Beaautiful",
+        "category": "clo",
+        "price": " 32309.95"
+      },
+      {
+        "product_id": "PROD-0010",
+        "product_name": "By Speaak",
+        "category": "clothing_",
+        "price": "0"
+      },
+      {
+        "product_id": "PROD-0020",
+        "product_name": "StockYard",
+        "category": "",
+        "price": "1,200"
+      },
+      {
+        "product_id": "PROD-0018",
+        "product_name": "current agreement",
+        "category": "CLOTHING",
+        "price": "0"
+      },
+      {
+        "product_id": "PROD-0002",
+        "product_name": "Race Third",
+        "category": "automotive",
+        "price": "47346.82"
+      },
+      {
+        "product_id": "PROD-0004",
+        "product_name": "Consumer Newspaper",
+        "category": "toys",
+        "price": "28506.95"
+      }
+    ],
+    "orders": [
+      {
+        "order_id": "06b5aa88",
+        "customer_id": "0a331d4c",
+        "product_id": "PROD-0060",
+        "order_amount": "473.82",
+        "order_date": "2025-07-29",
+        "payment_method": "wall-et",
+        "status": "success",
+        "quantity": "1"
+      },
+      {
+        "order_id": "cc6dcafa",
+        "customer_id": "d7e5abd4",
+        "product_id": "PROD-0243",
+        "order_amount": "32901.99",
+        "order_date": "2025-02-27",
+        "payment_method": "upi",
+        "status": " FAILED",
+        "quantity": "5"
+      },
+      {
+        "order_id": "5b10b856",
+        "customer_id": "9e48263f",
+        "product_id": "PROD-0393",
+        "order_amount": "17796.32",
+        "order_date": "2024/31/01",
+        "payment_method": "card",
+        "status": "success",
+        "quantity": "1"
+      },
+      {
+        "order_id": "c6ae75af",
+        "customer_id": "abfda25e",
+        "product_id": "PROD-0059",
+        "order_amount": "42282.89",
+        "order_date": "",
+        "payment_method": "wallet",
+        "status": "refunded",
+        "quantity": "2"
+      },
+      {
+        "order_id": "4b5d74d1",
+        "customer_id": "5b8f9a1d",
+        "product_id": "PROD-0214",
+        "order_amount": "-50",
+        "order_date": "2026-12-20T15:18:00.441995",
+        "payment_method": "card",
+        "status": "refunded",
+        "quantity": " "
+      },
+      {
+        "order_id": "9cd401b4",
+        "customer_id": "4111ec1f",
+        "product_id": "PROD-0340",
+        "order_amount": " 40344.97",
+        "order_date": "2025-05-24",
+        "payment_method": "upi",
+        "status": "suc",
+        "quantity": " "
+      },
+      {
+        "order_id": "f2c4328c",
+        "customer_id": "26392abf",
+        "product_id": "PROD-0193",
+        "order_amount": "40904.93",
+        "order_date": "2024-06-03",
+        "payment_method": "cash",
+        "status": "success",
+        "quantity": "0"
+      },
+      {
+        "order_id": "88706122",
+        "customer_id": "245fac1f",
+        "product_id": "PROD-0332",
+        "order_amount": "31201.75",
+        "order_date": "2024-03-02",
+        "payment_method": "wallet",
+        "status": "success",
+        "quantity": "2"
+      }
+    ],
+    "tickets": [
+      {
+        "ticket_id": "8a3b7124",
+        "customer_id": "bb85ab3f",
+        "issue_type": "tnemyap",
+        "ticket_created": "2024/31/01",
+        "ticket_resolved": "2024-04-20T01:06:48",
+        "resolution_time_hours": "219.0",
+        "sentiment": "positive"
+      },
+      {
+        "ticket_id": "35d69121",
+        "customer_id": "0c15d282",
+        "issue_type": "r3fund",
+        "ticket_created": "2025-10-10T18:41:04",
+        "ticket_resolved": "2025-10-13T13:41:04",
+        "resolution_time_hours": "67.0",
+        "sentiment": "negative"
+      },
+      {
+        "ticket_id": "73b67e5c",
+        "customer_id": "88904c46",
+        "issue_type": "refundx",
+        "ticket_created": "2025-12-12T28:77:10",
+        "ticket_resolved": "31-15-2023",
+        "resolution_time_hours": "188.0",
+        "sentiment": "neutral"
+      },
+      {
+        "ticket_id": "b88e879e",
+        "customer_id": "0c27206e",
+        "issue_type": "payment",
+        "ticket_created": "",
+        "ticket_resolved": "2024-06-19T07:27:03",
+        "resolution_time_hours": "166.0",
+        "sentiment": "neutral"
+      },
+      {
+        "ticket_id": "bc2183e9",
+        "customer_id": "c79c0aa3",
+        "issue_type": "delay",
+        "ticket_created": "2025-12-12T28:77:10",
+        "ticket_resolved": "2025-08-18T19:03:58",
+        "resolution_time_hours": "13.0",
+        "sentiment": "NEGATIVE"
+      },
+      {
+        "ticket_id": "a1f269ac",
+        "customer_id": "05adb8b0",
+        "issue_type": "refund",
+        "ticket_created": "2026-06-22T15:41:44.348698",
+        "ticket_resolved": "2025-09-20T01:14:31",
+        "resolution_time_hours": "187.0",
+        "sentiment": "NEGATIVE"
+      },
+      {
+        "ticket_id": "9eb45393",
+        "customer_id": "c36f0cc1",
+        "issue_type": "delay",
+        "ticket_created": "2024-04-11T10:34:03",
+        "ticket_resolved": "2024-04-15T05:34:03",
+        "resolution_time_hours": "91.0",
+        "sentiment": "negative "
+      }
+    ],
+    "clickstream": [
+      {
+        "event_id": "aa56e7fb",
+        "customer_id": "",
+        "event_type": "login",
+        "page_url": "https://shop.example.com/search?q=shoes",
+        "timestamp": "2025-09-26T16:03:31.922468+00:00"
+      },
+      {
+        "event_id": "393c9236",
+        "customer_id": "f339efba",
+        "event_type": "page_view",
+        "page_url": "",
+        "timestamp": "2025-09-23T17:34:37.924875+00:00"
+      },
+      {
+        "event_id": "c0f6a7b0",
+        "customer_id": "d8fde909",
+        "event_type": "search",
+        "page_url": "https://shop.example.com/",
+        "timestamp": "2024/31/01 25:61:00"
+      },
+      {
+        "event_id": "037d3e96",
+        "customer_id": "04d7faa3",
+        "event_type": "add_to_cart",
+        "page_url": "https://shop.example.com/product/PROD-0286",
+        "timestamp": "2025-11-03T15:42:44.923037+00:00"
+      },
+      {
+        "event_id": "83b5c33c",
+        "customer_id": "",
+        "event_type": "search",
+        "page_url": "https://shop.example.com/category/electronics",
+        "timestamp": "2025-09-24T04:01:36.923411+00:00"
+      },
+      {
+        "event_id": "9ea31e17",
+        "customer_id": "ea0320ec",
+        "event_type": "page_view",
+        "page_url": "https://shop.example.com/product/PROD-0109",
+        "timestamp": "2025-10-15T12:27:28.922583+00:00"
+      }
+    ]
+  }
 };
+window.ECOM_STATS = { totals: window.ECOM_DATA.totals };
+window.ECOM_PREVIEW = window.ECOM_DATA.preview;

@@ -34,40 +34,40 @@
         {
             titlePl: "Katalog: kategorie i ceny",
             titleEn: "Catalog: categories and prices",
-            bodyPl: "47 etykiet kategorii na 8 działów (clo, 3l3ctronics, hom3). Ceny jako tekst: „1,200”, strażnik −100, braki. Po mapie zostaje 8 kategorii i liczba.",
-            bodyEn: "47 category labels for 8 departments (clo, 3l3ctronics, hom3). Prices as text: “1,200”, sentinel −100, blanks. After mapping: 8 categories and a numeric price.",
+            bodyPl: "46 zapisów kategorii na 8 działów (clo, 3l3ctronics, hom3, clothing_) plus 30 pustych. Zamiast słownika literówek używam reguł: wielkość liter, interpunkcja, leetspeak, unikalny prefiks. Każda reguła jest zliczana, więc widać, jak naprawiono każdy wiersz. Ceny jako tekst „1,200”, strażnik −100 i zera → 71 cen nie do użycia.",
+            bodyEn: "46 category spellings for 8 departments (clo, 3l3ctronics, hom3, clothing_) plus 30 blanks. Instead of a table of misspellings I use ordered rules: casing, punctuation, leetspeak, unique prefix. Every rule is counted, so it is visible how each row was resolved. Prices as text “1,200”, sentinel −100 and zeros → 71 unusable prices.",
             table: "catalog",
-            code: "cat_map = {\"clo\":\"clothing\",\"3l3ctronics\":\"electronics\",\"hom3\":\"home\",\"kitch3n\":\"kitchen\"}\ncatalog[\"category\"] = catalog[\"category\"].str.strip().str.lower().replace(cat_map)\ncatalog[\"price\"] = pd.to_numeric(catalog[\"price\"].str.replace(\",\",\"\"), errors=\"coerce\")\ncatalog.loc[catalog[\"price\"] <= 0, \"price\"] = np.nan"
+            code: "# ordered rules, not a lookup table of every misspelling\nnorm = Normaliser(CATEGORIES)   # clothing, kitchen, beauty, automotive, toys, sports, home, electronics\ncatalog[\"category\"] = catalog[\"category\"].map(norm)\nprint(norm.report())  # {'exact': 362, 'case_or_padding': 46, 'leet': 23, 'punctuation': 17, 'prefix': 22, 'missing': 30}\nassert norm.rules[\"unresolved\"] == 0  # nothing was silently dropped\n\nprice = pd.to_numeric(catalog[\"price\"].str.replace(\",\", \"\"), errors=\"coerce\")\ncatalog[\"price\"] = price.mask(price.isin(PRICE_SENTINELS) | (price <= 0))"
         },
         {
             titlePl: "Zamówienia: słowniki, kwoty, daty",
             titleEn: "Orders: dictionaries, amounts, dates",
-            bodyPl: "10 statusów → success / refunded / failed. 11 metod płatności → card, wallet, upi, cash (CRAD, c@rd, wall-et). Quantity bywa „five”, −3 albo puste. Daty: 2024/31/01, braki, ISO z godziną.",
-            bodyEn: "10 statuses → success / refunded / failed. 11 payment methods → card, wallet, upi, cash (CRAD, c@rd, wall-et). Quantity is sometimes “five”, −3 or blank. Dates: 2024/31/01, blanks, ISO with time.",
+            bodyPl: "10 statusów → success / refunded / failed. 11 metod płatności → card, wallet, upi, cash (CRAD, c@rd, wall-et). Najważniejsza decyzja dotyczy dat: 54 074 nie parsuje się jako ISO, ale 36 160 z nich to poprawne daty w innym układzie — 2024/31/01 to rok/dzień/miesiąc, 31-12-2023 to dzień-miesiąc-rok. Uznanie ich za zepsute wyrzuciłoby 12% zamówień. Naprawdę brakuje 17 914.",
+            bodyEn: "10 statuses → success / refunded / failed. 11 payment methods → card, wallet, upi, cash (CRAD, c@rd, wall-et). The key decision is about dates: 54,074 fail ISO parsing, but 36,160 of those are valid dates in another layout — 2024/31/01 is year/day/month, 31-12-2023 is day-month-year. Treating them as corrupt would discard 12% of the order book. Only 17,914 are genuinely absent.",
             table: "orders",
-            code: "status_map = {\"suc\":\"success\",\"success\":\"success\",\"ref\":\"refunded\",\"refunded\":\"refunded\",\"fail\":\"failed\"}\npay_map = {\"crad\":\"card\",\"c@rd\":\"card\",\"cd\":\"card\",\"wall-et\":\"wallet\"}\norders[\"status\"] = orders[\"status\"].str.strip().str.lower().replace(status_map)\norders[\"payment_method\"] = orders[\"payment_method\"].str.strip().str.lower().replace(pay_map)\norders[\"order_amount\"] = pd.to_numeric(orders[\"order_amount\"], errors=\"coerce\")\norders.loc[orders[\"order_amount\"] <= 0, \"order_amount\"] = np.nan"
+            code: "orders[\"status\"] = orders[\"status\"].map(Normaliser(STATUSES))         # 10 -> 3\norders[\"payment_method\"] = orders[\"payment_method\"].map(Normaliser(PAYMENTS))  # 11 -> 4\n\n# ISO first, then the layouts this export actually uses\nparsed = pd.to_datetime(text, format=\"ISO8601\", errors=\"coerce\")   # 245,926\nfor fmt in (\"%Y/%d/%m\", \"%d-%m-%Y\"):\n    todo = parsed.isna() & text.notna()\n    parsed.loc[todo] = pd.to_datetime(text[todo], format=fmt, errors=\"coerce\")\n# rescued 36,160 — 18,110 as %Y/%d/%m and 18,050 as %d-%m-%Y\n\n# a row is analysable only if amount, quantity, date and status all survived\norders[\"is_analysable\"] = (amount.notna() & qty.notna() & parsed.notna() & status.notna())\n# 186,928 analysable, 113,072 quarantined — quarantined, not deleted"
         },
         {
             titlePl: "Tickety: odwrócone etykiety i niemożliwe godziny",
             titleEn: "Tickets: reversed labels and impossible hours",
-            bodyPl: "35 typów zgłoszeń i 18 sentymentów. tnemyap to payment wspak, dnufer to refund, n3gativ3 to leetspeak. Timestamp 2025-12-12T28:77:10 nie istnieje — idzie na brak.",
-            bodyEn: "35 issue types and 18 sentiments. tnemyap is payment reversed, dnufer is refund, n3gativ3 is leetspeak. Timestamp 2025-12-12T28:77:10 does not exist — it becomes missing.",
+            bodyPl: "35 typów zgłoszeń i 18 sentymentów. tnemyap to payment wspak, dnufer to refund, n3gativ3 to leetspeak — reguła odwrócenia i leetspeak łapią je bez wypisywania każdego wariantu. Timestamp 2025-12-12T28:77:10 nie istnieje i nie da się go naprawić, więc zostaje brakiem. 2 677 zgłoszeń ma czas zamknięcia przed otwarciem, a 2 905 ma podaną długość obsługi sprzeczną ze znacznikami — ufam znacznikom i oznaczam konflikt.",
+            bodyEn: "35 issue types and 18 sentiments. tnemyap is payment reversed, dnufer is refund, n3gativ3 is leetspeak — the reversal and leet rules catch these without listing every variant. Timestamp 2025-12-12T28:77:10 does not exist and cannot be repaired, so it stays missing. 2,677 tickets are resolved before they were created, and 2,905 state a duration that contradicts their timestamps — I trust the timestamps and flag the conflict.",
             table: "tickets",
-            code: "rev = {\"tnemyap\":\"payment\",\"dnufer\":\"refund\"}\ntickets[\"issue_type\"] = tickets[\"issue_type\"].str.strip().str.lower().replace(rev)\ntickets[\"sentiment\"] = tickets[\"sentiment\"].str.strip().str.lower().str.replace(\"3\",\"e\").replace({\"neg\":\"negative\",\"pos\":\"positive\",\"neu\":\"neutral\"})\ntickets[\"ticket_created\"] = pd.to_datetime(tickets[\"ticket_created\"], errors=\"coerce\")"
+            code: "tickets[\"issue_type\"] = tickets[\"issue_type\"].map(Normaliser(ISSUES))      # 35 -> 4\ntickets[\"sentiment\"] = tickets[\"sentiment\"].map(Normaliser(SENTIMENTS))     # 18 -> 3\n\n# a reversed timeline cannot be repaired: either timestamp may be the wrong one\nreversed_pair = tickets[\"ticket_resolved\"] < tickets[\"ticket_created\"]\ntickets.loc[reversed_pair, \"timeline_flag\"] = \"resolved_before_created\"  # 2,677\n\n# where the stated duration disagrees with the timestamps, recompute from timestamps\nmeasured = (tickets[\"ticket_resolved\"] - tickets[\"ticket_created\"]).dt.total_seconds() / 3600\ntickets[\"resolution_hours\"] = measured.where(measured >= 0, stated)"
         },
         {
-            titlePl: "Clickstream: 30% zdarzeń bez klienta",
-            titleEn: "Clickstream: 30% of events have no customer",
-            bodyPl: "150 553 z 500 000 eventów nie ma customer_id — w tym loginy i add_to_cart. Część URL pusta, część timestampów to 2024/31/01 25:61:00. Anonimowe zostawiam, ale osobno: inaczej konwersja jest zaniżona.",
-            bodyEn: "150,553 of 500,000 events have no customer_id — including logins and add_to_cart. Some URLs are blank; some timestamps are 2024/31/01 25:61:00. Anonymous events stay, but separately: otherwise conversion is understated.",
+            titlePl: "Clickstream: dwa klucze, które nie są kluczami",
+            titleEn: "Clickstream: two keys that are not keys",
+            bodyPl: "150 553 z 500 000 zdarzeń nie ma customer_id. Zanim policzyłem lejek, sprawdziłem klucze — i oba zawiodły. Wszystkie 8 000 session_id obejmują wielu klientów naraz, więc grupowanie po sesji jest bezsensowne (lejek wychodził 100%). device_id ma 498 949 wartości na 500 000 zdarzeń i żadna nie występuje w CRM, więc anonimowych zdarzeń nie da się przypisać przez urządzenie. Zostaje customer_id — konwersję liczę na klienta i podaję zakres: 349 447 zdarzeń rozpoznanych, 150 553 nie.",
+            bodyEn: "150,553 of 500,000 events have no customer_id. Before computing a funnel I tested the keys — and both failed. All 8,000 session_ids span several customers, so grouping by session is meaningless (the funnel came out at 100%). device_id has 498,949 values across 500,000 events and none appear in CRM, so anonymous events cannot be attributed by device. That leaves customer_id — conversion is measured per customer, with the scope stated: 349,447 events identified, 150,553 not.",
             table: "clickstream",
-            code: "click[\"customer_id\"] = click[\"customer_id\"].replace(\"\", np.nan)\nclick[\"identified\"] = click[\"customer_id\"].notna()\nclick[\"timestamp\"] = pd.to_datetime(click[\"timestamp\"], errors=\"coerce\")\nfunnel = click.groupby([\"identified\",\"event_type\"]).size()"
+            code: "# never group by a column before checking it behaves like a key\nper_session = click.dropna(subset=[\"customer_id\"]).groupby(\"session_id\")[\"customer_id\"].nunique()\nassert (per_session > 1).sum() == 0, \"session_id spans several customers\"\n# AssertionError: 8000 of 8000 -> no session-level funnel is permissible\n\ncrm_devices = set(crm[\"device_id(s)\"].str.split(\";\").explode().str.strip())  # 51,854\nassert click[\"device_id\"].isin(crm_devices).any(), \"device_id does not join to CRM\"\n# AssertionError: 0 of 498,949 match -> anonymous events stay unattributable\n\n# so aggregate on the one key that holds up\nvisitors = click.dropna(subset=[\"customer_id\"]).groupby(\"customer_id\").agg(\n    carted=(\"event_type\", lambda s: int((s == \"add_to_cart\").any())))"
         },
         {
             titlePl: "Zestaw gotowy do joinów",
             titleEn: "Join-ready dataset",
-            bodyPl: "Po słownikach i deduplikacji tabele schodzą się po customer_id i product_id (w tym secie brak sierot). CRM: 50 000 → 48 200 unikalnych klientów (1 800 duplikatów wykluczonych ze ziarna analitycznego, nie usuniętych z audytu). GMV i lejek liczę na wspólnych kluczach.",
-            bodyEn: "After dictionaries and dedupe the tables meet on customer_id and product_id (no orphans in this set). CRM: 50,000 → 48,200 unique customers (1,800 duplicates excluded from the analytical grain, not deleted from audit). GMV and funnel KPIs use shared keys.",
+            bodyPl: "Po słownikach i deduplikacji tabele schodzą się po customer_id i product_id — zamówienia, tickety i rozpoznane zdarzenia mają zero sierot względem CRM. To sprawdzam, nie zakładam. CRM: 50 000 → 48 200 unikalnych klientów (1 800 duplikatów wykluczonych ze ziarna analitycznego, nie usuniętych z audytu). Przychód liczę tylko na 137 804 udanych zamówieniach z 186 928 analizowalnych.",
+            bodyEn: "After dictionaries and dedupe the tables meet on customer_id and product_id — orders, tickets and identified events all have zero orphans against CRM. That is verified, not assumed. CRM: 50,000 → 48,200 unique customers (1,800 duplicates excluded from the analytical grain, not deleted from audit). Revenue uses only the 137,804 successful orders out of 186,928 analysable ones.",
             table: "joined",
             cleanStory: true,
             code: "crm.to_csv(\"crm_standardized.csv\", index=False)  # 50,000 rows — audit trail\n\ncrm_analysis = crm.drop_duplicates(\"customer_id\", keep=\"first\")  # 48,200\n\nfact = orders.merge(crm_analysis, on=\"customer_id\", how=\"left\")\nfact = fact.merge(catalog[[\"product_id\",\"category\",\"price\"]], on=\"product_id\", how=\"left\")\nfact = fact.loc[fact[\"order_amount\"].notna() & fact[\"status\"].eq(\"success\")]"
@@ -75,18 +75,18 @@
         {
             titlePl: "Analiza — GMV i mikro płatności",
             titleEn: "Analysis — GMV and payment mix",
-            bodyPl: "Po ujednoliceniu pięciu plików: ile GMV generują kategorie? Jaki jest miks płatności na udanych zamówieniach? Poniżej wyniki na join-ready secie — nie na surowych 11 metodach płatności ani 47 kategoriach.",
-            bodyEn: "After harmonising five files: how much GMV does each category drive? What is the payment mix on successful orders? Below: results on the join-ready set — not on raw 11 payment methods or 47 categories.",
+            bodyPl: "Po ujednoliceniu pięciu plików: jak rozkłada się sprzedaż po kategoriach i jaki jest miks płatności na udanych zamówieniach? Wyniki na secie gotowym do joinów — nie na surowych 11 metodach płatności ani 46 zapisach kategorii. Uwaga: kwoty w tych plikach są wygenerowane i bez waluty, więc struktura jest miarodajna, a same poziomy nie.",
+            bodyEn: "After harmonising five files: how does revenue split by category, and what is the payment mix on successful orders? Results on the join-ready set — not on the raw 11 payment methods or 46 category spellings. Note: the amounts in these files are generated and carry no currency, so the structure is meaningful but the levels are not.",
             visualize: true,
             code: "raw_payment_count = orders[\"payment_method\"].nunique()  # 11\nanalysis = fact.loc[fact[\"status\"].eq(\"success\")]\nclean_payment_count = analysis[\"payment_method\"].nunique()  # 4\n\nanalysis.groupby(\"category\")[\"order_amount\"].sum().sort_values(ascending=False)\nanalysis.groupby(\"payment_method\")[\"order_id\"].count()"
         },
         {
             titlePl: "Wnioski z oczyszczonych danych",
             titleEn: "What the cleaned data actually says",
-            bodyPl: "To nie jest jeden brudny plik — pięć systemów musi najpierw współdzielić klucze i słowniki. Inaczej KPI sklepu liczą się na duchach: zdublowanych klientach, 11 metodach płatności i lejku bez 30% eventów.",
-            bodyEn: "This is not one dirty file — five systems must share keys and dictionaries first. Otherwise shop KPIs are counted on ghosts: duplicated customers, 11 payment methods and a funnel missing 30% of events.",
+            bodyPl: "To nie jest jeden brudny plik — pięć systemów musi najpierw współdzielić klucze i słowniki. Inaczej KPI sklepu liczą się na duchach: zdublowanych klientach, 11 metodach płatności i lejku bez 30% zdarzeń. Najcenniejszy wynik jest jednak negatywny: dwie kolumny wyglądające na klucze nimi nie są, więc lejka po sesjach zwyczajnie nie policzyłem — zamiast podać liczbę, która wygląda dobrze i nic nie znaczy.",
+            bodyEn: "This is not one dirty file — five systems must share keys and dictionaries first. Otherwise shop KPIs are counted on ghosts: duplicated customers, 11 payment methods and a funnel missing 30% of events. The most valuable result, though, is a negative one: two columns that look like keys are not keys, so I did not compute the session funnel at all — rather than publish a number that looks good and means nothing.",
             insights: true,
-            code: "print(\"Unique customers:\", crm[\"customer_id\"].nunique())  # 48,200 not 50,000\nprint(\"Payment methods:\", fact[\"payment_method\"].nunique())  # 4 not 11\nprint(\"Anonymous events:\", click.loc[~click[\"identified\"]].shape[0])  # 150,553 flagged, retained"
+            code: "print(\"Unique customers:\", crm[\"customer_id\"].nunique())        # 48,200 not 50,000\nprint(\"Payment methods:\", fact[\"payment_method\"].nunique())     # 4 not 11\nprint(\"Dates rescued:\", stats[\"date_rescued\"])                  # 36,160 kept, not dropped\nprint(\"Unattributable events:\", click[\"customer_id\"].isna().sum())  # 150,553, reported as such\nprint(\"session_id usable as a key:\", (per_session > 1).sum() == 0)  # False"
         }
     ];
 
@@ -447,7 +447,7 @@
                 [fmtInt(T.orders), en ? "orders" : "zamówienia"],
                 [T.statusRaw + " → " + T.statusClean, en ? "statuses" : "statusy"],
                 [T.paymentRaw + " → " + T.paymentClean, en ? "payment methods" : "metody płatności"],
-                [fmtInt(T.orderDateBad), en ? "bad / missing dates" : "złe / puste daty"]
+                [fmtInt(T.orderDateRescued), en ? "dates recovered" : "daty odzyskane"]
             ],
             [
                 [fmtInt(T.tickets), en ? "tickets" : "tickety"],
@@ -457,15 +457,15 @@
             ],
             [
                 [fmtInt(T.click), en ? "events" : "zdarzenia"],
-                [fmtInt(T.clickAnon), en ? "anonymous" : "anonimowe", "anonymous"],
-                ["30%", en ? "share without customer" : "udział bez klienta"],
-                ["25:61", en ? "invalid clock" : "zły zegar"]
+                [fmtInt(T.clickAnon), en ? "unattributable" : "nieprzypisywalne", "anonymous"],
+                ["8 000 → 0", en ? "usable session keys" : "użyteczne klucze sesji"],
+                ["0", en ? "device ids matching CRM" : "device_id zgodnych z CRM"]
             ],
             [
                 [fmtInt(T.crm) + " → " + fmtInt(T.crmUnique), en ? "unique customers" : "unikalni klienci"],
                 [fmtInt(T.crmDups) + " → 0", en ? "CRM dupes in grain" : "dupl. CRM w ziarnie", "grain"],
-                [fmtInt(T.clickAnon), en ? "anonymous flagged" : "anonimowe oznaczone", "anonymous"],
-                [fmtInt(T.orders), en ? "orders joinable" : "zamówienia do joinów"]
+                ["0", en ? "orphan keys" : "klucze-sieroty"],
+                [fmtInt(T.ordersAnalysable), en ? "orders analysable" : "zamówienia analizowalne"]
             ]
         ];
         return specs[Math.min(n, specs.length - 1)];
@@ -535,6 +535,8 @@
             row(en ? "Issue types" : "Typy zgłoszeń", T.issueRaw, T.issueClean) +
             row(en ? "Sentiment labels" : "Etykiety sentymentu", T.sentimentRaw, T.sentimentClean) +
             row(en ? "Anonymous click events" : "Anonimowe eventy clickstream", T.clickAnon, T.clickAnon + " " + (en ? "(flagged)" : "(ozn.)"), "anonymous") +
+            row(en ? "Unresolved labels" : "Etykiety nierozwiązane", T.categoriesRaw + T.paymentRaw + T.statusRaw + T.issueRaw + T.sentimentRaw, 0, "canonical") +
+            row(en ? "Order dates unusable" : "Daty zamówień nie do użycia", T.orderDateBad + T.orderDateRescued, T.orderDateBad) +
             row(en ? "Unique customers" : "Unikalni klienci", T.crm, T.crmUnique, "grain") +
             row(en ? "Rows in dataset" : "Rekordy w secie", T.rows, T.rows - T.crmDups) +
             "</tbody></table>";
@@ -557,8 +559,8 @@
             card(fmtInt(pipe.clickAnon), en ? "ANONYMOUS EVENTS FLAGGED" : "ANONIMOWYCH EVENTÓW OZNACZONYCH") +
             "</div>" +
             "<p class=\"dc-portfolio-result\">" + (en
-                ? "Result: five linked tables with shared customer_id and product_id, canonical dictionaries and a split clickstream funnel (identified vs anonymous)."
-                : "Rezultat: pięć powiązanych tabel ze wspólnym customer_id i product_id, kanonicznymi słownikami i rozdzielonym lejkiem clickstream (zidentyfikowani vs anonimowi).") +
+                ? "Result: five tables linked on a customer_id verified to have zero orphans, canonical dictionaries with no unresolved values, 36,160 dates recovered rather than dropped — and two rejected join keys that rule out a session-level funnel."
+                : "Rezultat: pięć tabel powiązanych po customer_id sprawdzonym na zero sierot, kanoniczne słowniki bez wartości nierozwiązanych, 36 160 dat odzyskanych zamiast wyrzuconych — oraz dwa odrzucone klucze złączeń, które wykluczają lejek po sesjach.") +
             "</p></div>";
     }
 
@@ -722,8 +724,8 @@
             "<div class=\"dc-insight-lead\">" +
             "<p class=\"dc-insight-kicker\">" + (en ? "Business problem" : "Problem biznesowy") + "</p>" +
             "<p>" + (en
-                ? "A payment-mix dashboard on raw files would show <strong>11 methods</strong> that are really <strong>4</strong> (card, wallet, UPI, cash). Customer count would read <strong>50,000 instead of 48,200</strong>. Conversion would ignore <strong>150,553</strong> anonymous events."
-                : "Dashboard miksu płatności na surowych plikach pokazałby <strong>11 metod</strong>, które są w praktyce <strong>4</strong> (card, wallet, UPI, cash). Liczba klientów wyniosłaby <strong>50 000 zamiast 48 200</strong>. Konwersja pominęłaby <strong>150 553</strong> anonimowych eventów.") +
+                ? "A payment-mix dashboard on raw files would show <strong>11 methods</strong> that are really <strong>4</strong> (card, wallet, UPI, cash). Customer count would read <strong>50,000 instead of 48,200</strong>. Conversion would ignore <strong>150,553</strong> anonymous events — and a session-level funnel would confidently report <strong>100%</strong> add-to-cart, because <code>session_id</code> is not a session."
+                : "Dashboard miksu płatności na surowych plikach pokazałby <strong>11 metod</strong>, które są w praktyce <strong>4</strong> (card, wallet, UPI, cash). Liczba klientów wyniosłaby <strong>50 000 zamiast 48 200</strong>. Konwersja pominęłaby <strong>150 553</strong> anonimowych zdarzeń — a lejek po sesjach pewnym głosem podałby <strong>100%</strong> dodań do koszyka, bo <code>session_id</code> nie jest sesją.") +
             "</p></div>" +
             "<div class=\"dc-table-wrap dc-insight-table-wrap\">" +
             renderExecutiveSummaryTable() +
@@ -744,8 +746,14 @@
             "<h3>" + (en ? "Category soup" : "Zupa kategorii") + "</h3>" +
             "<p>" + (en ? "clo, 3l3ctronics and hom3 are not extra departments. Revenue by category is meaningless until the map is applied." : "clo, 3l3ctronics i hom3 to nie dodatkowe działy. Przychód wg kategorii nie ma sensu, dopóki nie ma mapy.") + "</p></article>" +
             "<article class=\"dc-insight-card\"><p class=\"dc-insight-stat\">" + fmtInt(T.clickAnon) + " <span>· 30%</span></p>" +
-            "<h3>" + (en ? "Anonymous events — flagged, retained" : "Anonimowe eventy — oznaczone, zachowane") + "</h3>" +
-            "<p>" + (en ? "Login and add_to_cart arrive without customer_id. Dropping them understates demand; joining them as identified overstates conversion. Detection ≠ deletion." : "Login i add_to_cart przychodzą bez customer_id. Odrzucenie zaniża popyt; join jako zidentyfikowani zawyża konwersję. Detection ≠ deletion.") + "</p></article>" +
+            "<h3>" + (en ? "Unattributable, and reported as such" : "Nieprzypisywalne — i tak zaraportowane") + "</h3>" +
+            "<p>" + (en ? "Login and add_to_cart arrive without customer_id, and device_id offers no way back: none of its 498,949 values appear in CRM. Dropping the events understates demand, imputing an owner invents data, so they are kept and every conversion figure states its scope." : "Login i add_to_cart przychodzą bez customer_id, a device_id nie daje drogi powrotnej: żadna z 498 949 wartości nie występuje w CRM. Odrzucenie zaniża popyt, dopisanie właściciela to wymyślanie danych — więc zostają, a każda liczba o konwersji podaje swój zakres.") + "</p></article>" +
+            "<article class=\"dc-insight-card\"><p class=\"dc-insight-stat\">" + fmtInt(T.orderDateRescued) + "</p>" +
+            "<h3>" + (en ? "Dates recovered, not discarded" : "Daty odzyskane, nie wyrzucone") + "</h3>" +
+            "<p>" + (en ? "2024/31/01 and 31-12-2023 fail ISO parsing but are perfectly valid in %Y/%d/%m and %d-%m-%Y. Calling them corrupt would have deleted 12% of the order book; only 17,914 dates are genuinely missing." : "2024/31/01 i 31-12-2023 nie parsują się jako ISO, ale są poprawne w układach %Y/%d/%m i %d-%m-%Y. Uznanie ich za zepsute skasowałoby 12% zamówień; naprawdę brakuje tylko 17 914 dat.") + "</p></article>" +
+            "<article class=\"dc-insight-card\"><p class=\"dc-insight-stat\">8 000 <span>· 0</span></p>" +
+            "<h3>" + (en ? "A key that was not a key" : "Klucz, który nie był kluczem") + "</h3>" +
+            "<p>" + (en ? "All 8,000 session_ids span several customers, so the session funnel returned a 100% cart rate — a clean-looking number over a meaningless grouping. Checking the key before grouping is what turned a false insight into a documented limitation." : "Wszystkie 8 000 session_id obejmują wielu klientów, więc lejek po sesjach dawał 100% koszyka — ładną liczbę na bezsensownym grupowaniu. Sprawdzenie klucza przed grupowaniem zamieniło fałszywy wniosek w udokumentowane ograniczenie.") + "</p></article>" +
             "</div>" +
             renderPortfolioSummary(pipe);
     }

@@ -513,8 +513,8 @@
         var en = lang() === "en";
         return "<div class=\"dash-method\"><strong>" + (en ? "How it is built:" : "Jak to zrobione:") + "</strong> " +
             (en
-                ? "Custom code in JavaScript — HTML Canvas charts, fetch to OpenSky REST API. Not Power BI, not Timelimp, not a CSV upload."
-                : "Własny kod w JavaScript — wykresy na Canvas, pobieranie z OpenSky REST API. Bez Power BI, bez Timelimp, bez wrzucenia CSV.") +
+                ? "Custom code in JavaScript — HTML Canvas charts, live fetch to the OpenSky REST API, no charting library and no manual CSV upload."
+                : "Własny kod w JavaScript — wykresy na Canvas, pobieranie na żywo z OpenSky REST API, bez biblioteki wykresów i bez ręcznego wgrywania CSV.") +
             "</div>";
     }
 

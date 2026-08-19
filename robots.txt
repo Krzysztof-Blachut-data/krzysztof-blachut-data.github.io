@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://krzysztof-blachut-data.github.io/sitemap.xml

@@ -494,8 +494,8 @@
         var en = lang() === "en";
         return "<div class=\"dash-method\"><strong>" + (en ? "How it is built:" : "Jak to zrobione:") + "</strong> " +
             (en
-                ? "Custom JavaScript + HTML Canvas. Monthly time series from BLS Public Data API v2. Not Power BI, not Timelimp."
-                : "Własny JavaScript + HTML Canvas. Szeregi czasowe miesięczne z BLS Public Data API v2. Bez Power BI, bez Timelimp.") +
+                ? "Custom JavaScript + HTML Canvas, no charting library. Monthly time series from the BLS Public Data API v2."
+                : "Własny JavaScript + HTML Canvas, bez biblioteki wykresów. Szeregi czasowe miesięczne z BLS Public Data API v2.") +
             "</div>";
     }
 

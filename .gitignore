@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Generated database (rebuilt by pipeline.py on every run)
+*.db
+
+# E-commerce raw exports: ~180 MB in total and clickstream alone exceeds GitHub's 100 MB
+# per-file limit. data/samples/ holds a runnable 2,000-row slice of each instead.
+projects/ecom-cleaning/data/raw/
+
+# Full cleaned tables (~16 MB). data/aggregates/ carries the small published outputs and
+# data/reports/quality_report.json every figure the site displays.
+projects/ecom-cleaning/data/processed/
+
+# Payment forecast: full raw/clean (~8 MB each). Sample + report are versioned.
+projects/payment-forecast/data/raw/
+projects/payment-forecast/data/processed/invoices_clean.csv
+
+# Secrets
+.env
+*.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="KB">
+  <rect width="64" height="64" rx="14" fill="#0f1419"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" fill="none" stroke="#2d3a4a" stroke-width="3"/>
+  <!-- ascending bars: data analyst mark -->
+  <rect x="12" y="38" width="7" height="14" rx="2" fill="#2d3a4a"/>
+  <rect x="23" y="30" width="7" height="22" rx="2" fill="#0ea5e9"/>
+  <rect x="34" y="21" width="7" height="31" rx="2" fill="#38bdf8"/>
+  <rect x="45" y="13" width="7" height="39" rx="2" fill="#7dd3fc"/>
+</svg>

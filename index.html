@@ -2,15 +2,60 @@
 <html lang="pl" data-lang="pl"
     data-title-pl="Krzysztof Blachut | Analityk danych"
     data-title-en="Krzysztof Blachut | Data analyst"
-    data-desc-pl="Portfolio analityka danych — jakość danych, dashboardy BI, pipeline ETL z API. Python, SQL, Pandas, REST API."
-    data-desc-en="Data analyst portfolio — data quality, BI dashboards, API ETL pipelines. Python, SQL, Pandas, REST API.">
+    data-desc-pl="Portfolio analityka danych: jakość danych, dashboardy BI i pipeline ETL z API. Python, SQL, Pandas, REST API."
+    data-desc-en="Data analyst portfolio: data quality, BI dashboards and API ETL pipelines. Python, SQL, Pandas, REST API.">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio analityka danych — jakość danych, dashboardy BI, pipeline ETL z API. Python, SQL, Pandas, REST API.">
+    <meta name="description" content="Portfolio analityka danych: jakość danych, dashboardy BI i pipeline ETL z API. Python, SQL, Pandas, REST API.">
+    <meta name="author" content="Krzysztof Blachut">
+    <meta name="theme-color" content="#0f1419">
     <title>Krzysztof Blachut | Analityk danych</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <link rel="canonical" href="https://krzysztof-blachut-data.github.io/">
+    <link rel="alternate" hreflang="pl" href="https://krzysztof-blachut-data.github.io/?lang=pl">
+    <link rel="alternate" hreflang="en" href="https://krzysztof-blachut-data.github.io/?lang=en">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Krzysztof Blachut | Data Analyst">
+    <meta property="og:title" content="Krzysztof Blachut | Analityk danych">
+    <meta property="og:description" content="Portfolio analityka danych: jakość danych, dashboardy BI i pipeline ETL z API. Python, SQL, Pandas, REST API.">
+    <meta property="og:url" content="https://krzysztof-blachut-data.github.io/">
+    <!-- PNG, not the SVG source: no major platform rasterises SVG for link previews -->
+    <meta property="og:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Krzysztof Blachut, Analityk danych / Data Analyst. Python, Pandas, SQL, ETL, REST API.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="styles.css?v=ep17">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Krzysztof Blachut",
+        "jobTitle": "Data Analyst",
+        "url": "https://krzysztof-blachut-data.github.io/",
+        "email": "krzy.blachut@gmail.com",
+        "address": { "@type": "PostalAddress", "addressLocality": "Gliwice", "addressCountry": "PL" },
+        "knowsAbout": ["Data analysis", "Data cleaning", "Python", "Pandas", "SQL", "ETL", "Power BI", "REST API"],
+        "sameAs": [
+            "https://www.linkedin.com/in/krzysztof-blachut-9837bb244/",
+            "https://github.com/krzysztof-blachut-data"
+        ]
+    }
+    </script>
     <script>
         (function () {
             var q = new URLSearchParams(location.search).get("lang");
@@ -24,14 +69,21 @@
 
 <body>
 
+    <a class="skip-link" href="#projekty">
+        <span class="lang-pl">Przejdź do treści</span><span class="lang-en">Skip to content</span>
+    </a>
+
     <nav class="nav">
         <div class="container nav-inner">
-            <div class="nav-right">
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links"
+                aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-right" id="nav-links">
                 <ul class="nav-links">
                     <li><a href="#projekty"><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></a></li>
                     <li><a href="#o-mnie"><span class="lang-pl">O mnie</span><span class="lang-en">About</span></a></li>
                     <li><a href="#umiejetnosci"><span class="lang-pl">Umiejętności</span><span class="lang-en">Skills</span></a></li>
-                    <li><a href="#kontakt"><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></a></li>
                 </ul>
                 <div class="lang-switch" role="group" aria-label="Language">
                     <button type="button" data-set-lang="pl" aria-pressed="true">PL</button>
@@ -41,73 +93,67 @@
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="container">
-            <p class="hero-eyebrow">
-                <span class="lang-pl">Analiza danych · Czyszczenie danych · Python · SQL · KPI</span>
-                <span class="lang-en">Data analysis · Data cleaning · Python · SQL · KPI</span>
-            </p>
-            <h1 class="hero-title">
-                <span class="hero-title-line">KRZYSZTOF</span>
-                <span class="hero-title-line accent">BLACHUT</span>
-            </h1>
-            <p class="hero-tagline lang-pl">
-                Porządkuję brudne dane operacyjne i przygotowuję je do analizy —
-                <strong>czyszczenie, łączenie tabel, KPI, wykresy i wnioski</strong>.
-            </p>
-            <p class="hero-tagline lang-en">
-                I clean messy operational data and prepare it for analysis —
-                <strong>scrubbing, joining tables, KPIs, charts and conclusions</strong>.
-            </p>
-            <div class="hero-cta">
-                <a href="#projekty" class="btn btn-primary"><span class="lang-pl">Zobacz projekty</span><span class="lang-en">View projects</span></a>
-                <a href="#kontakt" class="btn btn-outline"><span class="lang-pl">Skontaktuj się</span><span class="lang-en">Get in touch</span></a>
+    <header class="hero" id="top">
+        <div class="container hero-layout">
+            <div class="hero-copy">
+                <p class="hero-eyebrow">
+                    <span class="lang-pl">Analityk danych · Python, Pandas, SQL, ETL</span>
+                    <span class="lang-en">Data analyst · Python, Pandas, SQL, ETL</span>
+                </p>
+                <h1 class="hero-title">Krzysztof Blachut</h1>
+                <p class="hero-tagline lang-pl">
+                    Tu są cztery gotowe projekty, nie prezentacja. Czyszczenie danych,
+                    dashboardy z publicznych API, pipeline ETL łączący EIA, NBP i biuletyn KE
+                    oraz prognoza spłaty faktur AR. Liczby bierzesz z kodu, który da się odpalić.
+                </p>
+                <p class="hero-tagline lang-en">
+                    Four finished projects, not a slide deck. Data cleaning, dashboards from
+                    public APIs, an ETL pipeline that joins EIA, NBP and the EC bulletin,
+                    and an AR payment forecast. The numbers come from code you can run yourself.
+                </p>
             </div>
-            <div class="hero-code" aria-hidden="true">
-                <span class="comment"># data cleaning → analysis-ready</span><br>
-                <span class="keyword">df</span>[<span class="string">"quality_flag"</span>] = <span class="string">"valid"</span><br>
-                <span class="keyword">df</span>.loc[df[<span class="string">"test_value"</span>] > 40, <span class="string">"quality_flag"</span>] = <span class="string">"implausible_value"</span><br>
-                <span class="keyword">analysis</span> = df.loc[df[<span class="string">"quality_flag"</span>] == <span class="string">"valid"</span>]
-            </div>
-        </div>
-        <div class="skill-marquee" aria-hidden="true">
-            <div class="skill-marquee-viewport">
-                <div class="skill-marquee-inner">
-                    <div class="skill-marquee-track">
-                        <span class="skill-chip accent">Python</span>
-                        <span class="skill-chip accent">Pandas</span>
-                        <span class="skill-chip accent">SQL</span>
-                        <span class="skill-chip">Power BI</span>
-                        <span class="skill-chip lang-pl">Czyszczenie danych</span>
-                        <span class="skill-chip lang-en">Data cleaning</span>
-                        <span class="skill-chip">KPI</span>
-                        <span class="skill-chip">MySQL</span>
-                        <span class="skill-chip">ETL</span>
-                        <span class="skill-chip lang-pl">Jakość danych</span>
-                        <span class="skill-chip lang-en">Data quality</span>
-                        <span class="skill-chip lang-pl">Łączenie tabel</span>
-                        <span class="skill-chip lang-en">Table joins</span>
-                        <span class="skill-chip lang-pl">Wizualizacja</span>
-                        <span class="skill-chip lang-en">Visualisation</span>
-                    </div>
-                    <div class="skill-marquee-track" aria-hidden="true">
-                        <span class="skill-chip accent">Python</span>
-                        <span class="skill-chip accent">Pandas</span>
-                        <span class="skill-chip accent">SQL</span>
-                        <span class="skill-chip">Power BI</span>
-                        <span class="skill-chip lang-pl">Czyszczenie danych</span>
-                        <span class="skill-chip lang-en">Data cleaning</span>
-                        <span class="skill-chip">KPI</span>
-                        <span class="skill-chip">MySQL</span>
-                        <span class="skill-chip">ETL</span>
-                        <span class="skill-chip lang-pl">Jakość danych</span>
-                        <span class="skill-chip lang-en">Data quality</span>
-                        <span class="skill-chip lang-pl">Łączenie tabel</span>
-                        <span class="skill-chip lang-en">Table joins</span>
-                        <span class="skill-chip lang-pl">Wizualizacja</span>
-                        <span class="skill-chip lang-en">Visualisation</span>
-                    </div>
-                </div>
+
+            <div class="hero-snapshot" aria-labelledby="hero-snapshot-label">
+                <p class="hero-snapshot-label" id="hero-snapshot-label">
+                    <span class="lang-pl">W tym portfolio</span>
+                    <span class="lang-en">On this page</span>
+                </p>
+                <a class="hero-shot" href="#project-data-cleaning-hub">
+                    <span class="hero-shot-num">01</span>
+                    <span class="hero-shot-body">
+                        <strong class="lang-pl">Jakość danych</strong>
+                        <strong class="lang-en">Data quality</strong>
+                        <span class="lang-pl">880 500 wierszy e-commerce i 1 500 laboratoryjnych. Pipeline odrzuca klucze, które nie łączą tabel, bo lej konwersji na zmyślonych sesjach nic nie znaczy.</span>
+                        <span class="lang-en">880,500 e-commerce rows and 1,500 lab rows. The pipeline drops keys that do not join tables, because a funnel on fake sessions means nothing.</span>
+                    </span>
+                </a>
+                <a class="hero-shot" href="#project-dashboards-hub">
+                    <span class="hero-shot-num">02</span>
+                    <span class="hero-shot-body">
+                        <strong class="lang-pl">Dashboardy BI</strong>
+                        <strong class="lang-en">BI dashboards</strong>
+                        <span class="lang-pl">OpenSky: samoloty nad Polską. BLS: rynek pracy USA. KPI i wykresy z żywych REST API, nie z wklejonego CSV.</span>
+                        <span class="lang-en">OpenSky: aircraft over Poland. BLS: the US labour market. KPIs and charts from live REST APIs, not a pasted CSV.</span>
+                    </span>
+                </a>
+                <a class="hero-shot" href="#project-energy-pipeline-hub">
+                    <span class="hero-shot-num">03</span>
+                    <span class="hero-shot-body">
+                        <strong class="lang-pl">Pipeline ETL</strong>
+                        <strong class="lang-en">ETL pipeline</strong>
+                        <span class="lang-pl">Od baryłki do dystrybutora: Brent/WTI, kurs NBP, Pb95. Warstwa dzienna i miesięczna, spread w PLN/l, pytest, SQLite.</span>
+                        <span class="lang-en">From barrel to pump: Brent/WTI, the NBP rate, Pb95. Daily and monthly grains, spread in PLN/l, pytest, SQLite.</span>
+                    </span>
+                </a>
+                <a class="hero-shot" href="#project-payment-forecast-hub">
+                    <span class="hero-shot-num">04</span>
+                    <span class="hero-shot-body">
+                        <strong class="lang-pl">Należności</strong>
+                        <strong class="lang-en">Receivables</strong>
+                        <span class="lang-pl">50 000 faktur: kto zapłaci late i w jakiej kolejności dzwonić.</span>
+                        <span class="lang-en">50,000 invoices: who pays late and who to call first.</span>
+                    </span>
+                </a>
             </div>
         </div>
     </header>
@@ -119,30 +165,30 @@
                 <div class="section-label"><span class="lang-pl">Portfolio</span><span class="lang-en">Portfolio</span></div>
                 <div class="section-header">
                     <h2><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></h2>
-                    <p class="lang-pl">Cztery projekty — każdy pokazuje inną kompetencję: jakość danych, BI, automatyzacja ETL i (wkrótce) optymalizacja procesów.</p>
-                    <p class="lang-en">Four projects — each demonstrates a different skill: data quality, BI, ETL automation and (soon) process optimisation.</p>
+                    <p class="lang-pl">Cztery gotowe projekty. W każdym jest konkretny problem, potem co zrobiłem z danymi i do czego to prowadzi. Nie lista narzędzi.</p>
+                    <p class="lang-en">Four finished projects. Each has a concrete problem, then what I did with the data and where that leads. Not a tool list.</p>
                 </div>
 
                 <div class="portfolio-matrix" aria-label="Portfolio competencies">
                     <div class="portfolio-matrix-item">
                         <strong>01 · Data Quality</strong>
-                        <span class="lang-pl">Czy potrafisz oczyścić brudne dane?</span>
-                        <span class="lang-en">Can you clean messy data?</span>
+                        <span class="lang-pl">Brudne dane i to, co z nich da się uratować</span>
+                        <span class="lang-en">Messy data and what can still be saved from it</span>
                     </div>
                     <div class="portfolio-matrix-item">
                         <strong>02 · BI / Visualisation</strong>
-                        <span class="lang-pl">Czy potrafisz analizować i komunikować?</span>
-                        <span class="lang-en">Can you analyse and communicate?</span>
+                        <span class="lang-pl">KPI i wykresy z żywych źródeł</span>
+                        <span class="lang-en">KPIs and charts from live sources</span>
                     </div>
                     <div class="portfolio-matrix-item">
                         <strong>03 · ETL / Automation</strong>
-                        <span class="lang-pl">Czy potrafisz pozyskać i zautomatyzować dane?</span>
-                        <span class="lang-en">Can you acquire and automate data?</span>
+                        <span class="lang-pl">Pobranie, transformacja i zapis do bazy</span>
+                        <span class="lang-en">Fetch, transform and load into a database</span>
                     </div>
                     <div class="portfolio-matrix-item">
-                        <strong>04 · Process Improvement</strong>
-                        <span class="lang-pl">Czy potrafisz rozwiązać problem biznesowy?</span>
-                        <span class="lang-en">Can you solve a business problem?</span>
+                        <strong>04 · Należności</strong>
+                        <span class="lang-pl">Kiedy klient zapłaci i kogo dzwonić</span>
+                        <span class="lang-en">When the customer pays and who to call</span>
                     </div>
                 </div>
 
@@ -151,33 +197,39 @@
                         <div class="featured-project-header">
                             <span class="project-index">01</span>
                             <h3>
-                                <span class="lang-pl">Laboratory Data Cleaning</span>
-                                <span class="lang-en">Laboratory Data Cleaning</span>
+                                <span class="lang-pl">Czyszczenie danych</span>
+                                <span class="lang-en">Data cleaning</span>
                             </h3>
                         </div>
-                        <p class="lang-pl">
-                            Interaktywne case study z brudnego CSV laboratoryjnego (1 500 wierszy): braki, strażniki, jednostki, wartości odstające.
-                            Bonus: drugi projekt e-commerce (880 500 wierszy) w tym samym hubie.
-                        </p>
-                        <p class="lang-en">
-                            Interactive case study from a messy lab CSV (1,500 rows): missing values, sentinels, units, outliers.
-                            Bonus: a second e-commerce project (880,500 rows) in the same hub.
-                        </p>
+                        <div class="featured-project-copy">
+                            <p class="lang-pl">
+                                Z brudnego pliku nie policzysz sensownej średniej. W laboratorium mam 1 500 wyników z trzech szpitali: te same badania pod dziewięcioma nazwami, mmol/L pomieszane z mg/dL, a kod −999 udaje wynik. W sklepie pięć powiązanych plików i 880 500 wierszy, z duplikatami klientów, 46 pisowniami kategorii i datami w trzech formatach.
+                            </p>
+                            <p class="lang-en">
+                                You cannot get a sensible average from a dirty file. In the lab I have 1,500 results from three hospitals: the same tests under nine names, mmol/L mixed with mg/dL, and a −999 code pretending to be a result. In the shop, five linked files and 880,500 rows, with duplicate customers, 46 category spellings and dates in three formats.
+                            </p>
+                            <p class="lang-pl">
+                                Najpierw sprawdzam, czy klucze w ogóle łączą tabele. <code>session_id</code> i <code>device_id</code> tego nie robią, więc lej konwersji na nich byłby bez sensu. Pipeline w pandas naprawia to, co da się naprawić regułą, a resztę odkłada na bok. Poniżej widać brudny wiersz obok czystego.
+                            </p>
+                            <p class="lang-en">
+                                First I check whether the keys even join the tables. <code>session_id</code> and <code>device_id</code> do not, so a conversion funnel on them would be nonsense. A pandas pipeline fixes what a rule can fix and sets the rest aside. Below you see a dirty row next to the clean one.
+                            </p>
+                        </div>
 
                         <div class="case-preview-grid">
                             <button type="button" class="case-preview js-open-hub" data-case="data-cleaning">
                                 <span class="case-preview-num">01</span>
                                 <strong class="lang-pl">Wyniki laboratoryjne</strong>
                                 <strong class="lang-en">Lab results</strong>
-                                <span class="lang-pl">1 500 wierszy · jednostki, wartości odstające</span>
-                                <span class="lang-en">1,500 rows · units, outliers</span>
+                                <span class="lang-pl">1 500 wyników · trzy szpitale, mieszane jednostki</span>
+                                <span class="lang-en">1,500 results · three hospitals, mixed units</span>
                             </button>
                             <button type="button" class="case-preview js-open-hub" data-case="ecom-cleaning">
-                                <span class="case-preview-num">+</span>
+                                <span class="case-preview-num">02</span>
                                 <strong class="lang-pl">Dane e-commerce</strong>
                                 <strong class="lang-en">E-commerce data</strong>
-                                <span class="lang-pl">880 500 wierszy · CRM, łączenie tabel</span>
-                                <span class="lang-en">880,500 rows · CRM, table joins</span>
+                                <span class="lang-pl">880 500 wierszy · pięć plików, walidacja kluczy</span>
+                                <span class="lang-en">880,500 rows · five files, key validation</span>
                             </button>
                         </div>
 
@@ -201,35 +253,39 @@
                         <div class="featured-project-header">
                             <span class="project-index">02</span>
                             <h3>
-                                <span class="lang-pl">Interactive Dashboard</span>
-                                <span class="lang-en">Interactive Dashboard</span>
+                                <span class="lang-pl">Dashboardy z żywych API</span>
+                                <span class="lang-en">Dashboards from live APIs</span>
                             </h3>
                         </div>
-                        <p class="lang-pl">
-                            BI i wizualizacja — interaktywne KPI i wykresy z publicznych API.
-                            OpenSky: ruch lotniczy nad Polską. BLS: rynek pracy USA.
-                            Cel: opowiedzieć historię danych, nie tylko pokazać liczby.
-                        </p>
-                        <p class="lang-en">
-                            BI and visualisation — interactive KPIs and charts from public APIs.
-                            OpenSky: air traffic over Poland. BLS: US labour market.
-                            Goal: tell the data story, not just show numbers.
-                        </p>
+                        <div class="featured-project-copy">
+                            <p class="lang-pl">
+                                Dwa dashboardy, oba z publicznych API, nie z Excela wklejonego ręcznie. OpenSky pokazuje samoloty nad Polską w tej chwili: skąd lecą, ile ich jest, jak wygląda ruch. BLS pokazuje rynek pracy USA od 2018, czyli bezrobocie, inflację, płace, pandemię i odbicie.
+                            </p>
+                            <p class="lang-en">
+                                Two dashboards, both from public APIs, not an Excel file pasted in by hand. OpenSky shows aircraft over Poland right now: where they come from, how many there are, how traffic looks. BLS shows the US labour market since 2018, covering unemployment, inflation, wages, the pandemic and the recovery.
+                            </p>
+                            <p class="lang-pl">
+                                Pobieram dane, liczę KPI i rysuję wykresy oraz mapę tak, żeby dało się z tego coś wyczytać, a nie tylko patrzeć na liczby. Oba działają w przeglądarce, bez serwera po mojej stronie.
+                            </p>
+                            <p class="lang-en">
+                                I fetch the data, compute KPIs and draw charts and a map so you can actually read something from them, not just stare at numbers. Both run in the browser, with no server of mine in between.
+                            </p>
+                        </div>
 
                         <div class="case-preview-grid">
                             <button type="button" class="case-preview js-open-dash-hub" data-dash="opensky-live">
                                 <span class="case-preview-num">01</span>
                                 <strong class="lang-pl">Ruch lotniczy · Polska</strong>
                                 <strong class="lang-en">Air traffic · Poland</strong>
-                                <span class="lang-pl">OpenSky · GET /states/all · KPI + mapa</span>
-                                <span class="lang-en">OpenSky · GET /states/all · KPI + map</span>
+                                <span class="lang-pl">OpenSky · samoloty na żywo, mapa i KPI</span>
+                                <span class="lang-en">OpenSky · live aircraft, map and KPIs</span>
                             </button>
                             <button type="button" class="case-preview js-open-dash-hub" data-dash="bls-labor">
                                 <span class="case-preview-num">02</span>
                                 <strong class="lang-pl">Rynek pracy · USA</strong>
                                 <strong class="lang-en">Labor market · US</strong>
-                                <span class="lang-pl">BLS · POST /timeseries/data · KPI + wykresy</span>
-                                <span class="lang-en">BLS · POST /timeseries/data · KPI + charts</span>
+                                <span class="lang-pl">BLS · bezrobocie, inflacja i płace od 2018</span>
+                                <span class="lang-en">BLS · unemployment, inflation and wages since 2018</span>
                             </button>
                         </div>
 
@@ -255,28 +311,32 @@
                         <div class="featured-project-header">
                             <span class="project-index">03</span>
                             <h3>
-                                <span class="lang-pl">Automated API Data Pipeline</span>
-                                <span class="lang-en">Automated API Data Pipeline</span>
+                                <span class="lang-pl">Od baryłki do dystrybutora</span>
+                                <span class="lang-en">From barrel to pump</span>
                             </h3>
                         </div>
-                        <p class="lang-pl">
-                            Pipeline ETL — nie kolejny dashboard. EIA (Brent/WTI) + NBP (USD/PLN) + bulletin KE (Pb95/diesel)
-                            → warstwa RAW → transformacja → walidacja (pytest) → SQLite.
-                            Temat: ropa i paliwa w Polsce (beczka → dystrybutor).
-                        </p>
-                        <p class="lang-en">
-                            ETL pipeline — not another dashboard. EIA (Brent/WTI) + NBP (USD/PLN) + EC bulletin (Pb95/diesel)
-                            → RAW layer → transform → validation (pytest) → SQLite.
-                            Topic: oil and fuel in Poland (barrel → pump).
-                        </p>
+                        <div class="featured-project-copy">
+                            <p class="lang-pl">
+                                Ile z ceny benzyny na polskiej stacji to ropa, a ile reszta? Żeby to policzyć, trzeba złożyć trzy źródła, które mówią innymi jednostkami i walutami: baryłka w dolarach, kurs NBP i litr na stacji w euro.
+                            </p>
+                            <p class="lang-en">
+                                How much of the Polish pump price is crude, and how much is everything else? To answer that you have to join three sources that speak in different units and currencies: a barrel in dollars, the NBP rate, and a litre at the pump in euro.
+                            </p>
+                            <p class="lang-pl">
+                                Pipeline pobiera Brent i WTI z EIA, kursy z NBP oraz ceny Pb95 z biuletynu Komisji Europejskiej. Zostawia surowy JSON, przelicza baryłkę na złote za litr, liczy spread i pytestem sprawdza, czy waluty się nie pomieszały. Na stronie przełączasz widok dzienny i miesięczny, bo średnia miesięczna ukrywa połowę załamania z kwietnia 2020.
+                            </p>
+                            <p class="lang-en">
+                                The pipeline fetches Brent and WTI from EIA, FX from NBP and Pb95 prices from the EC bulletin. It keeps the raw JSON, converts a barrel into zloty per litre, computes the spread and uses pytest to catch mixed currencies. On the page you can switch daily and monthly views, because a monthly average hides half of the April 2020 crash.
+                            </p>
+                        </div>
 
                         <div class="case-preview-grid">
                             <button type="button" class="case-preview js-open-pipeline-hub">
-                                <span class="case-preview-num">ETL</span>
-                                <strong class="lang-pl">From Barrel to Pump</strong>
+                                <span class="case-preview-num">03</span>
+                                <strong class="lang-pl">Od baryłki do dystrybutora</strong>
                                 <strong class="lang-en">From Barrel to Pump</strong>
-                                <span class="lang-pl">API · JSON · RAW layer · SQL · testy</span>
-                                <span class="lang-en">API · JSON · RAW layer · SQL · tests</span>
+                                <span class="lang-pl">EIA + NBP + KE · dzienne i miesięczne, spread w PLN/l</span>
+                                <span class="lang-en">EIA + NBP + EC · daily and monthly, spread in PLN/l</span>
                             </button>
                         </div>
 
@@ -298,35 +358,52 @@
                         </div>
                     </article>
 
-                    <article class="featured-project is-soon" id="project-process-opt">
+                    <article class="featured-project" id="project-payment-forecast-hub">
                         <div class="featured-project-header">
                             <span class="project-index">04</span>
                             <h3>
-                                <span class="lang-pl">Process Optimization</span>
-                                <span class="lang-en">Process Optimization</span>
+                                <span class="lang-pl">Kiedy klient zapłaci?</span>
+                                <span class="lang-en">When will the customer pay?</span>
                             </h3>
                         </div>
-                        <p class="lang-pl">
-                            W planach: analiza biznesowa i mapowanie procesu — nie technologia dla technologii,
-                            lecz rozwiązanie problemu operacyjnego (Python · BI · process mapping).
-                        </p>
-                        <p class="lang-en">
-                            Planned: business analysis and process mapping — not technology for its own sake,
-                            but solving an operational problem (Python · BI · process mapping).
-                        </p>
+                        <div class="featured-project-copy">
+                            <p class="lang-pl">
+                                Na 50&nbsp;000 faktur należności prawie połowa schodzi po terminie. Pytanie nie brzmi „ile jest salda”, tylko „kogo dzwonić jutro”.
+                            </p>
+                            <p class="lang-en">
+                                Of 50,000 receivables invoices, nearly half clear late. The question is not only “how big is the balance”, but “who to call tomorrow”.
+                            </p>
+                            <p class="lang-pl">
+                                Pipeline czyści daty, liczy opóźnienia i ustawia kolejkę open AR według ryzyka spóźnienia. Prognoza myli się średnio o ok. 3 dni zamiast 5 przy naiwnej medianie.
+                            </p>
+                            <p class="lang-en">
+                                The pipeline cleans dates, measures delays and ranks open AR by late risk. The forecast misses by about 3 days on average versus 5 for a naive median.
+                            </p>
+                        </div>
+
+                        <div class="case-preview-grid">
+                            <button type="button" class="case-preview js-open-payment-hub">
+                                <span class="case-preview-num">04</span>
+                                <strong class="lang-pl">Należności · kolejka</strong>
+                                <strong class="lang-en">Receivables · queue</strong>
+                                <span class="lang-pl">50 000 faktur · kto zapłaci late</span>
+                                <span class="lang-en">50,000 invoices · who pays late</span>
+                            </button>
+                        </div>
 
                         <div class="project-tags">
-                            <span>BPMN</span>
-                            <span class="lang-pl">Mapowanie procesów</span>
-                            <span class="lang-en">Process mapping</span>
-                            <span class="lang-pl">Analiza biznesowa</span>
-                            <span class="lang-en">Business analysis</span>
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>OTC</span>
+                            <span class="lang-pl">Prognoza</span>
+                            <span class="lang-en">Forecast</span>
+                            <span>pytest</span>
                         </div>
                         <div class="project-actions">
-                            <span class="project-link">
-                                <span class="lang-pl">Wkrótce</span>
-                                <span class="lang-en">Coming soon</span>
-                            </span>
+                            <a href="#payment-forecast" class="project-link js-open-payment-hub">
+                                <span class="lang-pl">Zobacz analizę ↓</span>
+                                <span class="lang-en">View analysis ↓</span>
+                            </a>
                         </div>
                     </article>
                 </div>
@@ -607,14 +684,14 @@
                             <span class="lang-en">Online shop — five linked files</span>
                         </h3>
                         <p class="lead lang-pl">
-                            Pięć plików: CRM (50 000), katalog (500), zamówienia (300 000), tickety (30 000) i clickstream (500 000).
+                            Pięć plików, 880 500 wierszy: CRM (50 000), katalog (500), zamówienia (300 000), tickety (30 000) i clickstream (500 000).
                             Żeby policzyć sprzedaż, sposoby płatności i konwersję, trzeba najpierw ujednolicić klucze, nazwy i daty między plikami.
-                            Poniżej widać przykładowe wiersze; liczby KPI pochodzą z pełnych plików.
+                            Pipeline w pandas czyści całość, a każda liczba poniżej — łącznie z wierszami w tabelach — jest generowana z raportu jakości, nie wpisywana ręcznie.
                         </p>
                         <p class="lead lang-en">
-                            Five files: CRM (50,000), catalog (500), orders (300,000), tickets (30,000) and clickstream (500,000).
+                            Five files, 880,500 rows: CRM (50,000), catalog (500), orders (300,000), tickets (30,000) and clickstream (500,000).
                             To calculate sales, payment methods and conversion, keys, labels and dates must be aligned across files first.
-                            Below are sample rows; KPI figures come from the full files.
+                            A pandas pipeline cleans all of it, and every figure below — including the table rows — is generated from the quality report rather than typed in by hand.
                         </p>
 
                         <div class="ecom-sources">
@@ -625,8 +702,8 @@
                             </div>
                             <div class="ecom-source">
                                 <strong>500</strong>
-                                <span class="lang-pl">Katalog · 47 kategorii</span>
-                                <span class="lang-en">Catalog · 47 categories</span>
+                                <span class="lang-pl">Katalog · 46 zapisów kategorii</span>
+                                <span class="lang-en">Catalog · 46 category spellings</span>
                             </div>
                             <div class="ecom-source">
                                 <strong>300 000</strong>
@@ -657,18 +734,51 @@
                             </p>
                             <ul class="lang-pl">
                                 <li>CRM: 1 800 zdublowanych <code>customer_id</code>, imiona <code>mARIA</code> / <code>KKeevvin</code>, 1 040 pustych e-maili.</li>
-                                <li>Katalog: 47 nazw kategorii zamiast 8 (<code>clo</code>, <code>3l3ctronics</code>, <code>hom3</code>), cena <code>1,200</code> i wartość strażnicza <code>−100</code>.</li>
+                                <li>Katalog: 46 zapisów kategorii zamiast 8 (<code>clo</code>, <code>3l3ctronics</code>, <code>hom3</code>) plus 30 pustych, cena <code>1,200</code> i wartość strażnicza <code>−100</code>.</li>
                                 <li>Zamówienia: 10 statusów, 11 metod płatności (<code>CRAD</code>, <code>c@rd</code>, <code>wall-et</code>), ilość <code>five</code> / <code>−3</code>, data <code>2024/31/01</code>.</li>
-                                <li>Tickety: <code>tnemyap</code> (słowo „payment” wspak), <code>n3gativ3</code>, godzina <code>T28:77:10</code>.</li>
+                                <li>Tickety: <code>tnemyap</code> (słowo „payment” wspak), <code>n3gativ3</code>, godzina <code>T28:77:10</code>, 2 677 zgłoszeń zamkniętych przed otwarciem.</li>
                                 <li>Clickstream: 150 553 zdarzeń bez powiązanego klienta (także logowanie i dodanie do koszyka), zegar <code>25:61:00</code>.</li>
                             </ul>
                             <ul class="lang-en">
                                 <li>CRM: 1,800 duplicated <code>customer_id</code>s, names like <code>mARIA</code> / <code>KKeevvin</code>, 1,040 blank emails.</li>
-                                <li>Catalog: 47 labels for 8 departments (<code>clo</code>, <code>3l3ctronics</code>, <code>hom3</code>), price <code>1,200</code> and sentinel <code>−100</code>.</li>
+                                <li>Catalog: 46 spellings for 8 departments (<code>clo</code>, <code>3l3ctronics</code>, <code>hom3</code>) plus 30 blanks, price <code>1,200</code> and sentinel <code>−100</code>.</li>
                                 <li>Orders: 10 statuses, 11 payments (<code>CRAD</code>, <code>c@rd</code>, <code>wall-et</code>), quantity <code>five</code> / <code>−3</code>, date <code>2024/31/01</code>.</li>
-                                <li>Tickets: <code>tnemyap</code> (payment reversed), <code>n3gativ3</code>, time <code>T28:77:10</code>.</li>
+                                <li>Tickets: <code>tnemyap</code> (payment reversed), <code>n3gativ3</code>, time <code>T28:77:10</code>, 2,677 tickets resolved before they were created.</li>
                                 <li>Clickstream: 150,553 events with no customer (including login and add_to_cart), clock <code>25:61:00</code>.</li>
                             </ul>
+                        </section>
+
+                        <section class="content-block ecom-keys">
+                            <h2>
+                                <span class="lang-pl">Najważniejszy wynik jest negatywny</span>
+                                <span class="lang-en">The most important result is a negative one</span>
+                            </h2>
+                            <p class="lang-pl">
+                                Zanim policzyłem jakikolwiek lejek, sprawdziłem, czy kolumny, które wyglądają na klucze, faktycznie nimi są.
+                                Dwie nie są — i to przesądza, których analiz <strong>nie wolno</strong> tu zrobić.
+                            </p>
+                            <p class="lang-en">
+                                Before computing any funnel, I checked whether the columns that look like keys actually behave like keys.
+                                Two of them do not — and that decides which analyses are <strong>not permissible</strong> here.
+                            </p>
+                            <ul class="lang-pl">
+                                <li><strong><code>session_id</code> nie jest kluczem sesji.</strong> Wszystkie 8 000 wartości obejmują wielu różnych klientów naraz (średnio 62 zdarzenia na „sesję”). Lejek liczony po sesjach dawał 100% dodań do koszyka — arytmetykę na grupowaniu bez sensu. Dlatego konwersję liczę <strong>na klienta</strong>.</li>
+                                <li><strong><code>device_id</code> nie łączy się z CRM.</strong> W clickstreamie jest 498 949 identyfikatorów urządzeń na 500 000 zdarzeń (1,0 zdarzenia na urządzenie) i <strong>żaden</strong> nie występuje wśród 51 854 urządzeń zarejestrowanych w CRM. Więc 150 553 anonimowych zdarzeń jest <strong>trwale nieprzypisywalnych</strong> — nie da się ich odzyskać przez urządzenie.</li>
+                                <li><strong><code>customer_id</code> trzyma się dobrze.</strong> Zamówienia, tickety i rozpoznane zdarzenia łączą się z CRM z zerową liczbą sierot.</li>
+                            </ul>
+                            <ul class="lang-en">
+                                <li><strong><code>session_id</code> is not a session key.</strong> All 8,000 values span several customers at once (62 events per "session" on average). A session-level funnel returned a 100% add-to-cart rate — arithmetic over a meaningless grouping. Conversion is therefore measured <strong>per customer</strong>.</li>
+                                <li><strong><code>device_id</code> does not join to CRM.</strong> The clickstream holds 498,949 device ids across 500,000 events (1.0 events per device) and <strong>none</strong> appear among the 51,854 devices registered in CRM. The 150,553 anonymous events are therefore <strong>permanently unattributable</strong> — no device path can recover them.</li>
+                                <li><strong><code>customer_id</code> does hold up.</strong> Orders, tickets and identified events all join to CRM with zero orphans.</li>
+                            </ul>
+                            <p class="lang-pl">
+                                Kwoty w tych plikach są wygenerowane, nie rynkowe (ceny w katalogu dochodzą do 851 374, bez waluty).
+                                Przychód i średni koszyk są policzone poprawnie, ale nie są wynikiem biznesowym — wnioskiem jest jakość danych i integralność kluczy.
+                            </p>
+                            <p class="lang-en">
+                                The amounts in these files are generated, not market data (catalog prices reach 851,374, with no currency).
+                                Revenue and average order value are computed correctly but are not a business result — the finding is data quality and key integrity.
+                            </p>
                         </section>
 
                         <div id="ecom-walkthrough" class="dc-walkthrough">
@@ -764,12 +874,12 @@
                         </div>
 
                         <p class="hub-intro lang-pl">
-                            Każdy dashboard ma <strong>cel, opis wykresów i wnioski</strong> — nie tylko „ściepkę” danych.
-                            OpenSky i BLS. Wizualizacje w JavaScript + SVG/Canvas, bez Power BI i bez Timelimp.
+                            Każdy dashboard ma <strong>cel, opis wykresów i wnioski</strong> — nie jest to sam zrzut danych.
+                            OpenSky i BLS. Wizualizacje napisane od zera w JavaScript + SVG/Canvas, bez biblioteki wykresów.
                         </p>
                         <p class="hub-intro lang-en">
                             Each dashboard has a <strong>purpose, chart descriptions and takeaways</strong> — not just a data dump.
-                            OpenSky and BLS. Visuals built with JavaScript + SVG/Canvas — not Power BI, not Timelimp.
+                            OpenSky and BLS. Visuals built from scratch in JavaScript + SVG/Canvas, with no charting library.
                         </p>
 
                         <div class="case-tabs" role="tablist" aria-label="Dashboard cases">
@@ -793,11 +903,11 @@
                             </h3>
                             <p class="lead lang-pl">
                                 <strong>Cel:</strong> pokazać, ile samolotów leci nad Polską w danej chwili, skąd pochodzą i jak wygląda ruch w przestrzeni.
-                                <strong>Technologia:</strong> JavaScript + Canvas, dane z API OpenSky (nie Power BI, nie Timelimp).
+                                <strong>Technologia:</strong> JavaScript + Canvas, dane pobierane na żywo z API OpenSky.
                             </p>
                             <p class="lead lang-en">
                                 <strong>Purpose:</strong> show how many aircraft are flying over Poland right now, where they come from and how traffic is distributed.
-                                <strong>Stack:</strong> JavaScript + Canvas, data from the OpenSky API (not Power BI, not Timelimp).
+                                <strong>Stack:</strong> JavaScript + Canvas, data fetched live from the OpenSky API.
                             </p>
                             <div id="opensky-dashboard" class="dash-root"></div>
                         </div>
@@ -810,11 +920,11 @@
                             </h3>
                             <p class="lead lang-pl">
                                 <strong>Cel:</strong> opowiedzieć historię rynku pracy USA od 2018 — pandemia, odbicie, inflacja i płace.
-                                <strong>Technologia:</strong> JavaScript + Canvas, dane miesięczne z API BLS (nie Power BI, nie Timelimp).
+                                <strong>Technologia:</strong> JavaScript + Canvas, dane miesięczne z API BLS.
                             </p>
                             <p class="lead lang-en">
                                 <strong>Purpose:</strong> tell the story of the US labour market since 2018 — pandemic shock, recovery, inflation and wages.
-                                <strong>Stack:</strong> JavaScript + Canvas, monthly data from the BLS API (not Power BI, not Timelimp).
+                                <strong>Stack:</strong> JavaScript + Canvas, monthly data from the BLS API.
                             </p>
                             <div id="bls-dashboard" class="dash-root"></div>
                         </div>
@@ -824,7 +934,10 @@
                 <div class="project-detail" id="energy-pipeline-hub" hidden>
                     <div class="project-detail-inner">
                         <div class="project-detail-bar">
-                            <span class="project-index">03 · ETL / AUTOMATION</span>
+                            <span class="project-index">
+                                <span class="lang-pl">03 · ETL / AUTOMATYZACJA</span>
+                                <span class="lang-en">03 · ETL / AUTOMATION</span>
+                            </span>
                             <a href="#projekty" class="project-link js-close-pipeline-hub">
                                 <span class="lang-pl">Zwiń ↑</span>
                                 <span class="lang-en">Collapse ↑</span>
@@ -834,62 +947,395 @@
                         <div id="energy-pipeline" class="case-panel" role="tabpanel">
                             <p class="case-panel-label"><span class="lang-pl">Projekt 03</span><span class="lang-en">Project 03</span></p>
                             <h3>
-                                <span class="lang-pl">From Barrel to Pump — automated API data pipeline</span>
+                                <span class="lang-pl">Od baryłki do dystrybutora — automatyczny pipeline API</span>
                                 <span class="lang-en">From Barrel to Pump — automated API data pipeline</span>
                             </h3>
                             <p class="lead lang-pl">
                                 <strong>Cel:</strong> pokazać produkcyjny pipeline danych — nie notebook ani dashboard.
                                 <strong>Stack:</strong> Python · requests · JSON · pandas · SQLite · pytest.
-                                Źródła: EIA (Brent/WTI), NBP (USD/PLN), Weekly Oil Bulletin KE (Pb95/diesel).
+                                Źródła: EIA (Brent/WTI), NBP (USD/PLN i EUR/PLN), Weekly Oil Bulletin KE (Pb95/diesel).
                             </p>
                             <p class="lead lang-en">
                                 <strong>Goal:</strong> demonstrate a production-style data pipeline — not a notebook or dashboard.
                                 <strong>Stack:</strong> Python · requests · JSON · pandas · SQLite · pytest.
-                                Sources: EIA (Brent/WTI), NBP (USD/PLN), EC Weekly Oil Bulletin (Pb95/diesel).
+                                Sources: EIA (Brent/WTI), NBP (USD/PLN and EUR/PLN), EC Weekly Oil Bulletin (Pb95/diesel).
                             </p>
 
                             <section class="content-block">
                                 <h2><span class="lang-pl">Co ten projekt pokazuje inaczej</span><span class="lang-en">What this project shows differently</span></h2>
                                 <ul class="lang-pl">
-                                    <li><strong>API integration</strong> — endpointy, parametry, status codes, timeout.</li>
-                                    <li><strong>JSON parsing</strong> — odpowiedź API → DataFrame.</li>
-                                    <li><strong>RAW layer</strong> — surowe pliki z datą uruchomienia (data lineage).</li>
-                                    <li><strong>ETL</strong> — Extract → Transform → Load do SQL.</li>
-                                    <li><strong>Validation</strong> — pytest kontroluje jakość przed zapisem.</li>
-                                    <li><strong>Automation</strong> — <code>python pipeline.py</code> można uruchamiać cyklicznie.</li>
+                                    <li><strong>API integration</strong> — GET do EIA (Brent/WTI) i NBP (USD/PLN, EUR/PLN): endpoint, parametry, timeout=30, kody HTTP, ponowienia.</li>
+                                    <li><strong>Obsługa błędów</strong> — gdy API nie odpowiada: <code>raise_for_status()</code> + <code>logger.error</code>, a nie pusta tabela.</li>
+                                    <li><strong>JSON → DataFrame</strong> — parsowanie odpowiedzi API do pandas, join trzech źródeł po miesiącu.</li>
+                                    <li><strong>RAW layer</strong> — surowy JSON/XLSX zapisywany 1:1 do <code>data/raw/{eia,nbp,eu_fuel}/YYYY-MM-DD.json</code>.</li>
+                                    <li><strong>ETL + SQL</strong> — Extract → Transform → Validate → Load do SQLite (<code>energy.db</code>) i CSV.</li>
+                                    <li><strong>Testy</strong> — 29 testów pytest: struktura, zakresy kursów, spójność jednostek i walut, sens ekonomiczny spreadu, a dla warstwy dziennej też to, czy jest naprawdę dzienna i czy ujemne notowanie WTI z kwietnia 2020 nie zostało odfiltrowane.</li>
+                                    <li><strong>Automatyzacja</strong> — <code>python pipeline.py</code> można odpalać cyklicznie (cron / Task Scheduler).</li>
                                 </ul>
                                 <ul class="lang-en">
-                                    <li><strong>API integration</strong> — endpoints, parameters, status codes, timeout.</li>
-                                    <li><strong>JSON parsing</strong> — API response → DataFrame.</li>
-                                    <li><strong>RAW layer</strong> — raw files with run date (data lineage).</li>
-                                    <li><strong>ETL</strong> — Extract → Transform → Load to SQL.</li>
-                                    <li><strong>Validation</strong> — pytest checks quality before load.</li>
-                                    <li><strong>Automation</strong> — <code>python pipeline.py</code> can run on a schedule.</li>
+                                    <li><strong>API integration</strong> — GET to EIA (Brent/WTI) and NBP (USD/PLN, EUR/PLN): endpoint, parameters, timeout=30, HTTP codes, retries.</li>
+                                    <li><strong>Error handling</strong> — if an API is down: <code>raise_for_status()</code> + <code>logger.error</code>, not an empty table.</li>
+                                    <li><strong>JSON → DataFrame</strong> — parse API payloads into pandas, join three sources on month.</li>
+                                    <li><strong>RAW layer</strong> — raw JSON/XLSX saved 1:1 to <code>data/raw/{eia,nbp,eu_fuel}/YYYY-MM-DD.json</code>.</li>
+                                    <li><strong>ETL + SQL</strong> — Extract → Transform → Validate → Load to SQLite (<code>energy.db</code>) and CSV.</li>
+                                    <li><strong>Tests</strong> — 29 pytest checks: structure, FX ranges, unit and currency consistency, economic plausibility of the spread, and for the daily layer whether it is genuinely daily and whether April 2020's negative WTI quote survived instead of being filtered out.</li>
+                                    <li><strong>Automation</strong> — <code>python pipeline.py</code> can run on a schedule (cron / Task Scheduler).</li>
                                 </ul>
                             </section>
 
                             <div id="ep-walkthrough" class="dc-walkthrough">
-                                <p class="dc-walkthrough-label lang-pl">Pipeline krok po kroku</p>
-                                <p class="dc-walkthrough-label lang-en">Pipeline step by step</p>
+                                <p class="dc-walkthrough-label lang-pl">Pipeline krok po kroku — kliknij punkt, żeby zobaczyć treść</p>
+                                <p class="dc-walkthrough-label lang-en">Pipeline step by step — click a point to see the content</p>
 
                                 <ol class="dc-steps" aria-label="Pipeline steps">
-                                    <li><button type="button" class="dc-step ep-step active" data-step="0">1. Arch</button></li>
-                                    <li><button type="button" class="dc-step ep-step" data-step="1">2. RAW</button></li>
-                                    <li><button type="button" class="dc-step ep-step" data-step="2">3. Extract</button></li>
-                                    <li><button type="button" class="dc-step ep-step" data-step="3">4. Transform</button></li>
-                                    <li><button type="button" class="dc-step ep-step" data-step="4">5. Validate</button></li>
-                                    <li><button type="button" class="dc-step ep-step" data-step="5">6. SQL</button></li>
-                                    <li><button type="button" class="dc-step ep-step" data-step="6">7. Analysis</button></li>
+                                    <li><button type="button" class="ep-chip active" data-ep="0"><span class="lang-pl">1. Architektura</span><span class="lang-en">1. Architecture</span></button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="1">2. RAW</button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="2">3. Extract</button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="3">4. Transform</button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="4">5. Validate</button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="5">6. SQL</button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="6"><span class="lang-pl">7. Analiza</span><span class="lang-en">7. Analysis</span></button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="7"><span class="lang-pl">8. Wizualizacja</span><span class="lang-en">8. Visualisation</span></button></li>
                                 </ol>
 
-                                <div class="dc-panel">
+                                <div class="dc-panel ep-panel" data-ep-panel="0">
                                     <div class="dc-panel-head">
-                                        <h2 id="ep-step-title">Architektura pipeline</h2>
-                                        <span class="dc-progress" id="ep-progress">1 / 7</span>
+                                        <h2><span class="lang-pl">Architektura pipeline</span><span class="lang-en">Pipeline architecture</span></h2>
+                                        <span class="dc-progress">1 / 8</span>
                                     </div>
-                                    <p id="ep-step-body" class="dc-body"></p>
-                                    <div id="ep-extra"></div>
-                                    <pre class="hero-code dc-code"><code id="ep-code"></code></pre>
+                                    <p class="dc-body lang-pl">Główny produkt to nie dashboard, lecz powtarzalny pipeline ETL. Trzy źródła trafiają do warstwy RAW, potem transformacja, walidacja i zapis do SQL.</p>
+                                    <p class="dc-body lang-en">The main deliverable is not a dashboard but a repeatable ETL pipeline. Three sources land in a RAW layer, then transform, validate and load to SQL.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>EIA API — Brent i WTI w USD/baryłkę (JSON).</li>
+                                        <li>NBP API — kursy USD/PLN i EUR/PLN, tabela A (JSON).</li>
+                                        <li>Weekly Oil Bulletin KE — ceny Pb95 i diesla w Polsce (XLSX).</li>
+                                        <li>Python łączy źródła, waliduje i zapisuje do SQLite.</li>
+                                        <li>Analiza (korelacja, spread, YoY) jest na końcu — nie zamiast pipeline.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>EIA API — Brent and WTI in USD/barrel (JSON).</li>
+                                        <li>NBP API — USD/PLN and EUR/PLN rates, table A (JSON).</li>
+                                        <li>EC Weekly Oil Bulletin — Pb95 and diesel prices in Poland (XLSX).</li>
+                                        <li>Python merges sources, validates and writes to SQLite.</li>
+                                        <li>Analysis (correlation, spread, YoY) comes last — it is not the pipeline.</li>
+                                    </ul>
+                                    <div class="ep-arch">
+                                        <div class="ep-arch-row">
+                                            <div class="ep-arch-box ep-src">EIA API<br><span>Brent / WTI · JSON</span></div>
+                                            <div class="ep-arch-box ep-src">NBP API<br><span>USD/PLN · JSON</span></div>
+                                            <div class="ep-arch-box ep-src">EU fuel<br><span>Pb95 / Diesel · XLSX</span></div>
+                                        </div>
+                                        <div class="ep-arch-flow">
+                                            <span class="ep-arch-step">RAW</span><span>→</span>
+                                            <span class="ep-arch-step">TRANSFORM</span><span>→</span>
+                                            <span class="ep-arch-step">VALIDATE</span><span>→</span>
+                                            <span class="ep-arch-step">SQL</span><span>→</span>
+                                            <span class="ep-arch-step">ANALYSIS</span>
+                                        </div>
+                                    </div>
+                                    <pre class="hero-code dc-code"><code>cd projects\energy-pipeline
+pip install -r requirements.txt
+python pipeline.py</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="1" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Warstwa RAW — data lineage</span><span class="lang-en">RAW layer — data lineage</span></h2>
+                                        <span class="dc-progress">2 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Każda odpowiedź API i plik XLSX jest zapisywana dokładnie tak, jak przyszła — z datą uruchomienia w nazwie. Surowe dane nie znikają po transformacji.</p>
+                                    <p class="dc-body lang-en">Every API response and XLSX file is saved exactly as received — with the run date in the filename. Raw data is not discarded after transformation.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>source → raw → transformation → validated → analytical layer.</li>
+                                        <li>Plik: data/raw/eia/YYYY-MM-DD.json — Brent/WTI bez zmian.</li>
+                                        <li>Plik: data/raw/nbp/YYYY-MM-DD.json — kursy NBP bez zmian.</li>
+                                        <li>Plik: data/raw/eu_fuel/YYYY-MM-DD.json — bulletin KE bez zmian.</li>
+                                        <li>Dzięki dacie w nazwie widać, z którego dnia pochodzi pobranie.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>source → raw → transformation → validated → analytical layer.</li>
+                                        <li>File: data/raw/eia/YYYY-MM-DD.json — Brent/WTI unchanged.</li>
+                                        <li>File: data/raw/nbp/YYYY-MM-DD.json — NBP rates unchanged.</li>
+                                        <li>File: data/raw/eu_fuel/YYYY-MM-DD.json — EC bulletin unchanged.</li>
+                                        <li>The date in the filename shows which run produced the file.</li>
+                                    </ul>
+                                    <pre class="ep-tree">data/
+├── raw/
+│   ├── eia/2026-08-19.json
+│   ├── nbp/2026-08-19.json
+│   └── eu_fuel/2026-08-19.json
+├── processed/
+│   └── energy_market.csv   (104 rows)
+└── database/
+    └── energy.db</pre>
+                                    <pre class="hero-code dc-code"><code>def save_raw(source, payload, run_date):
+    path = RAW / source / f"{run_date}.json"
+    with path.open("w", encoding="utf-8") as fh:
+        json.dump(payload, fh, ensure_ascii=False, indent=2)
+    logger.info("RAW saved: %s", path)</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="2" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Extract — integracja API</span><span class="lang-en">Extract — API integration</span></h2>
+                                        <span class="dc-progress">3 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Pobieram trzy źródła osobno. Każde wywołanie ma timeout, sprawdzenie statusu HTTP i log błędu — pipeline nie pada cicho, gdy API nie odpowiada.</p>
+                                    <p class="dc-body lang-en">I fetch three sources separately. Each call has a timeout, HTTP status check and error log — the pipeline does not fail silently when an API is down.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>EIA — trzy poziomy: API v2 z kluczem, publiczne arkusze bez klucza (miesięczne <code>RBRTEm</code>/<code>RWTCm</code> i dzienne <code>RBRTEd</code>/<code>RWTCd</code>), a na końcu wartości referencyjne. Poziom, który zadziałał, trafia do kolumny <code>crude_source</code>. Klucz nie jest potrzebny do żadnego ziarna — arkusz dzienny jest nawet świeższy niż miesięczny, bo kończy się na poprzedniej sesji.</li>
+                                        <li>NBP: GET api.nbp.pl/api/exchangerates/rates/a/{usd,eur}/{start}/{end}/ — okna po 366 dni, bo API ogranicza zapytanie.</li>
+                                        <li>KE: pobranie XLSX Weekly Oil Bulletin (ceny z podatkiem i bez, Polska).</li>
+                                        <li>timeout=30 — żądanie nie wisi w nieskończoność.</li>
+                                        <li>raise_for_status() — kod 4xx/5xx jest błędem, nie pustą tabelą.</li>
+                                        <li>404 z NBP to nie awaria — oznacza okno bez dni publikacji (święta), więc zwracam pustą listę.</li>
+                                        <li>Ponowienia: 2 próby przed zgłoszeniem błędu; log mówi, które źródło i które okno padło.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>EIA — three tiers: API v2 with a key, public keyless workbooks (monthly <code>RBRTEm</code>/<code>RWTCm</code> and daily <code>RBRTEd</code>/<code>RWTCd</code>), then reference values as a last resort. Whichever tier answered is written to the <code>crude_source</code> column. No key is needed for either grain — the daily workbook is in fact the fresher of the two, since it closes on the previous session.</li>
+                                        <li>NBP: GET api.nbp.pl/api/exchangerates/rates/a/{usd,eur}/{start}/{end}/ — 366-day windows, since the API caps each query.</li>
+                                        <li>EC: download Weekly Oil Bulletin XLSX (prices with and without tax, Poland).</li>
+                                        <li>timeout=30 — the request does not hang forever.</li>
+                                        <li>raise_for_status() — 4xx/5xx is an error, not an empty table.</li>
+                                        <li>A 404 from NBP is not a failure — it means a window with no publication days (holidays), so I return an empty list.</li>
+                                        <li>Retries: 2 attempts before raising; the log names the source and the window that failed.</li>
+                                    </ul>
+                                    <pre class="hero-code dc-code"><code>for attempt in range(retries + 1):
+    try:
+        response = requests.get(url, timeout=30)
+        if response.status_code == 404:      # window with no publication days
+            return {"rates": []}
+        response.raise_for_status()
+        return response.json()
+    except requests.RequestException as exc:
+        logger.warning("NBP failed (%s %s..%s, attempt %d): %s",
+                       currency, start, end, attempt + 1, exc)
+raise RuntimeError(f"NBP API unavailable for {currency}")</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="3" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Transform — łączenie źródeł</span><span class="lang-en">Transform — merging sources</span></h2>
+                                        <span class="dc-progress">4 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Serie miesięczne łączę po dacie. Z trzech JSON/XLSX powstaje jedna tabela: ropa, kursy, cena na stacji i spread.
+                                        Kluczowy warunek: obie strony spreadu muszą być w tej samej walucie i tej samej jednostce objętości.</p>
+                                    <p class="dc-body lang-en">Monthly series are joined on date. Three JSON/XLSX sources become one table: crude, FX, pump price and spread.
+                                        The key constraint: both sides of the spread must share one currency and one volume unit.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>JSON / XLSX → pandas DataFrame.</li>
+                                        <li>Join po miesiącu: Brent + USD/PLN + EUR/PLN + Pb95/diesel.</li>
+                                        <li>Brent USD/bbl × USD/PLN = Brent PLN/bbl.</li>
+                                        <li>Brent PLN/bbl ÷ 158,987 l = Brent PLN/l.</li>
+                                        <li>Pb95 EUR/l × EUR/PLN = Pb95 PLN/l — bez tego kroku spread mieszałby dwie waluty.</li>
+                                        <li>Spread = Pb95 PLN/l − Brent PLN/l (podatki + marża).</li>
+                                        <li>Zmiany MoM i YoY liczone na cenie w PLN.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>JSON / XLSX → pandas DataFrame.</li>
+                                        <li>Join on month: Brent + USD/PLN + EUR/PLN + Pb95/diesel.</li>
+                                        <li>Brent USD/bbl × USD/PLN = Brent PLN/bbl.</li>
+                                        <li>Brent PLN/bbl ÷ 158.987 l = Brent PLN/l.</li>
+                                        <li>Pb95 EUR/l × EUR/PLN = Pb95 PLN/l — without this step the spread would mix two currencies.</li>
+                                        <li>Spread = Pb95 PLN/l − Brent PLN/l (taxes + margin).</li>
+                                        <li>MoM and YoY computed on the PLN price.</li>
+                                    </ul>
+                                    <div class="ep-chain" id="ep-chain"></div>
+                                    <pre class="hero-code dc-code"><code>df["brent_pln_bbl"] = df["brent_usd"] * df["usd_pln"]
+df["brent_pln_l"]   = df["brent_pln_bbl"] / LITRE_PER_BBL
+
+# Pump prices arrive in EUR/l; convert to PLN/l so the spread compares like with like
+df["pb95_pln_l"] = df["pb95_eur_l"] * df["eur_pln"]
+df["spread_retail_vs_crude"] = df["pb95_pln_l"] - df["brent_pln_l"]
+
+df["brent_usd_mom_pct"] = df["brent_usd"].pct_change() * 100</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="4" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Validate — testy jakości</span><span class="lang-en">Validate — quality tests</span></h2>
+                                        <span class="dc-progress">5 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Walidacja działa dwupoziomowo: <code>validate()</code> blokuje zapis wewnątrz pipeline'u,
+                                        a <code>pytest</code> sprawdza gotowy CSV osobno. Testy nie pilnują tylko znaków — pilnują też jednostek i sensu ekonomicznego,
+                                        bo właśnie tam kryją się błędy, których nie widać po samym uruchomieniu skryptu.</p>
+                                    <p class="dc-body lang-en">Validation runs at two levels: <code>validate()</code> blocks the load inside the pipeline,
+                                        and <code>pytest</code> checks the finished CSV separately. The tests do not just guard signs — they guard units and economic
+                                        plausibility, which is where the errors that survive a clean script run actually hide.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li><strong>Struktura</strong> — unikalne daty, jeden wiersz na miesiąc, brak dziur w szeregu.</li>
+                                        <li><strong>Kursy</strong> — USD/PLN w 3,0–5,2, EUR/PLN w 3,5–5,5, implikowany EUR/USD w 0,9–1,35.</li>
+                                        <li><strong>Jednostki</strong> — <code>brent_pln_l</code> musi wynikać z podziału przez 158,987; <code>pb95_pln_l</code> musi być przeliczony kursem EUR, nie USD.</li>
+                                        <li><strong>Waluty</strong> — <code>test_spread_is_same_currency_subtraction</code> to bezpiecznik po realnym błędzie: spread odejmował kiedyś PLN/l od EUR/l.</li>
+                                        <li><strong>Sens ekonomiczny</strong> — spread brutto musi być dodatni i mieścić się w 1,5–6 PLN/l, a spread netto musi być mniejszy od brutto.</li>
+                                        <li><strong>Pochodzenie</strong> — jeśli ropa ma mało unikalnych wartości, znacznik źródła musi to przyznawać.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li><strong>Structure</strong> — unique dates, one row per month, no gaps in the series.</li>
+                                        <li><strong>FX</strong> — USD/PLN within 3.0–5.2, EUR/PLN within 3.5–5.5, implied EUR/USD within 0.9–1.35.</li>
+                                        <li><strong>Units</strong> — <code>brent_pln_l</code> must follow from dividing by 158.987; <code>pb95_pln_l</code> must use the EUR rate, not the USD one.</li>
+                                        <li><strong>Currency</strong> — <code>test_spread_is_same_currency_subtraction</code> is a regression guard after a real bug: the spread once subtracted PLN/l from EUR/l.</li>
+                                        <li><strong>Economic plausibility</strong> — the gross spread must be positive and inside 1.5–6 PLN/l, and the net spread must be smaller than the gross one.</li>
+                                        <li><strong>Provenance</strong> — if crude has few distinct values, the source flag must admit it.</li>
+                                    </ul>
+                                    <p class="ep-test-summary"><code>pytest -q</code> → <strong>19 passed</strong></p>
+                                    <pre class="hero-code dc-code"><code>def test_spread_is_same_currency_subtraction(df):
+    """Regression guard: the gross spread once subtracted PLN/l from EUR/l."""
+    both = df.dropna(subset=["pb95_pln_l", "brent_pln_l", "spread_retail_vs_crude"])
+    expected = both["pb95_pln_l"] - both["brent_pln_l"]
+    assert (both["spread_retail_vs_crude"] - expected).abs().max() &lt; 1e-9
+
+def test_gross_spread_positive(df):
+    """Excise plus VAT alone put the pump price well above bare crude cost."""
+    assert df["spread_retail_vs_crude"].dropna().gt(0).all()</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="5" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Load — SQL + CSV</span><span class="lang-en">Load — SQL + CSV</span></h2>
+                                        <span class="dc-progress">6 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Po walidacji zapisuję warstwę analityczną do CSV i SQLite. Zapis jest <strong>idempotentny</strong>:
+                                        <code>INSERT … ON CONFLICT(date) DO UPDATE</code> aktualizuje istniejący miesiąc zamiast go duplikować,
+                                        więc skrypt można uruchamiać cyklicznie (Task Scheduler / cron) bez psucia tabeli.</p>
+                                    <p class="dc-body lang-en">After validation I write the analytical layer to CSV and SQLite. The load is <strong>idempotent</strong>:
+                                        <code>INSERT … ON CONFLICT(date) DO UPDATE</code> refreshes an existing month instead of duplicating it,
+                                        so the script can run on a schedule (Task Scheduler / cron) without corrupting the table.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>CSV: data/processed/energy_market.csv — 104 miesiące (2018–2026).</li>
+                                        <li>SQLite: data/database/energy.db — tabela energy_market, 21 kolumn.</li>
+                                        <li>Klucz główny: date — jeden wiersz = jeden miesiąc.</li>
+                                        <li>Świadomie <em>nie</em> używam <code>to_sql(if_exists="replace")</code> — to skasowałoby klucz główny i indeks ze schema.sql.</li>
+                                        <li>Load porównuje kolumny z <code>PRAGMA table_info</code> i przerywa, jeśli schemat rozjechał się z danymi.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>CSV: data/processed/energy_market.csv — 104 months (2018–2026).</li>
+                                        <li>SQLite: data/database/energy.db — energy_market table, 21 columns.</li>
+                                        <li>Primary key: date — one row = one month.</li>
+                                        <li>Deliberately <em>not</em> <code>to_sql(if_exists="replace")</code> — that would drop the primary key and index defined in schema.sql.</li>
+                                        <li>The load diffs columns against <code>PRAGMA table_info</code> and aborts if the schema drifted from the data.</li>
+                                    </ul>
+                                    <p class="ep-load-note">projects/energy-pipeline/data/processed/energy_market.csv · data/database/energy.db</p>
+                                    <pre class="hero-code dc-code"><code>placeholders = ", ".join("?" for _ in target)
+updates = ", ".join(f"{c}=excluded.{c}" for c in target if c != "date")
+sql = (
+    f"INSERT INTO energy_market ({', '.join(target)}) VALUES ({placeholders}) "
+    f"ON CONFLICT(date) DO UPDATE SET {updates}, loaded_at=datetime('now')"
+)
+conn.executemany(sql, out.itertuples(index=False, name=None))</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="6" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Analiza — wnioski z pipeline</span><span class="lang-en">Analysis — pipeline takeaways</span></h2>
+                                        <span class="dc-progress">7 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Dopiero po ETL liczę korelację Brent vs Pb95, spread detal−ropa i zmiany YoY. Wniosek jest na końcu, bo bez zwalidowanych danych byłby niepewny.</p>
+                                    <p class="dc-body lang-en">Only after ETL I compute Brent vs Pb95 correlation, retail−crude spread and YoY changes. The takeaway comes last, because without validated data it would be unreliable.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>104 miesiące połączonych serii (sty 2018 – sie 2026).</li>
+                                        <li>Korelacja Brent ↔ Pb95 — związek jest wyraźny, ale nie 1:1.</li>
+                                        <li>Spread detal − ropa zmienia się w czasie (akcyza, VAT, marża, kurs).</li>
+                                        <li>Spread brutto ≈ 3,2–5,5 PLN/l — tyle kierowca płaci ponad koszt samej ropy.</li>
+                                        <li>Wniosek jest na końcu, bo bez zwalidowanych danych i wspólnej waluty byłby fikcją.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>104 months of joined series (Jan 2018 – Aug 2026).</li>
+                                        <li>Brent ↔ Pb95 correlation — a clear link, but not 1:1.</li>
+                                        <li>The retail − crude spread shifts over time (excise, VAT, margin, FX).</li>
+                                        <li>Gross spread ≈ 3.2–5.5 PLN/l — what the driver pays above the bare crude cost.</li>
+                                        <li>The takeaway comes last, because without validated data in one currency it would be fiction.</li>
+                                    </ul>
+                                    <div class="ep-metrics dc-metrics" id="ep-analysis-metrics"></div>
+                                    <p class="ep-takeaway lang-pl" id="ep-analysis-takeaway-pl"></p>
+                                    <p class="ep-takeaway lang-en" id="ep-analysis-takeaway-en"></p>
+                                    <pre class="hero-code dc-code"><code>corr = df["brent_usd"].corr(df["pb95_pln_l"])
+spread = df["pb95_pln_l"] - df["brent_pln_l"]
+
+# lag: does the pump follow crude with a delay?
+for n in range(4):
+    shifted = pd.DataFrame({"crude": df["brent_usd"],
+                            "retail": df["pb95_pln_l"].shift(-n)}).dropna()
+    print(n, shifted["crude"].corr(shifted["retail"]))</code></pre>
+                                </div>
+                                <div class="dc-panel ep-panel" data-ep-panel="7" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Wizualizacja — ropa vs stacja</span><span class="lang-en">Visualisation — crude vs pump</span></h2>
+                                        <span class="dc-progress">8 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Wyjście z <code>energy_market.csv</code> — 104 miesiące (sty 2018 – sie 2026).
+                                        <span class="dc-term" tabindex="0" data-tip="Gatunek ropy naftowej z Morza Północnego — globalny benchmark cenowy. Kiedy media mówią 'ropa kosztuje X dolarów', chodzi właśnie o Brent.">Brent</span> USD/bbl,
+                                        kursy <span class="dc-term" tabindex="0" data-tip="Narodowy Bank Polski — publikuje oficjalny kurs wymiany walut (tabela A). Pipeline pobiera USD/PLN i EUR/PLN automatycznie przez API NBP.">NBP</span> (USD/PLN i EUR/PLN) oraz ceny
+                                        <span class="dc-term" tabindex="0" data-tip="Benzyna bezołowiowa 95 — najpopularniejsze paliwo na polskich stacjach. Ceny z EC Weekly Oil Bulletin, przeliczone z EUR/l na PLN/l kursem NBP.">Pb95</span>
+                                        na stacjach w Polsce. Wszystkie ceny sprowadzone do <strong>PLN za litr</strong>, żeby dały się porównywać.</p>
+                                    <p class="dc-body lang-en">Output of <code>energy_market.csv</code> — 104 months (Jan 2018 – Aug 2026).
+                                        <span class="dc-term" tabindex="0" data-tip="North Sea crude oil — the global price benchmark. When media say 'oil costs X dollars', they mean Brent.">Brent</span> USD/bbl,
+                                        <span class="dc-term" tabindex="0" data-tip="Narodowy Bank Polski — publishes the official exchange rates (table A). The pipeline fetches USD/PLN and EUR/PLN automatically via the NBP API.">NBP</span> rates (USD/PLN and EUR/PLN) and
+                                        <span class="dc-term" tabindex="0" data-tip="Unleaded 95 petrol — the most common fuel at Polish pumps. Prices from the EC Weekly Oil Bulletin, converted from EUR/l to PLN/l at the NBP rate.">Pb95</span>
+                                        pump prices in Poland. Every price is reduced to <strong>PLN per litre</strong> so the figures are comparable.</p>
+
+                                    <div class="ep-provenance" id="ep-provenance" role="note"></div>
+
+                                    <div class="ep-metrics dc-metrics" id="ep-viz-metrics"></div>
+
+                                    <!-- Chart 1: crude vs pump price, monthly or daily -->
+                                    <h4 class="ep-chart-title" id="ep-chart-title"></h4>
+                                    <div id="ep-note-monthly">
+                                        <p class="ep-chart-note lang-pl">Niebieska linia — ropa <span class="dc-term" tabindex="0" data-tip="Brent — ropa z Morza Północnego. Lewa oś: USD za baryłkę.">Brent</span> (lewa oś, USD/baryłkę). Żółta — cena <span class="dc-term" tabindex="0" data-tip="Pb95 — benzyna bezołowiowa 95. Prawa oś: PLN za litr na polskiej stacji. Dane tygodniowe z EC Weekly Oil Bulletin, uśrednione do miesiąca i przeliczone kursem EUR/PLN.">Pb95</span> na polskiej stacji (prawa oś, PLN/litr).</p>
+                                        <p class="ep-chart-note lang-en">Blue line — <span class="dc-term" tabindex="0" data-tip="Brent crude from the North Sea. Left axis: USD per barrel.">Brent</span> crude (left axis, USD/barrel). Yellow — <span class="dc-term" tabindex="0" data-tip="Pb95 — unleaded 95 petrol. Right axis: PLN per litre at Polish pumps. Weekly EC data averaged to monthly and converted at the EUR/PLN rate.">Pb95</span> at the Polish pump (right axis, PLN/litre).</p>
+                                    </div>
+                                    <div id="ep-note-daily" hidden>
+                                        <p class="ep-chart-note lang-pl">Cienka niebieska linia — <span class="dc-term" tabindex="0" data-tip="Brent — ropa z Morza Północnego. Lewa oś: USD za baryłkę.">Brent</span>, zielona — <span class="dc-term" tabindex="0" data-tip="West Texas Intermediate — amerykański benchmark ropy. Zwykle notowany kilka dolarów niżej niż Brent; różnica to spread transatlantycki.">WTI</span> (obie na lewej osi, USD/baryłkę). Przerywana żółta — Brent przeliczony na PLN/litr kursem <span class="dc-term" tabindex="0" data-tip="Narodowy Bank Polski — kurs średni z tabeli A obowiązujący w dniu notowania.">NBP</span> (prawa oś).</p>
+                                        <p class="ep-chart-note lang-en">Thin blue line — <span class="dc-term" tabindex="0" data-tip="Brent crude from the North Sea. Left axis: USD per barrel.">Brent</span>, green — <span class="dc-term" tabindex="0" data-tip="West Texas Intermediate — the US crude benchmark. Usually quoted a few dollars below Brent; the gap is the transatlantic spread.">WTI</span> (both on the left axis, USD/barrel). Dashed yellow — Brent converted to PLN/litre at the <span class="dc-term" tabindex="0" data-tip="Narodowy Bank Polski — table A mid-rate in force on the quote date.">NBP</span> rate (right axis).</p>
+                                    </div>
+
+                                    <div class="ep-grain" id="ep-grain" role="group" aria-label="Ziarnistość danych / Data granularity">
+                                        <button type="button" class="ep-grain-btn is-active" data-grain="monthly" aria-pressed="true">
+                                            <span class="lang-pl">Miesięcznie</span><span class="lang-en">Monthly</span>
+                                        </button>
+                                        <button type="button" class="ep-grain-btn" data-grain="daily" aria-pressed="false">
+                                            <span class="lang-pl">Dziennie</span><span class="lang-en">Daily</span>
+                                        </button>
+                                        <span class="ep-grain-meta" id="ep-grain-meta"></span>
+                                    </div>
+
+                                    <div class="ep-viz-wrap" id="ep-viz-main"></div>
+                                    <p class="ep-chart-note" id="ep-grain-note"></p>
+
+                                    <!-- Chart 2: Spread -->
+                                    <h4 class="ep-chart-title lang-pl"><span class="dc-term" tabindex="0" data-tip="Spread = cena Pb95 na stacji minus przeliczona cena baryłki ropy na litr, oba w PLN/l. Spread brutto (z podatkami) mówi, ile płaci kierowca ponad cenę ropy; spread netto (bez podatków) pokazuje marżę rafineryjną i dystrybucyjną.">Spread</span>: cena na stacji − ekwiwalent ropy (PLN/l)</h4>
+                                    <h4 class="ep-chart-title lang-en"><span class="dc-term" tabindex="0" data-tip="Spread = pump price minus the crude-per-litre equivalent, both in PLN/l. The gross spread (with taxes) shows what the driver pays above crude; the net spread (taxes excluded) isolates refining and distribution margin.">Spread</span>: pump price − crude equivalent (PLN/l)</h4>
+                                    <p class="ep-chart-note lang-pl">Spread <strong>brutto</strong> to akcyza, opłata paliwowa, VAT i marża razem — dlatego jest dodatni i liczony w złotówkach, nie groszach.
+                                        Rośnie, gdy ropa tanieje szybciej niż cena na stacji, i kurczy się, gdy ropa drożeje gwałtownie. Spread <strong>netto</strong> (bez podatków) jest dostępny tylko dla najnowszej obserwacji z arkusza EC „without taxes" — dlatego pokazuję go jako pojedynczy punkt odniesienia, a nie szereg.</p>
+                                    <p class="ep-chart-note lang-en">The <strong>gross</strong> spread bundles excise, fuel levy, VAT and margin — which is why it is positive and measured in zloty, not grosz.
+                                        It widens when crude falls faster than the pump price and compresses when crude spikes. The <strong>net</strong> spread (taxes excluded) exists only for the latest observation from the EC "without taxes" sheet, so it is shown as a single reference point rather than a series.</p>
+                                    <div class="ep-viz-wrap" id="ep-viz-spread"></div>
+
+                                    <!-- Lag analysis -->
+                                    <h4 class="ep-chart-title lang-pl">Analiza <span class="dc-term" tabindex="0" data-tip="Lag (opóźnienie) — czy zmiana ceny ropy w miesiącu t wpływa na cenę Pb95 w tym samym miesiącu (t+0), czy dopiero po miesiącu (t+1), dwóch (t+2) itd.? Sprawdzamy to przez korelację przesuniętych szeregów.">opóźnienia (lag)</span> — czy Pb95 reaguje po czasie?</h4>
+                                    <h4 class="ep-chart-title lang-en"><span class="dc-term" tabindex="0" data-tip="Lag analysis — does a change in crude price in month t affect Pb95 in the same month (t+0), or only after one month (t+1), two (t+2), etc.? Checked by correlating shifted series.">Lag analysis</span> — does Pb95 react with a delay?</h4>
+                                    <p class="ep-chart-note lang-pl" id="ep-lag-note-pl"></p>
+                                    <p class="ep-chart-note lang-en" id="ep-lag-note-en"></p>
+                                    <div class="ep-lag-grid" id="ep-lag-grid"></div>
+
+                                    <!-- Table: all months -->
+                                    <h4 class="ep-chart-title lang-pl">Tabela — wszystkie miesiące</h4>
+                                    <h4 class="ep-chart-title lang-en">Table — all months</h4>
+                                    <div class="dc-table-wrap ep-table-scroll" id="ep-table-all"></div>
+
+                                    <p class="ep-takeaway lang-pl" id="ep-viz-takeaway-pl"></p>
+                                    <p class="ep-takeaway lang-en" id="ep-viz-takeaway-en"></p>
+
+                                    <p class="dc-download ep-download">
+                                        <a href="projects/energy-pipeline/data/processed/energy_market.csv" download>
+                                            <span class="lang-pl">Pobierz energy_market.csv (miesięcznie) →</span>
+                                            <span class="lang-en">Download energy_market.csv (monthly) →</span>
+                                        </a>
+                                        <a href="projects/energy-pipeline/data/processed/energy_market_daily.csv" download>
+                                            <span class="lang-pl">Pobierz energy_market_daily.csv (dziennie) →</span>
+                                            <span class="lang-en">Download energy_market_daily.csv (daily) →</span>
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
 
@@ -904,17 +1350,110 @@
                                 </button>
                             </div>
 
-                            <p class="dc-download" style="margin-top: 1.5rem;">
+                            <p class="dc-download ep-download">
                                 <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/energy-pipeline" target="_blank" rel="noopener">
                                     <span class="lang-pl">Kod pipeline na GitHubie →</span>
                                     <span class="lang-en">Pipeline code on GitHub →</span>
                                 </a>
-                                ·
-                                <a href="projects/energy-pipeline/data/processed/energy_market.csv" download>
-                                    <span class="lang-pl">Pobierz energy_market.csv →</span>
-                                    <span class="lang-en">Download energy_market.csv →</span>
-                                </a>
                             </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-detail" id="payment-forecast-hub" hidden>
+                    <div class="project-detail-inner">
+                        <div class="project-detail-bar">
+                            <span class="project-index">
+                                <span class="lang-pl">04 · NALEŻNOŚCI</span>
+                                <span class="lang-en">04 · RECEIVABLES</span>
+                            </span>
+                            <a href="#projekty" class="project-link js-close-payment-hub">
+                                <span class="lang-pl">Zwiń ↑</span>
+                                <span class="lang-en">Collapse ↑</span>
+                            </a>
+                        </div>
+
+                        <div id="payment-forecast" class="case-panel" role="tabpanel">
+                            <p class="case-panel-label"><span class="lang-pl">Projekt 04</span><span class="lang-en">Project 04</span></p>
+                            <h3>
+                                <span class="lang-pl">Kiedy klient zapłaci fakturę?</span>
+                                <span class="lang-en">When will the customer pay?</span>
+                            </h3>
+                            <p class="lead lang-pl">
+                                Na 50&nbsp;000 faktur należności ok. 42% schodzi po terminie.
+                                Liczę, kiedy otwarta faktura najpewniej zostanie spłacona, i układam kolejkę windykacji od największego ryzyka.
+                            </p>
+                            <p class="lead lang-en">
+                                Of 50,000 receivables invoices, about 42% clear late.
+                                I estimate when an open invoice is likely to clear and rank a collections queue by risk.
+                            </p>
+
+                            <div id="pf-root" class="pf-root">
+                                <div class="pf-kpis" id="pf-metrics"></div>
+
+                                <p class="pf-story lang-pl">
+                                    Najpierw naprawiam daty zapisane jako liczby (<code>20190307</code>), potem liczę opóźnienia i porównuję terminy płatności. Prognoza to mediana historii klienta (z fallbackiem na termin i całość). Na holdoucie czasowym pomyłka to średnio ok. 3 dni zamiast 5 przy naiwnej medianie.
+                                </p>
+                                <p class="pf-story lang-en">
+                                    First I fix dates stored as integers (<code>20190307</code>), then measure delays and compare payment terms. The forecast is the customer’s historical median (with term and global fallbacks). On a time-ordered holdout the average error is about 3 days versus 5 for a naive median.
+                                </p>
+
+                                <div class="pf-grid">
+                                    <section class="pf-panel">
+                                        <h2><span class="lang-pl">Otwarte faktury według spóźnienia</span><span class="lang-en">Open invoices by how overdue</span></h2>
+                                        <p class="pf-hint lang-pl">Suma salda w koszykach dni po terminie płatności.</p>
+                                        <p class="pf-hint lang-en">Open balance by days past due.</p>
+                                        <div id="pf-aging" class="pf-bars"></div>
+                                    </section>
+                                    <section class="pf-panel">
+                                        <h2><span class="lang-pl">Najczęstsze terminy</span><span class="lang-en">Most common terms</span></h2>
+                                        <p class="pf-hint lang-pl">Ile faktur, ile % po terminie, ile dni do spłaty.</p>
+                                        <p class="pf-hint lang-en">Invoice count, late share, days to pay.</p>
+                                        <div id="pf-terms" class="pf-table-wrap"></div>
+                                    </section>
+                                </div>
+
+                                <section class="pf-panel">
+                                    <h2><span class="lang-pl">Kogo dzwonić najpierw</span><span class="lang-en">Who to call first</span></h2>
+                                    <p class="pf-hint lang-pl">Otwarte faktury z najwyższym priorytetem: prognoza spóźnienia × kwota.</p>
+                                    <p class="pf-hint lang-en">Open invoices with the highest priority: predicted late × amount.</p>
+                                    <div id="pf-priority" class="pf-table-wrap"></div>
+                                </section>
+
+                                <section class="pf-panel">
+                                    <h2><span class="lang-pl">Odsetek spóźnień w czasie</span><span class="lang-en">Late share over time</span></h2>
+                                    <p class="pf-hint lang-pl">Udział faktur zamkniętych po terminie, miesiąc po miesiącu.</p>
+                                    <p class="pf-hint lang-en">Share of closed invoices that cleared late, month by month.</p>
+                                    <div id="pf-monthly"></div>
+                                </section>
+
+                                <section class="pf-panel pf-panel-takeaway">
+                                    <h2><span class="lang-pl">Wniosek</span><span class="lang-en">Takeaway</span></h2>
+                                    <p id="pf-takeaway" class="pf-takeaway"></p>
+                                </section>
+
+                                <details class="pf-run">
+                                    <summary><span class="lang-pl">Jak odpalić pipeline</span><span class="lang-en">How to run the pipeline</span></summary>
+                                    <pre class="hero-code dc-code"><code>cd projects\payment-forecast
+pip install -r requirements.txt
+python pipeline.py
+python scripts\build_payment_data.py
+pytest -q</code></pre>
+                                </details>
+
+                                <p class="dc-download ep-download">
+                                    <a href="projects/payment-forecast/data/processed/open_priority.csv" download>
+                                        <span class="lang-pl">Pobierz kolejkę (CSV) →</span>
+                                        <span class="lang-en">Download queue (CSV) →</span>
+                                    </a>
+                                    <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/payment-forecast" target="_blank" rel="noopener">
+                                        <span class="lang-pl">Kod na GitHubie →</span>
+                                        <span class="lang-en">Code on GitHub →</span>
+                                    </a>
+                                </p>
+                                <p class="ep-load-note lang-pl">Źródło: publiczny sample należności (nie dane firmowe).</p>
+                                <p class="ep-load-note lang-en">Source: public receivables sample (not company data).</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -926,21 +1465,21 @@
                 <div class="section-label"><span class="lang-pl">Profil</span><span class="lang-en">Profile</span></div>
                 <div class="section-header">
                     <h2><span class="lang-pl">O mnie</span><span class="lang-en">About</span></h2>
-                    <p class="lang-pl">Analityk danych — od jakości danych i SQL po KPI i dashboardy.</p>
-                    <p class="lang-en">Data analyst — from data quality and SQL to KPIs and dashboards.</p>
+                    <p class="lang-pl">Analityk danych. Jakość danych, SQL, KPI i dashboardy.</p>
+                    <p class="lang-en">Data analyst. Data quality, SQL, KPIs and dashboards.</p>
                 </div>
                 <div class="about-content">
                     <p class="lang-pl">
-                        Pracuję z brudnymi eksportami z wielu systemów. Czyszczę dane, łączę tabele i ujednolicam nazwy,
-                        żeby wskaźniki KPI były wiarygodne.                         Projekty na tej stronie pokazują trzy różne kompetencje: jakość danych (01), BI (02) i pipeline ETL (03).
-                        Czwarty projekt — optymalizacja procesów — w planach.
-                        Doświadczenie w procesach laboratoryjnych (LIMS, workflow) pomaga mi rozumieć dane operacyjne, nie tylko same tabele.
+                        Pracuję z brudnymi eksportami z różnych systemów. Czyszczę dane, łączę tabele i ujednolicam nazwy,
+                        żeby wskaźniki miały sens.
+                        Na tej stronie są cztery projekty: jakość danych (01), BI (02), pipeline ETL (03) i prognoza płatności AR (04).
+                        Doświadczenie z laboratorium (LIMS, workflow) pomaga mi czytać dane operacyjne, a nie tylko same tabele.
                     </p>
                     <p class="lang-en">
-                        I work with messy exports from multiple systems. I clean data, join tables and standardise labels
-                        so KPIs can be trusted.                         The projects on this site show three distinct skills: data quality (01), BI (02) and ETL pipelines (03).
-                        A fourth project — process optimisation — is planned.
-                        A background in laboratory processes (LIMS, workflow) helps me understand operational data, not just the tables.
+                        I work with messy exports from different systems. I clean data, join tables and standardise labels
+                        so the metrics actually make sense.
+                        This site has four projects: data quality (01), BI (02), an ETL pipeline (03) and an AR payment forecast (04).
+                        A lab background (LIMS, workflow) helps me read operational data, not only the tables.
                     </p>
                     <div class="focus-pillars">
                         <div class="pillar">
@@ -955,17 +1494,17 @@
                         </div>
                         <div class="pillar">
                             <h4><span class="lang-pl">Procesy i domena</span><span class="lang-en">Processes &amp; domain</span></h4>
-                            <p class="lang-pl">Mapowanie workflow, LIMS, ISO 17025 — kontekst, z którego pochodzą dane.</p>
-                            <p class="lang-en">Workflow mapping, LIMS, ISO 17025 — the context behind the data.</p>
+                            <p class="lang-pl">Mapowanie workflow, LIMS, ISO 17025. Kontekst, z którego pochodzą dane.</p>
+                            <p class="lang-en">Workflow mapping, LIMS, ISO 17025. The context the data comes from.</p>
                         </div>
                     </div>
                     <p class="about-linkedin lang-pl">
-                        Pełne doświadczenie zawodowe —
-                        <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">profil LinkedIn →</a>
+                        Pełniejsze CV jest na
+                        <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">LinkedInie →</a>
                     </p>
                     <p class="about-linkedin lang-en">
-                        Full professional experience —
-                        <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">LinkedIn profile →</a>
+                        Fuller work history is on
+                        <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">LinkedIn →</a>
                     </p>
                 </div>
             </div>
@@ -1026,42 +1565,6 @@
             </div>
         </section>
 
-        <section id="kontakt" class="contact">
-            <div class="container contact-inner">
-                <div class="section-label"><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></div>
-                <div class="section-header">
-                    <h2><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></h2>
-                    <p class="lang-pl">Otwarty na współpracę w analizie danych, czyszczeniu danych, SQL/Python i dashboardach KPI.</p>
-                    <p class="lang-en">Open to collaboration in data analysis, data cleaning, SQL/Python and KPI dashboards.</p>
-                </div>
-                <span class="availability-badge lang-pl">Dostępny do współpracy</span>
-                <span class="availability-badge lang-en">Open to collaboration</span>
-                <div class="contact-grid">
-                    <a href="mailto:krzy.blachut@gmail.com" class="contact-item">
-                        <span class="contact-label">Email</span>
-                        <span class="contact-value">krzy.blachut@gmail.com</span>
-                    </a>
-                    <a href="tel:+48509537526" class="contact-item">
-                        <span class="contact-label"><span class="lang-pl">Telefon</span><span class="lang-en">Phone</span></span>
-                        <span class="contact-value">+48 509 537 526</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener" class="contact-item">
-                        <span class="contact-label">LinkedIn</span>
-                        <span class="contact-value">krzysztof-blachut</span>
-                    </a>
-                    <a href="https://github.com/krzysztof-blachut-data" target="_blank" rel="noopener" class="contact-item">
-                        <span class="contact-label">GitHub</span>
-                        <span class="contact-value">krzysztof-blachut-data</span>
-                    </a>
-                    <div class="contact-item static">
-                        <span class="contact-label"><span class="lang-pl">Lokalizacja</span><span class="lang-en">Location</span></span>
-                        <span class="contact-value lang-pl">Gliwice, Polska</span>
-                        <span class="contact-value lang-en">Gliwice, Poland</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <footer>
@@ -1073,16 +1576,684 @@
 
     <script src="lang.js"></script>
     <script src="glossary.js"></script>
-    <script src="projects/data-cleaning/raw-data.js"></script>
-    <script src="projects/data-cleaning/cleaning.js"></script>
-    <script src="projects/ecom-cleaning/ecom-data.js"></script>
-    <script src="projects/ecom-cleaning/ecom.js"></script>
-    <script src="projects/opensky-live/snapshot.js"></script>
-    <script src="projects/opensky-live/dashboard.js"></script>
-    <script src="projects/bls-labor/snapshot.js"></script>
-    <script src="projects/bls-labor/dashboard.js"></script>
-    <script src="projects/energy-pipeline/pipeline-data.js"></script>
-    <script src="projects/energy-pipeline/pipeline.js"></script>
+    <script src="projects/energy-pipeline/pipeline-data.js?v=4"></script>
+    <script>
+        /* Project bundles total ~580 KB of data and rendering code, but every project sits
+           inside a collapsed hub. Loading a bundle only when its hub opens keeps the initial
+           payload to the shell. Scripts within a bundle run in order, because the renderers
+           depend on their data file. */
+        window.__loadProject = (function () {
+            var BUNDLES = {
+                "data-cleaning": ["projects/data-cleaning/raw-data.js", "projects/data-cleaning/cleaning.js"],
+                "ecom-cleaning": ["projects/ecom-cleaning/ecom-data.js", "projects/ecom-cleaning/ecom.js"],
+                "opensky-live": ["projects/opensky-live/snapshot.js", "projects/opensky-live/dashboard.js"],
+                "bls-labor": ["projects/bls-labor/snapshot.js", "projects/bls-labor/dashboard.js"],
+                "payment-forecast": ["projects/payment-forecast/payment-data.js?v=2", "projects/payment-forecast/payment.js?v=4"]
+            };
+            var pending = {};
+
+            function loadOne(src) {
+                return new Promise(function (resolve, reject) {
+                    var el = document.createElement("script");
+                    el.src = src;
+                    el.async = false;
+                    el.onload = resolve;
+                    el.onerror = function () { reject(new Error("failed to load " + src)); };
+                    document.body.appendChild(el);
+                });
+            }
+
+            return function (name) {
+                if (pending[name]) return pending[name];
+                var sources = BUNDLES[name];
+                if (!sources) return Promise.resolve();
+                pending[name] = sources.reduce(function (chain, src) {
+                    return chain.then(function () { return loadOne(src); });
+                }, Promise.resolve()).catch(function (err) {
+                    console.error(err);
+                    pending[name] = null;
+                });
+                return pending[name];
+            };
+        })();
+
+        /* Warm the bundles once the browser is idle, so a visitor who opens a hub later
+           does not wait for the network. */
+        window.addEventListener("load", function () {
+            var warm = function () {
+                ["data-cleaning", "opensky-live", "bls-labor", "ecom-cleaning", "payment-forecast"].forEach(window.__loadProject);
+            };
+            if (window.requestIdleCallback) requestIdleCallback(warm, { timeout: 4000 });
+            else setTimeout(warm, 2500);
+        });
+    </script>
+    <script>
+        (function () {
+            var root = document.getElementById("ep-walkthrough");
+            if (!root) return;
+            var step = 0;
+            var total = root.querySelectorAll("[data-ep-panel]").length;
+
+            root.querySelectorAll("[data-ep-panel]").forEach(function (panel) {
+                var counter = panel.querySelector(".dc-progress");
+                if (counter) {
+                    counter.textContent = (Number(panel.getAttribute("data-ep-panel")) + 1) + " / " + total;
+                }
+            });
+
+            var DATA = window.__PIPELINE_DATA || {};
+            var chart = (DATA.chart || []).filter(function (p) {
+                return p.brent_usd != null && p.pb95_pln_l != null;
+            });
+            var CHART_H = 240;
+            var CHART_W = 720;
+            var AXIS = "var(--chart-axis)";
+            var GRID = "var(--chart-grid)";
+
+            function isEn() {
+                return document.documentElement.getAttribute("data-lang") === "en";
+            }
+
+            function t(pl, en) {
+                return isEn() ? en : pl;
+            }
+
+            function num(n, d) {
+                if (n === null || n === undefined || isNaN(n)) return "—";
+                return Number(n).toFixed(d === undefined ? 2 : d);
+            }
+
+            function xTickIndexes() {
+                var out = [];
+                for (var i = 0; i < chart.length; i += 12) out.push(i);
+                if (out[out.length - 1] !== chart.length - 1) out.push(chart.length - 1);
+                return out;
+            }
+
+            // monthly / daily toggle
+            var DAILY = DATA.daily || null;
+            var grain = "monthly";
+
+            var dailyPoints = (function () {
+                if (!DAILY || !DAILY.dates) return [];
+                return DAILY.dates.map(function (d, i) {
+                    return {
+                        date: d,
+                        brent_usd: DAILY.brent_usd[i],
+                        wti_usd: DAILY.wti_usd[i],
+                        brent_pln_l: DAILY.brent_pln_l[i],
+                        ma30: DAILY.ma30[i]
+                    };
+                }).filter(function (p) { return p.brent_usd != null; });
+            })();
+
+            function activeSeries() {
+                return grain === "daily" ? dailyPoints : chart;
+            }
+
+            // year ticks only (daily has ~2k points)
+            function yearTickIndexes(points) {
+                var out = [];
+                var seen = {};
+                points.forEach(function (p, i) {
+                    var year = String(p.date).slice(0, 4);
+                    if (!seen[year]) { seen[year] = true; out.push(i); }
+                });
+                if (out[out.length - 1] !== points.length - 1) out.push(points.length - 1);
+                return out;
+            }
+
+            function svgText(x, y, value, anchor, cls) {
+                return "<text x=\"" + x + "\" y=\"" + y + "\" fill=\"" + AXIS +
+                    "\" class=\"" + (cls || "ep-axis-label") + "\" text-anchor=\"" + anchor + "\">" + value + "</text>";
+            }
+
+            // USD/bbl left, PLN/l right
+            function buildMainChart() {
+                var el = document.getElementById("ep-viz-main");
+                var points = activeSeries();
+                if (!el || !points.length) return;
+                var daily = grain === "daily";
+                var pad = { l: 58, r: 62, t: 18, b: 40 };
+                var iw = CHART_W - pad.l - pad.r;
+                var ih = CHART_H - pad.t - pad.b;
+
+                // monthly: Brent vs Pb95; daily: Brent vs WTI (+ Brent PLN/l + MA30)
+                var series = daily
+                    ? [
+                        { key: "brent_usd", color: "var(--series-1)", decimals: 0, side: "left", label: "Brent (USD/bbl)", dash: "", width: 1 },
+                        { key: "wti_usd", color: "var(--series-3)", decimals: 0, side: "left", label: "WTI (USD/bbl)", dash: "", width: 1 },
+                        { key: "brent_pln_l", color: "var(--series-2)", decimals: 2, side: "right", label: "Brent (PLN/l)", dash: "2 2", width: 1 },
+                        { key: "ma30", color: "var(--series-4)", decimals: 2, side: "right", label: t("Brent — średnia 30 notowań", "Brent — 30-quote average"), dash: "", width: 2.2 }
+                    ]
+                    : [
+                        { key: "brent_usd", color: "var(--series-1)", decimals: 0, side: "left", label: "Brent (USD/bbl)", dash: "", width: 2 },
+                        { key: "pb95_pln_l", color: "var(--series-2)", decimals: 2, side: "right", label: "Pb95 (PLN/l)", dash: "6 3", width: 2 }
+                    ];
+
+                // shared scale per axis
+                var scales = {};
+                ["left", "right"].forEach(function (side) {
+                    var keys = series.filter(function (s) { return s.side === side; })
+                        .map(function (s) { return s.key; });
+                    if (!keys.length) return;
+                    var vals = [];
+                    points.forEach(function (p) {
+                        keys.forEach(function (k) { if (p[k] != null) vals.push(p[k]); });
+                    });
+                    if (!vals.length) return;
+                    var mn = Math.min.apply(null, vals);
+                    var mx = Math.max.apply(null, vals);
+                    scales[side] = { mn: mn, span: (mx - mn) || 1 };
+                });
+
+                var xS = function (i) { return pad.l + (i / (points.length - 1)) * iw; };
+                var out = "";
+
+                for (var tk = 0; tk <= 4; tk++) {
+                    var ty = pad.t + ih - (tk / 4) * ih;
+                    out += "<line x1=\"" + pad.l + "\" y1=\"" + ty + "\" x2=\"" + (CHART_W - pad.r) +
+                        "\" y2=\"" + ty + "\" stroke=\"" + GRID + "\"/>";
+                    ["left", "right"].forEach(function (side) {
+                        if (!scales[side]) return;
+                        var ref = series.filter(function (s) { return s.side === side; })[0];
+                        var tv = scales[side].mn + scales[side].span * (tk / 4);
+                        out += side === "left"
+                            ? svgText(pad.l - 8, ty + 4, num(tv, ref.decimals), "end")
+                            : svgText(CHART_W - pad.r + 8, ty + 4, num(tv, ref.decimals), "start");
+                    });
+                }
+
+                series.forEach(function (s) {
+                    var sc = scales[s.side];
+                    if (!sc) return;
+                    var yS = function (v) { return pad.t + ih - ((v - sc.mn) / sc.span) * ih; };
+                    // skip gaps (no line across missing)
+                    var d = "";
+                    var open = false;
+                    points.forEach(function (p, i) {
+                        if (p[s.key] == null) { open = false; return; }
+                        d += (open ? "L" : "M") + xS(i).toFixed(1) + " " + yS(p[s.key]).toFixed(1) + " ";
+                        open = true;
+                    });
+                    if (!d) return;
+                    out += "<path d=\"" + d.trim() + "\" fill=\"none\" stroke=\"" + s.color +
+                        "\" stroke-width=\"" + s.width + "\"" +
+                        (s.dash ? " stroke-dasharray=\"" + s.dash + "\"" : "") + "/>";
+                });
+
+                var ticks = daily ? yearTickIndexes(points) : xTickIndexes();
+                out += ticks.map(function (i) {
+                    var label = daily ? String(points[i].date).slice(0, 7) : points[i].date;
+                    return svgText(xS(i).toFixed(0), CHART_H - 14, label, "middle");
+                }).join("");
+                out += svgText(pad.l - 8, pad.t - 6, "USD/bbl", "end", "ep-axis-unit");
+                if (scales.right) {
+                    out += svgText(CHART_W - pad.r + 8, pad.t - 6, "PLN/l", "start", "ep-axis-unit");
+                }
+
+                var legend = series.map(function (s) {
+                    return "<span class=\"ep-legend-item\"><span class=\"ep-dot\" style=\"background:" + s.color +
+                        "\"></span>" + s.label + "</span>";
+                }).join("");
+
+                var alt = daily
+                    ? t("Dzienne notowania Brent i WTI w USD za baryłkę oraz Brent w złotych za litr, "
+                        + points.length + " notowań",
+                        "Daily Brent and WTI quotes in USD per barrel and Brent in zloty per litre, "
+                        + points.length + " quotes")
+                    : t("Brent w USD za baryłkę i Pb95 w złotych za litr, 2018–2026",
+                        "Brent in USD per barrel and Pb95 in zloty per litre, 2018–2026");
+
+                el.innerHTML = "<figure class=\"ep-chart-wrap\">" +
+                    "<svg class=\"ep-chart\" viewBox=\"0 0 " + CHART_W + " " + CHART_H +
+                    "\" role=\"img\" aria-label=\"" + alt + "\">" +
+                    out + "</svg><p class=\"ep-chart-legend\">" + legend + "</p></figure>";
+            }
+
+            function negWti() {
+                var n = DAILY && DAILY.negativeWti;
+                if (!n) return "";
+                return t(
+                    " Uwaga na lewą oś: schodzi poniżej zera, bo <strong>WTI kosztowało " +
+                    num(n.value, 2) + " USD</strong> (" + n.date + ") — magazyny w Cushing były pełne " +
+                    "i posiadacze kontraktów płacili za pozbycie się ropy. Zostawiam to notowanie w danych: " +
+                    "reguła „cena nie może być ujemna\" wycięłaby prawdziwe zdarzenie rynkowe.",
+
+                    " Note the left axis dips below zero: <strong>WTI traded at " + num(n.value, 2) +
+                    " USD</strong> (" + n.date + ") — storage at Cushing was full and contract holders " +
+                    "paid to hand the oil over. The quote stays in the data: a rule saying " +
+                    "\"a price cannot be negative\" would have deleted a real market event."
+                );
+            }
+
+            function buildGrainNote() {
+                var meta = document.getElementById("ep-grain-meta");
+                var note = document.getElementById("ep-grain-note");
+                var title = document.getElementById("ep-chart-title");
+                var monthlyNote = document.getElementById("ep-note-monthly");
+                var dailyNote = document.getElementById("ep-note-daily");
+                var daily = grain === "daily";
+
+                if (monthlyNote) monthlyNote.hidden = daily;
+                if (dailyNote) dailyNote.hidden = !daily;
+                if (title) {
+                    title.textContent = daily
+                        ? t("Brent i WTI (USD/bbl) — notowania dzienne",
+                            "Brent and WTI (USD/bbl) — daily quotes")
+                        : t("Brent (USD/bbl) vs Pb95 (PLN/l) na przestrzeni lat",
+                            "Brent (USD/bbl) vs Pb95 (PLN/l) over time");
+                }
+                if (!note) return;
+
+                if (daily && DAILY) {
+                    var ex = DAILY.extremes || {};
+                    if (meta) {
+                        meta.textContent = DAILY.rows + t(" notowań · do ", " quotes · through ") + DAILY.dateTo;
+                    }
+                    note.innerHTML = t(
+                        "Każdy punkt to jedno notowanie giełdowe, przeliczone kursem NBP obowiązującym w tym dniu. " +
+                        "Ceny Pb95 nie ma tutaj celowo — biuletyn EC publikuje najwyżej raz w tygodniu, więc dzienna linia detaliczna " +
+                        "musiałaby zmyślać ceny z dni, w których nikt nie kwotował. <strong>Dlatego warto patrzeć na dane dzienne:</strong> " +
+                        "najniższe notowanie Brent to <strong>" + num(ex.daily_low, 2) + " USD</strong> (" + ex.daily_low_date +
+                        "), a średnia miesięczna za ten sam okres pokazuje dopiero <strong>" + num(ex.monthly_low, 2) + " USD</strong> (" +
+                        ex.monthly_low_date + "). Uśrednienie do miesiąca skasowało połowę załamania. " +
+                        "Największy ruch w ciągu jednego dnia: <strong>" + num((DAILY.biggestMove || {}).pct, 1) + "%</strong> (" +
+                        (DAILY.biggestMove || {}).date + ")." + negWti(),
+
+                        "Each point is a single exchange quote, converted at the NBP rate in force that day. " +
+                        "Pb95 is deliberately absent — the EC bulletin publishes weekly at best, so a daily retail line " +
+                        "would mean inventing prices for days nobody quoted. <strong>This is what the daily grain is for:</strong> " +
+                        "the lowest Brent quote is <strong>" + num(ex.daily_low, 2) + " USD</strong> (" + ex.daily_low_date +
+                        "), while the monthly average for the same period bottoms out at only <strong>" + num(ex.monthly_low, 2) +
+                        " USD</strong> (" + ex.monthly_low_date + "). Averaging to months erased half the crash. " +
+                        "Largest single-day move: <strong>" + num((DAILY.biggestMove || {}).pct, 1) + "%</strong> (" +
+                        (DAILY.biggestMove || {}).date + ")." + negWti()
+                    );
+                } else {
+                    if (meta) {
+                        meta.textContent = chart.length + t(" miesięcy · do ", " months · through ") + (DATA.dateTo || "");
+                    }
+                    note.innerHTML = t(
+                        "Ziarno miesięczne to jedyne, w którym da się policzyć spread i korelację z ceną na stacji — " +
+                        "ceny detaliczne po prostu nie istnieją w rozdzielczości dziennej. Średnia miesięczna wygładza też " +
+                        "szum, dzięki czemu trend jest czytelny. Cena płaci za to utratą ekstremów: " +
+                        "przełącz na <strong>dziennie</strong>, żeby zobaczyć, ile ukrywa.",
+
+                        "The monthly grain is the only one where the spread and the correlation with pump prices can be " +
+                        "computed at all — retail prices simply do not exist at daily resolution. Monthly averaging also " +
+                        "smooths the noise, which makes the trend legible. It pays for that by losing the extremes: " +
+                        "switch to <strong>daily</strong> to see how much it hides."
+                    );
+                }
+            }
+
+            function setGrain(next) {
+                if (next === "daily" && !dailyPoints.length) return;
+                grain = next;
+                var group = document.getElementById("ep-grain");
+                if (group) {
+                    group.querySelectorAll("[data-grain]").forEach(function (btn) {
+                        var on = btn.getAttribute("data-grain") === grain;
+                        btn.classList.toggle("is-active", on);
+                        btn.setAttribute("aria-pressed", on ? "true" : "false");
+                    });
+                }
+                buildMainChart();
+                buildGrainNote();
+            }
+
+            function initGrain() {
+                var group = document.getElementById("ep-grain");
+                if (!group) return;
+                if (!dailyPoints.length) {
+                    // no daily data
+                    group.style.display = "none";
+                    buildGrainNote();
+                    return;
+                }
+                group.querySelectorAll("[data-grain]").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        setGrain(btn.getAttribute("data-grain"));
+                    });
+                });
+                buildGrainNote();
+            }
+
+            function buildSpreadChart() {
+                var el = document.getElementById("ep-viz-spread");
+                if (!el || !chart.length) return;
+                var pad = { l: 58, r: 62, t: 18, b: 40 };
+                var iw = CHART_W - pad.l - pad.r;
+                var ih = CHART_H - pad.t - pad.b;
+                var vals = chart.map(function (p) { return p.spread_retail_vs_crude; });
+                // force zero onto the axis
+                var mn = Math.min(0, Math.min.apply(null, vals));
+                var mx = Math.max.apply(null, vals);
+                var span = mx - mn || 1;
+                var xS = function (i) { return pad.l + (i / (chart.length - 1)) * iw; };
+                var yS = function (v) { return pad.t + ih - ((v - mn) / span) * ih; };
+
+                var out = "";
+                for (var tk = 0; tk <= 4; tk++) {
+                    var ty = pad.t + ih - (tk / 4) * ih;
+                    out += "<line x1=\"" + pad.l + "\" y1=\"" + ty + "\" x2=\"" + (CHART_W - pad.r) +
+                        "\" y2=\"" + ty + "\" stroke=\"" + GRID + "\"/>";
+                    out += svgText(pad.l - 8, ty + 4, num(mn + span * (tk / 4), 2), "end");
+                }
+                out += "<line x1=\"" + pad.l + "\" y1=\"" + yS(0).toFixed(1) + "\" x2=\"" + (CHART_W - pad.r) +
+                    "\" y2=\"" + yS(0).toFixed(1) + "\" stroke=\"" + AXIS + "\" stroke-dasharray=\"4 3\"/>";
+
+                var area = chart.map(function (p, i) {
+                    return (i ? "L" : "M") + xS(i).toFixed(1) + " " + yS(p.spread_retail_vs_crude).toFixed(1);
+                }).join(" ");
+                out += "<path d=\"" + area + " L" + xS(chart.length - 1).toFixed(1) + " " + yS(mn).toFixed(1) +
+                    " L" + xS(0).toFixed(1) + " " + yS(mn).toFixed(1) + " Z\" fill=\"var(--series-4)\" opacity=\"0.14\"/>";
+                out += "<path d=\"" + area + "\" fill=\"none\" stroke=\"var(--series-4)\" stroke-width=\"2\"/>";
+
+                // net spread: one point, not a line
+                var netIdx = -1;
+                for (var i = chart.length - 1; i >= 0; i--) {
+                    if (chart[i].spread_net_vs_crude != null) { netIdx = i; break; }
+                }
+                if (netIdx >= 0) {
+                    var nv = chart[netIdx].spread_net_vs_crude;
+                    out += "<circle cx=\"" + xS(netIdx).toFixed(1) + "\" cy=\"" + yS(nv).toFixed(1) +
+                        "\" r=\"4\" fill=\"var(--series-3)\"/>";
+                    out += svgText(xS(netIdx).toFixed(1), (yS(nv) - 10).toFixed(1),
+                        t("netto ", "net ") + num(nv, 2), "middle", "ep-axis-unit");
+                }
+
+                out += xTickIndexes().map(function (idx) {
+                    return svgText((pad.l + (idx / (chart.length - 1)) * iw).toFixed(0), CHART_H - 14, chart[idx].date, "middle");
+                }).join("");
+                out += svgText(pad.l - 8, pad.t - 6, "PLN/l", "end", "ep-axis-unit");
+
+                var legend = "<span class=\"ep-legend-item\"><span class=\"ep-dot\" style=\"background:var(--series-4)\"></span>" +
+                    t("spread brutto (podatki + marża)", "gross spread (taxes + margin)") + "</span>" +
+                    "<span class=\"ep-legend-item\"><span class=\"ep-dot\" style=\"background:var(--series-3)\"></span>" +
+                    t("spread netto — jedna obserwacja", "net spread — single observation") + "</span>";
+
+                el.innerHTML = "<figure class=\"ep-chart-wrap\">" +
+                    "<svg class=\"ep-chart\" viewBox=\"0 0 " + CHART_W + " " + CHART_H + "\" role=\"img\" aria-label=\"" +
+                    t("Spread brutto między ceną Pb95 i ekwiwalentem ropy, w złotych za litr",
+                        "Gross spread between the Pb95 price and the crude equivalent, in zloty per litre") + "\">" +
+                    out + "</svg><p class=\"ep-chart-legend\">" + legend + "</p></figure>";
+            }
+
+            function buildProvenance() {
+                var el = document.getElementById("ep-provenance");
+                if (!el) return;
+                var src = DATA.crudeSource;
+
+                var dailyBit = DAILY
+                    ? t(" Warstwa dzienna: <strong>" + DAILY.rows + "</strong> notowań (" +
+                        DAILY.dateFrom + " – " + DAILY.dateTo + ").",
+                        " Daily layer: <strong>" + DAILY.rows + "</strong> quotes (" +
+                        DAILY.dateFrom + " – " + DAILY.dateTo + ").")
+                    : "";
+
+                if (src === "eia_api") {
+                    el.className = "ep-provenance is-live";
+                    el.innerHTML = "<strong>" + t("Źródło danych:", "Data source:") + "</strong> " +
+                        t("Brent i WTI z API EIA v2 (uwierzytelnione kluczem), kursy USD/PLN i EUR/PLN z API NBP, ceny na stacji z EC Weekly Oil Bulletin. Wszystkie serie rzeczywiste.",
+                            "Brent and WTI from the EIA API v2 (key-authenticated), USD/PLN and EUR/PLN from the NBP API, pump prices from the EC Weekly Oil Bulletin. All series are real.") + dailyBit;
+                    return;
+                }
+
+                if (src === "eia_public_xls") {
+                    el.className = "ep-provenance is-live";
+                    el.innerHTML = "<strong>" + t("Źródło danych:", "Data source:") + "</strong> " +
+                        t("Brent i WTI z publicznych arkuszy EIA — miesięcznych (<code>RBRTEm</code>, <code>RWTCm</code>) i dziennych (<code>RBRTEd</code>, <code>RWTCd</code>). To te same oficjalne serie co w API, tylko bez wymogu klucza, więc <strong>żadna liczba na tej stronie nie zależy od moich prywatnych danych dostępowych</strong> — każdy może odtworzyć ten pipeline. Kursy z API NBP, ceny na stacji z EC Weekly Oil Bulletin.",
+                            "Brent and WTI from EIA's public workbooks — monthly (<code>RBRTEm</code>, <code>RWTCm</code>) and daily (<code>RBRTEd</code>, <code>RWTCd</code>). These are the same official series as the API without the key requirement, so <strong>no figure on this page depends on my private credentials</strong> — anyone can reproduce this pipeline. FX from the NBP API, pump prices from the EC Weekly Oil Bulletin.") + dailyBit;
+                    return;
+                }
+
+                el.className = "ep-provenance is-reference";
+                el.innerHTML = "<strong>" + t("Uwaga o danych:", "Data note:") + "</strong> " +
+                    t("kursy NBP i ceny paliw są prawdziwe, ale serie Brent/WTI pochodzą z <strong>referencyjnych wartości zapasowych</strong>, bo nie udało się pobrać danych z EIA. Korelację należy czytać jako demonstrację metody, nie jako wynik rynkowy. Kolumna <code>crude_source</code> w CSV zawsze mówi, co jest w środku.",
+                        "the NBP rates and fuel prices are real, but the Brent/WTI series come from <strong>reference fallback values</strong>, because EIA could not be reached. Read the correlation as a demonstration of method rather than a market result. The <code>crude_source</code> column in the CSV always states which is which.");
+            }
+
+            function metricCard(value, labelPl, labelEn) {
+                return "<div class=\"metric\"><span class=\"metric-value\">" + value +
+                    "</span><span class=\"metric-label\">" + t(labelPl, labelEn) + "</span></div>";
+            }
+
+            // month abbrev from ISO date (not hardcoded)
+            var MONTHS_PL = ["sty", "lut", "mar", "kwi", "maj", "cze",
+                "lip", "sie", "wrz", "paź", "lis", "gru"];
+            var MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            function monthLabel(iso) {
+                if (!iso) return "";
+                var parts = String(iso).split("-");
+                var idx = Number(parts[1]) - 1;
+                if (isNaN(idx) || idx < 0 || idx > 11) return String(iso);
+                return (isEn() ? MONTHS_EN : MONTHS_PL)[idx] + " " + parts[0];
+            }
+
+            function buildMetrics() {
+                var s = DATA.stats || {};
+                var l = DATA.latest || {};
+                var viz = document.getElementById("ep-viz-metrics");
+                var when = monthLabel(l.date);
+                var cards =
+                    metricCard(DATA.rows || "—", "miesięcy danych", "months of data") +
+                    metricCard(num(DATA.corrBrentPb95, 2), "korelacja Brent↔Pb95", "Brent↔Pb95 correlation") +
+                    metricCard(num(l.pb95_pln_l, 2), "Pb95 PLN/l (" + when + ")", "Pb95 PLN/l (" + when + ")") +
+                    metricCard(num(l.brent_pln_l, 2), "ropa PLN/l (" + when + ")", "crude PLN/l (" + when + ")") +
+                    metricCard(num(l.spread_retail, 2), "spread brutto PLN/l", "gross spread PLN/l");
+                if (DAILY && DAILY.latest) {
+                    cards += metricCard(num(DAILY.latest.brent_usd, 2),
+                        "Brent USD/bbl (" + DAILY.latest.date + ")",
+                        "Brent USD/bbl (" + DAILY.latest.date + ")");
+                }
+                if (viz) viz.innerHTML = cards;
+
+                var analysis = document.getElementById("ep-analysis-metrics");
+                if (analysis) {
+                    analysis.innerHTML =
+                        metricCard(DATA.rows || "—", "miesięcy danych", "months of data") +
+                        metricCard(num(DATA.corrBrentPb95, 2), "korelacja Brent↔Pb95", "Brent↔Pb95 correlation") +
+                        metricCard(num(s.spread_mean, 2), "średni spread PLN/l", "average spread PLN/l") +
+                        metricCard(num(s.spread_min, 2) + "–" + num(s.spread_max, 2), "zakres spreadu PLN/l", "spread range PLN/l");
+                }
+            }
+
+            function buildChain() {
+                var el = document.getElementById("ep-chain");
+                if (!el) return;
+                var l = DATA.latest || {};
+                function item(value, label, cls) {
+                    return "<div class=\"ep-chain-item" + (cls ? " " + cls : "") + "\"><strong>" + value +
+                        "</strong><span>" + label + "</span></div>";
+                }
+                function arrow(sym) {
+                    return "<span class=\"ep-chain-arrow\">" + sym + "</span>";
+                }
+                el.innerHTML =
+                    item(num(l.brent_usd, 2), "Brent USD/bbl") + arrow("×") +
+                    item(num(l.usd_pln, 4), "USD/PLN") + arrow("→") +
+                    item(num(l.brent_pln_l, 3), "Brent PLN/l") + arrow("vs") +
+                    item(num(l.pb95_pln_l, 3), "Pb95 PLN/l") + arrow("=") +
+                    item(num(l.spread_retail, 3), t("spread PLN/l", "spread PLN/l"), "accent");
+            }
+
+            function buildLag() {
+                var lags = DATA.lags || {};
+                var grid = document.getElementById("ep-lag-grid");
+                var keys = Object.keys(lags).sort(function (a, b) { return Number(a) - Number(b); });
+                if (grid) {
+                    grid.innerHTML = keys.map(function (k) {
+                        var suffix = k === "0" ? "" : "+" + k;
+                        var tip = k === "0"
+                            ? t("Ten sam miesiąc — korelacja bez opóźnienia.", "Same month — correlation with no lag.")
+                            : t("Pb95 przesunięty o " + k + " mies. względem Brent.", "Pb95 shifted " + k + " month(s) relative to Brent.");
+                        return "<div class=\"ep-lag-card\"><strong>" + num(lags[k], 3) + "</strong><span>Brent(t) → Pb95(t" +
+                            suffix + ") <span class=\"dc-term\" tabindex=\"0\" data-tip=\"" + tip + "\">ℹ</span></span></div>";
+                    }).join("");
+                }
+
+                var best = keys.reduce(function (acc, k) {
+                    return lags[k] > lags[acc] ? k : acc;
+                }, keys[0]);
+                var monotonic = keys.every(function (k, i) {
+                    return i === 0 || lags[k] <= lags[keys[i - 1]];
+                });
+                var pl, en;
+                if (best === "0" && monotonic) {
+                    pl = "Korelacja Brent(t) z Pb95(t+n) jest <strong>najwyższa przy n=0 (" + num(lags["0"], 3) +
+                        ")</strong> i konsekwentnie maleje wraz z przesuwaniem szeregu (n=1: " + num(lags["1"], 3) +
+                        ", n=3: " + num(lags[keys[keys.length - 1]], 3) + "). Na danych miesięcznych nie ma więc dowodu na opóźnioną reakcję stacji — na tym poziomie agregacji cena podąża za ropą w tym samym miesiącu. Ewentualny lag jest krótszy niż miesiąc i wymagałby danych tygodniowych.";
+                    en = "The correlation of Brent(t) with Pb95(t+n) is <strong>highest at n=0 (" + num(lags["0"], 3) +
+                        ")</strong> and declines consistently as the series is shifted (n=1: " + num(lags["1"], 3) +
+                        ", n=3: " + num(lags[keys[keys.length - 1]], 3) + "). Monthly data therefore shows no evidence of a delayed pump reaction — at this aggregation the price tracks crude within the same month. Any lag is shorter than a month and would need weekly data to detect.";
+                } else {
+                    pl = "Korelacja Brent(t) z Pb95(t+n) jest najwyższa przy <strong>n=" + best + " (" + num(lags[best], 3) +
+                        ")</strong>. Wartości dla pozostałych opóźnień są niżej — kartę z najwyższą liczbą należy czytać jako wskazanie tempa reakcji stacji.";
+                    en = "The correlation of Brent(t) with Pb95(t+n) peaks at <strong>n=" + best + " (" + num(lags[best], 3) +
+                        ")</strong>. The other lags sit below it — read the highest card as the indication of how fast the pump reacts.";
+                }
+                var elPl = document.getElementById("ep-lag-note-pl");
+                var elEn = document.getElementById("ep-lag-note-en");
+                if (elPl) elPl.innerHTML = pl;
+                if (elEn) elEn.innerHTML = en;
+            }
+
+            function buildTakeaways() {
+                var s = DATA.stats || {};
+                var l = DATA.latest || {};
+                var lags = DATA.lags || {};
+                var vizPl = document.getElementById("ep-viz-takeaway-pl");
+                var vizEn = document.getElementById("ep-viz-takeaway-en");
+                var pl = "<strong>Wniosek:</strong> spread brutto detal−ropa waha się od " + num(s.spread_min, 2) +
+                    " do " + num(s.spread_max, 2) + " PLN/l przy średniej " + num(s.spread_mean, 2) +
+                    " PLN/l — to skala akcyzy, opłaty paliwowej, VAT i marży razem. Kurczy się, gdy ropa drożeje gwałtownie (stacja nie przenosi wzrostu od razu), i rozszerza się, gdy ropa tanieje. Korelacja " +
+                    num(DATA.corrBrentPb95, 2) + " potwierdza związek, ale nie 1:1: o cenie na stacji decyduje też kurs EUR/PLN i część podatkowa, która nie zależy od baryłki.";
+                var en = "<strong>Takeaway:</strong> the gross retail−crude spread ranges from " + num(s.spread_min, 2) +
+                    " to " + num(s.spread_max, 2) + " PLN/l with a mean of " + num(s.spread_mean, 2) +
+                    " PLN/l — the combined weight of excise, fuel levy, VAT and margin. It compresses when crude spikes (the pump does not pass the rise through immediately) and widens when crude falls. The correlation of " +
+                    num(DATA.corrBrentPb95, 2) + " confirms the link but not a 1:1 one: the pump price also depends on EUR/PLN and on a tax component that does not move with the barrel.";
+                if (vizPl) vizPl.innerHTML = pl;
+                if (vizEn) vizEn.innerHTML = en;
+
+                var aPl = document.getElementById("ep-analysis-takeaway-pl");
+                var aEn = document.getElementById("ep-analysis-takeaway-en");
+                if (aPl) {
+                    aPl.innerHTML = "<strong>Wniosek:</strong> korelacja " + num(DATA.corrBrentPb95, 2) +
+                        " przy zerowym opóźnieniu (" + num(lags["0"], 3) + ") pokazuje, że na danych miesięcznych cena Pb95 idzie za ropą w tym samym miesiącu. Stały jest natomiast nie sam poziom, lecz <em>narzut</em>: " +
+                        num(l.spread_retail, 2) + " PLN/l w ostatnim miesiącu, przy średniej " + num(s.spread_mean, 2) + " PLN/l w całym okresie.";
+                }
+                if (aEn) {
+                    aEn.innerHTML = "<strong>Takeaway:</strong> a correlation of " + num(DATA.corrBrentPb95, 2) +
+                        " at zero lag (" + num(lags["0"], 3) + ") shows that on monthly data the Pb95 price follows crude within the same month. What persists is not the level but the <em>markup</em>: " +
+                        num(l.spread_retail, 2) + " PLN/l in the latest month against a " + num(s.spread_mean, 2) + " PLN/l average across the period.";
+                }
+            }
+
+            function buildTable() {
+                var el = document.getElementById("ep-table-all");
+                if (!el) return;
+                var head = "<thead><tr><th>date</th><th>Brent USD/bbl</th><th>" +
+                    t("ropa PLN/l", "crude PLN/l") + "</th><th>Pb95 PLN/l</th><th>" +
+                    t("Pb95 netto PLN/l", "Pb95 net PLN/l") + "</th><th>" +
+                    t("spread brutto PLN/l", "gross spread PLN/l") + "</th><th>" +
+                    t("spread netto PLN/l", "net spread PLN/l") + "</th></tr></thead>";
+                var body = (DATA.chart || []).map(function (r) {
+                    return "<tr><td>" + r.date +
+                        "</td><td>" + num(r.brent_usd, 1) +
+                        "</td><td>" + num(r.brent_pln_l, 3) +
+                        "</td><td>" + num(r.pb95_pln_l, 3) +
+                        "</td><td>" + num(r.pb95_net_pln_l, 3) +
+                        "</td><td>" + num(r.spread_retail_vs_crude, 3) +
+                        "</td><td>" + num(r.spread_net_vs_crude, 3) + "</td></tr>";
+                }).join("");
+                el.innerHTML = "<table class=\"dc-table\">" + head + "<tbody>" + body + "</tbody></table>";
+            }
+
+            var vizBuilt = false;
+            function buildViz() {
+                if (!chart.length) return;
+                buildMainChart();
+                buildSpreadChart();
+                buildProvenance();
+                buildTable();
+                buildLag();
+                if (!vizBuilt) initGrain();
+                else buildGrainNote();
+                vizBuilt = true;
+            }
+
+            function buildStatic() {
+                buildChain();
+                buildMetrics();
+                buildTakeaways();
+            }
+
+            function show(i) {
+                step = i;
+                root.querySelectorAll("[data-ep-panel]").forEach(function (panel) {
+                    panel.hidden = Number(panel.getAttribute("data-ep-panel")) !== i;
+                });
+                root.querySelectorAll(".ep-chip").forEach(function (btn) {
+                    var n = Number(btn.getAttribute("data-ep"));
+                    btn.classList.toggle("active", n === i);
+                    btn.classList.toggle("done", n < i);
+                });
+                var prev = document.getElementById("ep-prev");
+                var next = document.getElementById("ep-next");
+                if (prev) prev.disabled = i === 0;
+                if (next) next.disabled = i === total - 1;
+                if (i === total - 1) buildViz();
+            }
+            root.querySelectorAll(".ep-chip").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    show(Number(btn.getAttribute("data-ep")));
+                });
+            });
+            var prevBtn = document.getElementById("ep-prev");
+            var nextBtn = document.getElementById("ep-next");
+            if (prevBtn) prevBtn.addEventListener("click", function () { if (step > 0) show(step - 1); });
+            if (nextBtn) nextBtn.addEventListener("click", function () { if (step < total - 1) show(step + 1); });
+
+            // lang toggle also refreshes chart labels
+            document.querySelectorAll("[data-set-lang]").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    setTimeout(function () {
+                        buildStatic();
+                        if (vizBuilt) buildViz();
+                    }, 0);
+                });
+            });
+
+            buildStatic();
+            show(0);
+        })();
+
+        (function () {
+            var toggle = document.getElementById("nav-toggle");
+            var panel = document.getElementById("nav-links");
+            if (!toggle || !panel) return;
+
+            function close() {
+                panel.classList.remove("is-open");
+                toggle.setAttribute("aria-expanded", "false");
+            }
+
+            toggle.addEventListener("click", function () {
+                var open = panel.classList.toggle("is-open");
+                toggle.setAttribute("aria-expanded", open ? "true" : "false");
+            });
+            panel.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", close);
+            });
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") close();
+            });
+        })();
+    </script>
     <script>
         (function () {
             var hub = document.getElementById("data-cleaning-hub");
@@ -1096,6 +2267,7 @@
 
             function setActiveTab(id) {
                 activeCase = id;
+                if (window.__loadProject) window.__loadProject(id);
                 document.querySelectorAll(".case-tab").forEach(function (btn) {
                     var on = btn.getAttribute("data-case") === id;
                     btn.classList.toggle("active", on);
@@ -1179,9 +2351,14 @@
                     if (panel) panel.hidden = caseId !== id;
                 });
                 if (history.replaceState) history.replaceState(null, "", "#" + id);
-                requestAnimationFrame(function () {
-                    if (id === "bls-labor" && window.__blsRerender) window.__blsRerender();
-                    if (id === "opensky-live" && window.__openskyRerender) window.__openskyRerender();
+
+                // project scripts may still be loading
+                var ready = window.__loadProject ? window.__loadProject(id) : Promise.resolve();
+                ready.then(function () {
+                    requestAnimationFrame(function () {
+                        if (id === "bls-labor" && window.__blsRerender) window.__blsRerender();
+                        if (id === "opensky-live" && window.__openskyRerender) window.__openskyRerender();
+                    });
                 });
             }
 
@@ -1243,6 +2420,7 @@
                 hub.hidden = false;
                 if (hubCard) hubCard.classList.add("is-open");
                 if (history.replaceState) history.replaceState(null, "", "#energy-pipeline");
+                if (window.__epRerender) window.__epRerender();
                 requestAnimationFrame(function () {
                     hub.scrollIntoView({ behavior: "smooth", block: "start" });
                 });
@@ -1274,6 +2452,52 @@
             });
 
             if (location.hash.replace("#", "") === "energy-pipeline") openPipelineHub();
+        })();
+
+        (function () {
+            var hub = document.getElementById("payment-forecast-hub");
+            var hubCard = document.getElementById("project-payment-forecast-hub");
+
+            function openPaymentHub() {
+                if (!hub) return;
+                hub.hidden = false;
+                if (hubCard) hubCard.classList.add("is-open");
+                if (history.replaceState) history.replaceState(null, "", "#payment-forecast");
+                var ready = window.__loadProject ? window.__loadProject("payment-forecast") : Promise.resolve();
+                ready.then(function () {
+                    if (window.__pfRerender) window.__pfRerender();
+                    requestAnimationFrame(function () {
+                        hub.scrollIntoView({ behavior: "smooth", block: "start" });
+                    });
+                });
+            }
+
+            function closePaymentHub() {
+                if (hub) hub.hidden = true;
+                if (hubCard) hubCard.classList.remove("is-open");
+                if (history.replaceState) history.replaceState(null, "", "#projekty");
+            }
+
+            document.querySelectorAll(".js-open-payment-hub").forEach(function (el) {
+                el.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    if (!hub.hidden) {
+                        hub.scrollIntoView({ behavior: "smooth", block: "start" });
+                        return;
+                    }
+                    openPaymentHub();
+                });
+            });
+
+            document.querySelectorAll(".js-close-payment-hub").forEach(function (el) {
+                el.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    closePaymentHub();
+                    if (hubCard) hubCard.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            });
+
+            if (location.hash.replace("#", "") === "payment-forecast") openPaymentHub();
         })();
     </script>
 </body>

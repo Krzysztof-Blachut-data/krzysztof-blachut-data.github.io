@@ -1,0 +1,21 @@
+{
+  "name": "krzysztof-blachut-data-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Data analyst portfolio — data quality, BI dashboards and an automated API ETL pipeline.",
+  "homepage": "https://krzysztof-blachut-data.github.io",
+  "scripts": {
+    "build:barrel-snapshot": "node scripts/build-barrel-snapshot.js",
+    "serve": "python -m http.server 8791 --bind 127.0.0.1",
+    "check:render": "node scripts/check_render.js",
+    "check:encoding": "python scripts/check_encoding.py",
+    "build:og-image": "python scripts/build_og_image.py"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jsdom": "^30.0.1"
+  }
+}

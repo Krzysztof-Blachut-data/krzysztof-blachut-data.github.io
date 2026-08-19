@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img"
+    aria-label="Krzysztof Blachut &#8212; Data Analyst">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1419"/>
+      <stop offset="100%" stop-color="#1a222d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- grid -->
+  <g stroke="rgba(148,163,184,0.10)" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+  </g>
+
+  <!-- accent line chart -->
+  <polyline points="80,470 210,430 340,455 470,330 600,360 730,240 860,275 990,170 1120,140"
+      fill="none" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="80,510 210,495 340,500 470,455 600,470 730,415 860,430 990,385 1120,360"
+      fill="none" stroke="#fbbf24" stroke-width="4" stroke-dasharray="12 8" stroke-linecap="round"/>
+
+  <text x="80" y="150" font-family="Inter, 'Segoe UI', sans-serif" font-size="66" font-weight="700" fill="#e8edf4">
+    Krzysztof Blachut
+  </text>
+  <text x="80" y="205" font-family="Inter, 'Segoe UI', sans-serif" font-size="32" font-weight="500" fill="#38bdf8">
+    Analityk danych &#183; Data Analyst
+  </text>
+  <text x="80" y="258" font-family="'JetBrains Mono', monospace" font-size="23" fill="#94a3b8">
+    Python &#183; Pandas &#183; SQL &#183; ETL &#183; REST API
+  </text>
+</svg>
