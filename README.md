@@ -1,31 +1,26 @@
-# Krzysztof Blachut — Data Analyst Portfolio
+# Krzysztof Blachut
 
-**[Live site →](https://krzysztof-blachut-data.github.io)** · PL / EN · static HTML, no framework
+Portfolio: [krzysztof-blachut-data.github.io](https://krzysztof-blachut-data.github.io)
 
-Working projects, not screenshots. Cleaning walkthroughs run in the browser, dashboards call public APIs, and the Python pipelines are runnable from a clone.
+Strona po PL/EN. Zwykły HTML/CSS/JS, bez frameworka. Projekty da się odpalić, nie są tylko zrzutami.
 
-## Projects
+## Co jest na stronie
 
-| # | Project | What it shows |
-|---|---------|----------------|
-| **01** | [Lab data cleaning](https://krzysztof-blachut-data.github.io/#data-cleaning) | Dirty lab results: units, sentinels, naming — repaired with rules |
-| **02** | [E-commerce cleaning](https://krzysztof-blachut-data.github.io/#ecom-cleaning) | 880k rows across 5 exports; key checks before any funnel KPI |
-| **03** | [From Barrel to Pump](https://krzysztof-blachut-data.github.io/#energy-pipeline) | ETL: EIA + NBP + EC fuel bulletin → SQLite/CSV, daily & monthly |
-| **04** | [Payment forecast](https://krzysztof-blachut-data.github.io/#payment-forecast) | 50k AR invoices → late risk + collections queue |
-| — | [OpenSky](https://krzysztof-blachut-data.github.io/#opensky-live) / [BLS](https://krzysztof-blachut-data.github.io/#bls-labor) | Live BI dashboards (aircraft over PL, US labour market) |
+1. **Czyszczenie danych lab** — wyniki z trzech szpitali, pomieszane jednostki i nazwy.
+2. **E-commerce** — pięć powiązanych eksportów (~880k wierszy). Najpierw sprawdzam, czy klucze w ogóle łączą tabele (`session_id` nie łączy).
+3. **Od baryłki do dystrybutora** — pipeline EIA + NBP + biuletyn KE, warstwa dzienna i miesięczna, SQLite.
+4. **Prognoza płatności** — 50k faktur AR, kto spóźni się ze spłatą, kolejka do windykacji.
+5. **OpenSky / BLS** — dashboardy z żywych API.
 
-## Quick start (site)
+## Jak odpalić stronę lokalnie
 
 ```bash
-git clone https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io.git
-cd krzysztof-blachut-data.github.io
 python -m http.server 8000
-# open http://localhost:8000
 ```
 
-## Run the pipelines
+## Pipelines
 
-**E-commerce cleaning** (samples included — no 180 MB raw files needed):
+E-commerce (w repo są sample, bez wielkich plików):
 
 ```bash
 cd projects/ecom-cleaning
@@ -34,7 +29,7 @@ python pipeline.py --source samples
 pytest -q
 ```
 
-**Energy ETL** (no API key required — public EIA workbooks):
+Energia (klucz EIA nie jest potrzebny):
 
 ```bash
 cd projects/energy-pipeline
@@ -44,7 +39,7 @@ python scripts/build_pipeline_data.py
 pytest -q
 ```
 
-**Payment forecast** (downloads the public AR sample on first run):
+Należności:
 
 ```bash
 cd projects/payment-forecast
@@ -54,25 +49,10 @@ python scripts/build_payment_data.py
 pytest -q
 ```
 
-All suites from the repo root:
+Albo wszystko z roota: `pytest -q`.
 
-```bash
-pytest -q
-```
+Więcej kontekstu w `projects/*/README.md`.
 
-## Stack
+## Kontakt
 
-Python · Pandas · pytest · SQLite · requests · JavaScript · SVG/Canvas · REST APIs · GitHub Pages
-
-## More detail
-
-| Project folder | Notes |
-|----------------|--------|
-| [`projects/ecom-cleaning`](projects/ecom-cleaning/README.md) | Full cleaning rules, why `session_id` is not a key |
-| [`projects/energy-pipeline`](projects/energy-pipeline/) | Sources, daily vs monthly, provenance |
-| [`projects/payment-forecast`](projects/payment-forecast/README.md) | Forecast method, collections priority |
-
-## Contact
-
-- Email: [krzy.blachut@gmail.com](mailto:krzy.blachut@gmail.com)
-- LinkedIn: [krzysztof-blachut](https://www.linkedin.com/in/krzysztof-blachut-9837bb244/)
+krzy.blachut@gmail.com · [LinkedIn](https://www.linkedin.com/in/krzysztof-blachut-9837bb244/)
