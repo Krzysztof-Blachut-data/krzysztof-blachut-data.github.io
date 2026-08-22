@@ -347,14 +347,34 @@
                 "\" fill=\"" + cfg.color + "\" font-size=\"12\" font-weight=\"700\">" + esc(lbl) + "</text>";
         }
 
-        var tickEvery = Math.max(1, Math.floor(n / 5));
-        pts.forEach(function (p, i) {
-            if (i % tickEvery !== 0 && i !== n - 1) return;
+        yearTickIndexes(pts).forEach(function (i) {
             html += "<text x=\"" + xAt(i).toFixed(1) + "\" y=\"" + (h - 10) +
-                "\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"10\">" + p.year + "</text>";
+                "\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"10\">" + pts[i].year + "</text>";
         });
 
         return html + "</svg>";
+    }
+
+    function yearTickIndexes(pts) {
+        var n = pts.length;
+        if (!n) return [];
+        var tickEvery = Math.max(1, Math.floor(n / 5));
+        var minGap = Math.max(tickEvery, Math.round(n * 0.12));
+        var idxs = [];
+        var i;
+        for (i = 0; i < n; i += tickEvery) idxs.push(i);
+        var last = n - 1;
+        var prev = idxs[idxs.length - 1];
+        if (last - prev >= minGap) {
+            idxs.push(last);
+        } else if (pts[last].year !== pts[prev].year) {
+            idxs[idxs.length - 1] = last;
+        }
+        var out = [];
+        idxs.forEach(function (idx) {
+            if (!out.length || pts[idx].year !== pts[out[out.length - 1]].year) out.push(idx);
+        });
+        return out;
     }
 
     function svgBarYoyChart(pts, aria) {
@@ -399,11 +419,9 @@
                 "\" text-anchor=\"middle\" fill=\"#fca5a5\" font-size=\"10\" font-weight=\"600\">" +
                 peak.value.toFixed(1) + "%</text>";
         }
-        var tickEvery = Math.max(1, Math.floor(n / 5));
-        pts.forEach(function (p, i) {
-            if (i % tickEvery !== 0 && i !== n - 1) return;
+        yearTickIndexes(pts).forEach(function (i) {
             html += "<text x=\"" + (pad.left + i * gap + gap / 2).toFixed(1) + "\" y=\"" + (h - 8) +
-                "\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"9\">" + p.year + "</text>";
+                "\" text-anchor=\"middle\" fill=\"#94a3b8\" font-size=\"9\">" + pts[i].year + "</text>";
         });
         return html + "</svg>";
     }
