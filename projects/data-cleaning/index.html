@@ -75,12 +75,12 @@
                 </p>
                 <div class="case-meta">
                     <p class="source-badge">
-                        <span class="lang-pl">Dane syntetyczne — naśladują eksport LIMS z trzech szpitali (te same anality, różne konwencje zapisu), żeby pokazać czyszczenie bez danych pacjentów.</span>
-                        <span class="lang-en">Synthetic data — mimics a LIMS export from three hospitals (same analytes, different recording conventions) so the cleaning can be shown without patient data.</span>
+                        <span class="lang-pl">Dane syntetyczne odtwarzają typowe problemy występujące w eksportach z systemów LIMS. Zbiór przedstawia wyniki z trzech szpitali, w których stosowano różne nazwy badań, jednostki i sposoby zapisu. Dzięki wykorzystaniu danych syntetycznych projekt nie zawiera informacji o prawdziwych pacjentach.</span>
+                        <span class="lang-en">Synthetic data recreates typical problems in LIMS exports. The set is results from three hospitals that used different test names, units and recording conventions. Using synthetic data means the project has no real patient information.</span>
                     </p>
                     <p class="result-callout">
-                        <span class="lang-pl">Wynik: 1 500 → 1 392 wiersze analityczne (92,8%). 9 nazw → 3 anality, jednostki sprowadzone do SI, −999 i 7 niemożliwych wartości wyłączone z średnich, nie skasowane ze zbioru surowego.</span>
-                        <span class="lang-en">Result: 1,500 → 1,392 analysis rows (92.8%). 9 labels → 3 analytes, units brought to SI, −999 and 7 implausible values excluded from averages, not deleted from the raw set.</span>
+                        <span class="lang-pl">Wynik: Z 1 500 rekordów przygotowałem 1 392 wiersze gotowe do analizy, czyli 92,8% zbioru. Ujednoliciłem 9 nazw do 3 rodzajów badań oraz przeliczyłem wyniki do wspólnych jednostek. Kod −999 i 7 nieprawdopodobnych wyników wykluczyłem z obliczeń, pozostawiając je w danych źródłowych.</span>
+                        <span class="lang-en">Result: From 1,500 records I prepared 1,392 analysis-ready rows, 92.8% of the set. I unified 9 names into 3 test types and converted results to shared units. I excluded −999 and 7 implausible results from the calculations, and left them in the source data.</span>
                     </p>
                     <p class="case-code-link">
                         <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/data-cleaning" target="_blank" rel="noopener">
@@ -93,47 +93,41 @@
 <div id="data-cleaning" class="case-panel">
                         <p class="case-panel-label"><span class="lang-pl">Projekt 01</span><span class="lang-en">Project 01</span></p>
                         <h3>
-                            <span class="lang-pl">Wyniki laboratoryjne z trzech szpitali</span>
-                            <span class="lang-en">Lab results from three hospitals</span>
+                            <span class="lang-pl">Ujednolicenie wyników laboratoryjnych z trzech szpitali</span>
+                            <span class="lang-en">Unifying lab results from three hospitals</span>
                         </h3>
                         <p class="lead lang-pl">
-                            1 500 wyników badań (glukoza, cholesterol, HbA1c) z trzech szpitali.
-                            Te same badania zapisane na różne sposoby, liczby pomieszane z tekstem,
-                            różne jednostki i błędne zakresy referencyjne.
+                            Zbiór zawiera 1 500 wyników glukozy, cholesterolu i HbA1c. Te same badania zapisano pod różnymi nazwami i w różnych jednostkach. W kolumnach liczbowych występują również tekst, brakujące wartości oraz nieprawidłowe zakresy referencyjne.
                         </p>
                         <p class="lead lang-en">
-                            1,500 test results (glucose, cholesterol, HbA1c) from three hospitals.
-                            The same tests recorded in different ways, numbers mixed with text,
-                            mixed units and wrong reference ranges.
+                            The set has 1,500 glucose, cholesterol and HbA1c results. The same tests were recorded under different names and units. Numeric columns also contain text, missing values and incorrect reference ranges.
                         </p>
 
                         <section class="content-block dc-problems">
-                            <h2><span class="lang-pl">Co jest nie tak w tych danych</span><span class="lang-en">What is wrong with this dataset</span></h2>
+                            <h2><span class="lang-pl">Problemy w danych</span><span class="lang-en">Problems in the data</span></h2>
                             <p class="lang-pl">
-                                Kolumna <code>test_value</code> zawiera na raz ujemne kody, tekst, puste komórki i liczby
-                                z wieloma miejscami po przecinku. Bez uporządkowania nie da się liczyć średnich ani porównywać szpitali.
+                                Kolumna <code>test_value</code> zawiera jednocześnie wyniki liczbowe, tekst, puste pola i specjalne kody oznaczające brak wyniku. Przed obliczeniem średnich i porównaniem szpitali dane wymagają sprawdzenia i ujednolicenia.
                             </p>
                             <p class="lang-en">
-                                The <code>test_value</code> column mixes negative codes, text, blanks and numbers
-                                with too many decimal places. Without cleaning, averages and hospital comparisons are not valid.
+                                The <code>test_value</code> column mixes numeric results, text, empty cells and special codes for missing values. Before averages and hospital comparisons, the data has to be checked and unified.
                             </p>
                             <ul class="lang-pl">
-                                <li>Wartości ujemne (−999) — to nie wynik laboratoryjny, tylko kod braku (wartość strażnicza).</li>
-                                <li>Tekst w kolumnie liczbowej: „not collected” oraz puste komórki — średnia i wykres się sypią.</li>
-                                <li>Nadmiar miejsc po przecinku (np. 80.77415407811968) — ślad po eksporcie, nie po pomiarze.</li>
-                                <li>Mieszane jednostki: mmol/L i mg/dL dla tego samego badania — surowych liczb nie da się porównać.</li>
-                                <li>9 różnych nazw na 3 anality (Blood Sugar, Fasting Glucose, HbA1c, Glycated Hemoglobin…).</li>
-                                <li>Zakres referencyjny często nie pasuje do jednostki (70–99 przy mmol/L albo 3.9–5.5 przy mg/dL).</li>
-                                <li>Niemożliwe wartości (500, 1860 mmol/L glukozy) — błąd zapisu, nie wynik pacjenta.</li>
+                                <li>Kod −999 oznacza brak wyniku, a nie rzeczywistą wartość pomiaru.</li>
+                                <li>W kolumnie liczbowej występują tekst „not collected” oraz puste pola.</li>
+                                <li>Niektóre wyniki zawierają zbyt wiele miejsc po przecinku, na przykład 80.77415407811968.</li>
+                                <li>Wyniki tych samych badań zapisano w mmol/L i mg/dL, dlatego nie można ich bezpośrednio porównywać.</li>
+                                <li>Trzy rodzaje badań występują pod dziewięcioma nazwami, takimi jak Blood Sugar, Fasting Glucose, HbA1c i Glycated Hemoglobin.</li>
+                                <li>Część zakresów referencyjnych nie odpowiada jednostkom wyników, na przykład 70–99 przy mmol/L.</li>
+                                <li>W zbiorze znajduje się 7 nieprawdopodobnych wyników, między innymi 500 i 1860 mmol/L dla glukozy. Zostały oznaczone do weryfikacji i wykluczone z obliczeń.</li>
                             </ul>
                             <ul class="lang-en">
-                                <li>Negative values (−999) — not a lab result, a missing-value sentinel.</li>
-                                <li>Text in a numeric column: “not collected” and empty cells — averages and charts break.</li>
-                                <li>Excessive decimals (e.g. 80.77415407811968) — an export artefact, not a measurement.</li>
-                                <li>Mixed units: mmol/L and mg/dL for the same test — raw numbers are not comparable.</li>
-                                <li>9 different labels for 3 analytes (Blood Sugar, Fasting Glucose, HbA1c, Glycated Hemoglobin…).</li>
-                                <li>Reference range often mismatches the unit (70–99 next to mmol/L, or 3.9–5.5 next to mg/dL).</li>
-                                <li>Impossible outliers (500, 1860 mmol/L glucose) — recording errors, not physiology.</li>
+                                <li>The code −999 means a missing result, not a real measurement.</li>
+                                <li>The numeric column also has the text “not collected” and empty cells.</li>
+                                <li>Some results have too many decimal places, for example 80.77415407811968.</li>
+                                <li>The same tests are stored in mmol/L and mg/dL, so they cannot be compared directly.</li>
+                                <li>Three test types appear under nine names, such as Blood Sugar, Fasting Glucose, HbA1c and Glycated Hemoglobin.</li>
+                                <li>Some reference ranges do not match the result units, for example 70–99 next to mmol/L.</li>
+                                <li>There are 7 implausible results, including 500 and 1860 mmol/L for glucose. They were flagged for review and excluded from the calculations.</li>
                             </ul>
                         </section>
 
