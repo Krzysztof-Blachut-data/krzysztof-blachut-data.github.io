@@ -75,12 +75,12 @@
                 </p>
                 <div class="case-meta">
                     <p class="source-badge">
-                        <span class="lang-pl">Dane publiczne — Brent/WTI z arkuszy EIA, kursy z API NBP, Pb95 z Weekly Oil Bulletin KE. Kolumna crude_source mówi, które źródło ropy zadziałało (tu: eia_public_xls).</span>
-                        <span class="lang-en">Public data — Brent/WTI from EIA workbooks, FX from the NBP API, Pb95 from the EC Weekly Oil Bulletin. The crude_source column records which crude feed answered (here: eia_public_xls).</span>
+                        <span class="lang-pl">Dane publiczne. Brent i WTI z arkuszy EIA, kursy z API NBP, Pb95 z Weekly Oil Bulletin Komisji Europejskiej. Kolumna crude_source zapisuje, które źródło ropy zadziałało. Tu jest to eia_public_xls.</span>
+                        <span class="lang-en">Public data. Brent and WTI from EIA workbooks, FX from the NBP API, Pb95 from the EC Weekly Oil Bulletin. The crude_source column records which crude feed answered. Here it is eia_public_xls.</span>
                     </p>
                     <p class="result-callout">
-                        <span class="lang-pl">Wynik: 103 miesiące i 2 186 notowań dziennych w jednej walucie. Korelacja Brent ↔ Pb95 ≈ 0,77. Spread 2,72–5,11 PLN/l. Test regresji pilnuje, żeby spread nie odejmował PLN od EUR.</span>
-                        <span class="lang-en">Result: 103 months and 2,186 daily quotes in one currency. Brent ↔ Pb95 correlation ≈ 0.77. Spread 2.72–5.11 PLN/l. A regression test guards against subtracting PLN from EUR.</span>
+                        <span class="lang-pl">Wynik: 103 miesiące i 2 186 notowań dziennych w jednej walucie. Korelacja Brent i Pb95 wynosi około 0,77. Różnica między ceną paliwa a przeliczoną ropą mieści się w przedziale 2,72 do 5,11 PLN/l. Test sprawdza, czy spread nie odejmuje PLN od EUR.</span>
+                        <span class="lang-en">Result: 103 months and 2,186 daily quotes in one currency. The Brent and Pb95 correlation is about 0.77. The gap between the pump price and converted crude is 2.72 to 5.11 PLN/l. A test checks that the spread does not subtract PLN from EUR.</span>
                     </p>
                     <p class="case-code-link">
                         <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/energy-pipeline" target="_blank" rel="noopener">
@@ -93,45 +93,45 @@
 <div id="energy-pipeline" class="case-panel">
                             <p class="case-panel-label"><span class="lang-pl">Projekt 03</span><span class="lang-en">Project 03</span></p>
                             <h3>
-                                <span class="lang-pl">Od baryłki do dystrybutora — automatyczny pipeline API</span>
-                                <span class="lang-en">From Barrel to Pump — automated API data pipeline</span>
+                                <span class="lang-pl">Od ceny ropy do ceny paliwa</span>
+                                <span class="lang-en">From crude price to pump price</span>
                             </h3>
                             <p class="lead lang-pl">
-                                <strong>Cel:</strong> pokazać produkcyjny pipeline danych — nie notebook ani dashboard.
-                                <strong>Stack:</strong> Python · requests · JSON · pandas · SQLite · pytest.
+                                Łączę trzy publiczne źródła w powtarzalny pipeline, a nie w jednorazowy notebook.
+                                Narzędzia: Python, requests, pandas, SQLite, pytest.
                                 Źródła: EIA (Brent/WTI), NBP (USD/PLN i EUR/PLN), Weekly Oil Bulletin KE (Pb95/diesel).
                             </p>
                             <p class="lead lang-en">
-                                <strong>Goal:</strong> demonstrate a production-style data pipeline — not a notebook or dashboard.
-                                <strong>Stack:</strong> Python · requests · JSON · pandas · SQLite · pytest.
+                                I join three public sources in a repeatable pipeline, not a one-off notebook.
+                                Tools: Python, requests, pandas, SQLite, pytest.
                                 Sources: EIA (Brent/WTI), NBP (USD/PLN and EUR/PLN), EC Weekly Oil Bulletin (Pb95/diesel).
                             </p>
 
                             <section class="content-block">
                                 <h2><span class="lang-pl">Co ten projekt pokazuje inaczej</span><span class="lang-en">What this project shows differently</span></h2>
                                 <ul class="lang-pl">
-                                    <li><strong>API integration</strong> — GET do EIA (Brent/WTI) i NBP (USD/PLN, EUR/PLN): endpoint, parametry, timeout=30, kody HTTP, ponowienia.</li>
-                                    <li><strong>Obsługa błędów</strong> — gdy API nie odpowiada: <code>raise_for_status()</code> + <code>logger.error</code>, a nie pusta tabela.</li>
-                                    <li><strong>JSON → DataFrame</strong> — parsowanie odpowiedzi API do pandas, join trzech źródeł po miesiącu.</li>
-                                    <li><strong>RAW layer</strong> — surowy JSON/XLSX zapisywany 1:1 do <code>data/raw/{eia,nbp,eu_fuel}/YYYY-MM-DD.json</code>.</li>
-                                    <li><strong>ETL + SQL</strong> — Extract → Transform → Validate → Load do SQLite (<code>energy.db</code>) i CSV.</li>
-                                    <li><strong>Testy</strong> — 29 testów pytest: struktura, zakresy kursów, spójność jednostek i walut, sens ekonomiczny spreadu, a dla warstwy dziennej też to, czy jest naprawdę dzienna i czy ujemne notowanie WTI z kwietnia 2020 nie zostało odfiltrowane.</li>
-                                    <li><strong>Automatyzacja</strong> — <code>python pipeline.py</code> można odpalać cyklicznie (cron / Task Scheduler).</li>
+                                    <li>Pobieram Brent i WTI z EIA oraz kursy USD/PLN i EUR/PLN z NBP. Każde wywołanie ma timeout 30 s, sprawdza kod HTTP i potrafi ponowić żądanie.</li>
+                                    <li>Gdy API nie odpowiada, kod zgłasza błąd przez <code>raise_for_status()</code> i zapisuje go w logu. Nie zostawiam pustej tabeli.</li>
+                                    <li>Odpowiedzi JSON trafiają do pandas i łączę trzy źródła po miesiącu.</li>
+                                    <li>Surowy JSON i XLSX zapisuję bez zmian w <code>data/raw/</code>, z datą uruchomienia w nazwie pliku.</li>
+                                    <li>Potem transformacja, walidacja i zapis do SQLite (<code>energy.db</code>) oraz CSV.</li>
+                                    <li>29 testów pytest sprawdza strukturę, zakresy kursów, jednostki, waluty i to, czy ujemne WTI z kwietnia 2020 nie zostało odfiltrowane.</li>
+                                    <li>Pipeline odpala się jednym poleceniem: <code>python pipeline.py</code>.</li>
                                 </ul>
                                 <ul class="lang-en">
-                                    <li><strong>API integration</strong> — GET to EIA (Brent/WTI) and NBP (USD/PLN, EUR/PLN): endpoint, parameters, timeout=30, HTTP codes, retries.</li>
-                                    <li><strong>Error handling</strong> — if an API is down: <code>raise_for_status()</code> + <code>logger.error</code>, not an empty table.</li>
-                                    <li><strong>JSON → DataFrame</strong> — parse API payloads into pandas, join three sources on month.</li>
-                                    <li><strong>RAW layer</strong> — raw JSON/XLSX saved 1:1 to <code>data/raw/{eia,nbp,eu_fuel}/YYYY-MM-DD.json</code>.</li>
-                                    <li><strong>ETL + SQL</strong> — Extract → Transform → Validate → Load to SQLite (<code>energy.db</code>) and CSV.</li>
-                                    <li><strong>Tests</strong> — 29 pytest checks: structure, FX ranges, unit and currency consistency, economic plausibility of the spread, and for the daily layer whether it is genuinely daily and whether April 2020's negative WTI quote survived instead of being filtered out.</li>
-                                    <li><strong>Automation</strong> — <code>python pipeline.py</code> can run on a schedule (cron / Task Scheduler).</li>
+                                    <li>I fetch Brent and WTI from EIA and USD/PLN plus EUR/PLN from NBP. Each call has a 30 s timeout, checks the HTTP status and can retry.</li>
+                                    <li>If an API is down, the code raises through <code>raise_for_status()</code> and logs the error. I do not leave an empty table.</li>
+                                    <li>JSON responses go into pandas and I join the three sources on month.</li>
+                                    <li>Raw JSON and XLSX are saved unchanged under <code>data/raw/</code>, with the run date in the filename.</li>
+                                    <li>Then transform, validate and load into SQLite (<code>energy.db</code>) and CSV.</li>
+                                    <li>29 pytest checks cover structure, FX ranges, units, currencies and whether April 2020 negative WTI was filtered out.</li>
+                                    <li>The pipeline runs with one command: <code>python pipeline.py</code>.</li>
                                 </ul>
                             </section>
 
                             <div id="ep-walkthrough" class="dc-walkthrough">
-                                <p class="dc-walkthrough-label lang-pl">Pipeline krok po kroku — kliknij punkt, żeby zobaczyć treść</p>
-                                <p class="dc-walkthrough-label lang-en">Pipeline step by step — click a point to see the content</p>
+                                <p class="dc-walkthrough-label lang-pl">Pipeline krok po kroku. Kliknij punkt, żeby zobaczyć treść.</p>
+                                <p class="dc-walkthrough-label lang-en">Pipeline step by step. Click a point to see the content.</p>
 
                                 <ol class="dc-steps" aria-label="Pipeline steps">
                                     <li><button type="button" class="ep-chip active" data-ep="0"><span class="lang-pl">1. Architektura</span><span class="lang-en">1. Architecture</span></button></li>
@@ -152,18 +152,18 @@
                                     <p class="dc-body lang-pl">Główny produkt to nie dashboard, lecz powtarzalny pipeline ETL. Trzy źródła trafiają do warstwy RAW, potem transformacja, walidacja i zapis do SQL.</p>
                                     <p class="dc-body lang-en">The main deliverable is not a dashboard but a repeatable ETL pipeline. Three sources land in a RAW layer, then transform, validate and load to SQL.</p>
                                     <ul class="dc-issues lang-pl">
-                                        <li>EIA API — Brent i WTI w USD/baryłkę (JSON).</li>
-                                        <li>NBP API — kursy USD/PLN i EUR/PLN, tabela A (JSON).</li>
-                                        <li>Weekly Oil Bulletin KE — ceny Pb95 i diesla w Polsce (XLSX).</li>
-                                        <li>Python łączy źródła, waliduje i zapisuje do SQLite.</li>
-                                        <li>Analiza (korelacja, spread, YoY) jest na końcu — nie zamiast pipeline.</li>
+                                        <li>EIA: Brent i WTI w USD za baryłkę (JSON).</li>
+                                        <li>NBP: kursy USD/PLN i EUR/PLN, tabela A (JSON).</li>
+                                        <li>Weekly Oil Bulletin KE: ceny Pb95 i diesla w Polsce (XLSX).</li>
+                                        <li>Python łączy źródła, waliduje je i zapisuje do SQLite.</li>
+                                        <li>Analiza (korelacja, spread, zmiana rok do roku) jest na końcu, a nie zamiast pipeline.</li>
                                     </ul>
                                     <ul class="dc-issues lang-en">
-                                        <li>EIA API — Brent and WTI in USD/barrel (JSON).</li>
-                                        <li>NBP API — USD/PLN and EUR/PLN rates, table A (JSON).</li>
-                                        <li>EC Weekly Oil Bulletin — Pb95 and diesel prices in Poland (XLSX).</li>
-                                        <li>Python merges sources, validates and writes to SQLite.</li>
-                                        <li>Analysis (correlation, spread, YoY) comes last — it is not the pipeline.</li>
+                                        <li>EIA: Brent and WTI in USD per barrel (JSON).</li>
+                                        <li>NBP: USD/PLN and EUR/PLN rates, table A (JSON).</li>
+                                        <li>EC Weekly Oil Bulletin: Pb95 and diesel prices in Poland (XLSX).</li>
+                                        <li>Python merges the sources, validates them and writes to SQLite.</li>
+                                        <li>Analysis (correlation, spread, year-on-year change) comes last. It is not a substitute for the pipeline.</li>
                                     </ul>
                                     <div class="ep-arch">
                                         <div class="ep-arch-row">
@@ -186,7 +186,7 @@ python pipeline.py</code></pre>
 
                                 <div class="dc-panel ep-panel" data-ep-panel="1" hidden>
                                     <div class="dc-panel-head">
-                                        <h2><span class="lang-pl">Warstwa RAW — data lineage</span><span class="lang-en">RAW layer — data lineage</span></h2>
+                                        <h2><span class="lang-pl">Warstwa RAW i pochodzenie danych</span><span class="lang-en">RAW layer and data lineage</span></h2>
                                         <span class="dc-progress">2 / 8</span>
                                     </div>
                                     <p class="dc-body lang-pl">Każda odpowiedź API i plik XLSX jest zapisywana dokładnie tak, jak przyszła — z datą uruchomienia w nazwie. Surowe dane nie znikają po transformacji.</p>
@@ -223,7 +223,7 @@ python pipeline.py</code></pre>
 
                                 <div class="dc-panel ep-panel" data-ep-panel="2" hidden>
                                     <div class="dc-panel-head">
-                                        <h2><span class="lang-pl">Extract — integracja API</span><span class="lang-en">Extract — API integration</span></h2>
+                                        <h2><span class="lang-pl">Pobieranie danych z API</span><span class="lang-en">Fetching data from the APIs</span></h2>
                                         <span class="dc-progress">3 / 8</span>
                                     </div>
                                     <p class="dc-body lang-pl">Pobieram trzy źródła osobno. Każde wywołanie ma timeout, sprawdzenie statusu HTTP i log błędu — pipeline nie pada cicho, gdy API nie odpowiada.</p>
@@ -261,7 +261,7 @@ raise RuntimeError(f"NBP API unavailable for {currency}")</code></pre>
 
                                 <div class="dc-panel ep-panel" data-ep-panel="3" hidden>
                                     <div class="dc-panel-head">
-                                        <h2><span class="lang-pl">Transform — łączenie źródeł</span><span class="lang-en">Transform — merging sources</span></h2>
+                                        <h2><span class="lang-pl">Łączenie źródeł</span><span class="lang-en">Merging the sources</span></h2>
                                         <span class="dc-progress">4 / 8</span>
                                     </div>
                                     <p class="dc-body lang-pl">Serie miesięczne łączę po dacie. Z trzech JSON/XLSX powstaje jedna tabela: ropa, kursy, cena na stacji i spread.
@@ -299,7 +299,7 @@ df["brent_usd_mom_pct"] = df["brent_usd"].pct_change() * 100</code></pre>
 
                                 <div class="dc-panel ep-panel" data-ep-panel="4" hidden>
                                     <div class="dc-panel-head">
-                                        <h2><span class="lang-pl">Validate — testy jakości</span><span class="lang-en">Validate — quality tests</span></h2>
+                                        <h2><span class="lang-pl">Testy jakości danych</span><span class="lang-en">Data quality tests</span></h2>
                                         <span class="dc-progress">5 / 8</span>
                                     </div>
                                     <p class="dc-body lang-pl">Walidacja działa dwupoziomowo: <code>validate()</code> blokuje zapis wewnątrz pipeline'u,
@@ -309,20 +309,20 @@ df["brent_usd_mom_pct"] = df["brent_usd"].pct_change() * 100</code></pre>
                                         and <code>pytest</code> checks the finished CSV separately. The tests do not just guard signs — they guard units and economic
                                         plausibility, which is where the errors that survive a clean script run actually hide.</p>
                                     <ul class="dc-issues lang-pl">
-                                        <li><strong>Struktura</strong> — unikalne daty, jeden wiersz na miesiąc, brak dziur w szeregu.</li>
-                                        <li><strong>Kursy</strong> — USD/PLN w 3,0–5,2, EUR/PLN w 3,5–5,5, implikowany EUR/USD w 0,9–1,35.</li>
-                                        <li><strong>Jednostki</strong> — <code>brent_pln_l</code> musi wynikać z podziału przez 158,987; <code>pb95_pln_l</code> musi być przeliczony kursem EUR, nie USD.</li>
-                                        <li><strong>Waluty</strong> — <code>test_spread_is_same_currency_subtraction</code> to bezpiecznik po realnym błędzie: spread odejmował kiedyś PLN/l od EUR/l.</li>
-                                        <li><strong>Sens ekonomiczny</strong> — spread brutto musi być dodatni i mieścić się w 1,5–6 PLN/l, a spread netto musi być mniejszy od brutto.</li>
-                                        <li><strong>Pochodzenie</strong> — jeśli ropa ma mało unikalnych wartości, znacznik źródła musi to przyznawać.</li>
+                                        <li>Daty są unikalne, jeden wiersz na miesiąc, bez dziur w szeregu.</li>
+                                        <li>USD/PLN mieści się w 3,0–5,2, EUR/PLN w 3,5–5,5, implikowany EUR/USD w 0,9–1,35.</li>
+                                        <li><code>brent_pln_l</code> musi wynikać z podziału przez 158,987. <code>pb95_pln_l</code> musi być przeliczony kursem EUR, nie USD.</li>
+                                        <li><code>test_spread_is_same_currency_subtraction</code> pilnuje, żeby spread nie odejmował PLN/l od EUR/l. Ten błąd zdarzył się wcześniej.</li>
+                                        <li>Spread brutto musi być dodatni i mieścić się w 1,5–6 PLN/l. Spread netto musi być mniejszy od brutto.</li>
+                                        <li>Jeśli ropa ma mało unikalnych wartości, znacznik źródła musi to przyznawać.</li>
                                     </ul>
                                     <ul class="dc-issues lang-en">
-                                        <li><strong>Structure</strong> — unique dates, one row per month, no gaps in the series.</li>
-                                        <li><strong>FX</strong> — USD/PLN within 3.0–5.2, EUR/PLN within 3.5–5.5, implied EUR/USD within 0.9–1.35.</li>
-                                        <li><strong>Units</strong> — <code>brent_pln_l</code> must follow from dividing by 158.987; <code>pb95_pln_l</code> must use the EUR rate, not the USD one.</li>
-                                        <li><strong>Currency</strong> — <code>test_spread_is_same_currency_subtraction</code> is a regression guard after a real bug: the spread once subtracted PLN/l from EUR/l.</li>
-                                        <li><strong>Economic plausibility</strong> — the gross spread must be positive and inside 1.5–6 PLN/l, and the net spread must be smaller than the gross one.</li>
-                                        <li><strong>Provenance</strong> — if crude has few distinct values, the source flag must admit it.</li>
+                                        <li>Dates are unique, one row per month, no gaps in the series.</li>
+                                        <li>USD/PLN stays in 3.0–5.2, EUR/PLN in 3.5–5.5, implied EUR/USD in 0.9–1.35.</li>
+                                        <li><code>brent_pln_l</code> must follow from dividing by 158.987. <code>pb95_pln_l</code> must use the EUR rate, not the USD one.</li>
+                                        <li><code>test_spread_is_same_currency_subtraction</code> checks that the spread does not subtract PLN/l from EUR/l. That bug happened once.</li>
+                                        <li>The gross spread must be positive and inside 1.5–6 PLN/l. The net spread must be smaller than the gross one.</li>
+                                        <li>If crude has few distinct values, the source flag has to say so.</li>
                                     </ul>
                                     <p class="ep-test-summary"><code>pytest -q</code> → <strong>19 passed</strong></p>
                                     <pre class="hero-code dc-code"><code>def test_spread_is_same_currency_subtraction(df):

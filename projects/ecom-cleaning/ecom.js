@@ -26,8 +26,8 @@
         {
             titlePl: "Tożsamość w CRM",
             titleEn: "CRM identity",
-            bodyPl: "50 000 wierszy, ale tylko 48 200 unikalnych ID — 1 800 duplikatów (ten sam klient, inna pisownia). Imiona jak mARIA i KKeevvin, spacje w nazwisku, 1 040 pustych e-maili. Deduplikacja po customer_id + Title Case.",
-            bodyEn: "50,000 rows but only 48,200 unique IDs — 1,800 duplicates (same customer, different spelling). Names like mARIA and KKeevvin, padded surnames, 1,040 blank emails. Dedupe on customer_id + Title Case.",
+            bodyPl: "50 000 wierszy, ale tylko 48 200 unikalnych ID. To 1 800 duplikatów (ten sam klient, inna pisownia). Imiona jak mARIA i KKeevvin, spacje w nazwisku, 1 040 pustych e-maili. Deduplikacja po customer_id i Title Case.",
+            bodyEn: "50,000 rows but only 48,200 unique IDs. That is 1,800 duplicates (same customer, different spelling). Names like mARIA and KKeevvin, padded surnames, 1,040 blank emails. Dedupe on customer_id and Title Case.",
             table: "crm",
             code: "crm[\"first_name\"] = crm[\"first_name\"].str.trim().str.replace(r\"(.)\\1+\", r\"\\1\", regex=True).str.title()\ncrm[\"last_name\"] = crm[\"last_name\"].str.strip().str.title()\ncrm[\"email\"] = crm[\"email\"].replace(\"\", np.nan)\ncrm = crm.drop_duplicates(\"customer_id\", keep=\"first\")"
         },
@@ -73,8 +73,8 @@
             code: "crm.to_csv(\"crm_standardized.csv\", index=False)  # 50,000 rows — audit trail\n\ncrm_analysis = crm.drop_duplicates(\"customer_id\", keep=\"first\")  # 48,200\n\nfact = orders.merge(crm_analysis, on=\"customer_id\", how=\"left\")\nfact = fact.merge(catalog[[\"product_id\",\"category\",\"price\"]], on=\"product_id\", how=\"left\")\nfact = fact.loc[fact[\"order_amount\"].notna() & fact[\"status\"].eq(\"success\")]"
         },
         {
-            titlePl: "Analiza — GMV i mikro płatności",
-            titleEn: "Analysis — GMV and payment mix",
+            titlePl: "Analiza GMV i miksu płatności",
+            titleEn: "GMV and payment-mix analysis",
             bodyPl: "Po ujednoliceniu pięciu plików: jak rozkłada się sprzedaż po kategoriach i jaki jest miks płatności na udanych zamówieniach? Wyniki na secie gotowym do joinów — nie na surowych 11 metodach płatności ani 46 zapisach kategorii. Uwaga: kwoty w tych plikach są wygenerowane i bez waluty, więc struktura jest miarodajna, a same poziomy nie.",
             bodyEn: "After harmonising five files: how does revenue split by category, and what is the payment mix on successful orders? Results on the join-ready set — not on the raw 11 payment methods or 46 category spellings. Note: the amounts in these files are generated and carry no currency, so the structure is meaningful but the levels are not.",
             visualize: true,
@@ -83,8 +83,8 @@
         {
             titlePl: "Wnioski z oczyszczonych danych",
             titleEn: "What the cleaned data actually says",
-            bodyPl: "To nie jest jeden brudny plik — pięć systemów musi najpierw współdzielić klucze i słowniki. Inaczej KPI sklepu liczą się na duchach: zdublowanych klientach, 11 metodach płatności i lejku bez 30% zdarzeń. Najcenniejszy wynik jest jednak negatywny: dwie kolumny wyglądające na klucze nimi nie są, więc lejka po sesjach zwyczajnie nie policzyłem — zamiast podać liczbę, która wygląda dobrze i nic nie znaczy.",
-            bodyEn: "This is not one dirty file — five systems must share keys and dictionaries first. Otherwise shop KPIs are counted on ghosts: duplicated customers, 11 payment methods and a funnel missing 30% of events. The most valuable result, though, is a negative one: two columns that look like keys are not keys, so I did not compute the session funnel at all — rather than publish a number that looks good and means nothing.",
+            bodyPl: "To nie jest jeden brudny plik. Pięć systemów musi najpierw współdzielić klucze i słowniki. Inaczej KPI sklepu liczą się na zdublowanych klientach, 11 metodach płatności i lejku bez 30% zdarzeń. Najcenniejszy wynik jest negatywny: dwie kolumny wyglądające na klucze nimi nie są, więc lejka po sesjach nie policzyłem. Wolę nie podawać liczby, która wygląda dobrze i nic nie znaczy.",
+            bodyEn: "This is not one dirty file. Five systems have to share keys and dictionaries first. Otherwise shop KPIs are counted on duplicated customers, 11 payment methods and a funnel missing 30% of events. The most valuable result is a negative one: two columns that look like keys are not keys, so I did not compute the session funnel. I would rather not publish a number that looks good and means nothing.",
             insights: true,
             code: "print(\"Unique customers:\", crm[\"customer_id\"].nunique())        # 48,200 not 50,000\nprint(\"Payment methods:\", fact[\"payment_method\"].nunique())     # 4 not 11\nprint(\"Dates rescued:\", stats[\"date_rescued\"])                  # 36,160 kept, not dropped\nprint(\"Unattributable events:\", click[\"customer_id\"].isna().sum())  # 150,553, reported as such\nprint(\"session_id usable as a key:\", (per_session > 1).sum() == 0)  # False"
         }

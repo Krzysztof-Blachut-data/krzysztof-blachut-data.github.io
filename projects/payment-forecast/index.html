@@ -75,12 +75,12 @@
                 </p>
                 <div class="case-meta">
                     <p class="source-badge">
-                        <span class="lang-pl">Dane publiczne — sample należności (SkywalkerHub/Payment-Date-Prediction), nie dane firmowe. 50 000 faktur, CAD i USD, stan na 2020-05-19.</span>
-                        <span class="lang-en">Public data — receivables sample (SkywalkerHub/Payment-Date-Prediction), not company data. 50,000 invoices, CAD and USD, as of 2020-05-19.</span>
+                        <span class="lang-pl">Dane publiczne. Próbka należności (SkywalkerHub/Payment-Date-Prediction), nie dane firmowe. 50 000 faktur, CAD i USD, stan na 19 maja 2020.</span>
+                        <span class="lang-en">Public data. Receivables sample (SkywalkerHub/Payment-Date-Prediction), not company data. 50,000 invoices, CAD and USD, as of 19 May 2020.</span>
                     </p>
                     <p class="result-callout">
-                        <span class="lang-pl">Wynik: 42,4% faktur schodzi po terminie. Prognoza MAE 3,39 dnia vs 5,48 przy naiwnej medianie. Wynikiem jest priorytetowa kolejka kontaktu z klientami, nie sam wykres.</span>
-                        <span class="lang-en">Result: 42.4% of invoices clear late. Forecast MAE 3.39 days vs 5.48 for a naive median. The result is a prioritized customer contact queue, not just a chart.</span>
+                        <span class="lang-pl">Wynik: 42,4% faktur jest opłacanych po terminie. Średni błąd prognozy to 3,39 dnia, przy 5,48 dnia dla prostej mediany. Na końcu jest priorytetowa kolejka kontaktu z klientami, nie sam wykres.</span>
+                        <span class="lang-en">Result: 42.4% of invoices are paid late. Mean forecast error is 3.39 days, versus 5.48 days for a simple median. The output is a prioritized contact queue, not just a chart.</span>
                     </p>
                     <p class="case-code-link">
                         <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/payment-forecast" target="_blank" rel="noopener">
@@ -173,7 +173,7 @@ pytest -q</code></pre>
                         </div>
 
                 <section class="content-block sql-proof" id="sql">
-                    <h2><span class="lang-pl">SQL — pytania do należności</span><span class="lang-en">SQL — questions on receivables</span></h2>
+                    <h2><span class="lang-pl">Zapytania SQL do należności</span><span class="lang-en">SQL queries on receivables</span></h2>
                     <p class="lang-pl">Dashboard na tej stronie liczy te same rzeczy co zapytania poniżej: late rate, aging i priorytetową kolejkę kontaktu z klientami. Pełny plik: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
                     <p class="lang-en">The dashboard on this page computes the same things as the queries below: late rate, aging and the prioritized customer contact queue. Full file: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
 
