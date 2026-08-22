@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-    <link rel="stylesheet" href="styles.css?v=recruit3">
+    <link rel="stylesheet" href="styles.css?v=recruit4">
 
     <script type="application/ld+json">
     {
@@ -116,17 +116,15 @@
         <div class="container hero-layout">
             <div class="hero-copy">
                 <p class="hero-eyebrow">
-                    <span class="lang-pl">Data Analyst · Data Quality · Reporting · Gliwice · otwarty na pracę</span>
-                    <span class="lang-en">Data Analyst · Data Quality · Reporting · Gliwice, Poland · open to work</span>
+                    <span class="lang-pl">Analiza danych · jakość danych · raportowanie</span>
+                    <span class="lang-en">Data analysis · data quality · reporting</span>
                 </p>
                 <h1 class="hero-title">Krzysztof Blachut</h1>
                 <p class="hero-tagline lang-pl">
-                    Analityk danych specjalizujący się w <strong>jakości danych</strong> i automatyzacji raportowania.
-                    Zamieniam niespójne eksporty w wiarygodne KPI, dashboardy i procesy decyzyjne.
+                    Łączę doświadczenie w procesach laboratoryjnych z analizą danych. W swoich projektach wykorzystuję Python i SQL do porządkowania danych, tworzenia raportów oraz szukania odpowiedzi na konkretne problemy biznesowe.
                 </p>
                 <p class="hero-tagline lang-en">
-                    Data analyst focused on <strong>data quality</strong> and reporting automation.
-                    I turn inconsistent exports into reliable KPIs, dashboards and decision processes.
+                    I combine laboratory process experience with data analysis. In my projects I use Python and SQL to clean data, build reports and answer specific business questions.
                 </p>
                 <div class="hero-cta">
                     <a class="btn btn-primary" href="projects/ecom-cleaning/">
@@ -187,8 +185,8 @@
                 <div class="section-label"><span class="lang-pl">Portfolio</span><span class="lang-en">Portfolio</span></div>
                 <div class="section-header">
                     <h2><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></h2>
-                    <p class="lang-pl">Problem, skala, co zrobiłem, mierzalny wynik. Szczegóły i kod są na podstronach case study.</p>
-                    <p class="lang-en">Problem, scale, what I did, a measurable result. Detail and code live on the case-study pages.</p>
+                    <p class="lang-pl">Każdy projekt pokazuje konkretny problem, sposób pracy z danymi i najważniejsze wnioski. Szczegółowe opisy oraz kod znajdziesz na osobnych podstronach.</p>
+                    <p class="lang-en">Each project shows a specific problem, how I work with the data, and the main takeaways. Detail and code are on the project pages.</p>
                 </div>
 
                 <article class="project-card project-card-featured" id="featured">
@@ -198,25 +196,25 @@
                         <span class="source-badge source-badge-inline lang-en">Synthetic data</span>
                     </div>
                     <h3>
-                        <span class="lang-pl">E-commerce — walidacja i integracja pięciu eksportów</span>
-                        <span class="lang-en">E-commerce — validation and integration of five exports</span>
+                        <span class="lang-pl">E-commerce: walidacja i integracja pięciu źródeł danych</span>
+                        <span class="lang-en">E-commerce: validation and integration of five data sources</span>
                     </h3>
-                    <p class="project-problem lang-pl"><strong>Problem.</strong> Sklep zrzuca CRM, katalog, zamówienia, tickety i clickstream. Na surowo wyglądają na powiązane. Żeby liczyć konwersję i mix płatności, trzeba najpierw sprawdzić, czy klucze w ogóle łączą tabele.</p>
-                    <p class="project-problem lang-en"><strong>Problem.</strong> The shop dumps CRM, catalog, orders, tickets and clickstream. Raw, they look linked. Before conversion or payment mix, the keys have to be checked — whether they join at all.</p>
-                    <p class="project-scale lang-pl"><strong>Skala.</strong> 880 500 wierszy · 5 plików.</p>
-                    <p class="project-scale lang-en"><strong>Scale.</strong> 880,500 rows · 5 files.</p>
+                    <p class="project-problem lang-pl">Dane z systemu CRM, katalogu produktów, zamówień, zgłoszeń i clickstreamu pozornie są ze sobą powiązane. Przed rozpoczęciem analizy sprawdziłem, które klucze rzeczywiście pozwalają bezpiecznie łączyć tabele.</p>
+                    <p class="project-problem lang-en">Data from CRM, the product catalog, orders, tickets and clickstream look linked. Before analysis I checked which keys actually let the tables be joined safely.</p>
+                    <p class="project-scale lang-pl"><strong>Skala:</strong> 880 500 wierszy w 5 plikach.</p>
+                    <p class="project-scale lang-en"><strong>Scale:</strong> 880,500 rows in 5 files.</p>
                     <ul class="project-actions-list lang-pl">
-                        <li>Walidacja kluczy: <code>customer_id</code> trzyma, <code>session_id</code> i <code>device_id</code> nie.</li>
-                        <li>Słownik etykiet regułami (nie tabelą literówek): 11 metod płatności → 4, 46 kategorii → 8.</li>
-                        <li>36 160 dat zamówień odzyskanych z „złych” formatów zamiast skasowanych.</li>
+                        <li>Potwierdziłem poprawność <code>customer_id</code> oraz wykazałem, że <code>session_id</code> i <code>device_id</code> nie identyfikują pojedynczych sesji.</li>
+                        <li>Ujednoliciłem 11 wariantów metod płatności do 4 kategorii oraz 46 nazw kategorii produktów do 8.</li>
+                        <li>Odzyskałem 36 160 dat zamówień zapisanych w różnych formatach.</li>
                     </ul>
                     <ul class="project-actions-list lang-en">
-                        <li>Key validation: <code>customer_id</code> holds, <code>session_id</code> and <code>device_id</code> do not.</li>
-                        <li>Label vocabularies by rules (not a typo table): 11 payment methods → 4, 46 categories → 8.</li>
-                        <li>36,160 order dates rescued from “bad” formats instead of dropped.</li>
+                        <li>I confirmed that <code>customer_id</code> is valid and showed that <code>session_id</code> and <code>device_id</code> do not identify individual sessions.</li>
+                        <li>I unified 11 payment-method variants into 4 categories and 46 product-category names into 8.</li>
+                        <li>I recovered 36,160 order dates stored in different formats.</li>
                     </ul>
-                    <p class="result-callout lang-pl"><strong>Wynik.</strong> Lejek konwersji na <code>session_id</code> byłby fikcją (wszystkie 8 000 wartości łączą wielu klientów). 150 553 zdarzeń (30,1%) zaraportowane jako nieprzypisywalne, nie imputowane.</p>
-                    <p class="result-callout lang-en"><strong>Result.</strong> A funnel on <code>session_id</code> would be fiction (all 8,000 values span several customers). 150,553 events (30.1%) reported as unattributable, not imputed.</p>
+                    <p class="result-callout lang-pl"><strong>Wynik:</strong> Na podstawie <code>session_id</code> nie można wiarygodnie obliczyć lejka konwersji, ponieważ każda z 8 000 wartości występuje przy wielu klientach. Dodatkowo 150 553 zdarzenia (30,1%) oznaczyłem jako niemożliwe do przypisania, zamiast uzupełniać je bez wystarczających podstaw.</p>
+                    <p class="result-callout lang-en"><strong>Result:</strong> A conversion funnel cannot be computed reliably from <code>session_id</code>, because each of the 8,000 values appears with several customers. I also marked 150,553 events (30.1%) as unattributable instead of filling them in without a sufficient basis.</p>
                     <div class="project-card-links">
                         <a class="btn btn-primary" href="projects/ecom-cleaning/"><span class="lang-pl">Pełne case study</span><span class="lang-en">Full case study</span></a>
                         <a class="btn btn-outline" href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/ecom-cleaning" target="_blank" rel="noopener">GitHub</a>
@@ -232,25 +230,25 @@
                             <span class="source-badge source-badge-inline lang-en">Synthetic data</span>
                         </div>
                         <h3>
-                            <span class="lang-pl">Laboratorium — trzy szpitale, jeden analityk</span>
-                            <span class="lang-en">Lab — three hospitals, one analyst</span>
+                            <span class="lang-pl">Laboratorium: ujednolicenie wyników z trzech szpitali</span>
+                            <span class="lang-en">Lab: unifying results from three hospitals</span>
                         </h3>
-                        <p class="project-problem lang-pl"><strong>Problem.</strong> 1 500 wyników glukozy, cholesterolu i HbA1c. Te same badania pod dziewięcioma nazwami, mmol/L pomieszane z mg/dL, kod −999 udaje wynik.</p>
-                        <p class="project-problem lang-en"><strong>Problem.</strong> 1,500 glucose, cholesterol and HbA1c results. The same tests under nine names, mmol/L mixed with mg/dL, −999 pretending to be a result.</p>
-                        <p class="project-scale lang-pl"><strong>Skala.</strong> 1 500 wierszy · 3 szpitale.</p>
-                        <p class="project-scale lang-en"><strong>Scale.</strong> 1,500 rows · 3 hospitals.</p>
+                        <p class="project-problem lang-pl"><strong>Problem:</strong> Zbiór zawiera 1 500 wyników glukozy, cholesterolu i HbA1c. Te same badania występują pod dziewięcioma nazwami, wyniki zapisano w różnych jednostkach, a kod −999 oznacza brak wartości.</p>
+                        <p class="project-problem lang-en"><strong>Problem:</strong> The set has 1,500 glucose, cholesterol and HbA1c results. The same tests appear under nine names, values are stored in different units, and −999 means missing.</p>
+                        <p class="project-scale lang-pl"><strong>Skala:</strong> 1 500 wierszy z 3 szpitali.</p>
+                        <p class="project-scale lang-en"><strong>Scale:</strong> 1,500 rows from 3 hospitals.</p>
                         <ul class="project-actions-list lang-pl">
-                            <li>Słownik nazw: 9 etykiet → 3 anality.</li>
-                            <li>Jednostki sprowadzone do SI; zakresy referencyjne dopasowane do jednostki.</li>
-                            <li>Strażniki i 7 niemożliwych wartości oflagowane, nie skasowane ze zbioru surowego.</li>
+                            <li>Ujednoliciłem 9 nazw badań do 3 kategorii.</li>
+                            <li>Przeliczyłem wyniki do wspólnych jednostek i dopasowałem zakresy referencyjne.</li>
+                            <li>Oznaczyłem wartości brakujące i 7 wyników wykraczających poza przyjęte zakresy.</li>
                         </ul>
                         <ul class="project-actions-list lang-en">
-                            <li>Name dictionary: 9 labels → 3 analytes.</li>
-                            <li>Units brought to SI; reference ranges aligned to the unit.</li>
-                            <li>Sentinels and 7 implausible values flagged, not deleted from the raw set.</li>
+                            <li>I unified 9 test names into 3 categories.</li>
+                            <li>I converted results to shared units and aligned the reference ranges.</li>
+                            <li>I flagged missing values and 7 results outside the accepted ranges.</li>
                         </ul>
-                        <p class="result-callout lang-pl"><strong>Wynik.</strong> 1 392 wiersze gotowe do analizy (92,8%). Średnie między szpitalami da się porównać.</p>
-                        <p class="result-callout lang-en"><strong>Result.</strong> 1,392 analysis-ready rows (92.8%). Hospital averages become comparable.</p>
+                        <p class="result-callout lang-pl"><strong>Wynik:</strong> Do dalszej analizy przygotowałem 1 392 wiersze, czyli 92,8% zbioru. Ujednolicenie danych umożliwiło porównanie wyników między szpitalami.</p>
+                        <p class="result-callout lang-en"><strong>Result:</strong> I prepared 1,392 rows for further analysis, 92.8% of the set. Unifying the data made hospital results comparable.</p>
                         <div class="project-card-links">
                             <a href="projects/data-cleaning/"><span class="lang-pl">Case study →</span><span class="lang-en">Case study →</span></a>
                             <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/data-cleaning" target="_blank" rel="noopener">GitHub</a>
@@ -264,25 +262,25 @@
                             <span class="source-badge source-badge-inline lang-en">Public data</span>
                         </div>
                         <h3>
-                            <span class="lang-pl">Należności — kolejka, nie wykres</span>
-                            <span class="lang-en">Receivables — a queue, not a chart</span>
+                            <span class="lang-pl">Należności: prognoza płatności i ustalanie priorytetów</span>
+                            <span class="lang-en">Receivables: payment forecast and contact priorities</span>
                         </h3>
-                        <p class="project-problem lang-pl"><strong>Problem.</strong> Prawie połowa faktur schodzi po terminie. Pytanie nie brzmi „ile jest salda”, tylko „do kogo dzwonić jutro”.</p>
-                        <p class="project-problem lang-en"><strong>Problem.</strong> Nearly half of invoices clear late. The question is not “how big is the balance”, but “who to call tomorrow”.</p>
-                        <p class="project-scale lang-pl"><strong>Skala.</strong> 50 000 faktur · 1 461 klientów · sample publiczny AR.</p>
-                        <p class="project-scale lang-en"><strong>Scale.</strong> 50,000 invoices · 1,461 customers · public AR sample.</p>
+                        <p class="project-problem lang-pl"><strong>Problem:</strong> 42,4% faktur jest opłacanych po terminie. Celem analizy było oszacowanie terminu płatności oraz wskazanie klientów wymagających kontaktu w pierwszej kolejności.</p>
+                        <p class="project-problem lang-en"><strong>Problem:</strong> 42.4% of invoices are paid late. The analysis was meant to estimate the payment date and show which customers to contact first.</p>
+                        <p class="project-scale lang-pl"><strong>Skala:</strong> 50 000 faktur i 1 461 klientów. Dane pochodzą z publicznego zbioru AR.</p>
+                        <p class="project-scale lang-en"><strong>Scale:</strong> 50,000 invoices and 1,461 customers. Public AR sample.</p>
                         <ul class="project-actions-list lang-pl">
-                            <li>Daty z liczb <code>20190307</code> → daty; opóźnienia i aging open AR.</li>
-                            <li>Prognoza: mediana klienta → terminu → globalna, holdout czasowy.</li>
-                            <li>Kolejka: ryzyko spóźnienia × kwota. Zapytania SQL na stronie case study.</li>
+                            <li>Poprawiłem formaty dat oraz obliczyłem opóźnienia i strukturę otwartych należności.</li>
+                            <li>Przygotowałem prognozę na podstawie historii klienta i warunków płatności.</li>
+                            <li>Utworzyłem kolejkę kontaktu uwzględniającą ryzyko opóźnienia i wartość faktury.</li>
                         </ul>
                         <ul class="project-actions-list lang-en">
-                            <li>Dates stored as <code>20190307</code> ints → dates; delays and open-AR aging.</li>
-                            <li>Forecast: customer median → term → global, time-ordered holdout.</li>
-                            <li>Queue: late risk × amount. SQL queries on the case-study page.</li>
+                            <li>I fixed date formats and computed delays and the structure of open receivables.</li>
+                            <li>I built a forecast from customer history and payment terms.</li>
+                            <li>I built a contact queue using late risk and invoice amount.</li>
                         </ul>
-                        <p class="result-callout lang-pl"><strong>Wynik.</strong> MAE 3,39 dnia vs 5,48 naiwnie. 42,4% faktur late. Output: <code>open_priority.csv</code>.</p>
-                        <p class="result-callout lang-en"><strong>Result.</strong> MAE 3.39 days vs 5.48 naive. 42.4% of invoices late. Output: <code>open_priority.csv</code>.</p>
+                        <p class="result-callout lang-pl"><strong>Wynik:</strong> Średni błąd prognozy wyniósł 3,39 dnia w porównaniu z 5,48 dnia dla modelu bazowego. Lista priorytetów została zapisana w pliku <code>open_priority.csv</code>.</p>
+                        <p class="result-callout lang-en"><strong>Result:</strong> Mean forecast error was 3.39 days versus 5.48 days for the baseline. The priority list is in <code>open_priority.csv</code>.</p>
                         <div class="project-card-links">
                             <a href="projects/payment-forecast/"><span class="lang-pl">Case study →</span><span class="lang-en">Case study →</span></a>
                             <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/payment-forecast" target="_blank" rel="noopener">GitHub</a>
@@ -296,25 +294,25 @@
                             <span class="source-badge source-badge-inline lang-en">Public data</span>
                         </div>
                         <h3>
-                            <span class="lang-pl">Od baryłki do dystrybutora</span>
-                            <span class="lang-en">From barrel to pump</span>
+                            <span class="lang-pl">Od ceny ropy do ceny paliwa</span>
+                            <span class="lang-en">From crude price to pump price</span>
                         </h3>
-                        <p class="project-problem lang-pl"><strong>Problem.</strong> Ile z ceny Pb95 na stacji to ropa? Trzy źródła mówią innymi jednostkami i walutami.</p>
-                        <p class="project-problem lang-en"><strong>Problem.</strong> How much of the pump price is crude? Three sources speak in different units and currencies.</p>
-                        <p class="project-scale lang-pl"><strong>Skala.</strong> 103 miesiące · 2 186 notowań dziennych · EIA + NBP + KE.</p>
-                        <p class="project-scale lang-en"><strong>Scale.</strong> 103 months · 2,186 daily quotes · EIA + NBP + EC.</p>
+                        <p class="project-problem lang-pl"><strong>Problem:</strong> Sprawdziłem, jak zmiany ceny ropy przekładają się na cenę benzyny Pb95 w Polsce. Analiza wymagała połączenia trzech źródeł wykorzystujących różne waluty i jednostki.</p>
+                        <p class="project-problem lang-en"><strong>Problem:</strong> I checked how crude-price changes feed through to Pb95 pump prices in Poland. The analysis needed three sources that use different currencies and units.</p>
+                        <p class="project-scale lang-pl"><strong>Skala:</strong> 103 miesiące i 2 186 notowań dziennych z EIA, NBP i Komisji Europejskiej.</p>
+                        <p class="project-scale lang-en"><strong>Scale:</strong> 103 months and 2,186 daily quotes from EIA, NBP and the European Commission.</p>
                         <ul class="project-actions-list lang-pl">
-                            <li>ETL do SQLite: RAW JSON, transform, walidacja, idempotentny load.</li>
-                            <li>Spread w jednej walucie (PLN/l). Warstwa dzienna i miesięczna.</li>
-                            <li>Zapytania SQL do warstwy analitycznej na stronie case study.</li>
+                            <li>Zbudowałem pipeline ETL zapisujący dane źródłowe i przetworzone w bazie SQLite.</li>
+                            <li>Przeliczyłem wszystkie wartości na PLN za litr.</li>
+                            <li>Przygotowałem dzienną i miesięczną warstwę analityczną oraz zapytania SQL.</li>
                         </ul>
                         <ul class="project-actions-list lang-en">
-                            <li>ETL to SQLite: RAW JSON, transform, validate, idempotent load.</li>
-                            <li>Spread in one currency (PLN/l). Daily and monthly grains.</li>
-                            <li>SQL questions on the analytical layer on the case-study page.</li>
+                            <li>I built an ETL pipeline that stores raw and processed data in SQLite.</li>
+                            <li>I converted all values to PLN per litre.</li>
+                            <li>I prepared a daily and a monthly analytical layer plus SQL queries.</li>
                         </ul>
-                        <p class="result-callout lang-pl"><strong>Wynik.</strong> Korelacja Brent ↔ Pb95 ≈ 0,77. Spread 2,72–5,11 PLN/l. Test regresji po realnym błędzie (PLN − EUR).</p>
-                        <p class="result-callout lang-en"><strong>Result.</strong> Brent ↔ Pb95 correlation ≈ 0.77. Spread 2.72–5.11 PLN/l. Regression test after a real bug (PLN − EUR).</p>
+                        <p class="result-callout lang-pl"><strong>Wynik:</strong> Korelacja między ceną ropy Brent a ceną Pb95 wyniosła około 0,77. Różnica między ceną paliwa i przeliczonym kosztem ropy mieściła się w przedziale od 2,72 do 5,11 PLN/l.</p>
+                        <p class="result-callout lang-en"><strong>Result:</strong> The correlation between Brent and Pb95 was about 0.77. The gap between the pump price and converted crude cost ranged from 2.72 to 5.11 PLN/l.</p>
                         <div class="project-card-links">
                             <a href="projects/energy-pipeline/"><span class="lang-pl">Case study →</span><span class="lang-en">Case study →</span></a>
                             <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/energy-pipeline" target="_blank" rel="noopener">GitHub</a>
@@ -328,23 +326,25 @@
                             <span class="source-badge source-badge-inline lang-en">Public APIs + snapshot</span>
                         </div>
                         <h3>
-                            <span class="lang-pl">Dashboardy z żywych API</span>
-                            <span class="lang-en">Dashboards from live APIs</span>
+                            <span class="lang-pl">Dashboardy wykorzystujące dane z publicznych API</span>
+                            <span class="lang-en">Dashboards using public APIs</span>
                         </h3>
-                        <p class="project-problem lang-pl"><strong>Problem.</strong> KPI z wklejonego CSV nic nie mówią o źródle. Chcę pokazać ruch i rynek pracy z endpointu, z jawnym fallbackiem gdy API padnie.</p>
-                        <p class="project-problem lang-en"><strong>Problem.</strong> KPIs from a pasted CSV say nothing about the source. I want traffic and the labour market from the endpoint, with an explicit fallback when the API is down.</p>
-                        <p class="project-scale lang-pl"><strong>Skala.</strong> OpenSky: samoloty nad PL. BLS: serie miesięczne od 2018.</p>
-                        <p class="project-scale lang-en"><strong>Scale.</strong> OpenSky: aircraft over PL. BLS: monthly series since 2018.</p>
+                        <p class="project-problem lang-pl"><strong>Problem:</strong> Celem było przygotowanie dashboardów pobierających dane bezpośrednio ze źródła oraz zapewnienie dostępu do ostatniego zapisu w przypadku niedostępności API.</p>
+                        <p class="project-problem lang-en"><strong>Problem:</strong> The aim was dashboards that fetch data from the source, with the last saved snapshot available if the API is down.</p>
+                        <p class="project-scale lang-pl"><strong>Skala:</strong> Dane o ruchu lotniczym nad Polską z OpenSky oraz miesięczne dane rynku pracy z BLS od 2018 roku.</p>
+                        <p class="project-scale lang-en"><strong>Scale:</strong> Air traffic over Poland from OpenSky and monthly BLS labour-market series since 2018.</p>
                         <ul class="project-actions-list lang-pl">
-                            <li>Fetch REST → KPI, mapa i wykresy w przeglądarce, bez serwera po mojej stronie.</li>
-                            <li>Gdy CORS / API nie odpowie: osadzony snapshot i data pobrania (18.08.2026).</li>
+                            <li>Pobrałem dane z API i przygotowałem wskaźniki, mapę oraz wykresy działające w przeglądarce.</li>
+                            <li>Dodałem zapis danych wraz z datą pobrania, wykorzystywany w przypadku braku odpowiedzi API.</li>
+                            <li>Oznaczyłem, czy dashboard prezentuje dane aktualne, czy ostatni dostępny zapis.</li>
                         </ul>
                         <ul class="project-actions-list lang-en">
-                            <li>REST fetch → KPIs, map and charts in the browser, no server of mine.</li>
-                            <li>When CORS / the API fails: embedded snapshot and fetch date (18 Aug 2026).</li>
+                            <li>I fetched the APIs and built KPIs, a map and charts that run in the browser.</li>
+                            <li>I added a snapshot with a fetch date, used when the API does not respond.</li>
+                            <li>I labelled whether the dashboard shows live data or the last saved snapshot.</li>
                         </ul>
-                        <p class="result-callout lang-pl"><strong>Wynik.</strong> Źródło (live vs snapshot) jest zawsze podpisane. BLS pokazuje szok kwietnia 2020 (bezrobocie 14,8%) i odbicie.</p>
-                        <p class="result-callout lang-en"><strong>Result.</strong> Source (live vs snapshot) is always labelled. BLS shows the April 2020 shock (unemployment 14.8%) and the recovery.</p>
+                        <p class="result-callout lang-pl"><strong>Wynik:</strong> Dashboard BLS pokazuje między innymi wzrost bezrobocia do 14,8% w kwietniu 2020 roku oraz późniejszą poprawę sytuacji na rynku pracy.</p>
+                        <p class="result-callout lang-en"><strong>Result:</strong> The BLS dashboard shows, among other things, unemployment rising to 14.8% in April 2020 and the later recovery.</p>
                         <div class="project-card-links">
                             <a href="projects/opensky-live/">OpenSky</a>
                             <a href="projects/bls-labor/">BLS</a>
@@ -400,11 +400,11 @@
 
         <section id="umiejetnosci" class="section-alt">
             <div class="container">
-                <div class="section-label"><span class="lang-pl">Umiejętności</span><span class="lang-en">Skills</span></div>
+                <div class="section-label"><span class="lang-pl">Narzędzia</span><span class="lang-en">Tools</span></div>
                 <div class="section-header">
-                    <h2><span class="lang-pl">Umiejętności</span><span class="lang-en">Skills</span></h2>
-                    <p class="lang-pl">Narzędzia, których używam w projektach na tej stronie.</p>
-                    <p class="lang-en">Tools I use in the projects on this site.</p>
+                    <h2><span class="lang-pl">Technologie i narzędzia</span><span class="lang-en">Technologies and tools</span></h2>
+                    <p class="lang-pl">Narzędzia, które wykorzystuję w projektach analitycznych.</p>
+                    <p class="lang-en">Tools I use in analytical projects.</p>
                 </div>
                 <div class="skills-categories">
                     <div class="skill-category">
@@ -420,12 +420,12 @@
                         </ul>
                     </div>
                     <div class="skill-category">
-                        <h3><span class="lang-pl">Procesy i domena</span><span class="lang-en">Processes &amp; domain</span></h3>
+                        <h3><span class="lang-pl">Procesy i jakość</span><span class="lang-en">Processes and quality</span></h3>
                         <ul>
                             <li>LIMS</li>
                             <li>BPMN</li>
                             <li>ISO 17025</li>
-                            <li>KPI</li>
+                            <li><span class="lang-pl">Monitorowanie KPI</span><span class="lang-en">KPI monitoring</span></li>
                             <li>Root Cause Analysis</li>
                         </ul>
                     </div>
@@ -451,8 +451,8 @@
                     </a>
                     <a class="contact-item" href="Krzysztof_Blachut_CV.pdf?v=20260822d" download="Krzysztof_Blachut_CV.pdf">
                         <span class="contact-label">CV</span>
-                        <span class="contact-value lang-pl">Pobierz PDF →</span>
-                        <span class="contact-value lang-en">Download PDF →</span>
+                        <span class="contact-value lang-pl">Pobierz CV →</span>
+                        <span class="contact-value lang-en">Download CV →</span>
                     </a>
                 </div>
             </div>

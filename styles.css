@@ -927,8 +927,7 @@ section {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 .contact-value {
