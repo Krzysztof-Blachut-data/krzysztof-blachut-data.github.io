@@ -341,7 +341,9 @@
             var last = pts[n - 1];
             var lx = xAt(n - 1);
             var ly = yAt(last.value);
-            var lbl = cfg.formatY ? cfg.formatY(last.value) : last.value.toFixed(1);
+            var lbl = cfg.formatEnd
+                ? cfg.formatEnd(last.value)
+                : (cfg.formatY ? cfg.formatY(last.value) : last.value.toFixed(1));
             html += "<circle cx=\"" + lx.toFixed(1) + "\" cy=\"" + ly.toFixed(1) + "\" r=\"4\" fill=\"" + cfg.color + "\"/>";
             html += "<text x=\"" + (lx + 8).toFixed(1) + "\" y=\"" + (ly + 4).toFixed(1) +
                 "\" fill=\"" + cfg.color + "\" font-size=\"12\" font-weight=\"700\">" + esc(lbl) + "</text>";
@@ -715,6 +717,7 @@
             points: unempLine, width: 480, height: 220, color: "#f87171",
             yMin: 0, floorZero: true, endLabel: true,
             formatY: function (v) { return v.toFixed(0) + "%"; },
+            formatEnd: function (v) { return fmtPct(v); },
             baseline: preCovidU ? preCovidU.point.value : 3.5,
             baselineLabel: en
                 ? "Pre-COVID ~" + (preCovidU ? preCovidU.point.value.toFixed(1) : "3.5") + "%"
