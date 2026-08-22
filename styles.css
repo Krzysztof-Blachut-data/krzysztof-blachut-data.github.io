@@ -894,19 +894,6 @@ section {
     text-align: center;
 }
 
-.availability-badge {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: #86efac;
-    background: rgba(134, 239, 172, 0.1);
-    border: 1px solid rgba(134, 239, 172, 0.3);
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px;
-    margin-bottom: 2rem;
-    letter-spacing: 0.04em;
-}
-
 .contact-grid {
     display: grid;
     gap: 1rem;
@@ -3612,19 +3599,21 @@ summary:focus-visible {
     margin-bottom: 0.35rem;
 }
 
-.cv-toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1.5rem 0 0.5rem;
+.cv-download {
+    text-align: center;
+    padding: 4rem 0 6rem;
 }
 
-.cv-toolbar p {
+.cv-download h1 {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+}
+
+.cv-download p {
     color: var(--text-muted);
     font-size: var(--text-sm);
-    margin: 0;
+    margin: 0 0 1.25rem;
 }
 
 .cv-sheet {
