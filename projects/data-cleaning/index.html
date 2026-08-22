@@ -1,12 +1,354 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-lang="pl"
+    data-title-pl="Wyniki laboratoryjne | Krzysztof Blachut"
+    data-title-en="Lab results | Krzysztof Blachut"
+    data-desc-pl="Case study jakości danych: 1 500 wyników z trzech szpitali, mieszane jednostki i nazwy. 1 392 wiersze gotowe do analizy (92,8%)."
+    data-desc-en="Data-quality case study: 1,500 results from three hospitals, mixed units and labels. 1,392 analysis-ready rows (92.8%).">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=../../index.html#data-cleaning">
-    <title>Data cleaning | Krzysztof Blachut</title>
-    <script>location.replace("../../index.html#data-cleaning");</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case study jakości danych: 1 500 wyników z trzech szpitali, mieszane jednostki i nazwy. 1 392 wiersze gotowe do analizy (92,8%).">
+    <meta name="author" content="Krzysztof Blachut">
+    <meta name="theme-color" content="#0f1419">
+    <title>Wyniki laboratoryjne | Krzysztof Blachut</title>
+
+    <link rel="canonical" href="https://krzysztof-blachut-data.github.io/projects/data-cleaning/">
+    <link rel="alternate" hreflang="pl" href="https://krzysztof-blachut-data.github.io/projects/data-cleaning/?lang=pl">
+    <link rel="alternate" hreflang="en" href="https://krzysztof-blachut-data.github.io/projects/data-cleaning/?lang=en">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Krzysztof Blachut | Data Analyst">
+    <meta property="og:title" content="Wyniki laboratoryjne | Krzysztof Blachut">
+    <meta property="og:description" content="Case study jakości danych: 1 500 wyników z trzech szpitali, mieszane jednostki i nazwy. 1 392 wiersze gotowe do analizy (92,8%).">
+    <meta property="og:url" content="https://krzysztof-blachut-data.github.io/projects/data-cleaning/">
+    <meta property="og:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../../styles.css?v=recruit1">
+    <script>
+        (function () {
+            var q = new URLSearchParams(location.search).get("lang");
+            var l = q || localStorage.getItem("lang") || "pl";
+            l = l === "en" ? "en" : "pl";
+            document.documentElement.lang = l;
+            document.documentElement.setAttribute("data-lang", l);
+        })();
+    </script>
 </head>
+
 <body>
-    <p><a href="../../index.html#data-cleaning">Przejdź do projektu na stronie głównej →</a></p>
+    <a class="skip-link" href="#case">
+        <span class="lang-pl">Przejdź do treści</span><span class="lang-en">Skip to content</span>
+    </a>
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="nav-brand" href="../../index.html">Krzysztof Blachut</a>
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-right" id="nav-links">
+                <ul class="nav-links">
+                    <li><a href="../../index.html#projekty"><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></a></li>
+                    <li><a href="../../cv.html"><span class="lang-pl">CV</span><span class="lang-en">CV</span></a></li>
+                    <li><a href="../../index.html#kontakt"><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></a></li>
+                </ul>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" data-set-lang="pl" aria-pressed="true">PL</button>
+                    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="case-page" id="case">
+            <div class="container">
+                <p class="case-back">
+                    <a href="../../index.html#projekty"><span class="lang-pl">← Portfolio</span><span class="lang-en">← Portfolio</span></a>
+                </p>
+                <div class="case-meta">
+                    <p class="source-badge">
+                        <span class="lang-pl">Dane syntetyczne — naśladują eksport LIMS z trzech szpitali (te same anality, różne konwencje zapisu), żeby pokazać czyszczenie bez danych pacjentów.</span>
+                        <span class="lang-en">Synthetic data — mimics a LIMS export from three hospitals (same analytes, different recording conventions) so the cleaning can be shown without patient data.</span>
+                    </p>
+                    <p class="result-callout">
+                        <span class="lang-pl">Wynik: 1 500 → 1 392 wiersze analityczne (92,8%). 9 nazw → 3 anality, jednostki sprowadzone do SI, −999 i 7 niemożliwych wartości wyłączone z średnich, nie skasowane ze zbioru surowego.</span>
+                        <span class="lang-en">Result: 1,500 → 1,392 analysis rows (92.8%). 9 labels → 3 analytes, units brought to SI, −999 and 7 implausible values excluded from averages, not deleted from the raw set.</span>
+                    </p>
+                    <p class="case-code-link">
+                        <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/data-cleaning" target="_blank" rel="noopener">
+                            <span class="lang-pl">Kod na GitHubie →</span>
+                            <span class="lang-en">Code on GitHub →</span>
+                        </a>
+                    </p>
+                </div>
+                
+<div id="data-cleaning" class="case-panel">
+                        <p class="case-panel-label"><span class="lang-pl">Projekt 01</span><span class="lang-en">Project 01</span></p>
+                        <h3>
+                            <span class="lang-pl">Wyniki laboratoryjne z trzech szpitali</span>
+                            <span class="lang-en">Lab results from three hospitals</span>
+                        </h3>
+                        <p class="lead lang-pl">
+                            1 500 wyników badań (glukoza, cholesterol, HbA1c) z trzech szpitali.
+                            Te same badania zapisane na różne sposoby, liczby pomieszane z tekstem,
+                            różne jednostki i błędne zakresy referencyjne.
+                        </p>
+                        <p class="lead lang-en">
+                            1,500 test results (glucose, cholesterol, HbA1c) from three hospitals.
+                            The same tests recorded in different ways, numbers mixed with text,
+                            mixed units and wrong reference ranges.
+                        </p>
+
+                        <section class="content-block dc-problems">
+                            <h2><span class="lang-pl">Co jest nie tak w tych danych</span><span class="lang-en">What is wrong with this dataset</span></h2>
+                            <p class="lang-pl">
+                                Kolumna <code>test_value</code> zawiera na raz ujemne kody, tekst, puste komórki i liczby
+                                z wieloma miejscami po przecinku. Bez uporządkowania nie da się liczyć średnich ani porównywać szpitali.
+                            </p>
+                            <p class="lang-en">
+                                The <code>test_value</code> column mixes negative codes, text, blanks and numbers
+                                with too many decimal places. Without cleaning, averages and hospital comparisons are not valid.
+                            </p>
+                            <ul class="lang-pl">
+                                <li>Wartości ujemne (−999) — to nie wynik laboratoryjny, tylko kod braku (wartość strażnicza).</li>
+                                <li>Tekst w kolumnie liczbowej: „not collected” oraz puste komórki — średnia i wykres się sypią.</li>
+                                <li>Nadmiar miejsc po przecinku (np. 80.77415407811968) — ślad po eksporcie, nie po pomiarze.</li>
+                                <li>Mieszane jednostki: mmol/L i mg/dL dla tego samego badania — surowych liczb nie da się porównać.</li>
+                                <li>9 różnych nazw na 3 anality (Blood Sugar, Fasting Glucose, HbA1c, Glycated Hemoglobin…).</li>
+                                <li>Zakres referencyjny często nie pasuje do jednostki (70–99 przy mmol/L albo 3.9–5.5 przy mg/dL).</li>
+                                <li>Niemożliwe wartości (500, 1860 mmol/L glukozy) — błąd zapisu, nie wynik pacjenta.</li>
+                            </ul>
+                            <ul class="lang-en">
+                                <li>Negative values (−999) — not a lab result, a missing-value sentinel.</li>
+                                <li>Text in a numeric column: “not collected” and empty cells — averages and charts break.</li>
+                                <li>Excessive decimals (e.g. 80.77415407811968) — an export artefact, not a measurement.</li>
+                                <li>Mixed units: mmol/L and mg/dL for the same test — raw numbers are not comparable.</li>
+                                <li>9 different labels for 3 analytes (Blood Sugar, Fasting Glucose, HbA1c, Glycated Hemoglobin…).</li>
+                                <li>Reference range often mismatches the unit (70–99 next to mmol/L, or 3.9–5.5 next to mg/dL).</li>
+                                <li>Impossible outliers (500, 1860 mmol/L glucose) — recording errors, not physiology.</li>
+                            </ul>
+                        </section>
+
+                        <section class="content-block dc-preview-block">
+                            <h2><span class="lang-pl">Podgląd surowego setu</span><span class="lang-en">Raw dataset preview</span></h2>
+                            <p class="lang-pl">
+                                Wycinek z pliku <code>multi_hospital_lab_results.csv</code> (1 500 wierszy).
+                                Każdy wiersz pokazuje inny typ błędu.
+                            </p>
+                            <p class="lang-en">
+                                A slice of <code>multi_hospital_lab_results.csv</code> (1,500 rows).
+                                Each row shows a different error type.
+                            </p>
+                            <div class="dc-table-wrap">
+                                <table class="dc-table dc-preview-table">
+                                    <thead>
+                                        <tr>
+                                            <th>hospital</th>
+                                            <th>patient_id</th>
+                                            <th>test_name</th>
+                                            <th>test_value</th>
+                                            <th>unit</th>
+                                            <th>reference_range</th>
+                                            <th><span class="lang-pl">problem</span><span class="lang-en">issue</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hospital_C</td><td>1826</td><td>Glucose</td>
+                                            <td class="dc-cell invalid">-999</td><td>mmol/L</td><td>70-99</td>
+                                            <td class="dc-issue-note lang-pl">Ujemny <span class="dc-term" tabindex="0" data-tip="Umowny kod (tu −999) wpisywany zamiast braku wyniku. To nie jest prawdziwa wartość laboratoryjna.">strażnik</span> (−999) zamiast wyniku</td>
+                                            <td class="dc-issue-note lang-en">Negative <span class="dc-term" tabindex="0" data-tip="A placeholder code (here −999) stored instead of a missing result. It is not a real lab value.">sentinel</span> (−999) instead of a result</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_A</td><td>1135</td><td>HbA1c</td>
+                                            <td class="dc-cell invalid">not collected</td><td>%</td><td>&lt;5.7%</td>
+                                            <td class="dc-issue-note lang-pl">Tekst w kolumnie liczbowej</td>
+                                            <td class="dc-issue-note lang-en">Text in a numeric column</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_B</td><td>1164</td><td>Serum Cholesterol</td>
+                                            <td class="dc-cell invalid">NaN</td><td>mg/dL</td><td>3.2-5.2</td>
+                                            <td class="dc-issue-note lang-pl">Pusta komórka (brak wartości)</td>
+                                            <td class="dc-issue-note lang-en">Empty cell (missing value)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_B</td><td>1149</td><td>Blood Sugar</td>
+                                            <td class="dc-cell noisy">80.77415407811968</td><td>mg/dL</td><td>70-99</td>
+                                            <td class="dc-issue-note lang-pl">Za dużo miejsc po przecinku + inna nazwa glukozy</td>
+                                            <td class="dc-issue-note lang-en">Too many decimals + another name for glucose</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_A</td><td>1335</td><td>Total Chol</td>
+                                            <td class="dc-cell noisy">208.94318817997245</td><td>mg/dL</td><td>125-200</td>
+                                            <td class="dc-issue-note lang-pl">Skrót nazwy + jednostka mg/dL</td>
+                                            <td class="dc-issue-note lang-en">Abbreviated name + mg/dL unit</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_A</td><td>1966</td><td>Fasting Glucose</td>
+                                            <td>8.56</td><td>mmol/L</td><td class="dc-cell mismatch">70-99</td>
+                                            <td class="dc-issue-note lang-pl">Zakres 70–99 nie pasuje do mmol/L</td>
+                                            <td class="dc-issue-note lang-en">Range 70–99 does not match mmol/L</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_B</td><td>1661</td><td>Glucose</td>
+                                            <td class="dc-cell noisy">132.91942730033406</td><td>mg/dL</td><td class="dc-cell mismatch">3.9-5.5</td>
+                                            <td class="dc-issue-note lang-pl">Zakres 3.9–5.5 nie pasuje do mg/dL</td>
+                                            <td class="dc-issue-note lang-en">Range 3.9–5.5 does not match mg/dL</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_B</td><td>1567</td><td>Fasting Glucose</td>
+                                            <td class="dc-cell outlier">500</td><td>mmol/L</td><td>70-99</td>
+                                            <td class="dc-issue-note lang-pl">Mało prawdopodobna wartość — 500 mmol/L glukozy jest niemożliwe</td>
+                                            <td class="dc-issue-note lang-en">Implausible value — 500 mmol/L glucose is impossible</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hospital_B</td><td>1932</td><td>Fasting Glucose</td>
+                                            <td class="dc-cell outlier">1860</td><td>mmol/L</td><td>70-99</td>
+                                            <td class="dc-issue-note lang-pl">Mało prawdopodobna wartość — 1860 mmol/L, błąd zapisu</td>
+                                            <td class="dc-issue-note lang-en">Implausible value — 1860 mmol/L, a recording error</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="dc-legend">
+                                <span class="dc-swatch invalid"></span>
+                                <span class="lang-pl">brak / ujemny <span class="dc-term" tabindex="0" data-tip="Umowny kod (tu −999) wpisywany zamiast braku wyniku. To nie jest prawdziwa wartość laboratoryjna.">strażnik</span></span>
+                                <span class="lang-en">missing / negative <span class="dc-term" tabindex="0" data-tip="A placeholder code (here −999) stored instead of a missing result. It is not a real lab value.">sentinel</span></span>
+                                <span class="dc-swatch noisy"></span>
+                                <span class="lang-pl">za dużo miejsc po przecinku</span><span class="lang-en">too many decimals</span>
+                                <span class="dc-swatch mismatch"></span>
+                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Zakres referencyjny nie pasuje do jednostki wyniku — np. 70–99 przy mmol/L.">zakres ≠ jednostka</span></span>
+                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="The reference range does not match the result unit — e.g. 70–99 with mmol/L.">range ≠ unit</span></span>
+                                <span class="dc-swatch outlier"></span>
+                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Wartość liczbowa, ale skrajnie mało prawdopodobna (np. 500 mmol/L glukozy). Pipeline najpierw ją flaguje.">mało prawdopodobna wartość</span></span>
+                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="A numeric value that is extremely unlikely (e.g. 500 mmol/L glucose). The pipeline flags it first.">implausible value</span></span>
+                            </p>
+                            <p class="dc-download">
+                                <a href="multi_hospital_lab_results.csv" download>
+                                    <span class="lang-pl">Pobierz pełny surowy CSV (1 500 wierszy) →</span>
+                                    <span class="lang-en">Download the full raw CSV (1,500 rows) →</span>
+                                </a>
+                            </p>
+                        </section>
+
+                        <div id="dc-walkthrough" class="dc-walkthrough">
+                        <p class="dc-walkthrough-label lang-pl">Jak te problemy są usuwane, krok po kroku</p>
+                        <p class="dc-walkthrough-label lang-en">How these issues are fixed, step by step</p>
+
+                        <ol class="dc-steps" aria-label="Cleaning steps">
+                            <li><button type="button" class="dc-step active" data-step="0">1. Raw</button></li>
+                            <li><button type="button" class="dc-step" data-step="1">2. Missing</button></li>
+                            <li><button type="button" class="dc-step" data-step="2">3. Names</button></li>
+                            <li><button type="button" class="dc-step" data-step="3">4. Units</button></li>
+                            <li><button type="button" class="dc-step" data-step="4">5. Ranges</button></li>
+                            <li><button type="button" class="dc-step" data-step="5"><span class="lang-pl">6. Flagi</span><span class="lang-en">6. Flag</span></button></li>
+                            <li><button type="button" class="dc-step" data-step="6">7. Clean</button></li>
+                            <li><button type="button" class="dc-step" data-step="7"><span class="lang-pl">8. Analiza</span><span class="lang-en">8. Analysis</span></button></li>
+                            <li><button type="button" class="dc-step" data-step="8">9. Insights</button></li>
+                        </ol>
+
+                        <div class="dc-panel">
+                            <div class="dc-panel-head">
+                                <h2 id="dc-step-title">Surowe dane</h2>
+                                <span class="dc-progress" id="dc-progress">1 / 9</span>
+                            </div>
+                            <p id="dc-step-body" class="dc-body">
+                                <span class="lang-pl">W tabeli widać te same problemy co na liście powyżej. Żółte komórki to braki i ujemne strażniki, niebieskie — za długa precyzja, fioletowe — zakres niedopasowany do jednostki.</span>
+                                <span class="lang-en">The table shows the same issues listed above. Yellow cells are missing values and negative sentinels, blue is excess precision, purple is a range that does not match the unit.</span>
+                            </p>
+                            <ul id="dc-issues" class="dc-issues"></ul>
+                            <pre class="hero-code dc-code" id="dc-code-wrap"><code id="dc-code"></code></pre>
+                        </div>
+                        </div>
+
+                        <div id="dc-viz" class="dc-viz" hidden></div>
+                        <div id="dc-insights" class="dc-insights" hidden></div>
+
+                        <div id="dc-data-view">
+                        <div class="dc-metrics">
+                            <div class="metric">
+                                <span class="metric-value" id="m-rows">—</span>
+                                <span class="metric-label" id="m-rows-label"></span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value" id="m-names">—</span>
+                                <span class="metric-label" id="m-names-label"></span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value" id="m-missing">—</span>
+                                <span class="metric-label" id="m-missing-label"></span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value" id="m-outliers">—</span>
+                                <span class="metric-label" id="m-outliers-label"></span>
+                            </div>
+                        </div>
+                        <p id="dc-metrics-summary" class="dc-metrics-summary" hidden></p>
+                        <div id="dc-quality-panel" class="dc-quality-panel"></div>
+                        <div id="dc-story-panel" class="dc-story-panel" hidden></div>
+
+                        <p class="dc-caption" id="dc-caption"></p>
+                        <div class="dc-table-wrap">
+                            <table class="dc-table" id="dc-table"></table>
+                        </div>
+
+                            <p class="dc-legend">
+                                <span class="dc-swatch invalid"></span>
+                                <span class="lang-pl">brak / ujemny <span class="dc-term" tabindex="0" data-tip="Umowny kod (tu −999) wpisywany zamiast braku wyniku. To nie jest prawdziwa wartość laboratoryjna.">strażnik</span></span>
+                                <span class="lang-en">missing / negative <span class="dc-term" tabindex="0" data-tip="A placeholder code (here −999) stored instead of a missing result. It is not a real lab value.">sentinel</span></span>
+                                <span class="dc-swatch noisy"></span>
+                                <span class="lang-pl">za dużo miejsc po przecinku</span><span class="lang-en">too many decimals</span>
+                                <span class="dc-swatch mismatch"></span>
+                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Zakres referencyjny nie pasuje do jednostki wyniku — np. 70–99 przy mmol/L.">zakres ≠ jednostka</span></span>
+                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="The reference range does not match the result unit — e.g. 70–99 with mmol/L.">range ≠ unit</span></span>
+                                <span class="dc-swatch changed"></span>
+                                <span class="lang-pl">zmienione</span><span class="lang-en">changed</span>
+                                <span class="dc-swatch outlier"></span>
+                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Wartość liczbowa, ale skrajnie mało prawdopodobna (np. 500 mmol/L glukozy). Pipeline najpierw ją flaguje.">mało prawdopodobna wartość</span></span>
+                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="A numeric value that is extremely unlikely (e.g. 500 mmol/L glucose). The pipeline flags it first.">implausible value</span></span>
+                        </p>
+                        </div>
+
+                        <div class="dc-nav">
+                            <button type="button" class="btn btn-outline" id="dc-prev" disabled>
+                                <span class="lang-pl">← Poprzedni krok</span>
+                                <span class="lang-en">← Previous step</span>
+                            </button>
+                            <button type="button" class="btn btn-primary" id="dc-next">
+                                <span class="lang-pl">Następny krok →</span>
+                                <span class="lang-en">Next step →</span>
+                            </button>
+                        </div>
+                        </div><!-- /case-panel data-cleaning -->
+
+                        
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <p>© 2026 Krzysztof Blachut</p>
+            <p class="footer-links">
+                <a href="mailto:krzy.blachut@gmail.com">krzy.blachut@gmail.com</a>
+                <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/krzysztof-blachut-data" target="_blank" rel="noopener">GitHub</a>
+                <a href="../../cv.html">CV</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../../lang.js"></script>
+    <script src="../../glossary.js"></script>
+    <script src="../../nav.js"></script>
+    <script src="raw-data.js"></script>
+    <script src="cleaning.js"></script>
 </body>
 </html>

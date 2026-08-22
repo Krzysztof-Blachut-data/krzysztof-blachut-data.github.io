@@ -2,15 +2,17 @@
 
 Portfolio: [krzysztof-blachut-data.github.io](https://krzysztof-blachut-data.github.io)
 
-Strona po PL/EN. Zwykły HTML/CSS/JS, bez frameworka. Projekty da się odpalić, nie są tylko zrzutami.
+Strona po PL/EN. Zwykły HTML/CSS/JS, bez frameworka. Strona główna jest skrótem dla rekrutera; pełne case study i kod są na podstronach.
+
+CV: [krzysztof-blachut-data.github.io/cv.html](https://krzysztof-blachut-data.github.io/cv.html) (Drukuj → PDF).
 
 ## Co jest na stronie
 
-1. **Czyszczenie danych lab** — wyniki z trzech szpitali, pomieszane jednostki i nazwy.
-2. **E-commerce** — pięć powiązanych eksportów (~880k wierszy). Najpierw sprawdzam, czy klucze w ogóle łączą tabele (`session_id` nie łączy).
-3. **Od baryłki do dystrybutora** — pipeline EIA + NBP + biuletyn KE, warstwa dzienna i miesięczna, SQLite.
-4. **Prognoza płatności** — 50k faktur AR, kto spóźni się ze spłatą, kolejka do windykacji.
-5. **OpenSky / BLS** — dashboardy z żywych API.
+1. **E-commerce (featured)** — pięć powiązanych eksportów (~880k wierszy). Najpierw sprawdzam, czy klucze w ogóle łączą tabele (`session_id` nie łączy). Dane syntetyczne.
+2. **Laboratorium** — 1 500 wyników z trzech szpitali, pomieszane jednostki i nazwy. Dane syntetyczne (LIMS).
+3. **Od baryłki do dystrybutora** — pipeline EIA + NBP + biuletyn KE, warstwa dzienna i miesięczna, SQLite, [zapytania SQL](projects/energy-pipeline/sql/queries.sql). Dane publiczne.
+4. **Prognoza płatności** — 50k faktur AR, kto spóźni się ze spłatą, kolejka do windykacji, [SQL + model DAX](projects/payment-forecast/sql/ar_queries.sql). Publiczny sample.
+5. **OpenSky / BLS** — dashboardy z żywych API, ze snapshotem i datą pobrania gdy endpoint nie odpowie.
 
 ## Jak odpalić stronę lokalnie
 
@@ -50,6 +52,13 @@ pytest -q
 ```
 
 Albo wszystko z roota: `pytest -q`.
+
+Smoke-test wykresów energetycznych (wymaga `npm install` i serwera):
+
+```bash
+python -m http.server 8791 --bind 127.0.0.1
+node scripts/check_render.js
+```
 
 Więcej kontekstu w `projects/*/README.md`.
 

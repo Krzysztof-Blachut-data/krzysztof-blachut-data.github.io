@@ -3,12 +3,13 @@
  * Smoke-test the energy pipeline charts in jsdom.
  *
  *   python -m http.server 8791 --bind 127.0.0.1
- *   node scripts/check_render.js [http://127.0.0.1:8791/]
+ *   node scripts/check_render.js
+ *   node scripts/check_render.js http://127.0.0.1:8791/projects/energy-pipeline/
  */
 const path = require("path");
 const { JSDOM } = require("jsdom");
 
-const BASE = process.argv[2] || "http://127.0.0.1:8791/";
+const BASE = process.argv[2] || "http://127.0.0.1:8791/projects/energy-pipeline/";
 const failures = [];
 const notes = [];
 

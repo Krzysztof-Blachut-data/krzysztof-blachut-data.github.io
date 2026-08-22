@@ -1,12 +1,130 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-lang="pl"
+    data-title-pl="BLS — rynek pracy USA | Krzysztof Blachut"
+    data-title-en="BLS US labour market | Krzysztof Blachut"
+    data-desc-pl="Dashboard BLS od 2018: bezrobocie, inflacja, płace. Żywe API z snapshotem, gdy endpoint nie odpowie."
+    data-desc-en="BLS dashboard since 2018: unemployment, inflation, wages. Live API with a snapshot when the endpoint is down.">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=../../index.html#bls-labor">
-    <title>BLS labor market dashboard | Krzysztof Blachut</title>
-    <script>location.replace("../../index.html#bls-labor");</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard BLS od 2018: bezrobocie, inflacja, płace. Żywe API z snapshotem, gdy endpoint nie odpowie.">
+    <meta name="author" content="Krzysztof Blachut">
+    <meta name="theme-color" content="#0f1419">
+    <title>BLS — rynek pracy USA | Krzysztof Blachut</title>
+
+    <link rel="canonical" href="https://krzysztof-blachut-data.github.io/projects/bls-labor/">
+    <link rel="alternate" hreflang="pl" href="https://krzysztof-blachut-data.github.io/projects/bls-labor/?lang=pl">
+    <link rel="alternate" hreflang="en" href="https://krzysztof-blachut-data.github.io/projects/bls-labor/?lang=en">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Krzysztof Blachut | Data Analyst">
+    <meta property="og:title" content="BLS — rynek pracy USA | Krzysztof Blachut">
+    <meta property="og:description" content="Dashboard BLS od 2018: bezrobocie, inflacja, płace. Żywe API z snapshotem, gdy endpoint nie odpowie.">
+    <meta property="og:url" content="https://krzysztof-blachut-data.github.io/projects/bls-labor/">
+    <meta property="og:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../../styles.css?v=recruit1">
+    <script>
+        (function () {
+            var q = new URLSearchParams(location.search).get("lang");
+            var l = q || localStorage.getItem("lang") || "pl";
+            l = l === "en" ? "en" : "pl";
+            document.documentElement.lang = l;
+            document.documentElement.setAttribute("data-lang", l);
+        })();
+    </script>
 </head>
+
 <body>
-    <p><a href="../../index.html#bls-labor">Przejdź do dashboardu na stronie głównej →</a></p>
+    <a class="skip-link" href="#case">
+        <span class="lang-pl">Przejdź do treści</span><span class="lang-en">Skip to content</span>
+    </a>
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="nav-brand" href="../../index.html">Krzysztof Blachut</a>
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-right" id="nav-links">
+                <ul class="nav-links">
+                    <li><a href="../../index.html#projekty"><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></a></li>
+                    <li><a href="../../cv.html"><span class="lang-pl">CV</span><span class="lang-en">CV</span></a></li>
+                    <li><a href="../../index.html#kontakt"><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></a></li>
+                </ul>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" data-set-lang="pl" aria-pressed="true">PL</button>
+                    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="case-page" id="case">
+            <div class="container">
+                <p class="case-back">
+                    <a href="../../index.html#projekty"><span class="lang-pl">← Portfolio</span><span class="lang-en">← Portfolio</span></a>
+                </p>
+                <div class="case-meta">
+                    <p class="source-badge">
+                        <span class="lang-pl">Dane publiczne — BLS Public Data API (serie miesięczne). Gdy API nie odpowie, dashboard przełącza się na osadzony snapshot z 18 sierpnia 2026 i pokazuje datę pobrania.</span>
+                        <span class="lang-en">Public data — BLS Public Data API (monthly series). If the API is down, the dashboard falls back to an embedded snapshot from 18 August 2026 and shows the fetch date.</span>
+                    </p>
+                    <p class="result-callout">
+                        <span class="lang-pl">Wynik: jedna oś czasu od 2018 — szok kwietnia 2020 (bezrobocie 14,8%), odbicie, inflacja i wzrost stawek. KPI i wykresy z API albo ze snapshotu, z jawnym źródłem.</span>
+                        <span class="lang-en">Result: one timeline from 2018 — the April 2020 shock (unemployment 14.8%), the recovery, inflation and wage growth. KPIs and charts from the API or the snapshot, with the source labelled.</span>
+                    </p>
+                    <p class="case-code-link">
+                        <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/bls-labor" target="_blank" rel="noopener">
+                            <span class="lang-pl">Kod na GitHubie →</span>
+                            <span class="lang-en">Code on GitHub →</span>
+                        </a>
+                    </p>
+                </div>
+                
+<div id="bls-labor" class="case-panel dash-panel-root">
+                            <p class="case-panel-label"><span class="lang-pl">Dashboard 02</span><span class="lang-en">Dashboard 02</span></p>
+                            <h3>
+                                <span class="lang-pl">Rynek pracy USA — BLS Public Data API</span>
+                                <span class="lang-en">US labor market — BLS Public Data API</span>
+                            </h3>
+                            <p class="lead lang-pl">
+                                <strong>Cel:</strong> opowiedzieć historię rynku pracy USA od 2018 — pandemia, odbicie, inflacja i płace.
+                                <strong>Źródło:</strong> żywe API BLS; gdy endpoint nie odpowie, dashboard używa snapshotu z 18 sierpnia 2026 i pokazuje datę pobrania.
+                            </p>
+                            <p class="lead lang-en">
+                                <strong>Purpose:</strong> tell the story of the US labour market since 2018 — pandemic shock, recovery, inflation and wages.
+                                <strong>Source:</strong> live BLS API; if the endpoint is down, the dashboard uses a snapshot from 18 August 2026 and shows the fetch date.
+                            </p>
+                            <div id="bls-dashboard" class="dash-root"></div>
+                        
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <p>© 2026 Krzysztof Blachut</p>
+            <p class="footer-links">
+                <a href="mailto:krzy.blachut@gmail.com">krzy.blachut@gmail.com</a>
+                <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/krzysztof-blachut-data" target="_blank" rel="noopener">GitHub</a>
+                <a href="../../cv.html">CV</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../../lang.js"></script>
+    <script src="../../glossary.js"></script>
+    <script src="../../nav.js"></script>
+    <script src="snapshot.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 </html>

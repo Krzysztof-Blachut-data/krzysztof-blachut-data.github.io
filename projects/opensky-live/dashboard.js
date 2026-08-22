@@ -374,7 +374,9 @@
     }
 
     function renderMap(canvas, rows) {
+        if (!canvas) return;
         var ctx = canvas.getContext("2d");
+        if (!ctx) return;
         var w = canvas.width;
         var h = canvas.height;
         ctx.clearRect(0, 0, w, h);
@@ -444,12 +446,12 @@
         }
         if (state.source === "snapshot-cors") {
             return en
-                ? "Saved copy of OpenSky data — the browser cannot call the API directly (CORS)."
-                : "Zapisana kopia danych OpenSky — przeglądarka nie może pobrać API bezpośrednio (CORS).";
+                ? "Fallback snapshot — the browser cannot call OpenSky directly (CORS)."
+                : "Snapshot zapasowy — przeglądarka nie może wywołać OpenSky (CORS).";
         }
         return en
-            ? "Saved copy of OpenSky data (works offline on GitHub Pages)."
-            : "Zapisana kopia danych OpenSky (działa offline na GitHub Pages).";
+            ? "Embedded OpenSky snapshot (offline / GitHub Pages)."
+            : "Osadzony snapshot OpenSky (offline / GitHub Pages).";
     }
 
     function renderStatus() {
@@ -703,8 +705,8 @@
             "<div class=\"dash-panel dash-panel-wide dash-api\">" +
             "<h4>" + (en ? "Data source (API)" : "Źródło danych (API)") + "</h4>" +
             vizDesc(
-                en ? "Technical endpoint used to fetch state vectors. On GitHub Pages a saved snapshot is shown because the API blocks browser CORS."
-                    : "Endpoint techniczny do pobrania wektorów stanu. Na GitHub Pages pokazywany jest snapshot — API blokuje CORS w przeglądarce.",
+                en ? "Technical endpoint used to fetch state vectors. If the live call fails (CORS on GitHub Pages, or the API is down), a saved snapshot is shown and the fetch date is labelled in the status line."
+                    : "Endpoint techniczny do pobrania wektorów stanu. Gdy wywołanie na żywo nie przejdzie (CORS na GitHub Pages albo API nie odpowiada), pokazywany jest snapshot, a data pobrania jest w statusie.",
                 null
             ) +
             "<pre class=\"hero-code dc-code\"><code>GET " + API_URL + "</code></pre>" +

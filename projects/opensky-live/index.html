@@ -1,12 +1,132 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-lang="pl"
+    data-title-pl="OpenSky — ruch lotniczy | Krzysztof Blachut"
+    data-title-en="OpenSky air traffic | Krzysztof Blachut"
+    data-desc-pl="Dashboard ADS-B nad Polską. Żywe API OpenSky z osadzonym snapshotem, gdy CORS lub sieć nie odpowie."
+    data-desc-en="ADS-B dashboard over Poland. Live OpenSky API with an embedded snapshot when CORS or the network fails.">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=../../index.html#opensky-live">
-    <title>OpenSky live dashboard | Krzysztof Blachut</title>
-    <script>location.replace("../../index.html#opensky-live");</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard ADS-B nad Polską. Żywe API OpenSky z osadzonym snapshotem, gdy CORS lub sieć nie odpowie.">
+    <meta name="author" content="Krzysztof Blachut">
+    <meta name="theme-color" content="#0f1419">
+    <title>OpenSky — ruch lotniczy | Krzysztof Blachut</title>
+
+    <link rel="canonical" href="https://krzysztof-blachut-data.github.io/projects/opensky-live/">
+    <link rel="alternate" hreflang="pl" href="https://krzysztof-blachut-data.github.io/projects/opensky-live/?lang=pl">
+    <link rel="alternate" hreflang="en" href="https://krzysztof-blachut-data.github.io/projects/opensky-live/?lang=en">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Krzysztof Blachut | Data Analyst">
+    <meta property="og:title" content="OpenSky — ruch lotniczy | Krzysztof Blachut">
+    <meta property="og:description" content="Dashboard ADS-B nad Polską. Żywe API OpenSky z osadzonym snapshotem, gdy CORS lub sieć nie odpowie.">
+    <meta property="og:url" content="https://krzysztof-blachut-data.github.io/projects/opensky-live/">
+    <meta property="og:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../../styles.css?v=recruit1">
+    <script>
+        (function () {
+            var q = new URLSearchParams(location.search).get("lang");
+            var l = q || localStorage.getItem("lang") || "pl";
+            l = l === "en" ? "en" : "pl";
+            document.documentElement.lang = l;
+            document.documentElement.setAttribute("data-lang", l);
+        })();
+    </script>
 </head>
+
 <body>
-    <p><a href="../../index.html#opensky-live">Przejdź do dashboardu na stronie głównej →</a></p>
+    <a class="skip-link" href="#case">
+        <span class="lang-pl">Przejdź do treści</span><span class="lang-en">Skip to content</span>
+    </a>
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="nav-brand" href="../../index.html">Krzysztof Blachut</a>
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-right" id="nav-links">
+                <ul class="nav-links">
+                    <li><a href="../../index.html#projekty"><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></a></li>
+                    <li><a href="../../cv.html"><span class="lang-pl">CV</span><span class="lang-en">CV</span></a></li>
+                    <li><a href="../../index.html#kontakt"><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></a></li>
+                </ul>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" data-set-lang="pl" aria-pressed="true">PL</button>
+                    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="case-page" id="case">
+            <div class="container">
+                <p class="case-back">
+                    <a href="../../index.html#projekty"><span class="lang-pl">← Portfolio</span><span class="lang-en">← Portfolio</span></a>
+                </p>
+                <div class="case-meta">
+                    <p class="source-badge">
+                        <span class="lang-pl">Dane publiczne — OpenSky Network API (wektory stanu ADS-B). Gdy przeglądarka nie może wywołać API (CORS na GitHub Pages), strona pokazuje zapisany snapshot z datą pobrania.</span>
+                        <span class="lang-en">Public data — OpenSky Network API (ADS-B state vectors). When the browser cannot call the API (CORS on GitHub Pages), the page shows a saved snapshot with the fetch date.</span>
+                    </p>
+                    <p class="result-callout">
+                        <span class="lang-pl">Wynik: mapa, KPI i rozkład krajów z wektorów stanu, nie z wklejonego CSV. Źródło (live vs snapshot) i data ostatniej obserwacji są zawsze widoczne.</span>
+                        <span class="lang-en">Result: map, KPIs and country mix from state vectors, not a pasted CSV. Source (live vs snapshot) and last observation time are always visible.</span>
+                    </p>
+                    <p class="case-code-link">
+                        <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/opensky-live" target="_blank" rel="noopener">
+                            <span class="lang-pl">Kod na GitHubie →</span>
+                            <span class="lang-en">Code on GitHub →</span>
+                        </a>
+                    </p>
+                </div>
+                
+<div id="opensky-live" class="case-panel dash-panel-root" role="tabpanel">
+                            <p class="case-panel-label"><span class="lang-pl">Dashboard 01</span><span class="lang-en">Dashboard 01</span></p>
+                            <h3>
+                                <span class="lang-pl">Ruch lotniczy nad Polską — OpenSky ADS-B</span>
+                                <span class="lang-en">Air traffic over Poland — OpenSky ADS-B</span>
+                            </h3>
+                            <p class="lead lang-pl">
+                                <strong>Cel:</strong> pokazać, ile samolotów leci nad Polską w danej chwili, skąd pochodzą i jak wygląda ruch w przestrzeni.
+                                <strong>Źródło:</strong> żywe API OpenSky; gdy CORS albo sieć nie pozwoli, dashboard przełącza się na snapshot i pokazuje datę pobrania.
+                            </p>
+                            <p class="lead lang-en">
+                                <strong>Purpose:</strong> show how many aircraft are flying over Poland right now, where they come from and how traffic is distributed.
+                                <strong>Source:</strong> live OpenSky API; if CORS or the network blocks it, the dashboard falls back to a snapshot and shows the fetch date.
+                            </p>
+                            <div id="opensky-dashboard" class="dash-root"></div>
+                        </div>
+
+                        
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <p>© 2026 Krzysztof Blachut</p>
+            <p class="footer-links">
+                <a href="mailto:krzy.blachut@gmail.com">krzy.blachut@gmail.com</a>
+                <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/krzysztof-blachut-data" target="_blank" rel="noopener">GitHub</a>
+                <a href="../../cv.html">CV</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../../lang.js"></script>
+    <script src="../../glossary.js"></script>
+    <script src="../../nav.js"></script>
+    <script src="snapshot.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 </html>

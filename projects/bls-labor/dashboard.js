@@ -551,12 +551,12 @@
         }
         if (state.source === "snapshot-fallback") {
             return en
-                ? "Saved copy of BLS data — the live request did not succeed."
-                : "Zapisana kopia danych BLS — pobranie na żywo nie powiodło się.";
+                ? "Fallback snapshot — the live BLS request did not succeed."
+                : "Snapshot zapasowy — żywe API BLS nie odpowiedziało.";
         }
         return en
-            ? "Saved copy of BLS data (works offline on GitHub Pages)."
-            : "Zapisana kopia danych BLS (działa offline na GitHub Pages).";
+            ? "Embedded snapshot of BLS data (offline / GitHub Pages)."
+            : "Osadzony snapshot danych BLS (offline / GitHub Pages).";
     }
 
     function renderStatus() {

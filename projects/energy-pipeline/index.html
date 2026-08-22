@@ -1,10 +1,573 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-lang="pl"
+    data-title-pl="Od baryłki do dystrybutora | Krzysztof Blachut"
+    data-title-en="From barrel to pump | Krzysztof Blachut"
+    data-desc-pl="Pipeline ETL: EIA + NBP + biuletyn KE, warstwa dzienna i miesięczna, SQLite, pytest. Spread w jednej walucie."
+    data-desc-en="ETL pipeline: EIA + NBP + EC bulletin, daily and monthly grains, SQLite, pytest. Spread in one currency.">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=../../index.html#energy-pipeline">
-    <script>location.replace("../../index.html#energy-pipeline");</script>
-    <title>Energy Pipeline</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pipeline ETL: EIA + NBP + biuletyn KE, warstwa dzienna i miesięczna, SQLite, pytest. Spread w jednej walucie.">
+    <meta name="author" content="Krzysztof Blachut">
+    <meta name="theme-color" content="#0f1419">
+    <title>Od baryłki do dystrybutora | Krzysztof Blachut</title>
+
+    <link rel="canonical" href="https://krzysztof-blachut-data.github.io/projects/energy-pipeline/">
+    <link rel="alternate" hreflang="pl" href="https://krzysztof-blachut-data.github.io/projects/energy-pipeline/?lang=pl">
+    <link rel="alternate" hreflang="en" href="https://krzysztof-blachut-data.github.io/projects/energy-pipeline/?lang=en">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Krzysztof Blachut | Data Analyst">
+    <meta property="og:title" content="Od baryłki do dystrybutora | Krzysztof Blachut">
+    <meta property="og:description" content="Pipeline ETL: EIA + NBP + biuletyn KE, warstwa dzienna i miesięczna, SQLite, pytest. Spread w jednej walucie.">
+    <meta property="og:url" content="https://krzysztof-blachut-data.github.io/projects/energy-pipeline/">
+    <meta property="og:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../../styles.css?v=recruit1">
+    <script>
+        (function () {
+            var q = new URLSearchParams(location.search).get("lang");
+            var l = q || localStorage.getItem("lang") || "pl";
+            l = l === "en" ? "en" : "pl";
+            document.documentElement.lang = l;
+            document.documentElement.setAttribute("data-lang", l);
+        })();
+    </script>
 </head>
-<body></body>
+
+<body>
+    <a class="skip-link" href="#case">
+        <span class="lang-pl">Przejdź do treści</span><span class="lang-en">Skip to content</span>
+    </a>
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="nav-brand" href="../../index.html">Krzysztof Blachut</a>
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-right" id="nav-links">
+                <ul class="nav-links">
+                    <li><a href="../../index.html#projekty"><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></a></li>
+                    <li><a href="../../cv.html"><span class="lang-pl">CV</span><span class="lang-en">CV</span></a></li>
+                    <li><a href="../../index.html#kontakt"><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></a></li>
+                </ul>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" data-set-lang="pl" aria-pressed="true">PL</button>
+                    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="case-page" id="case">
+            <div class="container">
+                <p class="case-back">
+                    <a href="../../index.html#projekty"><span class="lang-pl">← Portfolio</span><span class="lang-en">← Portfolio</span></a>
+                </p>
+                <div class="case-meta">
+                    <p class="source-badge">
+                        <span class="lang-pl">Dane publiczne — Brent/WTI z arkuszy EIA, kursy z API NBP, Pb95 z Weekly Oil Bulletin KE. Kolumna crude_source mówi, które źródło ropy zadziałało (tu: eia_public_xls).</span>
+                        <span class="lang-en">Public data — Brent/WTI from EIA workbooks, FX from the NBP API, Pb95 from the EC Weekly Oil Bulletin. The crude_source column records which crude feed answered (here: eia_public_xls).</span>
+                    </p>
+                    <p class="result-callout">
+                        <span class="lang-pl">Wynik: 103 miesiące i 2 186 notowań dziennych w jednej walucie. Korelacja Brent ↔ Pb95 ≈ 0,77. Spread 2,72–5,11 PLN/l. Test regresji pilnuje, żeby spread nie odejmował PLN od EUR.</span>
+                        <span class="lang-en">Result: 103 months and 2,186 daily quotes in one currency. Brent ↔ Pb95 correlation ≈ 0.77. Spread 2.72–5.11 PLN/l. A regression test guards against subtracting PLN from EUR.</span>
+                    </p>
+                    <p class="case-code-link">
+                        <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/energy-pipeline" target="_blank" rel="noopener">
+                            <span class="lang-pl">Kod na GitHubie →</span>
+                            <span class="lang-en">Code on GitHub →</span>
+                        </a>
+                    </p>
+                </div>
+                
+<div id="energy-pipeline" class="case-panel">
+                            <p class="case-panel-label"><span class="lang-pl">Projekt 03</span><span class="lang-en">Project 03</span></p>
+                            <h3>
+                                <span class="lang-pl">Od baryłki do dystrybutora — automatyczny pipeline API</span>
+                                <span class="lang-en">From Barrel to Pump — automated API data pipeline</span>
+                            </h3>
+                            <p class="lead lang-pl">
+                                <strong>Cel:</strong> pokazać produkcyjny pipeline danych — nie notebook ani dashboard.
+                                <strong>Stack:</strong> Python · requests · JSON · pandas · SQLite · pytest.
+                                Źródła: EIA (Brent/WTI), NBP (USD/PLN i EUR/PLN), Weekly Oil Bulletin KE (Pb95/diesel).
+                            </p>
+                            <p class="lead lang-en">
+                                <strong>Goal:</strong> demonstrate a production-style data pipeline — not a notebook or dashboard.
+                                <strong>Stack:</strong> Python · requests · JSON · pandas · SQLite · pytest.
+                                Sources: EIA (Brent/WTI), NBP (USD/PLN and EUR/PLN), EC Weekly Oil Bulletin (Pb95/diesel).
+                            </p>
+
+                            <section class="content-block">
+                                <h2><span class="lang-pl">Co ten projekt pokazuje inaczej</span><span class="lang-en">What this project shows differently</span></h2>
+                                <ul class="lang-pl">
+                                    <li><strong>API integration</strong> — GET do EIA (Brent/WTI) i NBP (USD/PLN, EUR/PLN): endpoint, parametry, timeout=30, kody HTTP, ponowienia.</li>
+                                    <li><strong>Obsługa błędów</strong> — gdy API nie odpowiada: <code>raise_for_status()</code> + <code>logger.error</code>, a nie pusta tabela.</li>
+                                    <li><strong>JSON → DataFrame</strong> — parsowanie odpowiedzi API do pandas, join trzech źródeł po miesiącu.</li>
+                                    <li><strong>RAW layer</strong> — surowy JSON/XLSX zapisywany 1:1 do <code>data/raw/{eia,nbp,eu_fuel}/YYYY-MM-DD.json</code>.</li>
+                                    <li><strong>ETL + SQL</strong> — Extract → Transform → Validate → Load do SQLite (<code>energy.db</code>) i CSV.</li>
+                                    <li><strong>Testy</strong> — 29 testów pytest: struktura, zakresy kursów, spójność jednostek i walut, sens ekonomiczny spreadu, a dla warstwy dziennej też to, czy jest naprawdę dzienna i czy ujemne notowanie WTI z kwietnia 2020 nie zostało odfiltrowane.</li>
+                                    <li><strong>Automatyzacja</strong> — <code>python pipeline.py</code> można odpalać cyklicznie (cron / Task Scheduler).</li>
+                                </ul>
+                                <ul class="lang-en">
+                                    <li><strong>API integration</strong> — GET to EIA (Brent/WTI) and NBP (USD/PLN, EUR/PLN): endpoint, parameters, timeout=30, HTTP codes, retries.</li>
+                                    <li><strong>Error handling</strong> — if an API is down: <code>raise_for_status()</code> + <code>logger.error</code>, not an empty table.</li>
+                                    <li><strong>JSON → DataFrame</strong> — parse API payloads into pandas, join three sources on month.</li>
+                                    <li><strong>RAW layer</strong> — raw JSON/XLSX saved 1:1 to <code>data/raw/{eia,nbp,eu_fuel}/YYYY-MM-DD.json</code>.</li>
+                                    <li><strong>ETL + SQL</strong> — Extract → Transform → Validate → Load to SQLite (<code>energy.db</code>) and CSV.</li>
+                                    <li><strong>Tests</strong> — 29 pytest checks: structure, FX ranges, unit and currency consistency, economic plausibility of the spread, and for the daily layer whether it is genuinely daily and whether April 2020's negative WTI quote survived instead of being filtered out.</li>
+                                    <li><strong>Automation</strong> — <code>python pipeline.py</code> can run on a schedule (cron / Task Scheduler).</li>
+                                </ul>
+                            </section>
+
+                            <div id="ep-walkthrough" class="dc-walkthrough">
+                                <p class="dc-walkthrough-label lang-pl">Pipeline krok po kroku — kliknij punkt, żeby zobaczyć treść</p>
+                                <p class="dc-walkthrough-label lang-en">Pipeline step by step — click a point to see the content</p>
+
+                                <ol class="dc-steps" aria-label="Pipeline steps">
+                                    <li><button type="button" class="ep-chip active" data-ep="0"><span class="lang-pl">1. Architektura</span><span class="lang-en">1. Architecture</span></button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="1">2. RAW</button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="2">3. Extract</button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="3">4. Transform</button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="4">5. Validate</button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="5">6. SQL</button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="6"><span class="lang-pl">7. Analiza</span><span class="lang-en">7. Analysis</span></button></li>
+                                    <li><button type="button" class="ep-chip" data-ep="7"><span class="lang-pl">8. Wizualizacja</span><span class="lang-en">8. Visualisation</span></button></li>
+                                </ol>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="0">
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Architektura pipeline</span><span class="lang-en">Pipeline architecture</span></h2>
+                                        <span class="dc-progress">1 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Główny produkt to nie dashboard, lecz powtarzalny pipeline ETL. Trzy źródła trafiają do warstwy RAW, potem transformacja, walidacja i zapis do SQL.</p>
+                                    <p class="dc-body lang-en">The main deliverable is not a dashboard but a repeatable ETL pipeline. Three sources land in a RAW layer, then transform, validate and load to SQL.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>EIA API — Brent i WTI w USD/baryłkę (JSON).</li>
+                                        <li>NBP API — kursy USD/PLN i EUR/PLN, tabela A (JSON).</li>
+                                        <li>Weekly Oil Bulletin KE — ceny Pb95 i diesla w Polsce (XLSX).</li>
+                                        <li>Python łączy źródła, waliduje i zapisuje do SQLite.</li>
+                                        <li>Analiza (korelacja, spread, YoY) jest na końcu — nie zamiast pipeline.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>EIA API — Brent and WTI in USD/barrel (JSON).</li>
+                                        <li>NBP API — USD/PLN and EUR/PLN rates, table A (JSON).</li>
+                                        <li>EC Weekly Oil Bulletin — Pb95 and diesel prices in Poland (XLSX).</li>
+                                        <li>Python merges sources, validates and writes to SQLite.</li>
+                                        <li>Analysis (correlation, spread, YoY) comes last — it is not the pipeline.</li>
+                                    </ul>
+                                    <div class="ep-arch">
+                                        <div class="ep-arch-row">
+                                            <div class="ep-arch-box ep-src">EIA API<br><span>Brent / WTI · JSON</span></div>
+                                            <div class="ep-arch-box ep-src">NBP API<br><span>USD/PLN · JSON</span></div>
+                                            <div class="ep-arch-box ep-src">EU fuel<br><span>Pb95 / Diesel · XLSX</span></div>
+                                        </div>
+                                        <div class="ep-arch-flow">
+                                            <span class="ep-arch-step">RAW</span><span>→</span>
+                                            <span class="ep-arch-step">TRANSFORM</span><span>→</span>
+                                            <span class="ep-arch-step">VALIDATE</span><span>→</span>
+                                            <span class="ep-arch-step">SQL</span><span>→</span>
+                                            <span class="ep-arch-step">ANALYSIS</span>
+                                        </div>
+                                    </div>
+                                    <pre class="hero-code dc-code"><code>cd projects\energy-pipeline
+pip install -r requirements.txt
+python pipeline.py</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="1" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Warstwa RAW — data lineage</span><span class="lang-en">RAW layer — data lineage</span></h2>
+                                        <span class="dc-progress">2 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Każda odpowiedź API i plik XLSX jest zapisywana dokładnie tak, jak przyszła — z datą uruchomienia w nazwie. Surowe dane nie znikają po transformacji.</p>
+                                    <p class="dc-body lang-en">Every API response and XLSX file is saved exactly as received — with the run date in the filename. Raw data is not discarded after transformation.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>source → raw → transformation → validated → analytical layer.</li>
+                                        <li>Plik: data/raw/eia/YYYY-MM-DD.json — Brent/WTI bez zmian.</li>
+                                        <li>Plik: data/raw/nbp/YYYY-MM-DD.json — kursy NBP bez zmian.</li>
+                                        <li>Plik: data/raw/eu_fuel/YYYY-MM-DD.json — bulletin KE bez zmian.</li>
+                                        <li>Dzięki dacie w nazwie widać, z którego dnia pochodzi pobranie.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>source → raw → transformation → validated → analytical layer.</li>
+                                        <li>File: data/raw/eia/YYYY-MM-DD.json — Brent/WTI unchanged.</li>
+                                        <li>File: data/raw/nbp/YYYY-MM-DD.json — NBP rates unchanged.</li>
+                                        <li>File: data/raw/eu_fuel/YYYY-MM-DD.json — EC bulletin unchanged.</li>
+                                        <li>The date in the filename shows which run produced the file.</li>
+                                    </ul>
+                                    <pre class="ep-tree">data/
+├── raw/
+│   ├── eia/2026-08-19.json
+│   ├── nbp/2026-08-19.json
+│   └── eu_fuel/2026-08-19.json
+├── processed/
+│   └── energy_market.csv   (104 rows)
+└── database/
+    └── energy.db</pre>
+                                    <pre class="hero-code dc-code"><code>def save_raw(source, payload, run_date):
+    path = RAW / source / f"{run_date}.json"
+    with path.open("w", encoding="utf-8") as fh:
+        json.dump(payload, fh, ensure_ascii=False, indent=2)
+    logger.info("RAW saved: %s", path)</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="2" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Extract — integracja API</span><span class="lang-en">Extract — API integration</span></h2>
+                                        <span class="dc-progress">3 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Pobieram trzy źródła osobno. Każde wywołanie ma timeout, sprawdzenie statusu HTTP i log błędu — pipeline nie pada cicho, gdy API nie odpowiada.</p>
+                                    <p class="dc-body lang-en">I fetch three sources separately. Each call has a timeout, HTTP status check and error log — the pipeline does not fail silently when an API is down.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>EIA — trzy poziomy: API v2 z kluczem, publiczne arkusze bez klucza (miesięczne <code>RBRTEm</code>/<code>RWTCm</code> i dzienne <code>RBRTEd</code>/<code>RWTCd</code>), a na końcu wartości referencyjne. Poziom, który zadziałał, trafia do kolumny <code>crude_source</code>. Klucz nie jest potrzebny do żadnego ziarna — arkusz dzienny jest nawet świeższy niż miesięczny, bo kończy się na poprzedniej sesji.</li>
+                                        <li>NBP: GET api.nbp.pl/api/exchangerates/rates/a/{usd,eur}/{start}/{end}/ — okna po 366 dni, bo API ogranicza zapytanie.</li>
+                                        <li>KE: pobranie XLSX Weekly Oil Bulletin (ceny z podatkiem i bez, Polska).</li>
+                                        <li>timeout=30 — żądanie nie wisi w nieskończoność.</li>
+                                        <li>raise_for_status() — kod 4xx/5xx jest błędem, nie pustą tabelą.</li>
+                                        <li>404 z NBP to nie awaria — oznacza okno bez dni publikacji (święta), więc zwracam pustą listę.</li>
+                                        <li>Ponowienia: 2 próby przed zgłoszeniem błędu; log mówi, które źródło i które okno padło.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>EIA — three tiers: API v2 with a key, public keyless workbooks (monthly <code>RBRTEm</code>/<code>RWTCm</code> and daily <code>RBRTEd</code>/<code>RWTCd</code>), then reference values as a last resort. Whichever tier answered is written to the <code>crude_source</code> column. No key is needed for either grain — the daily workbook is in fact the fresher of the two, since it closes on the previous session.</li>
+                                        <li>NBP: GET api.nbp.pl/api/exchangerates/rates/a/{usd,eur}/{start}/{end}/ — 366-day windows, since the API caps each query.</li>
+                                        <li>EC: download Weekly Oil Bulletin XLSX (prices with and without tax, Poland).</li>
+                                        <li>timeout=30 — the request does not hang forever.</li>
+                                        <li>raise_for_status() — 4xx/5xx is an error, not an empty table.</li>
+                                        <li>A 404 from NBP is not a failure — it means a window with no publication days (holidays), so I return an empty list.</li>
+                                        <li>Retries: 2 attempts before raising; the log names the source and the window that failed.</li>
+                                    </ul>
+                                    <pre class="hero-code dc-code"><code>for attempt in range(retries + 1):
+    try:
+        response = requests.get(url, timeout=30)
+        if response.status_code == 404:      # window with no publication days
+            return {"rates": []}
+        response.raise_for_status()
+        return response.json()
+    except requests.RequestException as exc:
+        logger.warning("NBP failed (%s %s..%s, attempt %d): %s",
+                       currency, start, end, attempt + 1, exc)
+raise RuntimeError(f"NBP API unavailable for {currency}")</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="3" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Transform — łączenie źródeł</span><span class="lang-en">Transform — merging sources</span></h2>
+                                        <span class="dc-progress">4 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Serie miesięczne łączę po dacie. Z trzech JSON/XLSX powstaje jedna tabela: ropa, kursy, cena na stacji i spread.
+                                        Kluczowy warunek: obie strony spreadu muszą być w tej samej walucie i tej samej jednostce objętości.</p>
+                                    <p class="dc-body lang-en">Monthly series are joined on date. Three JSON/XLSX sources become one table: crude, FX, pump price and spread.
+                                        The key constraint: both sides of the spread must share one currency and one volume unit.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>JSON / XLSX → pandas DataFrame.</li>
+                                        <li>Join po miesiącu: Brent + USD/PLN + EUR/PLN + Pb95/diesel.</li>
+                                        <li>Brent USD/bbl × USD/PLN = Brent PLN/bbl.</li>
+                                        <li>Brent PLN/bbl ÷ 158,987 l = Brent PLN/l.</li>
+                                        <li>Pb95 EUR/l × EUR/PLN = Pb95 PLN/l — bez tego kroku spread mieszałby dwie waluty.</li>
+                                        <li>Spread = Pb95 PLN/l − Brent PLN/l (podatki + marża).</li>
+                                        <li>Zmiany MoM i YoY liczone na cenie w PLN.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>JSON / XLSX → pandas DataFrame.</li>
+                                        <li>Join on month: Brent + USD/PLN + EUR/PLN + Pb95/diesel.</li>
+                                        <li>Brent USD/bbl × USD/PLN = Brent PLN/bbl.</li>
+                                        <li>Brent PLN/bbl ÷ 158.987 l = Brent PLN/l.</li>
+                                        <li>Pb95 EUR/l × EUR/PLN = Pb95 PLN/l — without this step the spread would mix two currencies.</li>
+                                        <li>Spread = Pb95 PLN/l − Brent PLN/l (taxes + margin).</li>
+                                        <li>MoM and YoY computed on the PLN price.</li>
+                                    </ul>
+                                    <div class="ep-chain" id="ep-chain"></div>
+                                    <pre class="hero-code dc-code"><code>df["brent_pln_bbl"] = df["brent_usd"] * df["usd_pln"]
+df["brent_pln_l"]   = df["brent_pln_bbl"] / LITRE_PER_BBL
+
+# Pump prices arrive in EUR/l; convert to PLN/l so the spread compares like with like
+df["pb95_pln_l"] = df["pb95_eur_l"] * df["eur_pln"]
+df["spread_retail_vs_crude"] = df["pb95_pln_l"] - df["brent_pln_l"]
+
+df["brent_usd_mom_pct"] = df["brent_usd"].pct_change() * 100</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="4" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Validate — testy jakości</span><span class="lang-en">Validate — quality tests</span></h2>
+                                        <span class="dc-progress">5 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Walidacja działa dwupoziomowo: <code>validate()</code> blokuje zapis wewnątrz pipeline'u,
+                                        a <code>pytest</code> sprawdza gotowy CSV osobno. Testy nie pilnują tylko znaków — pilnują też jednostek i sensu ekonomicznego,
+                                        bo właśnie tam kryją się błędy, których nie widać po samym uruchomieniu skryptu.</p>
+                                    <p class="dc-body lang-en">Validation runs at two levels: <code>validate()</code> blocks the load inside the pipeline,
+                                        and <code>pytest</code> checks the finished CSV separately. The tests do not just guard signs — they guard units and economic
+                                        plausibility, which is where the errors that survive a clean script run actually hide.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li><strong>Struktura</strong> — unikalne daty, jeden wiersz na miesiąc, brak dziur w szeregu.</li>
+                                        <li><strong>Kursy</strong> — USD/PLN w 3,0–5,2, EUR/PLN w 3,5–5,5, implikowany EUR/USD w 0,9–1,35.</li>
+                                        <li><strong>Jednostki</strong> — <code>brent_pln_l</code> musi wynikać z podziału przez 158,987; <code>pb95_pln_l</code> musi być przeliczony kursem EUR, nie USD.</li>
+                                        <li><strong>Waluty</strong> — <code>test_spread_is_same_currency_subtraction</code> to bezpiecznik po realnym błędzie: spread odejmował kiedyś PLN/l od EUR/l.</li>
+                                        <li><strong>Sens ekonomiczny</strong> — spread brutto musi być dodatni i mieścić się w 1,5–6 PLN/l, a spread netto musi być mniejszy od brutto.</li>
+                                        <li><strong>Pochodzenie</strong> — jeśli ropa ma mało unikalnych wartości, znacznik źródła musi to przyznawać.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li><strong>Structure</strong> — unique dates, one row per month, no gaps in the series.</li>
+                                        <li><strong>FX</strong> — USD/PLN within 3.0–5.2, EUR/PLN within 3.5–5.5, implied EUR/USD within 0.9–1.35.</li>
+                                        <li><strong>Units</strong> — <code>brent_pln_l</code> must follow from dividing by 158.987; <code>pb95_pln_l</code> must use the EUR rate, not the USD one.</li>
+                                        <li><strong>Currency</strong> — <code>test_spread_is_same_currency_subtraction</code> is a regression guard after a real bug: the spread once subtracted PLN/l from EUR/l.</li>
+                                        <li><strong>Economic plausibility</strong> — the gross spread must be positive and inside 1.5–6 PLN/l, and the net spread must be smaller than the gross one.</li>
+                                        <li><strong>Provenance</strong> — if crude has few distinct values, the source flag must admit it.</li>
+                                    </ul>
+                                    <p class="ep-test-summary"><code>pytest -q</code> → <strong>19 passed</strong></p>
+                                    <pre class="hero-code dc-code"><code>def test_spread_is_same_currency_subtraction(df):
+    """Regression guard: the gross spread once subtracted PLN/l from EUR/l."""
+    both = df.dropna(subset=["pb95_pln_l", "brent_pln_l", "spread_retail_vs_crude"])
+    expected = both["pb95_pln_l"] - both["brent_pln_l"]
+    assert (both["spread_retail_vs_crude"] - expected).abs().max() &lt; 1e-9
+
+def test_gross_spread_positive(df):
+    """Excise plus VAT alone put the pump price well above bare crude cost."""
+    assert df["spread_retail_vs_crude"].dropna().gt(0).all()</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="5" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Load — SQL + CSV</span><span class="lang-en">Load — SQL + CSV</span></h2>
+                                        <span class="dc-progress">6 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Po walidacji zapisuję warstwę analityczną do CSV i SQLite. Zapis jest <strong>idempotentny</strong>:
+                                        <code>INSERT … ON CONFLICT(date) DO UPDATE</code> aktualizuje istniejący miesiąc zamiast go duplikować,
+                                        więc skrypt można uruchamiać cyklicznie (Task Scheduler / cron) bez psucia tabeli.</p>
+                                    <p class="dc-body lang-en">After validation I write the analytical layer to CSV and SQLite. The load is <strong>idempotent</strong>:
+                                        <code>INSERT … ON CONFLICT(date) DO UPDATE</code> refreshes an existing month instead of duplicating it,
+                                        so the script can run on a schedule (Task Scheduler / cron) without corrupting the table.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>CSV: data/processed/energy_market.csv — 104 miesiące (2018–2026).</li>
+                                        <li>SQLite: data/database/energy.db — tabela energy_market, 21 kolumn.</li>
+                                        <li>Klucz główny: date — jeden wiersz = jeden miesiąc.</li>
+                                        <li>Świadomie <em>nie</em> używam <code>to_sql(if_exists="replace")</code> — to skasowałoby klucz główny i indeks ze schema.sql.</li>
+                                        <li>Load porównuje kolumny z <code>PRAGMA table_info</code> i przerywa, jeśli schemat rozjechał się z danymi.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>CSV: data/processed/energy_market.csv — 104 months (2018–2026).</li>
+                                        <li>SQLite: data/database/energy.db — energy_market table, 21 columns.</li>
+                                        <li>Primary key: date — one row = one month.</li>
+                                        <li>Deliberately <em>not</em> <code>to_sql(if_exists="replace")</code> — that would drop the primary key and index defined in schema.sql.</li>
+                                        <li>The load diffs columns against <code>PRAGMA table_info</code> and aborts if the schema drifted from the data.</li>
+                                    </ul>
+                                    <p class="ep-load-note">projects/energy-pipeline/data/processed/energy_market.csv · data/database/energy.db</p>
+                                    <pre class="hero-code dc-code"><code>placeholders = ", ".join("?" for _ in target)
+updates = ", ".join(f"{c}=excluded.{c}" for c in target if c != "date")
+sql = (
+    f"INSERT INTO energy_market ({', '.join(target)}) VALUES ({placeholders}) "
+    f"ON CONFLICT(date) DO UPDATE SET {updates}, loaded_at=datetime('now')"
+)
+conn.executemany(sql, out.itertuples(index=False, name=None))</code></pre>
+                                </div>
+
+                                <div class="dc-panel ep-panel" data-ep-panel="6" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Analiza — wnioski z pipeline</span><span class="lang-en">Analysis — pipeline takeaways</span></h2>
+                                        <span class="dc-progress">7 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Dopiero po ETL liczę korelację Brent vs Pb95, spread detal−ropa i zmiany YoY. Wniosek jest na końcu, bo bez zwalidowanych danych byłby niepewny.</p>
+                                    <p class="dc-body lang-en">Only after ETL I compute Brent vs Pb95 correlation, retail−crude spread and YoY changes. The takeaway comes last, because without validated data it would be unreliable.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>104 miesiące połączonych serii (sty 2018 – sie 2026).</li>
+                                        <li>Korelacja Brent ↔ Pb95 — związek jest wyraźny, ale nie 1:1.</li>
+                                        <li>Spread detal − ropa zmienia się w czasie (akcyza, VAT, marża, kurs).</li>
+                                        <li>Spread brutto ≈ 3,2–5,5 PLN/l — tyle kierowca płaci ponad koszt samej ropy.</li>
+                                        <li>Wniosek jest na końcu, bo bez zwalidowanych danych i wspólnej waluty byłby fikcją.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>104 months of joined series (Jan 2018 – Aug 2026).</li>
+                                        <li>Brent ↔ Pb95 correlation — a clear link, but not 1:1.</li>
+                                        <li>The retail − crude spread shifts over time (excise, VAT, margin, FX).</li>
+                                        <li>Gross spread ≈ 3.2–5.5 PLN/l — what the driver pays above the bare crude cost.</li>
+                                        <li>The takeaway comes last, because without validated data in one currency it would be fiction.</li>
+                                    </ul>
+                                    <div class="ep-metrics dc-metrics" id="ep-analysis-metrics"></div>
+                                    <p class="ep-takeaway lang-pl" id="ep-analysis-takeaway-pl"></p>
+                                    <p class="ep-takeaway lang-en" id="ep-analysis-takeaway-en"></p>
+                                    <pre class="hero-code dc-code"><code>corr = df["brent_usd"].corr(df["pb95_pln_l"])
+spread = df["pb95_pln_l"] - df["brent_pln_l"]
+
+# lag: does the pump follow crude with a delay?
+for n in range(4):
+    shifted = pd.DataFrame({"crude": df["brent_usd"],
+                            "retail": df["pb95_pln_l"].shift(-n)}).dropna()
+    print(n, shifted["crude"].corr(shifted["retail"]))</code></pre>
+                                </div>
+                                <div class="dc-panel ep-panel" data-ep-panel="7" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Wizualizacja — ropa vs stacja</span><span class="lang-en">Visualisation — crude vs pump</span></h2>
+                                        <span class="dc-progress">8 / 8</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Wyjście z <code>energy_market.csv</code> — 104 miesiące (sty 2018 – sie 2026).
+                                        <span class="dc-term" tabindex="0" data-tip="Gatunek ropy naftowej z Morza Północnego — globalny benchmark cenowy. Kiedy media mówią 'ropa kosztuje X dolarów', chodzi właśnie o Brent.">Brent</span> USD/bbl,
+                                        kursy <span class="dc-term" tabindex="0" data-tip="Narodowy Bank Polski — publikuje oficjalny kurs wymiany walut (tabela A). Pipeline pobiera USD/PLN i EUR/PLN automatycznie przez API NBP.">NBP</span> (USD/PLN i EUR/PLN) oraz ceny
+                                        <span class="dc-term" tabindex="0" data-tip="Benzyna bezołowiowa 95 — najpopularniejsze paliwo na polskich stacjach. Ceny z EC Weekly Oil Bulletin, przeliczone z EUR/l na PLN/l kursem NBP.">Pb95</span>
+                                        na stacjach w Polsce. Wszystkie ceny sprowadzone do <strong>PLN za litr</strong>, żeby dały się porównywać.</p>
+                                    <p class="dc-body lang-en">Output of <code>energy_market.csv</code> — 104 months (Jan 2018 – Aug 2026).
+                                        <span class="dc-term" tabindex="0" data-tip="North Sea crude oil — the global price benchmark. When media say 'oil costs X dollars', they mean Brent.">Brent</span> USD/bbl,
+                                        <span class="dc-term" tabindex="0" data-tip="Narodowy Bank Polski — publishes the official exchange rates (table A). The pipeline fetches USD/PLN and EUR/PLN automatically via the NBP API.">NBP</span> rates (USD/PLN and EUR/PLN) and
+                                        <span class="dc-term" tabindex="0" data-tip="Unleaded 95 petrol — the most common fuel at Polish pumps. Prices from the EC Weekly Oil Bulletin, converted from EUR/l to PLN/l at the NBP rate.">Pb95</span>
+                                        pump prices in Poland. Every price is reduced to <strong>PLN per litre</strong> so the figures are comparable.</p>
+
+                                    <div class="ep-provenance" id="ep-provenance" role="note"></div>
+
+                                    <div class="ep-metrics dc-metrics" id="ep-viz-metrics"></div>
+
+                                    <!-- Chart 1: crude vs pump price, monthly or daily -->
+                                    <h4 class="ep-chart-title" id="ep-chart-title"></h4>
+                                    <div id="ep-note-monthly">
+                                        <p class="ep-chart-note lang-pl">Niebieska linia — ropa <span class="dc-term" tabindex="0" data-tip="Brent — ropa z Morza Północnego. Lewa oś: USD za baryłkę.">Brent</span> (lewa oś, USD/baryłkę). Żółta — cena <span class="dc-term" tabindex="0" data-tip="Pb95 — benzyna bezołowiowa 95. Prawa oś: PLN za litr na polskiej stacji. Dane tygodniowe z EC Weekly Oil Bulletin, uśrednione do miesiąca i przeliczone kursem EUR/PLN.">Pb95</span> na polskiej stacji (prawa oś, PLN/litr).</p>
+                                        <p class="ep-chart-note lang-en">Blue line — <span class="dc-term" tabindex="0" data-tip="Brent crude from the North Sea. Left axis: USD per barrel.">Brent</span> crude (left axis, USD/barrel). Yellow — <span class="dc-term" tabindex="0" data-tip="Pb95 — unleaded 95 petrol. Right axis: PLN per litre at Polish pumps. Weekly EC data averaged to monthly and converted at the EUR/PLN rate.">Pb95</span> at the Polish pump (right axis, PLN/litre).</p>
+                                    </div>
+                                    <div id="ep-note-daily" hidden>
+                                        <p class="ep-chart-note lang-pl">Cienka niebieska linia — <span class="dc-term" tabindex="0" data-tip="Brent — ropa z Morza Północnego. Lewa oś: USD za baryłkę.">Brent</span>, zielona — <span class="dc-term" tabindex="0" data-tip="West Texas Intermediate — amerykański benchmark ropy. Zwykle notowany kilka dolarów niżej niż Brent; różnica to spread transatlantycki.">WTI</span> (obie na lewej osi, USD/baryłkę). Przerywana żółta — Brent przeliczony na PLN/litr kursem <span class="dc-term" tabindex="0" data-tip="Narodowy Bank Polski — kurs średni z tabeli A obowiązujący w dniu notowania.">NBP</span> (prawa oś).</p>
+                                        <p class="ep-chart-note lang-en">Thin blue line — <span class="dc-term" tabindex="0" data-tip="Brent crude from the North Sea. Left axis: USD per barrel.">Brent</span>, green — <span class="dc-term" tabindex="0" data-tip="West Texas Intermediate — the US crude benchmark. Usually quoted a few dollars below Brent; the gap is the transatlantic spread.">WTI</span> (both on the left axis, USD/barrel). Dashed yellow — Brent converted to PLN/litre at the <span class="dc-term" tabindex="0" data-tip="Narodowy Bank Polski — table A mid-rate in force on the quote date.">NBP</span> rate (right axis).</p>
+                                    </div>
+
+                                    <div class="ep-grain" id="ep-grain" role="group" aria-label="Ziarnistość danych / Data granularity">
+                                        <button type="button" class="ep-grain-btn is-active" data-grain="monthly" aria-pressed="true">
+                                            <span class="lang-pl">Miesięcznie</span><span class="lang-en">Monthly</span>
+                                        </button>
+                                        <button type="button" class="ep-grain-btn" data-grain="daily" aria-pressed="false">
+                                            <span class="lang-pl">Dziennie</span><span class="lang-en">Daily</span>
+                                        </button>
+                                        <span class="ep-grain-meta" id="ep-grain-meta"></span>
+                                    </div>
+
+                                    <div class="ep-viz-wrap" id="ep-viz-main"></div>
+                                    <p class="ep-chart-note" id="ep-grain-note"></p>
+
+                                    <!-- Chart 2: Spread -->
+                                    <h4 class="ep-chart-title lang-pl"><span class="dc-term" tabindex="0" data-tip="Spread = cena Pb95 na stacji minus przeliczona cena baryłki ropy na litr, oba w PLN/l. Spread brutto (z podatkami) mówi, ile płaci kierowca ponad cenę ropy; spread netto (bez podatków) pokazuje marżę rafineryjną i dystrybucyjną.">Spread</span>: cena na stacji − ekwiwalent ropy (PLN/l)</h4>
+                                    <h4 class="ep-chart-title lang-en"><span class="dc-term" tabindex="0" data-tip="Spread = pump price minus the crude-per-litre equivalent, both in PLN/l. The gross spread (with taxes) shows what the driver pays above crude; the net spread (taxes excluded) isolates refining and distribution margin.">Spread</span>: pump price − crude equivalent (PLN/l)</h4>
+                                    <p class="ep-chart-note lang-pl">Spread <strong>brutto</strong> to akcyza, opłata paliwowa, VAT i marża razem — dlatego jest dodatni i liczony w złotówkach, nie groszach.
+                                        Rośnie, gdy ropa tanieje szybciej niż cena na stacji, i kurczy się, gdy ropa drożeje gwałtownie. Spread <strong>netto</strong> (bez podatków) jest dostępny tylko dla najnowszej obserwacji z arkusza EC „without taxes" — dlatego pokazuję go jako pojedynczy punkt odniesienia, a nie szereg.</p>
+                                    <p class="ep-chart-note lang-en">The <strong>gross</strong> spread bundles excise, fuel levy, VAT and margin — which is why it is positive and measured in zloty, not grosz.
+                                        It widens when crude falls faster than the pump price and compresses when crude spikes. The <strong>net</strong> spread (taxes excluded) exists only for the latest observation from the EC "without taxes" sheet, so it is shown as a single reference point rather than a series.</p>
+                                    <div class="ep-viz-wrap" id="ep-viz-spread"></div>
+
+                                    <!-- Lag analysis -->
+                                    <h4 class="ep-chart-title lang-pl">Analiza <span class="dc-term" tabindex="0" data-tip="Lag (opóźnienie) — czy zmiana ceny ropy w miesiącu t wpływa na cenę Pb95 w tym samym miesiącu (t+0), czy dopiero po miesiącu (t+1), dwóch (t+2) itd.? Sprawdzamy to przez korelację przesuniętych szeregów.">opóźnienia (lag)</span> — czy Pb95 reaguje po czasie?</h4>
+                                    <h4 class="ep-chart-title lang-en"><span class="dc-term" tabindex="0" data-tip="Lag analysis — does a change in crude price in month t affect Pb95 in the same month (t+0), or only after one month (t+1), two (t+2), etc.? Checked by correlating shifted series.">Lag analysis</span> — does Pb95 react with a delay?</h4>
+                                    <p class="ep-chart-note lang-pl" id="ep-lag-note-pl"></p>
+                                    <p class="ep-chart-note lang-en" id="ep-lag-note-en"></p>
+                                    <div class="ep-lag-grid" id="ep-lag-grid"></div>
+
+                                    <!-- Table: all months -->
+                                    <h4 class="ep-chart-title lang-pl">Tabela — wszystkie miesiące</h4>
+                                    <h4 class="ep-chart-title lang-en">Table — all months</h4>
+                                    <div class="dc-table-wrap ep-table-scroll" id="ep-table-all"></div>
+
+                                    <p class="ep-takeaway lang-pl" id="ep-viz-takeaway-pl"></p>
+                                    <p class="ep-takeaway lang-en" id="ep-viz-takeaway-en"></p>
+
+                                    <p class="dc-download ep-download">
+                                        <a href="data/processed/energy_market.csv" download>
+                                            <span class="lang-pl">Pobierz energy_market.csv (miesięcznie) →</span>
+                                            <span class="lang-en">Download energy_market.csv (monthly) →</span>
+                                        </a>
+                                        <a href="data/processed/energy_market_daily.csv" download>
+                                            <span class="lang-pl">Pobierz energy_market_daily.csv (dziennie) →</span>
+                                            <span class="lang-en">Download energy_market_daily.csv (daily) →</span>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="dc-nav">
+                                <button type="button" class="btn btn-outline" id="ep-prev" disabled>
+                                    <span class="lang-pl">← Poprzedni krok</span>
+                                    <span class="lang-en">← Previous step</span>
+                                </button>
+                                <button type="button" class="btn btn-primary" id="ep-next">
+                                    <span class="lang-pl">Następny krok →</span>
+                                    <span class="lang-en">Next step →</span>
+                                </button>
+                            </div>
+
+                            <p class="dc-download ep-download">
+                                <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/energy-pipeline" target="_blank" rel="noopener">
+                                    <span class="lang-pl">Kod pipeline na GitHubie →</span>
+                                    <span class="lang-en">Pipeline code on GitHub →</span>
+                                </a>
+                            </p>
+                        
+                <section class="content-block sql-proof" id="sql">
+                    <h2><span class="lang-pl">SQL — pytania do warstwy analitycznej</span><span class="lang-en">SQL — questions on the analytical layer</span></h2>
+                    <p class="lang-pl">Po loadzie dane siedzą w SQLite (<code>energy_market</code>). Poniższe zapytania odpowiadają na konkretne pytania biznesowe. Pełny plik: <a href="sql/queries.sql"><code>sql/queries.sql</code></a>.</p>
+                    <p class="lang-en">After the load the data lives in SQLite (<code>energy_market</code>). These queries answer concrete business questions. Full file: <a href="sql/queries.sql"><code>sql/queries.sql</code></a>.</p>
+
+                    <h3 class="sql-q lang-pl">1. Ile z ceny Pb95 to ropa, a ile reszta — i jak to się zmienia?</h3>
+                    <h3 class="sql-q lang-en">1. How much of the pump price is crude, and how much is the rest — over time?</h3>
+                    <pre class="hero-code dc-code"><code>SELECT date,
+       ROUND(brent_pln_l, 2)            AS crude_pln_l,
+       ROUND(pb95_pln_l, 2)             AS pump_pln_l,
+       ROUND(spread_retail_vs_crude, 2) AS taxes_and_margin,
+       ROUND(100.0 * brent_pln_l / pb95_pln_l, 1) AS crude_share_pct
+FROM energy_market
+WHERE pb95_pln_l IS NOT NULL
+ORDER BY date;</code></pre>
+                    <p class="sql-result lang-pl">Wynik: spread 2,72–5,11 PLN/l (średnio 3,86). W lipcu 2026 ropa to ok. 28% ceny na stacji — reszta to podatki i marża.</p>
+                    <p class="sql-result lang-en">Result: spread 2.72–5.11 PLN/l (mean 3.86). In July 2026 crude is about 28% of the pump price — the rest is tax and margin.</p>
+
+                    <h3 class="sql-q lang-pl">2. Czy Pb95 idzie 1:1 za Brent, czy z opóźnieniem?</h3>
+                    <h3 class="sql-q lang-en">2. Does Pb95 track Brent 1:1, or with a lag?</h3>
+                    <pre class="hero-code dc-code"><code>WITH base AS (
+  SELECT date, brent_usd, pb95_pln_l,
+         LAG(brent_usd, 1) OVER (ORDER BY date) AS brent_lag1
+  FROM energy_market
+  WHERE brent_usd IS NOT NULL AND pb95_pln_l IS NOT NULL
+)
+SELECT ROUND(
+    (AVG(brent_usd * pb95_pln_l) - AVG(brent_usd) * AVG(pb95_pln_l))
+    / (MAX(brent_usd) - MIN(brent_usd)), 3
+) AS naive_note
+FROM base;
+-- korelacja liczona w pipeline: 0.77 (nie 1.0)
+-- lag 0 wygrywa z lag 1–3 → stacja reaguje w tym samym miesiącu, nie z opóźnieniem</code></pre>
+                    <p class="sql-result lang-pl">Wynik: korelacja Brent ↔ Pb95 ≈ 0,77. Lag 0 jest najwyższy — cena na stacji reaguje w tym samym miesiącu, ale nie jeden do jednego.</p>
+                    <p class="sql-result lang-en">Result: Brent ↔ Pb95 correlation ≈ 0.77. Lag 0 wins — the pump reacts in the same month, but not one-for-one.</p>
+
+                    <h3 class="sql-q lang-pl">3. Które miesiące najbardziej ukrywa średnia miesięczna?</h3>
+                    <h3 class="sql-q lang-en">3. Which months does a monthly average hide?</h3>
+                    <pre class="hero-code dc-code"><code>SELECT date, brent_usd, wti_usd, ROUND(spread_retail_vs_crude, 2) AS spread
+FROM energy_market
+WHERE date BETWEEN '2020-03-01' AND '2020-05-01'
+ORDER BY date;</code></pre>
+                    <p class="sql-result lang-pl">Kwiecień 2020: Brent 18,38 USD, WTI 16,55. Na warstwie dziennej WTI spada do −36,98 — średnia miesięczna gubi połowę załamania. Dlatego na stronie jest przełącznik dzienny/miesięczny.</p>
+                    <p class="sql-result lang-en">April 2020: Brent $18.38, WTI $16.55. On the daily grain WTI hits −36.98 — the monthly average hides half the crash. That is why the page has a daily/monthly switch.</p>
+                </section>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <p>© 2026 Krzysztof Blachut</p>
+            <p class="footer-links">
+                <a href="mailto:krzy.blachut@gmail.com">krzy.blachut@gmail.com</a>
+                <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/krzysztof-blachut-data" target="_blank" rel="noopener">GitHub</a>
+                <a href="../../cv.html">CV</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../../lang.js"></script>
+    <script src="../../glossary.js"></script>
+    <script src="../../nav.js"></script>
+    <script src="pipeline-data.js?v=4"></script>
+    <script src="pipeline.js"></script>
+</body>
 </html>

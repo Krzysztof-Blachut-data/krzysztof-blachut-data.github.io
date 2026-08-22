@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pl" data-lang="pl"
+    data-title-pl="CV — Krzysztof Blachut"
+    data-title-en="CV — Krzysztof Blachut"
+    data-desc-pl="Jednostronicowe CV analityka danych: jakość danych, SQL, ETL, raportowanie."
+    data-desc-en="One-page data analyst CV: data quality, SQL, ETL, reporting.">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jednostronicowe CV analityka danych: jakość danych, SQL, ETL, raportowanie.">
+    <meta name="author" content="Krzysztof Blachut">
+    <meta name="theme-color" content="#0f1419">
+    <title>CV — Krzysztof Blachut</title>
+    <link rel="canonical" href="https://krzysztof-blachut-data.github.io/cv.html">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="styles.css?v=recruit1">
+    <script>
+        (function () {
+            var q = new URLSearchParams(location.search).get("lang");
+            var l = q || localStorage.getItem("lang") || "pl";
+            l = l === "en" ? "en" : "pl";
+            document.documentElement.lang = l;
+            document.documentElement.setAttribute("data-lang", l);
+        })();
+    </script>
+</head>
+
+<body class="cv-page">
+
+    <a class="skip-link" href="#cv">
+        <span class="lang-pl">Przejdź do treści</span><span class="lang-en">Skip to content</span>
+    </a>
+
+    <nav class="nav no-print">
+        <div class="container nav-inner">
+            <a class="nav-brand" href="index.html">Krzysztof Blachut</a>
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-right" id="nav-links">
+                <ul class="nav-links">
+                    <li><a href="index.html#projekty"><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></a></li>
+                    <li><a href="index.html#kontakt"><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></a></li>
+                </ul>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" data-set-lang="pl" aria-pressed="true">PL</button>
+                    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="cv" class="cv">
+        <div class="container cv-toolbar no-print">
+            <p class="lang-pl">Jedna strona. W przeglądarce: Drukuj → „Zapisz jako PDF”.</p>
+            <p class="lang-en">One page. In the browser: Print → “Save as PDF”.</p>
+            <button type="button" class="btn btn-primary" onclick="window.print()">
+                <span class="lang-pl">Drukuj / PDF</span>
+                <span class="lang-en">Print / PDF</span>
+            </button>
+        </div>
+
+        <article class="container cv-sheet">
+            <header class="cv-head">
+                <div>
+                    <h1>Krzysztof Blachut</h1>
+                    <p class="cv-role lang-pl">Analityk danych · jakość danych i automatyzacja raportowania</p>
+                    <p class="cv-role lang-en">Data analyst · data quality and reporting automation</p>
+                    <p class="cv-target lang-pl">Szukam: junior data analyst / reporting analyst / data quality analyst</p>
+                    <p class="cv-target lang-en">Target: junior data analyst / reporting analyst / data quality analyst</p>
+                </div>
+                <ul class="cv-contact">
+                    <li>Gliwice, PL</li>
+                    <li><a href="mailto:krzy.blachut@gmail.com">krzy.blachut@gmail.com</a></li>
+                    <li><a href="https://krzysztof-blachut-data.github.io/">krzysztof-blachut-data.github.io</a></li>
+                    <li><a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/">LinkedIn</a> · <a href="https://github.com/krzysztof-blachut-data">GitHub</a></li>
+                </ul>
+            </header>
+
+            <section>
+                <h2><span class="lang-pl">Profil</span><span class="lang-en">Profile</span></h2>
+                <p class="lang-pl">Zamieniam niespójne eksporty w wiarygodne KPI i kolejki decyzyjne. Najpierw sprawdzam, czy klucze i jednostki w ogóle pozwalają na analizę. Doświadczenie laboratoryjne (LIMS, ISO 17025) pomaga czytać dane operacyjne, nie tylko tabele.</p>
+                <p class="lang-en">I turn inconsistent exports into reliable KPIs and action queues. First I check whether keys and units even allow an analysis. A lab background (LIMS, ISO 17025) helps me read operational data, not only tables.</p>
+            </section>
+
+            <section>
+                <h2><span class="lang-pl">Wybrane projekty</span><span class="lang-en">Selected projects</span></h2>
+                <ul class="cv-projects">
+                    <li>
+                        <strong class="lang-pl">Jakość danych e-commerce</strong>
+                        <strong class="lang-en">E-commerce data quality</strong>
+                        <span class="lang-pl"> — 880 500 wierszy, pięć eksportów. Odrzuciłem <code>session_id</code> jako klucz sesji (lej byłby fikcją). 150 553 zdarzeń zaraportowane jako nieprzypisywalne. 36 160 dat odzyskanych. 11 metod płatności → 4.</span>
+                        <span class="lang-en"> — 880,500 rows, five exports. Rejected <code>session_id</code> as a session key (a funnel would be fiction). 150,553 events reported as unattributable. 36,160 dates rescued. 11 payment methods → 4.</span>
+                    </li>
+                    <li>
+                        <strong class="lang-pl">Prognoza należności</strong>
+                        <strong class="lang-en">Receivables forecast</strong>
+                        <span class="lang-pl"> — 50 000 faktur AR. MAE 3,39 dnia vs 5,48 naiwnie. Output: kolejka windykacji (kogo dzwonić), nie sam wykres.</span>
+                        <span class="lang-en"> — 50,000 AR invoices. MAE 3.39 days vs 5.48 naive. Output: a collections queue (who to call), not just a chart.</span>
+                    </li>
+                    <li>
+                        <strong class="lang-pl">Pipeline energetyczny</strong>
+                        <strong class="lang-en">Energy pipeline</strong>
+                        <span class="lang-pl"> — EIA + NBP + KE do SQLite. Spread w jednej walucie, 2,72–5,11 PLN/l. Korelacja Brent ↔ Pb95 ≈ 0,77. pytest po realnym błędzie walutowym.</span>
+                        <span class="lang-en"> — EIA + NBP + EC into SQLite. Spread in one currency, 2.72–5.11 PLN/l. Brent ↔ Pb95 correlation ≈ 0.77. pytest after a real currency bug.</span>
+                    </li>
+                    <li>
+                        <strong class="lang-pl">Dashboardy API</strong>
+                        <strong class="lang-en">API dashboards</strong>
+                        <span class="lang-pl"> — OpenSky i BLS z żywych REST API, z osadzonym snapshotem i datą pobrania gdy endpoint nie odpowie.</span>
+                        <span class="lang-en"> — OpenSky and BLS from live REST APIs, with an embedded snapshot and fetch date when the endpoint is down.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2><span class="lang-pl">Umiejętności</span><span class="lang-en">Skills</span></h2>
+                <p>Python, Pandas, SQL, SQLite, ETL, pytest, REST API, Power BI (model gwiazdy / DAX), KPI dashboards, Git. LIMS, ISO 17025, BPMN.</p>
+            </section>
+
+            <section>
+                <h2><span class="lang-pl">Wykształcenie i domena</span><span class="lang-en">Education &amp; domain</span></h2>
+                <p class="lang-pl">Praktyka laboratoryjna: LIMS, workflow, ISO 17025 / GLP. Pełniejsza historia zatrudnienia jest na LinkedInie.</p>
+                <p class="lang-en">Lab practice: LIMS, workflow, ISO 17025 / GLP. Fuller employment history is on LinkedIn.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer class="no-print">
+        <div class="container footer-inner">
+            <p>© 2026 Krzysztof Blachut</p>
+            <p class="footer-links">
+                <a href="mailto:krzy.blachut@gmail.com">krzy.blachut@gmail.com</a>
+                <a href="index.html"><span class="lang-pl">Portfolio</span><span class="lang-en">Portfolio</span></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="lang.js"></script>
+    <script src="nav.js"></script>
+</body>
+</html>

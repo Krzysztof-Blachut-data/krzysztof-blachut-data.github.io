@@ -1,10 +1,264 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-lang="pl"
+    data-title-pl="Prognoza należności | Krzysztof Blachut"
+    data-title-en="Receivables forecast | Krzysztof Blachut"
+    data-desc-pl="50 000 faktur AR: kto zapłaci po terminie i kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie."
+    data-desc-en="50,000 AR invoices: who pays late and who to call first. MAE 3.39 days vs 5.48 naive.">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=../../index.html#payment-forecast">
-    <script>location.replace("../../index.html#payment-forecast");</script>
-    <title>Payment forecast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="50 000 faktur AR: kto zapłaci po terminie i kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie.">
+    <meta name="author" content="Krzysztof Blachut">
+    <meta name="theme-color" content="#0f1419">
+    <title>Prognoza należności | Krzysztof Blachut</title>
+
+    <link rel="canonical" href="https://krzysztof-blachut-data.github.io/projects/payment-forecast/">
+    <link rel="alternate" hreflang="pl" href="https://krzysztof-blachut-data.github.io/projects/payment-forecast/?lang=pl">
+    <link rel="alternate" hreflang="en" href="https://krzysztof-blachut-data.github.io/projects/payment-forecast/?lang=en">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Krzysztof Blachut | Data Analyst">
+    <meta property="og:title" content="Prognoza należności | Krzysztof Blachut">
+    <meta property="og:description" content="50 000 faktur AR: kto zapłaci po terminie i kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie.">
+    <meta property="og:url" content="https://krzysztof-blachut-data.github.io/projects/payment-forecast/">
+    <meta property="og:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
+
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../../styles.css?v=recruit1">
+    <script>
+        (function () {
+            var q = new URLSearchParams(location.search).get("lang");
+            var l = q || localStorage.getItem("lang") || "pl";
+            l = l === "en" ? "en" : "pl";
+            document.documentElement.lang = l;
+            document.documentElement.setAttribute("data-lang", l);
+        })();
+    </script>
 </head>
-<body></body>
+
+<body>
+    <a class="skip-link" href="#case">
+        <span class="lang-pl">Przejdź do treści</span><span class="lang-en">Skip to content</span>
+    </a>
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="nav-brand" href="../../index.html">Krzysztof Blachut</a>
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-right" id="nav-links">
+                <ul class="nav-links">
+                    <li><a href="../../index.html#projekty"><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></a></li>
+                    <li><a href="../../cv.html"><span class="lang-pl">CV</span><span class="lang-en">CV</span></a></li>
+                    <li><a href="../../index.html#kontakt"><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></a></li>
+                </ul>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" data-set-lang="pl" aria-pressed="true">PL</button>
+                    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="case-page" id="case">
+            <div class="container">
+                <p class="case-back">
+                    <a href="../../index.html#projekty"><span class="lang-pl">← Portfolio</span><span class="lang-en">← Portfolio</span></a>
+                </p>
+                <div class="case-meta">
+                    <p class="source-badge">
+                        <span class="lang-pl">Dane publiczne — sample należności (SkywalkerHub/Payment-Date-Prediction), nie dane firmowe. 50 000 faktur, CAD i USD, stan na 2020-05-19.</span>
+                        <span class="lang-en">Public data — receivables sample (SkywalkerHub/Payment-Date-Prediction), not company data. 50,000 invoices, CAD and USD, as of 2020-05-19.</span>
+                    </p>
+                    <p class="result-callout">
+                        <span class="lang-pl">Wynik: 42,4% faktur schodzi po terminie. Prognoza MAE 3,39 dnia vs 5,48 przy naiwnej medianie. Output to kolejka windykacji, nie sam wykres.</span>
+                        <span class="lang-en">Result: 42.4% of invoices clear late. Forecast MAE 3.39 days vs 5.48 for a naive median. The output is a collections queue, not just a chart.</span>
+                    </p>
+                    <p class="case-code-link">
+                        <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/payment-forecast" target="_blank" rel="noopener">
+                            <span class="lang-pl">Kod na GitHubie →</span>
+                            <span class="lang-en">Code on GitHub →</span>
+                        </a>
+                    </p>
+                </div>
+                
+<div id="payment-forecast" class="case-panel">
+                            <p class="case-panel-label"><span class="lang-pl">Projekt 04</span><span class="lang-en">Project 04</span></p>
+                            <h3>
+                                <span class="lang-pl">Kiedy klient zapłaci fakturę?</span>
+                                <span class="lang-en">When will the customer pay?</span>
+                            </h3>
+                            <p class="lead lang-pl">
+                                Na 50&nbsp;000 faktur należności ok. 42% schodzi po terminie.
+                                Liczę, kiedy otwarta faktura najpewniej zostanie spłacona, i układam kolejkę windykacji od największego ryzyka.
+                            </p>
+                            <p class="lead lang-en">
+                                Of 50,000 receivables invoices, about 42% clear late.
+                                I estimate when an open invoice is likely to clear and rank a collections queue by risk.
+                            </p>
+
+                            <div id="pf-root" class="pf-root">
+                                <div class="pf-kpis" id="pf-metrics"></div>
+
+                                <p class="pf-story lang-pl">
+                                    Najpierw naprawiam daty zapisane jako liczby (<code>20190307</code>), potem liczę opóźnienia i porównuję terminy płatności. Prognoza to mediana historii klienta (z fallbackiem na termin i całość). Na holdoucie czasowym pomyłka to średnio ok. 3 dni zamiast 5 przy naiwnej medianie.
+                                </p>
+                                <p class="pf-story lang-en">
+                                    First I fix dates stored as integers (<code>20190307</code>), then measure delays and compare payment terms. The forecast is the customer’s historical median (with term and global fallbacks). On a time-ordered holdout the average error is about 3 days versus 5 for a naive median.
+                                </p>
+
+                                <div class="pf-grid">
+                                    <section class="pf-panel">
+                                        <h2><span class="lang-pl">Otwarte faktury według spóźnienia</span><span class="lang-en">Open invoices by how overdue</span></h2>
+                                        <p class="pf-hint lang-pl">Suma salda w koszykach dni po terminie płatności.</p>
+                                        <p class="pf-hint lang-en">Open balance by days past due.</p>
+                                        <div id="pf-aging" class="pf-bars"></div>
+                                    </section>
+                                    <section class="pf-panel">
+                                        <h2><span class="lang-pl">Najczęstsze terminy</span><span class="lang-en">Most common terms</span></h2>
+                                        <p class="pf-hint lang-pl">Ile faktur, ile % po terminie, ile dni do spłaty.</p>
+                                        <p class="pf-hint lang-en">Invoice count, late share, days to pay.</p>
+                                        <div id="pf-terms" class="pf-table-wrap"></div>
+                                    </section>
+                                </div>
+
+                                <section class="pf-panel">
+                                    <h2><span class="lang-pl">Kogo dzwonić najpierw</span><span class="lang-en">Who to call first</span></h2>
+                                    <p class="pf-hint lang-pl">Otwarte faktury z najwyższym priorytetem: prognoza spóźnienia × kwota.</p>
+                                    <p class="pf-hint lang-en">Open invoices with the highest priority: predicted late × amount.</p>
+                                    <div id="pf-priority" class="pf-table-wrap"></div>
+                                </section>
+
+                                <section class="pf-panel">
+                                    <h2><span class="lang-pl">Odsetek spóźnień w czasie</span><span class="lang-en">Late share over time</span></h2>
+                                    <p class="pf-hint lang-pl">Udział faktur zamkniętych po terminie, miesiąc po miesiącu.</p>
+                                    <p class="pf-hint lang-en">Share of closed invoices that cleared late, month by month.</p>
+                                    <div id="pf-monthly"></div>
+                                </section>
+
+                                <section class="pf-panel pf-panel-takeaway">
+                                    <h2><span class="lang-pl">Wniosek</span><span class="lang-en">Takeaway</span></h2>
+                                    <p id="pf-takeaway" class="pf-takeaway"></p>
+                                </section>
+
+                                <details class="pf-run">
+                                    <summary><span class="lang-pl">Jak odpalić pipeline</span><span class="lang-en">How to run the pipeline</span></summary>
+                                    <pre class="hero-code dc-code"><code>cd projects\payment-forecast
+pip install -r requirements.txt
+python pipeline.py
+python scripts\build_payment_data.py
+pytest -q</code></pre>
+                                </details>
+
+                                <p class="dc-download ep-download">
+                                    <a href="data/processed/open_priority.csv" download>
+                                        <span class="lang-pl">Pobierz kolejkę (CSV) →</span>
+                                        <span class="lang-en">Download queue (CSV) →</span>
+                                    </a>
+                                    <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/payment-forecast" target="_blank" rel="noopener">
+                                        <span class="lang-pl">Kod na GitHubie →</span>
+                                        <span class="lang-en">Code on GitHub →</span>
+                                    </a>
+                                </p>
+                                <p class="ep-load-note lang-pl">Źródło: publiczny sample należności (nie dane firmowe).</p>
+                                <p class="ep-load-note lang-en">Source: public receivables sample (not company data).</p>
+                        </div>
+
+                <section class="content-block sql-proof" id="sql">
+                    <h2><span class="lang-pl">SQL i model raportowy</span><span class="lang-en">SQL and the reporting model</span></h2>
+                    <p class="lang-pl">Dashboard na tej stronie liczy te same miary, które w Power BI byłyby DAX-em na modelu gwiazdy. Nie publikuję pliku <code>.pbix</code> — działającym artefaktem jest ten raport. Poniżej schemat, miary i zapytania. Plik: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
+                    <p class="lang-en">The dashboard on this page computes the same measures that would be DAX on a star schema in Power BI. I do not publish a <code>.pbix</code> — this report is the working artefact. Schema, measures and queries below. File: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
+
+                    <h3 class="sql-q lang-pl">Model (gwiazda)</h3>
+                    <h3 class="sql-q lang-en">Model (star schema)</h3>
+                    <div class="star-schema" aria-hidden="false">
+                        <div class="star-fact">
+                            <strong>fact_invoice</strong>
+                            <span>invoice_id · amount · posting_date · due_date · clear_date · is_open · days_to_pay · days_late</span>
+                        </div>
+                        <div class="star-dims">
+                            <div><strong>dim_customer</strong><span>customer_id · name · late_rate_hist · median_days_to_pay</span></div>
+                            <div><strong>dim_terms</strong><span>term_code · credit_days</span></div>
+                            <div><strong>dim_date</strong><span>date · year · month · is_open_as_of</span></div>
+                        </div>
+                    </div>
+                    <ul class="lang-pl">
+                        <li><code>fact_invoice[customer_id]</code> → <code>dim_customer</code> (many-to-one)</li>
+                        <li><code>fact_invoice[term]</code> → <code>dim_terms</code></li>
+                        <li><code>fact_invoice[posting_date]</code> → <code>dim_date</code></li>
+                    </ul>
+                    <ul class="lang-en">
+                        <li><code>fact_invoice[customer_id]</code> → <code>dim_customer</code> (many-to-one)</li>
+                        <li><code>fact_invoice[term]</code> → <code>dim_terms</code></li>
+                        <li><code>fact_invoice[posting_date]</code> → <code>dim_date</code></li>
+                    </ul>
+
+                    <h3 class="sql-q">DAX</h3>
+                    <pre class="hero-code dc-code"><code>Late Rate :=
+DIVIDE(
+    CALCULATE(COUNTROWS(fact_invoice), fact_invoice[is_late] = TRUE()),
+    CALCULATE(COUNTROWS(fact_invoice), fact_invoice[is_open] = 0)
+)
+
+Open AR :=
+CALCULATE(SUM(fact_invoice[amount]), fact_invoice[is_open] = 1)
+
+Predicted Days to Pay :=
+VAR CustMed = CALCULATE(MEDIAN(fact_invoice[days_to_pay]), ALLEXCEPT(fact_invoice, dim_customer[customer_id]), fact_invoice[is_open] = 0)
+VAR TermMed = CALCULATE(MEDIAN(fact_invoice[days_to_pay]), ALLEXCEPT(fact_invoice, dim_terms[term_code]), fact_invoice[is_open] = 0)
+RETURN COALESCE(CustMed, TermMed, MEDIAN(fact_invoice[days_to_pay]))
+
+Call Priority :=
+[Predicted Days to Pay] * fact_invoice[amount]   -- higher = call first</code></pre>
+
+                    <h3 class="sql-q lang-pl">SQL — kogo dzwonić jutro</h3>
+                    <h3 class="sql-q lang-en">SQL — who to call tomorrow</h3>
+                    <pre class="hero-code dc-code"><code>WITH closed AS (
+  SELECT customer_id,
+         AVG(julianday(clear_date) - julianday(posting_date)) AS med_days
+  FROM fact_invoice
+  WHERE is_open = 0
+  GROUP BY customer_id
+)
+SELECT i.invoice_id, i.customer_id, i.amount,
+       ROUND(COALESCE(c.med_days, 15), 1) AS predicted_days,
+       ROUND(COALESCE(c.med_days, 15) * i.amount, 0) AS call_priority
+FROM fact_invoice i
+LEFT JOIN closed c USING (customer_id)
+WHERE i.is_open = 1
+ORDER BY call_priority DESC
+LIMIT 20;</code></pre>
+                    <p class="sql-result lang-pl">Wynik na holdoucie: MAE 3,39 dnia vs 5,48 przy naiwnej medianie globalnej. Kolejka jest w <code>open_priority.csv</code>.</p>
+                    <p class="sql-result lang-en">Holdout result: MAE 3.39 days vs 5.48 for a naive global median. The queue is in <code>open_priority.csv</code>.</p>
+                </section>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <p>© 2026 Krzysztof Blachut</p>
+            <p class="footer-links">
+                <a href="mailto:krzy.blachut@gmail.com">krzy.blachut@gmail.com</a>
+                <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/krzysztof-blachut-data" target="_blank" rel="noopener">GitHub</a>
+                <a href="../../cv.html">CV</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../../lang.js"></script>
+    <script src="../../glossary.js"></script>
+    <script src="../../nav.js"></script>
+    <script src="payment-data.js?v=2"></script>
+    <script src="payment.js?v=4"></script>
+</body>
 </html>
