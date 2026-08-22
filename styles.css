@@ -497,12 +497,6 @@ section {
     }
 }
 
-@media (min-width: 960px) {
-    .skills-categories {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
 .skill-category {
     background: var(--bg-card);
     border: 1px solid var(--border);

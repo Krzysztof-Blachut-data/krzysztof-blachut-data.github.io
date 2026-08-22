@@ -56,7 +56,7 @@
             <div class="nav-right" id="nav-links">
                 <ul class="nav-links">
                     <li><a href="../../index.html#projekty"><span class="lang-pl">Projekty</span><span class="lang-en">Projects</span></a></li>
-                    <li><a href="../../Krzysztof_Blachut_CV.pdf?v=20260822b" download="Krzysztof_Blachut_CV.pdf"><span class="lang-pl">CV</span><span class="lang-en">CV</span></a></li>
+                    <li><a href="../../Krzysztof_Blachut_CV.pdf?v=20260822c" download="Krzysztof_Blachut_CV.pdf"><span class="lang-pl">CV</span><span class="lang-en">CV</span></a></li>
                     <li><a href="../../index.html#kontakt"><span class="lang-pl">Kontakt</span><span class="lang-en">Contact</span></a></li>
                 </ul>
                 <div class="lang-switch" role="group" aria-label="Language">
@@ -79,8 +79,8 @@
                         <span class="lang-en">Public data — receivables sample (SkywalkerHub/Payment-Date-Prediction), not company data. 50,000 invoices, CAD and USD, as of 2020-05-19.</span>
                     </p>
                     <p class="result-callout">
-                        <span class="lang-pl">Wynik: 42,4% faktur schodzi po terminie. Prognoza MAE 3,39 dnia vs 5,48 przy naiwnej medianie. Output to kolejka windykacji, nie sam wykres.</span>
-                        <span class="lang-en">Result: 42.4% of invoices clear late. Forecast MAE 3.39 days vs 5.48 for a naive median. The output is a collections queue, not just a chart.</span>
+                        <span class="lang-pl">Wynik: 42,4% faktur schodzi po terminie. Prognoza MAE 3,39 dnia vs 5,48 przy naiwnej medianie. Wynikiem jest priorytetowa kolejka kontaktu z klientami, nie sam wykres.</span>
+                        <span class="lang-en">Result: 42.4% of invoices clear late. Forecast MAE 3.39 days vs 5.48 for a naive median. The result is a prioritized customer contact queue, not just a chart.</span>
                     </p>
                     <p class="case-code-link">
                         <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/payment-forecast" target="_blank" rel="noopener">
@@ -98,11 +98,11 @@
                             </h3>
                             <p class="lead lang-pl">
                                 Na 50&nbsp;000 faktur należności ok. 42% schodzi po terminie.
-                                Liczę, kiedy otwarta faktura najpewniej zostanie spłacona, i układam kolejkę windykacji od największego ryzyka.
+                                Liczę, kiedy otwarta faktura najpewniej zostanie spłacona, i układam priorytetową kolejkę kontaktu z klientami od największego ryzyka.
                             </p>
                             <p class="lead lang-en">
                                 Of 50,000 receivables invoices, about 42% clear late.
-                                I estimate when an open invoice is likely to clear and rank a collections queue by risk.
+                                I estimate when an open invoice is likely to clear and rank a prioritized customer contact queue by risk.
                             </p>
 
                             <div id="pf-root" class="pf-root">
@@ -174,8 +174,8 @@ pytest -q</code></pre>
 
                 <section class="content-block sql-proof" id="sql">
                     <h2><span class="lang-pl">SQL — pytania do należności</span><span class="lang-en">SQL — questions on receivables</span></h2>
-                    <p class="lang-pl">Dashboard na tej stronie liczy te same rzeczy co zapytania poniżej: late rate, aging i kolejkę windykacji. Pełny plik: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
-                    <p class="lang-en">The dashboard on this page computes the same things as the queries below: late rate, aging and the collections queue. Full file: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
+                    <p class="lang-pl">Dashboard na tej stronie liczy te same rzeczy co zapytania poniżej: late rate, aging i priorytetową kolejkę kontaktu z klientami. Pełny plik: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
+                    <p class="lang-en">The dashboard on this page computes the same things as the queries below: late rate, aging and the prioritized customer contact queue. Full file: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
 
                     <h3 class="sql-q lang-pl">Tabele</h3>
                     <h3 class="sql-q lang-en">Tables</h3>
@@ -233,7 +233,7 @@ LIMIT 20;</code></pre>
                 <a href="mailto:krzy.blachut@gmail.com">krzy.blachut@gmail.com</a>
                 <a href="https://www.linkedin.com/in/krzysztof-blachut-9837bb244/" target="_blank" rel="noopener">LinkedIn</a>
                 <a href="https://github.com/krzysztof-blachut-data" target="_blank" rel="noopener">GitHub</a>
-                <a href="../../Krzysztof_Blachut_CV.pdf?v=20260822b" download="Krzysztof_Blachut_CV.pdf">CV</a>
+                <a href="../../Krzysztof_Blachut_CV.pdf?v=20260822c" download="Krzysztof_Blachut_CV.pdf">CV</a>
             </p>
         </div>
     </footer>
