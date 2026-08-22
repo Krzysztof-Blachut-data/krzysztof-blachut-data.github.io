@@ -2,13 +2,13 @@
 <html lang="pl" data-lang="pl"
     data-title-pl="Prognoza należności | Krzysztof Blachut"
     data-title-en="Receivables forecast | Krzysztof Blachut"
-    data-desc-pl="50 000 faktur AR: kto zapłaci po terminie i kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie."
+    data-desc-pl="50 000 faktur AR: kto zapłaci po terminie i do kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie."
     data-desc-en="50,000 AR invoices: who pays late and who to call first. MAE 3.39 days vs 5.48 naive.">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="50 000 faktur AR: kto zapłaci po terminie i kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie.">
+    <meta name="description" content="50 000 faktur AR: kto zapłaci po terminie i do kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie.">
     <meta name="author" content="Krzysztof Blachut">
     <meta name="theme-color" content="#0f1419">
     <title>Prognoza należności | Krzysztof Blachut</title>
@@ -20,7 +20,7 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Krzysztof Blachut | Data Analyst">
     <meta property="og:title" content="Prognoza należności | Krzysztof Blachut">
-    <meta property="og:description" content="50 000 faktur AR: kto zapłaci po terminie i kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie.">
+    <meta property="og:description" content="50 000 faktur AR: kto zapłaci po terminie i do kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie.">
     <meta property="og:url" content="https://krzysztof-blachut-data.github.io/projects/payment-forecast/">
     <meta property="og:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -131,7 +131,7 @@
                                 </div>
 
                                 <section class="pf-panel">
-                                    <h2><span class="lang-pl">Kogo dzwonić najpierw</span><span class="lang-en">Who to call first</span></h2>
+                                    <h2><span class="lang-pl">Do kogo dzwonić najpierw</span><span class="lang-en">Who to call first</span></h2>
                                     <p class="pf-hint lang-pl">Otwarte faktury z najwyższym priorytetem: prognoza spóźnienia × kwota.</p>
                                     <p class="pf-hint lang-en">Open invoices with the highest priority: predicted late × amount.</p>
                                     <div id="pf-priority" class="pf-table-wrap"></div>
@@ -173,12 +173,12 @@ pytest -q</code></pre>
                         </div>
 
                 <section class="content-block sql-proof" id="sql">
-                    <h2><span class="lang-pl">SQL i model raportowy</span><span class="lang-en">SQL and the reporting model</span></h2>
-                    <p class="lang-pl">Dashboard na tej stronie liczy te same miary, które w Power BI byłyby DAX-em na modelu gwiazdy. Nie publikuję pliku <code>.pbix</code> — działającym artefaktem jest ten raport. Poniżej schemat, miary i zapytania. Plik: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
-                    <p class="lang-en">The dashboard on this page computes the same measures that would be DAX on a star schema in Power BI. I do not publish a <code>.pbix</code> — this report is the working artefact. Schema, measures and queries below. File: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
+                    <h2><span class="lang-pl">SQL — pytania do należności</span><span class="lang-en">SQL — questions on receivables</span></h2>
+                    <p class="lang-pl">Dashboard na tej stronie liczy te same rzeczy co zapytania poniżej: late rate, aging i kolejkę windykacji. Pełny plik: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
+                    <p class="lang-en">The dashboard on this page computes the same things as the queries below: late rate, aging and the collections queue. Full file: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
 
-                    <h3 class="sql-q lang-pl">Model (gwiazda)</h3>
-                    <h3 class="sql-q lang-en">Model (star schema)</h3>
+                    <h3 class="sql-q lang-pl">Tabele</h3>
+                    <h3 class="sql-q lang-en">Tables</h3>
                     <div class="star-schema" aria-hidden="false">
                         <div class="star-fact">
                             <strong>fact_invoice</strong>
@@ -191,35 +191,17 @@ pytest -q</code></pre>
                         </div>
                     </div>
                     <ul class="lang-pl">
-                        <li><code>fact_invoice[customer_id]</code> → <code>dim_customer</code> (many-to-one)</li>
-                        <li><code>fact_invoice[term]</code> → <code>dim_terms</code></li>
-                        <li><code>fact_invoice[posting_date]</code> → <code>dim_date</code></li>
+                        <li><code>fact_invoice.customer_id</code> → <code>dim_customer</code></li>
+                        <li><code>fact_invoice.term</code> → <code>dim_terms</code></li>
+                        <li><code>fact_invoice.posting_date</code> → <code>dim_date</code></li>
                     </ul>
                     <ul class="lang-en">
-                        <li><code>fact_invoice[customer_id]</code> → <code>dim_customer</code> (many-to-one)</li>
-                        <li><code>fact_invoice[term]</code> → <code>dim_terms</code></li>
-                        <li><code>fact_invoice[posting_date]</code> → <code>dim_date</code></li>
+                        <li><code>fact_invoice.customer_id</code> → <code>dim_customer</code></li>
+                        <li><code>fact_invoice.term</code> → <code>dim_terms</code></li>
+                        <li><code>fact_invoice.posting_date</code> → <code>dim_date</code></li>
                     </ul>
 
-                    <h3 class="sql-q">DAX</h3>
-                    <pre class="hero-code dc-code"><code>Late Rate :=
-DIVIDE(
-    CALCULATE(COUNTROWS(fact_invoice), fact_invoice[is_late] = TRUE()),
-    CALCULATE(COUNTROWS(fact_invoice), fact_invoice[is_open] = 0)
-)
-
-Open AR :=
-CALCULATE(SUM(fact_invoice[amount]), fact_invoice[is_open] = 1)
-
-Predicted Days to Pay :=
-VAR CustMed = CALCULATE(MEDIAN(fact_invoice[days_to_pay]), ALLEXCEPT(fact_invoice, dim_customer[customer_id]), fact_invoice[is_open] = 0)
-VAR TermMed = CALCULATE(MEDIAN(fact_invoice[days_to_pay]), ALLEXCEPT(fact_invoice, dim_terms[term_code]), fact_invoice[is_open] = 0)
-RETURN COALESCE(CustMed, TermMed, MEDIAN(fact_invoice[days_to_pay]))
-
-Call Priority :=
-[Predicted Days to Pay] * fact_invoice[amount]   -- higher = call first</code></pre>
-
-                    <h3 class="sql-q lang-pl">SQL — kogo dzwonić jutro</h3>
+                    <h3 class="sql-q lang-pl">SQL — do kogo dzwonić jutro</h3>
                     <h3 class="sql-q lang-en">SQL — who to call tomorrow</h3>
                     <pre class="hero-code dc-code"><code>WITH closed AS (
   SELECT customer_id,

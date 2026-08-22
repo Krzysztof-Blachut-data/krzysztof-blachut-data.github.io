@@ -48,7 +48,7 @@
         "url": "https://krzysztof-blachut-data.github.io/",
         "email": "krzy.blachut@gmail.com",
         "address": { "@type": "PostalAddress", "addressLocality": "Gliwice", "addressCountry": "PL" },
-        "knowsAbout": ["Data analysis", "Data cleaning", "Python", "Pandas", "SQL", "ETL", "Power BI", "REST API"],
+        "knowsAbout": ["Data analysis", "Data cleaning", "Python", "Pandas", "SQL", "ETL", "KPI dashboards", "REST API"],
         "sameAs": [
             "https://www.linkedin.com/in/krzysztof-blachut-9837bb244/",
             "https://github.com/krzysztof-blachut-data"
@@ -161,7 +161,7 @@
                 <a class="hero-shot" href="projects/payment-forecast/">
                     <span class="hero-shot-num">02</span>
                     <span class="hero-shot-body">
-                        <strong class="lang-pl">Kogo dzwonić najpierw</strong>
+                        <strong class="lang-pl">Do kogo dzwonić najpierw</strong>
                         <strong class="lang-en">Who to call first</strong>
                         <span class="lang-pl">50 000 faktur AR. Prognoza MAE 3,4 dnia zamiast 5,5. Output to kolejka windykacji.</span>
                         <span class="lang-en">50,000 AR invoices. Forecast MAE 3.4 days vs 5.5. The output is a collections queue.</span>
@@ -267,19 +267,19 @@
                             <span class="lang-pl">Należności — kolejka, nie wykres</span>
                             <span class="lang-en">Receivables — a queue, not a chart</span>
                         </h3>
-                        <p class="project-problem lang-pl"><strong>Problem.</strong> Prawie połowa faktur schodzi po terminie. Pytanie nie brzmi „ile jest salda”, tylko „kogo dzwonić jutro”.</p>
+                        <p class="project-problem lang-pl"><strong>Problem.</strong> Prawie połowa faktur schodzi po terminie. Pytanie nie brzmi „ile jest salda”, tylko „do kogo dzwonić jutro”.</p>
                         <p class="project-problem lang-en"><strong>Problem.</strong> Nearly half of invoices clear late. The question is not “how big is the balance”, but “who to call tomorrow”.</p>
                         <p class="project-scale lang-pl"><strong>Skala.</strong> 50 000 faktur · 1 461 klientów · sample publiczny AR.</p>
                         <p class="project-scale lang-en"><strong>Scale.</strong> 50,000 invoices · 1,461 customers · public AR sample.</p>
                         <ul class="project-actions-list lang-pl">
                             <li>Daty z liczb <code>20190307</code> → daty; opóźnienia i aging open AR.</li>
                             <li>Prognoza: mediana klienta → terminu → globalna, holdout czasowy.</li>
-                            <li>Kolejka: ryzyko spóźnienia × kwota. Model gwiazdy i DAX na stronie.</li>
+                            <li>Kolejka: ryzyko spóźnienia × kwota. Zapytania SQL na stronie case study.</li>
                         </ul>
                         <ul class="project-actions-list lang-en">
                             <li>Dates stored as <code>20190307</code> ints → dates; delays and open-AR aging.</li>
                             <li>Forecast: customer median → term → global, time-ordered holdout.</li>
-                            <li>Queue: late risk × amount. Star schema and DAX on the page.</li>
+                            <li>Queue: late risk × amount. SQL queries on the case-study page.</li>
                         </ul>
                         <p class="result-callout lang-pl"><strong>Wynik.</strong> MAE 3,39 dnia vs 5,48 naiwnie. 42,4% faktur late. Output: <code>open_priority.csv</code>.</p>
                         <p class="result-callout lang-en"><strong>Result.</strong> MAE 3.39 days vs 5.48 naive. 42.4% of invoices late. Output: <code>open_priority.csv</code>.</p>
@@ -381,8 +381,8 @@
                         </div>
                         <div class="pillar">
                             <h4><span class="lang-pl">Raportowanie</span><span class="lang-en">Reporting</span></h4>
-                            <p class="lang-pl">KPI, model gwiazdy, miary DAX, dashboardy. SQL w <a href="projects/energy-pipeline/#sql">pipeline energetycznym</a> i <a href="projects/payment-forecast/#sql">należnościach</a>.</p>
-                            <p class="lang-en">KPIs, star schema, DAX measures, dashboards. SQL in the <a href="projects/energy-pipeline/#sql">energy pipeline</a> and <a href="projects/payment-forecast/#sql">receivables</a> cases.</p>
+                            <p class="lang-pl">KPI, SQL i dashboardy. Zapytania w <a href="projects/energy-pipeline/#sql">pipeline energetycznym</a> i <a href="projects/payment-forecast/#sql">należnościach</a>.</p>
+                            <p class="lang-en">KPIs, SQL and dashboards. Queries in the <a href="projects/energy-pipeline/#sql">energy pipeline</a> and <a href="projects/payment-forecast/#sql">receivables</a> cases.</p>
                         </div>
                         <div class="pillar">
                             <h4><span class="lang-pl">Procesy</span><span class="lang-en">Processes</span></h4>
@@ -415,7 +415,7 @@
                     <div class="skill-category">
                         <h3><span class="lang-pl">Raportowanie</span><span class="lang-en">Reporting</span></h3>
                         <ul>
-                            <li>Power BI <span class="lang-pl">(model + DAX w case study AR)</span><span class="lang-en">(model + DAX in the AR case)</span></li>
+                            <li>SQL</li>
                             <li><span class="lang-pl">Dashboardy KPI</span><span class="lang-en">KPI dashboards</span></li>
                             <li>REST API</li>
                             <li>ETL / SQLite</li>

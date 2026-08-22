@@ -11,7 +11,7 @@ CV: [krzysztof-blachut-data.github.io/cv.html](https://krzysztof-blachut-data.gi
 1. **E-commerce (featured)** — pięć powiązanych eksportów (~880k wierszy). Najpierw sprawdzam, czy klucze w ogóle łączą tabele (`session_id` nie łączy). Dane syntetyczne.
 2. **Laboratorium** — 1 500 wyników z trzech szpitali, pomieszane jednostki i nazwy. Dane syntetyczne (LIMS).
 3. **Od baryłki do dystrybutora** — pipeline EIA + NBP + biuletyn KE, warstwa dzienna i miesięczna, SQLite, [zapytania SQL](projects/energy-pipeline/sql/queries.sql). Dane publiczne.
-4. **Prognoza płatności** — 50k faktur AR, kto spóźni się ze spłatą, kolejka do windykacji, [SQL + model DAX](projects/payment-forecast/sql/ar_queries.sql). Publiczny sample.
+4. **Prognoza płatności** — 50k faktur AR, kto spóźni się ze spłatą, kolejka do windykacji, [zapytania SQL](projects/payment-forecast/sql/ar_queries.sql). Publiczny sample.
 5. **OpenSky / BLS** — dashboardy z żywych API, ze snapshotem i datą pobrania gdy endpoint nie odpowie.
 
 ## Jak odpalić stronę lokalnie
