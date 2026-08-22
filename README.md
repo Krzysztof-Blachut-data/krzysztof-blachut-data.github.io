@@ -4,7 +4,7 @@ Portfolio: [krzysztof-blachut-data.github.io](https://krzysztof-blachut-data.git
 
 Strona po PL/EN. Zwykły HTML/CSS/JS, bez frameworka. Strona główna jest skrótem dla rekrutera; pełne case study i kod są na podstronach.
 
-CV (PDF): [Krzysztof_Blachut_CV.pdf](https://krzysztof-blachut-data.github.io/Krzysztof_Blachut_CV.pdf?v=20260822c)
+CV (PDF): [Krzysztof_Blachut_CV.pdf](https://krzysztof-blachut-data.github.io/Krzysztof_Blachut_CV.pdf?v=20260822d)
 
 ## Co jest na stronie
 
