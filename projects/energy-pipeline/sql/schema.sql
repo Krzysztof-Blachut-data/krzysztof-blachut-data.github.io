@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS energy_market (
     diesel_pln_l REAL,
     pb95_net_pln_l REAL,
 
-    spread_retail_vs_crude REAL,   -- gross (taxes + margin)
-    spread_net_vs_crude REAL,      -- net of taxes
+    spread_retail_vs_crude REAL,   -- Pb95 PLN/l minus converted crude; remainder includes tax, refining, transport, distribution, margins
+    spread_net_vs_crude REAL,      -- same gap using the tax-excluded pump price when available
 
     brent_usd_mom_pct REAL,
     brent_usd_yoy_pct REAL,

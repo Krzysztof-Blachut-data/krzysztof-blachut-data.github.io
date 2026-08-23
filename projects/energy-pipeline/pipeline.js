@@ -223,20 +223,20 @@
                     }
                     note.innerHTML = t(
                         "Każdy punkt to jedno notowanie giełdowe, przeliczone kursem NBP obowiązującym w tym dniu. " +
-                        "Ceny Pb95 nie ma tutaj celowo — biuletyn EC publikuje najwyżej raz w tygodniu, więc dzienna linia detaliczna " +
-                        "musiałaby zmyślać ceny z dni, w których nikt nie kwotował. <strong>Dlatego warto patrzeć na dane dzienne:</strong> " +
+                        "Ceny Pb95 nie ma tutaj, bo biuletyn KE publikuje najwyżej raz w tygodniu — utworzenie dziennego szeregu detalicznego " +
+                        "wymagałoby interpolacji brakujących wartości. <strong>Dane dzienne pokazują więcej:</strong> " +
                         "najniższe notowanie Brent to <strong>" + num(ex.daily_low, 2) + " USD</strong> (" + ex.daily_low_date +
-                        "), a średnia miesięczna za ten sam okres pokazuje dopiero <strong>" + num(ex.monthly_low, 2) + " USD</strong> (" +
-                        ex.monthly_low_date + "). Uśrednienie do miesiąca skasowało połowę załamania. " +
+                        "), a średnia miesięczna za ten sam okres to <strong>" + num(ex.monthly_low, 2) + " USD</strong> (" +
+                        ex.monthly_low_date + "). Średnia miesięczna znacznie wygładza dzienne spadki. " +
                         "Największy ruch w ciągu jednego dnia: <strong>" + num((DAILY.biggestMove || {}).pct, 1) + "%</strong> (" +
                         (DAILY.biggestMove || {}).date + ")." + negWti(),
 
                         "Each point is a single exchange quote, converted at the NBP rate in force that day. " +
-                        "Pb95 is deliberately absent — the EC bulletin publishes weekly at best, so a daily retail line " +
-                        "would mean inventing prices for days nobody quoted. <strong>This is what the daily grain is for:</strong> " +
+                        "Pb95 is absent because the EC bulletin is weekly at best — a daily retail series " +
+                        "would need interpolation for days with no quote. <strong>Daily data shows more:</strong> " +
                         "the lowest Brent quote is <strong>" + num(ex.daily_low, 2) + " USD</strong> (" + ex.daily_low_date +
-                        "), while the monthly average for the same period bottoms out at only <strong>" + num(ex.monthly_low, 2) +
-                        " USD</strong> (" + ex.monthly_low_date + "). Averaging to months erased half the crash. " +
+                        "), while the monthly average for the same period is <strong>" + num(ex.monthly_low, 2) +
+                        " USD</strong> (" + ex.monthly_low_date + "). The monthly average smooths the daily drops. " +
                         "Largest single-day move: <strong>" + num((DAILY.biggestMove || {}).pct, 1) + "%</strong> (" +
                         (DAILY.biggestMove || {}).date + ")." + negWti()
                     );
@@ -245,15 +245,13 @@
                         meta.textContent = chart.length + t(" miesięcy · do ", " months · through ") + (DATA.dateTo || "");
                     }
                     note.innerHTML = t(
-                        "Ziarno miesięczne to jedyne, w którym da się policzyć spread i korelację z ceną na stacji — " +
-                        "ceny detaliczne po prostu nie istnieją w rozdzielczości dziennej. Średnia miesięczna wygładza też " +
-                        "szum, dzięki czemu trend jest czytelny. Cena płaci za to utratą ekstremów: " +
-                        "przełącz na <strong>dziennie</strong>, żeby zobaczyć, ile ukrywa.",
+                        "Dane miesięczne to jedyny poziom, na którym da się porównać ropę z ceną na stacji — " +
+                        "ceny detaliczne nie są publikowane codziennie. Średnia miesięczna wygładza wahania, " +
+                        "ale też dzienne spadki: przełącz na <strong>dziennie</strong>, żeby zobaczyć różnicę.",
 
-                        "The monthly grain is the only one where the spread and the correlation with pump prices can be " +
-                        "computed at all — retail prices simply do not exist at daily resolution. Monthly averaging also " +
-                        "smooths the noise, which makes the trend legible. It pays for that by losing the extremes: " +
-                        "switch to <strong>daily</strong> to see how much it hides."
+                        "Monthly data is the only resolution where crude can be compared with the pump price — " +
+                        "retail prices are not published every day. The monthly average also " +
+                        "smooths daily drops: switch to <strong>daily</strong> to see the difference."
                     );
                 }
             }
@@ -340,14 +338,14 @@
                 out += svgText(pad.l - 8, pad.t - 6, "PLN/l", "end", "ep-axis-unit");
 
                 var legend = "<span class=\"ep-legend-item\"><span class=\"ep-dot\" style=\"background:var(--series-4)\"></span>" +
-                    t("spread brutto (podatki + marża)", "gross spread (taxes + margin)") + "</span>" +
+                    t("różnica Pb95 − koszt ropy", "Pb95 minus crude cost") + "</span>" +
                     "<span class=\"ep-legend-item\"><span class=\"ep-dot\" style=\"background:var(--series-3)\"></span>" +
-                    t("spread netto — jedna obserwacja", "net spread — single observation") + "</span>";
+                    t("różnica netto — jedna obserwacja", "net gap — single observation") + "</span>";
 
                 el.innerHTML = "<figure class=\"ep-chart-wrap\">" +
                     "<svg class=\"ep-chart\" viewBox=\"0 0 " + CHART_W + " " + CHART_H + "\" role=\"img\" aria-label=\"" +
-                    t("Spread brutto między ceną Pb95 i ekwiwalentem ropy, w złotych za litr",
-                        "Gross spread between the Pb95 price and the crude equivalent, in zloty per litre") + "\">" +
+                    t("Różnica między ceną Pb95 a przeliczonym kosztem ropy, w złotych za litr",
+                        "Gap between the Pb95 price and converted crude cost, in zloty per litre") + "\">" +
                     out + "</svg><p class=\"ep-chart-legend\">" + legend + "</p></figure>";
             }
 
@@ -374,8 +372,8 @@
                 if (src === "eia_public_xls") {
                     el.className = "ep-provenance is-live";
                     el.innerHTML = "<strong>" + t("Źródło danych:", "Data source:") + "</strong> " +
-                        t("Brent i WTI z publicznych arkuszy EIA — miesięcznych (<code>RBRTEm</code>, <code>RWTCm</code>) i dziennych (<code>RBRTEd</code>, <code>RWTCd</code>). To te same oficjalne serie co w API, tylko bez wymogu klucza, więc <strong>żadna liczba na tej stronie nie zależy od moich prywatnych danych dostępowych</strong> — każdy może odtworzyć ten pipeline. Kursy z API NBP, ceny na stacji z EC Weekly Oil Bulletin.",
-                            "Brent and WTI from EIA's public workbooks — monthly (<code>RBRTEm</code>, <code>RWTCm</code>) and daily (<code>RBRTEd</code>, <code>RWTCd</code>). These are the same official series as the API without the key requirement, so <strong>no figure on this page depends on my private credentials</strong> — anyone can reproduce this pipeline. FX from the NBP API, pump prices from the EC Weekly Oil Bulletin.") + dailyBit;
+                        t("Brent i WTI z publicznych arkuszy EIA — miesięcznych (<code>RBRTEm</code>, <code>RWTCm</code>) i dziennych (<code>RBRTEd</code>, <code>RWTCd</code>). To te same oficjalne serie co w API. Projekt można odtworzyć bez prywatnego klucza API. Kursy z API NBP, ceny na stacji z Weekly Oil Bulletin KE.",
+                            "Brent and WTI from EIA public workbooks — monthly (<code>RBRTEm</code>, <code>RWTCm</code>) and daily (<code>RBRTEd</code>, <code>RWTCd</code>). These are the same official series as the API. The project can be reproduced without a private API key. FX from the NBP API, pump prices from the EC Weekly Oil Bulletin.") + dailyBit;
                     return;
                 }
 
@@ -414,7 +412,7 @@
                     metricCard(num(DATA.corrBrentPb95, 2), "korelacja Brent↔Pb95", "Brent↔Pb95 correlation") +
                     metricCard(num(l.pb95_pln_l, 2), "Pb95 PLN/l (" + when + ")", "Pb95 PLN/l (" + when + ")") +
                     metricCard(num(l.brent_pln_l, 2), "ropa PLN/l (" + when + ")", "crude PLN/l (" + when + ")") +
-                    metricCard(num(l.spread_retail, 2), "spread brutto PLN/l", "gross spread PLN/l");
+                    metricCard(num(l.spread_retail, 2), "różnica Pb95 − ropa PLN/l", "Pb95 − crude PLN/l");
                 if (DAILY && DAILY.latest) {
                     cards += metricCard(num(DAILY.latest.brent_usd, 2),
                         "Brent USD/bbl (" + DAILY.latest.date + ")",
@@ -427,8 +425,8 @@
                     analysis.innerHTML =
                         metricCard(DATA.rows || "—", "miesięcy danych", "months of data") +
                         metricCard(num(DATA.corrBrentPb95, 2), "korelacja Brent↔Pb95", "Brent↔Pb95 correlation") +
-                        metricCard(num(s.spread_mean, 2), "średni spread PLN/l", "average spread PLN/l") +
-                        metricCard(num(s.spread_min, 2) + "–" + num(s.spread_max, 2), "zakres spreadu PLN/l", "spread range PLN/l");
+                        metricCard(num(s.spread_mean, 2), "średnia różnica PLN/l", "average gap PLN/l") +
+                        metricCard(num(s.spread_min, 2) + "–" + num(s.spread_max, 2), "zakres różnicy PLN/l", "gap range PLN/l");
                 }
             }
 
@@ -448,7 +446,7 @@
                     item(num(l.usd_pln, 4), "USD/PLN") + arrow("→") +
                     item(num(l.brent_pln_l, 3), "Brent PLN/l") + arrow("vs") +
                     item(num(l.pb95_pln_l, 3), "Pb95 PLN/l") + arrow("=") +
-                    item(num(l.spread_retail, 3), t("spread PLN/l", "spread PLN/l"), "accent");
+                    item(num(l.spread_retail, 3), t("różnica PLN/l", "gap PLN/l"), "accent");
             }
 
             function buildLag() {
@@ -459,7 +457,7 @@
                     grid.innerHTML = keys.map(function (k) {
                         var suffix = k === "0" ? "" : "+" + k;
                         var tip = k === "0"
-                            ? t("Ten sam miesiąc — korelacja bez opóźnienia.", "Same month — correlation with no lag.")
+                            ? t("Ten sam miesiąc — korelacja bez przesunięcia szeregu. To nie dowodzi, że stacje reagują w tym miesiącu.", "Same month — correlation with no series shift. That does not prove stations react in that month.")
                             : t("Pb95 przesunięty o " + k + " mies. względem Brent.", "Pb95 shifted " + k + " month(s) relative to Brent.");
                         return "<div class=\"ep-lag-card\"><strong>" + num(lags[k], 3) + "</strong><span>Brent(t) → Pb95(t" +
                             suffix + ") <span class=\"dc-term\" tabindex=\"0\" data-tip=\"" + tip + "\">ℹ</span></span></div>";
@@ -474,17 +472,17 @@
                 });
                 var pl, en;
                 if (best === "0" && monotonic) {
-                    pl = "Korelacja Brent(t) z Pb95(t+n) jest <strong>najwyższa przy n=0 (" + num(lags["0"], 3) +
-                        ")</strong> i konsekwentnie maleje wraz z przesuwaniem szeregu (n=1: " + num(lags["1"], 3) +
-                        ", n=3: " + num(lags[keys[keys.length - 1]], 3) + "). Na danych miesięcznych nie ma więc dowodu na opóźnioną reakcję stacji — na tym poziomie agregacji cena podąża za ropą w tym samym miesiącu. Ewentualny lag jest krótszy niż miesiąc i wymagałby danych tygodniowych.";
-                    en = "The correlation of Brent(t) with Pb95(t+n) is <strong>highest at n=0 (" + num(lags["0"], 3) +
-                        ")</strong> and declines consistently as the series is shifted (n=1: " + num(lags["1"], 3) +
-                        ", n=3: " + num(lags[keys[keys.length - 1]], 3) + "). Monthly data therefore shows no evidence of a delayed pump reaction — at this aggregation the price tracks crude within the same month. Any lag is shorter than a month and would need weekly data to detect.";
+                    pl = "W danych miesięcznych najwyższa korelacja występuje bez przesunięcia szeregu (<strong>" + num(lags["0"], 3) +
+                        "</strong>) i maleje przy n=1 (" + num(lags["1"], 3) + ") oraz n=3 (" + num(lags[keys[keys.length - 1]], 3) +
+                        "). Najwyższa wartość bez przesunięcia nie oznacza, że stacje reagują w tym samym miesiącu. Dane miesięczne nie pozwalają określić czasu reakcji krótszego niż miesiąc. Korelacja opisuje współzmienność, nie związek przyczynowy.";
+                    en = "On monthly data the highest correlation is at no shift (<strong>" + num(lags["0"], 3) +
+                        "</strong>) and falls at n=1 (" + num(lags["1"], 3) + ") and n=3 (" + num(lags[keys[keys.length - 1]], 3) +
+                        "). The highest value at no shift does not mean stations react in the same month. Monthly data cannot pin down a reaction shorter than a month. Correlation describes co-movement, not causation.";
                 } else {
-                    pl = "Korelacja Brent(t) z Pb95(t+n) jest najwyższa przy <strong>n=" + best + " (" + num(lags[best], 3) +
-                        ")</strong>. Wartości dla pozostałych opóźnień są niżej — kartę z najwyższą liczbą należy czytać jako wskazanie tempa reakcji stacji.";
-                    en = "The correlation of Brent(t) with Pb95(t+n) peaks at <strong>n=" + best + " (" + num(lags[best], 3) +
-                        ")</strong>. The other lags sit below it — read the highest card as the indication of how fast the pump reacts.";
+                    pl = "Najwyższa korelacja w danych miesięcznych jest przy przesunięciu <strong>n=" + best + " (" + num(lags[best], 3) +
+                        ")</strong>. To tylko porównanie współzmienności przy różnych przesunięciach, nie dowód przyczynowości.";
+                    en = "The highest monthly correlation is at shift <strong>n=" + best + " (" + num(lags[best], 3) +
+                        ")</strong>. That compares how the series move together at different shifts; it is not proof of causation.";
                 }
                 var elPl = document.getElementById("ep-lag-note-pl");
                 var elEn = document.getElementById("ep-lag-note-en");
@@ -498,28 +496,30 @@
                 var lags = DATA.lags || {};
                 var vizPl = document.getElementById("ep-viz-takeaway-pl");
                 var vizEn = document.getElementById("ep-viz-takeaway-en");
-                var pl = "<strong>Wniosek:</strong> spread brutto detal−ropa waha się od " + num(s.spread_min, 2) +
-                    " do " + num(s.spread_max, 2) + " PLN/l przy średniej " + num(s.spread_mean, 2) +
-                    " PLN/l — to skala akcyzy, opłaty paliwowej, VAT i marży razem. Kurczy się, gdy ropa drożeje gwałtownie (stacja nie przenosi wzrostu od razu), i rozszerza się, gdy ropa tanieje. Korelacja " +
-                    num(DATA.corrBrentPb95, 2) + " potwierdza związek, ale nie 1:1: o cenie na stacji decyduje też kurs EUR/PLN i część podatkowa, która nie zależy od baryłki.";
-                var en = "<strong>Takeaway:</strong> the gross retail−crude spread ranges from " + num(s.spread_min, 2) +
-                    " to " + num(s.spread_max, 2) + " PLN/l with a mean of " + num(s.spread_mean, 2) +
-                    " PLN/l — the combined weight of excise, fuel levy, VAT and margin. It compresses when crude spikes (the pump does not pass the rise through immediately) and widens when crude falls. The correlation of " +
-                    num(DATA.corrBrentPb95, 2) + " confirms the link but not a 1:1 one: the pump price also depends on EUR/PLN and on a tax component that does not move with the barrel.";
+                var pl = "<strong>Wniosek:</strong> różnica między ceną detaliczną Pb95 a przeliczonym kosztem ropy wynosiła od " + num(s.spread_min, 2) +
+                    " do " + num(s.spread_max, 2) + " PLN/l (średnio " + num(s.spread_mean, 2) +
+                    " PLN/l). Pozostała część ceny obejmuje między innymi podatki, rafinację, transport, dystrybucję i marże. Korelacja na poziomie około " +
+                    num(DATA.corrBrentPb95, 2) + " wskazuje na współzmienność cen ropy i Pb95, ale sama nie dowodzi bezpośredniego wpływu ani związku przyczynowego.";
+                var en = "<strong>Takeaway:</strong> the gap between retail Pb95 and converted crude cost ranged from " + num(s.spread_min, 2) +
+                    " to " + num(s.spread_max, 2) + " PLN/l (mean " + num(s.spread_mean, 2) +
+                    " PLN/l). The remainder includes taxes, refining, transport, distribution and margins. A correlation of about " +
+                    num(DATA.corrBrentPb95, 2) + " shows crude and Pb95 move together; it does not prove a direct or causal effect.";
                 if (vizPl) vizPl.innerHTML = pl;
                 if (vizEn) vizEn.innerHTML = en;
 
                 var aPl = document.getElementById("ep-analysis-takeaway-pl");
                 var aEn = document.getElementById("ep-analysis-takeaway-en");
                 if (aPl) {
-                    aPl.innerHTML = "<strong>Wniosek:</strong> korelacja " + num(DATA.corrBrentPb95, 2) +
-                        " przy zerowym opóźnieniu (" + num(lags["0"], 3) + ") pokazuje, że na danych miesięcznych cena Pb95 idzie za ropą w tym samym miesiącu. Stały jest natomiast nie sam poziom, lecz <em>narzut</em>: " +
-                        num(l.spread_retail, 2) + " PLN/l w ostatnim miesiącu, przy średniej " + num(s.spread_mean, 2) + " PLN/l w całym okresie.";
+                    aPl.innerHTML = "<strong>Wniosek:</strong> korelacja na poziomie około " + num(DATA.corrBrentPb95, 2) +
+                        " wskazuje na współzmienność, nie na związek przyczynowy. W danych miesięcznych najwyższa wartość jest bez przesunięcia (" + num(lags["0"], 3) +
+                        "). To nie oznacza, że stacje reagują w tym samym miesiącu. Różnica między ceną detaliczną Pb95 a przeliczonym kosztem ropy w ostatnim miesiącu: " +
+                        num(l.spread_retail, 2) + " PLN/l (średnia w okresie: " + num(s.spread_mean, 2) + " PLN/l).";
                 }
                 if (aEn) {
-                    aEn.innerHTML = "<strong>Takeaway:</strong> a correlation of " + num(DATA.corrBrentPb95, 2) +
-                        " at zero lag (" + num(lags["0"], 3) + ") shows that on monthly data the Pb95 price follows crude within the same month. What persists is not the level but the <em>markup</em>: " +
-                        num(l.spread_retail, 2) + " PLN/l in the latest month against a " + num(s.spread_mean, 2) + " PLN/l average across the period.";
+                    aEn.innerHTML = "<strong>Takeaway:</strong> a correlation of about " + num(DATA.corrBrentPb95, 2) +
+                        " shows they move together, not that one causes the other. On monthly data the highest value is at no shift (" + num(lags["0"], 3) +
+                        "). That does not mean stations react in the same month. Latest gap between retail Pb95 and converted crude cost: " +
+                        num(l.spread_retail, 2) + " PLN/l (period mean: " + num(s.spread_mean, 2) + " PLN/l).";
                 }
             }
 
@@ -529,8 +529,8 @@
                 var head = "<thead><tr><th>date</th><th>Brent USD/bbl</th><th>" +
                     t("ropa PLN/l", "crude PLN/l") + "</th><th>Pb95 PLN/l</th><th>" +
                     t("Pb95 netto PLN/l", "Pb95 net PLN/l") + "</th><th>" +
-                    t("spread brutto PLN/l", "gross spread PLN/l") + "</th><th>" +
-                    t("spread netto PLN/l", "net spread PLN/l") + "</th></tr></thead>";
+                    t("różnica brutto PLN/l", "gross gap PLN/l") + "</th><th>" +
+                    t("różnica netto PLN/l", "net gap PLN/l") + "</th></tr></thead>";
                 var body = (DATA.chart || []).map(function (r) {
                     return "<tr><td>" + r.date +
                         "</td><td>" + num(r.brent_usd, 1) +
