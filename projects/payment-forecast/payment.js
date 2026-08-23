@@ -53,7 +53,7 @@
         var rows = String(tot.rows || "—").replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
         el.innerHTML =
             metric(rows, "faktur w zbiorze", "invoices in the set") +
-            metric(pct1(cy.late_rate), "zamkniętych opłaconych po terminie", "of closed invoices paid late") +
+            metric(pct1(cy.late_rate), "zamkniętych faktur opłaconych po terminie", "closed invoices paid late") +
             metric(num(cy.median_days_to_pay, 0) + " dni", "typowy czas do spłaty", "typical days to pay") +
             metric(num(pred.mae_days, 1) + " vs " + num(pred.naive_mae_days, 1),
                 "błąd prognozy i wynik modelu bazowego", "forecast error vs baseline");
