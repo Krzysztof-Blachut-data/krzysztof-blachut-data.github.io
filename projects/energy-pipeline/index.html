@@ -75,8 +75,8 @@
                 </p>
                 <div class="case-meta">
                     <p class="source-badge">
-                        <span class="lang-pl">Dane publiczne. Brent i WTI z arkuszy EIA, kursy z API NBP, Pb95 z Weekly Oil Bulletin Komisji Europejskiej. Kolumna crude_source zapisuje, które źródło ropy zadziałało. Tu jest to eia_public_xls.</span>
-                        <span class="lang-en">Public data. Brent and WTI from EIA workbooks, FX from the NBP API, Pb95 from the EC Weekly Oil Bulletin. The crude_source column records which crude feed answered. Here it is eia_public_xls.</span>
+                        <span class="lang-pl">Dane publiczne. Brent i WTI z arkuszy EIA, kursy z API NBP, Pb95 z Weekly Oil Bulletin Komisji Europejskiej. W prezentowanym zbiorze wykorzystano publiczne arkusze EIA.</span>
+                        <span class="lang-en">Public data. Brent and WTI from EIA workbooks, FX from the NBP API, Pb95 from the EC Weekly Oil Bulletin. The presented dataset uses EIA public workbooks.</span>
                     </p>
                     <p class="result-callout">
                         <span class="lang-pl">Projekt obejmuje 103 miesiące oraz 2 186 dziennych notowań ropy. Po przeliczeniu wszystkich wartości na PLN za litr różnica między ceną detaliczną Pb95 a przeliczonym kosztem ropy wynosiła od 2,72 do 5,11 PLN/l. Korelacja miesięcznych cen Brent i Pb95 wyniosła około 0,77 i wskazuje na współzmienność, nie na związek przyczynowy. Ta różnica obejmuje między innymi podatki, rafinację, transport, dystrybucję i marże — nie da się jej sprowadzić wyłącznie do podatków i marży.</span>
@@ -91,7 +91,6 @@
                 </div>
                 
 <div id="energy-pipeline" class="case-panel">
-                            <p class="case-panel-label"><span class="lang-pl">Projekt 03</span><span class="lang-en">Project 03</span></p>
                             <h3>
                                 <span class="lang-pl">Od ceny ropy do ceny benzyny</span>
                                 <span class="lang-en">From crude price to petrol price</span>
@@ -108,19 +107,19 @@
                             <section class="content-block">
                                 <h2><span class="lang-pl">Zakres projektu</span><span class="lang-en">Project scope</span></h2>
                                 <ul class="lang-pl">
-                                    <li>Pobieram Brent i WTI z EIA oraz kursy USD/PLN i EUR/PLN z NBP. Każde wywołanie ma timeout 30 s, sprawdza kod HTTP i potrafi ponowić żądanie.</li>
+                                    <li>Pobieram Brent i WTI z EIA oraz kursy USD/PLN i EUR/PLN z NBP. Każde wywołanie ma limit czasu wynoszący 30 sekund, sprawdza kod HTTP i potrafi ponowić żądanie.</li>
                                     <li>Błędy połączenia są zapisywane w logach i nie prowadzą do utworzenia niepełnego wyniku.</li>
                                     <li>Odpowiedzi JSON trafiają do pandas i łączę trzy źródła po miesiącu.</li>
-                                    <li>Dane źródłowe JSON i XLSX zapisuję bez zmian w <code>data/raw/</code>, z datą uruchomienia w nazwie pliku.</li>
+                                    <li>Pobrane dane zapisuję w <code>data/raw/</code> w ujednoliconym formacie JSON, wraz z datą uruchomienia. Przetworzone zbiory trafiają osobno do <code>data/processed/</code>.</li>
                                     <li>Potem przetwarzanie, walidacja i zapis do SQLite (<code>energy.db</code>) oraz CSV.</li>
                                     <li>29 testów pytest sprawdza strukturę, zakresy kursów, jednostki, waluty i to, czy ujemne WTI z kwietnia 2020 nie zostało odfiltrowane.</li>
                                     <li>Uruchomienie: <code>python pipeline.py</code>.</li>
                                 </ul>
                                 <ul class="lang-en">
-                                    <li>I fetch Brent and WTI from EIA and USD/PLN plus EUR/PLN from NBP. Each call has a 30 s timeout, checks the HTTP status and can retry.</li>
+                                    <li>I fetch Brent and WTI from EIA and USD/PLN plus EUR/PLN from NBP. Each call has a 30-second time limit, checks the HTTP status and can retry.</li>
                                     <li>Connection errors are written to the logs and do not produce a partial result.</li>
                                     <li>JSON responses go into pandas and I join the three sources on month.</li>
-                                    <li>Source JSON and XLSX are saved unchanged under <code>data/raw/</code>, with the run date in the filename.</li>
+                                    <li>Fetched data are saved under <code>data/raw/</code> in a unified JSON format, with the run date in the filename. Processed files go separately to <code>data/processed/</code>.</li>
                                     <li>Then processing, validation and a write to SQLite (<code>energy.db</code>) and CSV.</li>
                                     <li>29 pytest checks cover structure, FX ranges, units, currencies and whether April 2020 negative WTI was filtered out.</li>
                                     <li>Run with <code>python pipeline.py</code>.</li>
@@ -187,20 +186,20 @@ python pipeline.py</code></pre>
                                         <h2><span class="lang-pl">Dane źródłowe</span><span class="lang-en">Source data</span></h2>
                                         <span class="dc-progress">2 / 8</span>
                                     </div>
-                                    <p class="dc-body lang-pl">Każda odpowiedź API i plik XLSX jest zapisywana dokładnie tak, jak przyszła — z datą uruchomienia w nazwie. Surowe dane nie znikają po transformacji.</p>
-                                    <p class="dc-body lang-en">Every API response and XLSX file is saved exactly as received — with the run date in the filename. Raw data is not discarded after transformation.</p>
+                                    <p class="dc-body lang-pl">Pobrane dane zapisuję w <code>data/raw/</code> w ujednoliconym formacie JSON, wraz z datą uruchomienia. Przetworzone zbiory trafiają osobno do <code>data/processed/</code>.</p>
+                                    <p class="dc-body lang-en">Fetched data are saved under <code>data/raw/</code> in a unified JSON format, with the run date in the filename. Processed files go separately to <code>data/processed/</code>.</p>
                                     <ul class="dc-issues lang-pl">
                                         <li>dane źródłowe → przetwarzanie → walidacja → zbiór do analizy.</li>
-                                        <li>Plik: data/raw/eia/YYYY-MM-DD.json — Brent/WTI bez zmian.</li>
-                                        <li>Plik: data/raw/nbp/YYYY-MM-DD.json — kursy NBP bez zmian.</li>
-                                        <li>Plik: data/raw/eu_fuel/YYYY-MM-DD.json — bulletin KE bez zmian.</li>
+                                        <li>Plik: data/raw/eia/YYYY-MM-DD.json — serie Brent/WTI w JSON.</li>
+                                        <li>Plik: data/raw/nbp/YYYY-MM-DD.json — kursy NBP w JSON.</li>
+                                        <li>Plik: data/raw/eu_fuel/YYYY-MM-DD.json — biuletyn KE w JSON.</li>
                                         <li>Dzięki dacie w nazwie widać, z którego dnia pochodzi pobranie.</li>
                                     </ul>
                                     <ul class="dc-issues lang-en">
                                         <li>source → source files → processing → validation → analysis set.</li>
-                                        <li>File: data/raw/eia/YYYY-MM-DD.json — Brent/WTI unchanged.</li>
-                                        <li>File: data/raw/nbp/YYYY-MM-DD.json — NBP rates unchanged.</li>
-                                        <li>File: data/raw/eu_fuel/YYYY-MM-DD.json — EC bulletin unchanged.</li>
+                                        <li>File: data/raw/eia/YYYY-MM-DD.json — Brent/WTI series in JSON.</li>
+                                        <li>File: data/raw/nbp/YYYY-MM-DD.json — NBP rates in JSON.</li>
+                                        <li>File: data/raw/eu_fuel/YYYY-MM-DD.json — EC bulletin in JSON.</li>
                                         <li>The date in the filename shows which run produced the file.</li>
                                     </ul>
                                     <pre class="ep-tree">data/
@@ -209,7 +208,7 @@ python pipeline.py</code></pre>
 │   ├── nbp/2026-08-19.json
 │   └── eu_fuel/2026-08-19.json
 ├── processed/
-│   └── energy_market.csv   (104 rows)
+│   └── energy_market.csv   (103 rows)
 └── database/
     └── energy.db</pre>
                                     <pre class="hero-code dc-code"><code>def save_raw(source, payload, run_date):
@@ -224,13 +223,13 @@ python pipeline.py</code></pre>
                                         <h2><span class="lang-pl">Pobieranie danych z API</span><span class="lang-en">Fetching data from the APIs</span></h2>
                                         <span class="dc-progress">3 / 8</span>
                                     </div>
-                                    <p class="dc-body lang-pl">Pobieram trzy źródła osobno. Każde wywołanie ma timeout i sprawdzenie statusu HTTP. Błędy połączenia są zapisywane w logach i nie prowadzą do utworzenia niepełnego wyniku.</p>
-                                    <p class="dc-body lang-en">I fetch three sources separately. Each call has a timeout and an HTTP status check. Connection errors are written to the logs and do not produce a partial result.</p>
+                                    <p class="dc-body lang-pl">Pobieram trzy źródła osobno. Każde wywołanie ma limit czasu i sprawdzenie statusu HTTP. Błędy połączenia są zapisywane w logach i nie prowadzą do utworzenia niepełnego wyniku.</p>
+                                    <p class="dc-body lang-en">I fetch three sources separately. Each call has a time limit and an HTTP status check. Connection errors are written to the logs and do not produce a partial result.</p>
                                     <ul class="dc-issues lang-pl">
                                         <li>EIA — trzy poziomy: API v2 z kluczem, publiczne arkusze bez klucza (miesięczne <code>RBRTEm</code>/<code>RWTCm</code> i dzienne <code>RBRTEd</code>/<code>RWTCd</code>), a na końcu wartości referencyjne. Poziom, który zadziałał, trafia do kolumny <code>crude_source</code>. Projekt można odtworzyć bez prywatnego klucza API — arkusz dzienny kończy się na poprzedniej sesji.</li>
                                         <li>NBP: GET api.nbp.pl/api/exchangerates/rates/a/{usd,eur}/{start}/{end}/ — okna po 366 dni, bo API ogranicza zapytanie.</li>
                                         <li>KE: pobranie XLSX Weekly Oil Bulletin (ceny z podatkiem i bez, Polska).</li>
-                                        <li>timeout=30 — żądanie nie wisi w nieskończoność.</li>
+                                        <li>Limit czasu wynosi 30 sekund — żądanie nie wisi w nieskończoność.</li>
                                         <li>raise_for_status() — kod 4xx/5xx jest błędem, nie pustą tabelą.</li>
                                         <li>404 z NBP to nie awaria — oznacza okno bez dni publikacji (święta), więc zwracam pustą listę.</li>
                                         <li>Ponowienia: 2 próby przed zgłoszeniem błędu; log mówi, które źródło i które okno padło.</li>
@@ -239,7 +238,7 @@ python pipeline.py</code></pre>
                                         <li>EIA — three tiers: API v2 with a key, public keyless workbooks (monthly <code>RBRTEm</code>/<code>RWTCm</code> and daily <code>RBRTEd</code>/<code>RWTCd</code>), then reference values as a last resort. Whichever tier answered is written to the <code>crude_source</code> column. No key is needed for the monthly or the daily series — the daily workbook is in fact the fresher of the two, since it closes on the previous session.</li>
                                         <li>NBP: GET api.nbp.pl/api/exchangerates/rates/a/{usd,eur}/{start}/{end}/ — 366-day windows, since the API caps each query.</li>
                                         <li>EC: download Weekly Oil Bulletin XLSX (prices with and without tax, Poland).</li>
-                                        <li>timeout=30 — the request does not hang forever.</li>
+                                        <li>The time limit is 30 seconds — the request does not hang forever.</li>
                                         <li>raise_for_status() — 4xx/5xx is an error, not an empty table.</li>
                                         <li>A 404 from NBP is not a failure — it means a window with no publication days (holidays), so I return an empty list.</li>
                                         <li>Retries: 2 attempts before raising; the log names the source and the window that failed.</li>
@@ -344,14 +343,14 @@ def test_gross_spread_positive(df):
                                         <code>INSERT … ON CONFLICT(date) DO UPDATE</code> updates an existing month instead of duplicating it,
                                         so the script can run on a schedule without corrupting the table.</p>
                                     <ul class="dc-issues lang-pl">
-                                        <li>CSV: data/processed/energy_market.csv — 104 miesiące (2018–2026).</li>
+                                        <li>CSV: data/processed/energy_market.csv — 103 miesiące (2018–2026).</li>
                                         <li>SQLite: data/database/energy.db — tabela energy_market, 21 kolumn.</li>
                                         <li>Klucz główny: date — jeden wiersz = jeden miesiąc.</li>
                                         <li>Świadomie <em>nie</em> używam <code>to_sql(if_exists="replace")</code> — to skasowałoby klucz główny i indeks ze schema.sql.</li>
                                         <li>Zapis porównuje kolumny z <code>PRAGMA table_info</code> i przerywa, jeśli schemat rozjechał się z danymi.</li>
                                     </ul>
                                     <ul class="dc-issues lang-en">
-                                        <li>CSV: data/processed/energy_market.csv — 104 months (2018–2026).</li>
+                                        <li>CSV: data/processed/energy_market.csv — 103 months (2018–2026).</li>
                                         <li>SQLite: data/database/energy.db — energy_market table, 21 columns.</li>
                                         <li>Primary key: date — one row = one month.</li>
                                         <li>Deliberately <em>not</em> <code>to_sql(if_exists="replace")</code> — that would drop the primary key and index defined in schema.sql.</li>
@@ -375,13 +374,13 @@ conn.executemany(sql, out.itertuples(index=False, name=None))</code></pre>
                                     <p class="dc-body lang-pl">Po walidacji liczę korelację Brent i Pb95, różnicę między ceną detaliczną a kosztem ropy oraz zmiany rok do roku.</p>
                                     <p class="dc-body lang-en">After validation I compute the Brent–Pb95 correlation, the gap between retail Pb95 and converted crude cost, and year-on-year changes.</p>
                                     <ul class="dc-issues lang-pl">
-                                        <li>104 miesiące połączonych serii (sty 2018 – sie 2026).</li>
+                                        <li>103 miesiące połączonych serii (sty 2018 – lip 2026).</li>
                                         <li>Korelacja Brent i Pb95 wynosi około 0,77 i wskazuje na współzmienność, nie na związek przyczynowy.</li>
                                         <li>Różnica między ceną Pb95 a przeliczonym kosztem ropy zmienia się w czasie.</li>
                                         <li>W badanym okresie ta różnica wynosiła od 2,72 do 5,11 PLN/l. Pozostała część ceny obejmuje między innymi podatki, rafinację, transport, dystrybucję i marże.</li>
                                     </ul>
                                     <ul class="dc-issues lang-en">
-                                        <li>104 months of joined series (Jan 2018 – Aug 2026).</li>
+                                        <li>103 months of joined series (Jan 2018 – Jul 2026).</li>
                                         <li>The Brent–Pb95 correlation is about 0.77 and shows they move together, not that one causes the other.</li>
                                         <li>The gap between the Pb95 price and converted crude cost changes over time.</li>
                                         <li>In this period that gap was 2.72 to 5.11 PLN/l. The remainder includes taxes, refining, transport, distribution and margins.</li>
@@ -403,12 +402,12 @@ for n in range(4):
                                         <h2><span class="lang-pl">Wizualizacja — ropa vs stacja</span><span class="lang-en">Visualisation — crude vs pump</span></h2>
                                         <span class="dc-progress">8 / 8</span>
                                     </div>
-                                    <p class="dc-body lang-pl">Wyjście z <code>energy_market.csv</code> — 104 miesiące (sty 2018 – sie 2026).
+                                    <p class="dc-body lang-pl">Wyjście z <code>energy_market.csv</code> — 103 miesiące (sty 2018 – lip 2026).
                                         <span class="dc-term" tabindex="0" data-tip="Gatunek ropy naftowej z Morza Północnego — globalny benchmark cenowy. Kiedy media mówią 'ropa kosztuje X dolarów', chodzi właśnie o Brent.">Brent</span> USD/bbl,
                                         kursy <span class="dc-term" tabindex="0" data-tip="Narodowy Bank Polski — publikuje oficjalny kurs wymiany walut (tabela A). Projekt pobiera USD/PLN i EUR/PLN automatycznie przez API NBP.">NBP</span> (USD/PLN i EUR/PLN) oraz ceny
                                         <span class="dc-term" tabindex="0" data-tip="Benzyna bezołowiowa 95 — najpopularniejsze paliwo na polskich stacjach. Ceny z EC Weekly Oil Bulletin, przeliczone z EUR/l na PLN/l kursem NBP.">Pb95</span>
                                         na stacjach w Polsce. Wszystkie ceny sprowadzone do <strong>PLN za litr</strong>, żeby dały się porównywać.</p>
-                                    <p class="dc-body lang-en">Output of <code>energy_market.csv</code> — 104 months (Jan 2018 – Aug 2026).
+                                    <p class="dc-body lang-en">Output of <code>energy_market.csv</code> — 103 months (Jan 2018 – Jul 2026).
                                         <span class="dc-term" tabindex="0" data-tip="North Sea crude oil — the global price benchmark. When media say 'oil costs X dollars', they mean Brent.">Brent</span> USD/bbl,
                                         <span class="dc-term" tabindex="0" data-tip="Narodowy Bank Polski — publishes the official exchange rates (table A). The project fetches USD/PLN and EUR/PLN automatically via the NBP API.">NBP</span> rates (USD/PLN and EUR/PLN) and
                                         <span class="dc-term" tabindex="0" data-tip="Unleaded 95 petrol — the most common fuel at Polish pumps. Prices from the EC Weekly Oil Bulletin, converted from EUR/l to PLN/l at the NBP rate.">Pb95</span>

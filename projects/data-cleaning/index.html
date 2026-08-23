@@ -91,7 +91,6 @@
                 </div>
                 
 <div id="data-cleaning" class="case-panel">
-                        <p class="case-panel-label"><span class="lang-pl">Projekt 01</span><span class="lang-en">Project 01</span></p>
                         <h3>
                             <span class="lang-pl">Ujednolicenie wyników laboratoryjnych z trzech szpitali</span>
                             <span class="lang-en">Unifying lab results from three hospitals</span>
@@ -200,8 +199,8 @@
                                         <tr>
                                             <td>Hospital_B</td><td>1567</td><td>Fasting Glucose</td>
                                             <td class="dc-cell outlier">500</td><td>mmol/L</td><td>70-99</td>
-                                            <td class="dc-issue-note lang-pl">Mało prawdopodobna wartość: 500 mmol/L glukozy jest niemożliwe</td>
-                                            <td class="dc-issue-note lang-en">Implausible value: 500 mmol/L glucose is impossible</td>
+                                            <td class="dc-issue-note lang-pl">Mało prawdopodobna wartość: wynik 500 mmol/L glukozy jest niemożliwy</td>
+                                            <td class="dc-issue-note lang-en">Implausible value: a 500 mmol/L glucose result is impossible</td>
                                         </tr>
                                         <tr>
                                             <td>Hospital_B</td><td>1932</td><td>Fasting Glucose</td>
@@ -222,8 +221,8 @@
                                 <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Zakres referencyjny nie pasuje do jednostki wyniku — np. 70–99 przy mmol/L.">zakres ≠ jednostka</span></span>
                                 <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="The reference range does not match the result unit — e.g. 70–99 with mmol/L.">range ≠ unit</span></span>
                                 <span class="dc-swatch outlier"></span>
-                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Wartość liczbowa, ale skrajnie mało prawdopodobna (np. 500 mmol/L glukozy). Pipeline najpierw ją flaguje.">mało prawdopodobna wartość</span></span>
-                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="A numeric value that is extremely unlikely (e.g. 500 mmol/L glucose). The pipeline flags it first.">implausible value</span></span>
+                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Wartość liczbowa, ale skrajnie mało prawdopodobna (np. wynik 500 mmol/L glukozy jest niemożliwy). Proces najpierw oznacza taką wartość.">mało prawdopodobna wartość</span></span>
+                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="A numeric value that is extremely unlikely (e.g. a 500 mmol/L glucose result is impossible). The process marks it first.">implausible value</span></span>
                             </p>
                             <p class="dc-download">
                                 <a href="multi_hospital_lab_results.csv" download>
@@ -306,8 +305,8 @@
                                 <span class="dc-swatch changed"></span>
                                 <span class="lang-pl">zmienione</span><span class="lang-en">changed</span>
                                 <span class="dc-swatch outlier"></span>
-                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Wartość liczbowa, ale skrajnie mało prawdopodobna (np. 500 mmol/L glukozy). Pipeline najpierw ją flaguje.">mało prawdopodobna wartość</span></span>
-                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="A numeric value that is extremely unlikely (e.g. 500 mmol/L glucose). The pipeline flags it first.">implausible value</span></span>
+                                <span class="lang-pl"><span class="dc-term" tabindex="0" data-tip="Wartość liczbowa, ale skrajnie mało prawdopodobna (np. wynik 500 mmol/L glukozy jest niemożliwy). Proces najpierw oznacza taką wartość.">mało prawdopodobna wartość</span></span>
+                                <span class="lang-en"><span class="dc-term" tabindex="0" data-tip="A numeric value that is extremely unlikely (e.g. a 500 mmol/L glucose result is impossible). The process marks it first.">implausible value</span></span>
                         </p>
                         </div>
 
@@ -340,9 +339,9 @@
         </div>
     </footer>
     <script src="../../lang.js"></script>
-    <script src="../../glossary.js?v=2"></script>
+    <script src="../../glossary.js?v=3"></script>
     <script src="../../nav.js"></script>
     <script src="raw-data.js"></script>
-    <script src="cleaning.js?v=2"></script>
+    <script src="cleaning.js?v=3"></script>
 </body>
 </html>

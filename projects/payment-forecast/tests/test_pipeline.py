@@ -94,7 +94,7 @@ def test_payment_data_js_exists():
     assert "late_rate" in text
 
 
-def test_priority_is_predicted_days_times_amount():
+def test_priority_uses_delay_not_term_length():
     open_inv = pd.DataFrame({
         "cust_number": ["A", "B"],
         "cust_payment_terms": ["NA10", "CA10"],
@@ -109,9 +109,11 @@ def test_priority_is_predicted_days_times_amount():
         global_med=15.0,
         as_of=pd.Timestamp("2020-05-19"),
     )
+    # A: pred_days_late=6, days_past_due=65 → 1000 * 65
+    # B: pred_days_late=-4, days_past_due=34 → 400 * 34
     assert scored.iloc[0]["cust_number"] == "A"
-    assert scored.iloc[0]["priority_score"] == 20000.0
-    assert scored.iloc[1]["priority_score"] == 4000.0
+    assert scored.iloc[0]["priority_score"] == 65000.0
+    assert scored.iloc[1]["priority_score"] == 13600.0
 
 
 def test_analyse_open_aging(clean: pd.DataFrame):

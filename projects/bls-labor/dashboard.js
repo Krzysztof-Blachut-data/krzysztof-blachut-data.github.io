@@ -807,12 +807,12 @@
             "<div class=\"dash-grid\">" +
             vizSection(en ? "1 · Labour market shock & recovery" : "1 · Szok na rynku pracy i odbicie") +
             "<div class=\"dash-panel dash-panel-wide bls-story-panel\">" +
-            "<h4>" + (en ? "Narrative — what happened since 2018" : "Narracja — co wydarzyło się od 2018") + "</h4>" +
+            "<h4>" + (en ? "The labour market since 2018" : "Rynek pracy od 2018 roku") + "</h4>" +
             vizDesc(
                 en ? "Read the notes first, then the two line charts — same story in words and in data."
                     : "Najpierw zdania, potem dwa wykresy — ta sama historia słowami i liczbami.",
-                en ? "April 2020 is the shock: unemployment spikes, participation drops. Both charts need their own scale."
-                    : "Kwiecień 2020 to szok: bezrobocie skacze, aktywność spada. Każdy wykres ma własną skalę — nie porównuj wysokości linii."
+                en ? "The sharp rise in unemployment in 2020 is linked to pandemic restrictions. Both charts need their own scale."
+                    : "Gwałtowny wzrost bezrobocia w 2020 roku wiąże się z ograniczeniami pandemicznymi. Każdy wykres ma własną skalę — nie porównuj wysokości linii."
             ) +
             insightsHtml(laborInsights) +
             "<div class=\"bls-chart-split\">" +
@@ -820,7 +820,7 @@
             chartHead(
                 en ? "Line chart — unemployment" : "Wykres liniowy — bezrobocie",
                 uCur ? fmtPct(uCur.value) : "—",
-                en ? "Share of people without a job" : "Odsetek osób bez pracy"
+                en ? "Share of unemployed people among the labour force" : "Odsetek osób bezrobotnych wśród aktywnych zawodowo"
             ) +
             vizDesc(
                 en ? "Y axis starts at 0% so the 2020 spike to ~15% is visible. Dashed line = pre-COVID level (~3.5%)."
@@ -861,8 +861,8 @@
                 en ? "Millions of payroll jobs" : "Liczba etatów w milionach"
             ) +
             vizDesc(
-                en ? "Payroll jobs outside farming. The 2020 hole is the lockdown; the climb is the recovery."
-                    : "Etatów poza rolnictwem. Dziura 2020 to lockdown; wzrost potem to odbicie rynku pracy.",
+                en ? "Payroll jobs outside farming. The sharp drop in employment in 2020 is linked to pandemic restrictions; the later rise is the labour-market recovery."
+                    : "Etatów poza rolnictwem. Gwałtowny spadek zatrudnienia w 2020 roku wiąże się z ograniczeniami pandemicznymi; późniejszy wzrost to odbicie rynku pracy.",
                 takeJobs()
             ) +
             chartJobs + "</div>" +
@@ -908,8 +908,7 @@
             vizDesc(
                 en ? "The same indicators as the charts, as exact numbers: latest month vs one and two years earlier."
                     : "Te same wskaźniki co na wykresach, jako dokładne liczby: ostatni miesiąc vs rok i dwa lata wcześniej.",
-                en ? "Use this table when you need the figure, not the shape of the line."
-                    : "Ta tabela jest od konkretnej liczby, nie od kształtu linii."
+                null
             ) +
             comparisonTable() +
             "</div>" +
@@ -920,7 +919,7 @@
                 ? "Monthly US labour market statistics from the Bureau of Labor Statistics (BLS), fetched via their public API. Indicators: unemployment, participation, payroll jobs, consumer prices and hourly wages."
                 : "Miesięczne statystyki rynku pracy w USA z urzędu BLS, pobrane przez publiczne API. Wskaźniki: bezrobocie, aktywność, zatrudnienie, ceny konsumpcyjne i stawki godzinowe.") +
             "</p>" +
-            "<pre class=\"hero-code dc-code\"><code>POST " + API_URL + "\n{\n  \"seriesid\": " + JSON.stringify(SERIES_IDS, null, 2).replace(/\n/g, "\n  ") + ",\n  \"startyear\": \"2018\",\n  \"endyear\": \"2025\"\n}</code></pre>" +
+            "<pre class=\"hero-code dc-code\"><code>POST " + API_URL + "\n{\n  \"seriesid\": " + JSON.stringify(SERIES_IDS, null, 2).replace(/\n/g, "\n  ") + ",\n  \"startyear\": \"2018\",\n  \"endyear\": \"" + new Date().getFullYear() + "\"\n}</code></pre>" +
             "<p class=\"dash-api-cite\"><a href=\"https://www.bls.gov/developers/api_signature_v2.htm\" target=\"_blank\" rel=\"noopener\">BLS Public Data API v2</a> · " +
             "<a href=\"https://www.bls.gov/audience/developers.htm\" target=\"_blank\" rel=\"noopener\">Developer portal</a></p></div></div>";
 

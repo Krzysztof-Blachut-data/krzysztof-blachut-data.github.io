@@ -70,7 +70,7 @@
         {
             titlePl: "Dane po czyszczeniu",
             titleEn: "Cleaned dataset",
-            bodyPl: "Z zbioru przeznaczonego do analizy wykluczam 101 brakujących lub nieprawidłowych rekordów oraz 7 nieprawdopodobnych. Zostaje 1 392 wiersze (92,8%). Zachowuję osobno dane źródłowe, ujednolicone i przeznaczone do analizy.",
+            bodyPl: "Ze zbioru przeznaczonego do analizy wykluczam 101 brakujących lub nieprawidłowych rekordów oraz 7 nieprawdopodobnych. Zostaje 1 392 wiersze (92,8%). Zachowuję osobno dane źródłowe, ujednolicone i przeznaczone do analizy.",
             bodyEn: "From the analysis set I exclude 101 missing or invalid records and 7 implausible ones. 1,392 rows remain (92.8%). Source, cleaned and analysis files are kept separately.",
             cleanStory: true,
             code: "df.to_csv(\"lab_results_standardized.csv\", index=False)  # 1,500 rows — audit trail\n\nanalysis = df.loc[df[\"quality_flag\"] == \"valid\"].copy()\nanalysis.to_csv(\"lab_results_analysis.csv\", index=False)  # 1,392 rows"
@@ -372,7 +372,7 @@
             row(en ? "Range / unit mismatches" : "Zakres niepasujący do jednostki", raw.rangeMismatch, 0, "range_mismatch") +
             row(en ? "Implausible values" : "Mało prawdopodobne", raw.implausible, 0, "implausible") +
             row(en ? "Total excluded from analysis" : "Łącznie wykluczone z analizy", raw.missingTestValues + raw.implausible, 0) +
-            row(en ? "Records in dataset" : "Rekordy w secie", raw.rows, analysis.rows) +
+            row(en ? "Records in dataset" : "Rekordy w zbiorze", raw.rows, analysis.rows) +
             "</tbody></table>";
     }
 

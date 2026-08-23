@@ -170,8 +170,8 @@
                     <span class="hero-shot-body">
                         <strong class="lang-pl">Trzy źródła, jedna waluta</strong>
                         <strong class="lang-en">Three sources, one currency</strong>
-                        <span class="lang-pl">EIA + NBP + KE. Różnica Pb95 i kosztu ropy 2,72–5,11 PLN/l. Test sprawdza, czy nie odejmuje PLN od EUR.</span>
-                        <span class="lang-en">EIA + NBP + EC. Spread 2.72–5.11 PLN/l. pytest guards against subtracting PLN from EUR.</span>
+                        <span class="lang-pl">EIA + NBP + KE. Różnica Pb95 i kosztu ropy 2,72–5,11 PLN/l. Test sprawdza, czy przy obliczaniu różnicy nie są odejmowane wartości wyrażone w różnych walutach.</span>
+                        <span class="lang-en">EIA + NBP + EC. Spread 2.72–5.11 PLN/l. The test checks that values in different currencies are not subtracted from each other.</span>
                     </span>
                 </a>
             </div>
@@ -272,12 +272,12 @@
                         <ul class="project-actions-list lang-pl">
                             <li>Poprawiłem formaty dat oraz obliczyłem opóźnienia i strukturę otwartych należności.</li>
                             <li>Przygotowałem prognozę na podstawie historii klienta i warunków płatności.</li>
-                            <li>Ułożyłem listę priorytetów kontaktu na podstawie przewidywanego czasu płatności i wartości faktury.</li>
+                            <li>Ułożyłem listę priorytetów kontaktu według kwoty i liczby dni po terminie (przewidywanych albo faktycznych).</li>
                         </ul>
                         <ul class="project-actions-list lang-en">
                             <li>I fixed date formats and computed delays and the structure of open receivables.</li>
                             <li>I built a forecast from customer history and payment terms.</li>
-                            <li>I ranked a contact list using predicted days to pay and invoice amount.</li>
+                            <li>I ranked a contact list by amount and days late (predicted or already past due).</li>
                         </ul>
                         <p class="result-callout lang-pl"><strong>Wynik:</strong> Średni błąd prognozy wyniósł 3,39 dnia w porównaniu z 5,48 dnia dla modelu bazowego. Lista priorytetów została zapisana w pliku <code>open_priority.csv</code>.</p>
                         <p class="result-callout lang-en"><strong>Result:</strong> Mean forecast error was 3.39 days versus 5.48 days for the baseline. The priority list is in <code>open_priority.csv</code>.</p>

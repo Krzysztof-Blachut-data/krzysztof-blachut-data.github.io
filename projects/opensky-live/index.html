@@ -2,13 +2,13 @@
 <html lang="pl" data-lang="pl"
     data-title-pl="OpenSky — ruch lotniczy | Krzysztof Blachut"
     data-title-en="OpenSky air traffic | Krzysztof Blachut"
-    data-desc-pl="Dashboard ADS-B w obszarze obejmującym Polskę. Dane z API OpenSky; gdy aktualne pobranie nie jest możliwe, widać ostatni zapis z datą."
-    data-desc-en="ADS-B dashboard for the area covering Poland. OpenSky API data; if a live fetch fails, the last saved set is shown with its date.">
+    data-desc-pl="Dashboard ADS-B w obszarze obejmującym Polskę. Dane z API OpenSky; zestaw pobiera zadanie na GitHubie, bo przeglądarka nie może wywołać API bezpośrednio."
+    data-desc-en="ADS-B dashboard for the area covering Poland. OpenSky API data; a GitHub Action downloads the set because the browser cannot call the API directly.">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dashboard ADS-B w obszarze obejmującym Polskę. Dane z API OpenSky; gdy aktualne pobranie nie jest możliwe, widać ostatni zapis z datą.">
+    <meta name="description" content="Dashboard ADS-B w obszarze obejmującym Polskę. Dane z API OpenSky; zestaw pobiera zadanie na GitHubie, bo przeglądarka nie może wywołać API bezpośrednio.">
     <meta name="author" content="Krzysztof Blachut">
     <meta name="theme-color" content="#0f1419">
     <title>OpenSky — ruch lotniczy | Krzysztof Blachut</title>
@@ -20,7 +20,7 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Krzysztof Blachut | Data Analyst">
     <meta property="og:title" content="OpenSky — ruch lotniczy | Krzysztof Blachut">
-    <meta property="og:description" content="Dashboard ADS-B w obszarze obejmującym Polskę. Dane z API OpenSky; gdy aktualne pobranie nie jest możliwe, widać ostatni zapis z datą.">
+    <meta property="og:description" content="Dashboard ADS-B w obszarze obejmującym Polskę. Dane z API OpenSky; zestaw pobiera zadanie na GitHubie, bo przeglądarka nie może wywołać API bezpośrednio.">
     <meta property="og:url" content="https://krzysztof-blachut-data.github.io/projects/opensky-live/">
     <meta property="og:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -75,8 +75,8 @@
                 </p>
                 <div class="case-meta">
                     <p class="source-badge">
-                        <span class="lang-pl">Dane publiczne z OpenSky Network API (wektory stanu ADS-B). Zakres to prostokąt geograficzny obejmujący Polskę, nie dokładny kontur granic. Pole origin_country to kraj rejestracji statku powietrznego, nie miejsce startu lotu. Gdy nie uda się pobrać aktualnych danych, strona pokazuje ostatni zapis z datą pobrania.</span>
-                        <span class="lang-en">Public data from the OpenSky Network API (ADS-B state vectors). The query uses a bounding box covering Poland, not the exact border. origin_country is the aircraft’s country of registration, not the flight’s origin. If current data cannot be fetched, the page shows the last saved set with its date.</span>
+                        <span class="lang-pl">Dane publiczne z OpenSky Network API (wektory stanu ADS-B). Zakres to prostokąt geograficzny obejmujący Polskę, nie dokładny kontur granic. Pole origin_country to kraj rejestracji statku powietrznego, nie miejsce startu lotu. OpenSky nie pozwala przeglądarce wywołać API ze strony (CORS). Zestaw pobiera zadanie na GitHubie i zapisuje go z datą.</span>
+                        <span class="lang-en">Public data from the OpenSky Network API (ADS-B state vectors). The query uses a bounding box covering Poland, not the exact border. origin_country is the aircraft’s country of registration, not the flight’s origin. OpenSky does not allow the browser to call the API from the page (CORS). A GitHub Action downloads the set and saves it with a date.</span>
                     </p>
                     <p class="result-callout">
                         <span class="lang-pl">Wynikiem projektu jest interaktywny dashboard przedstawiający pozycje samolotów, najważniejsze wskaźniki oraz strukturę krajów rejestracji. Przy każdym wyświetleniu widoczne są źródło danych i czas ostatniej obserwacji.</span>
@@ -91,18 +91,17 @@
                 </div>
                 
 <div id="opensky-live" class="case-panel dash-panel-root" role="tabpanel">
-                            <p class="case-panel-label"><span class="lang-pl">Dashboard 01</span><span class="lang-en">Dashboard 01</span></p>
                             <h3>
                                 <span class="lang-pl">Ruch lotniczy nad Polską (OpenSky ADS-B)</span>
                                 <span class="lang-en">Air traffic over Poland (OpenSky ADS-B)</span>
                             </h3>
                             <p class="lead lang-pl">
                                 Dashboard pokazuje pozycje samolotów w obszarze obejmującym Polskę. Dane pozwalają sprawdzić liczbę samolotów w powietrzu, ich wysokość, prędkość, kierunek lotu oraz kraj rejestracji.
-                                Dane są pobierane z API OpenSky. Jeżeli aktualne pobranie nie jest możliwe, dashboard wyświetla ostatni zapisany zestaw wraz z datą jego pozyskania.
+                                Dane pochodzą z API OpenSky. Przeglądarka nie może wywołać tego API bezpośrednio, więc zestaw pobiera zadanie na GitHubie. Data ostatniego pobrania jest zawsze widoczna.
                             </p>
                             <p class="lead lang-en">
                                 The dashboard shows aircraft positions in the area covering Poland. It reports how many aircraft are airborne, plus altitude, speed, heading and country of registration.
-                                Data comes from the OpenSky API. If a current fetch is not possible, the dashboard shows the last saved set and when it was obtained.
+                                Data comes from the OpenSky API. The browser cannot call that API directly, so a GitHub Action downloads the set. The last download date is always visible.
                             </p>
                             <div id="opensky-dashboard" class="dash-root"></div>
                         </div>
@@ -126,7 +125,7 @@
     <script src="../../lang.js"></script>
     <script src="../../glossary.js"></script>
     <script src="../../nav.js"></script>
-    <script src="snapshot.js"></script>
-    <script src="dashboard.js?v=2"></script>
+    <script src="snapshot.js?v=20260823"></script>
+    <script src="dashboard.js?v=3"></script>
 </body>
 </html>

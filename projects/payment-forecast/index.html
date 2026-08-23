@@ -91,27 +91,201 @@
                 </div>
                 
 <div id="payment-forecast" class="case-panel">
-                            <p class="case-panel-label"><span class="lang-pl">Projekt 04</span><span class="lang-en">Project 04</span></p>
                             <h3>
                                 <span class="lang-pl">Kiedy klient zapłaci fakturę?</span>
                                 <span class="lang-en">When will the customer pay?</span>
                             </h3>
                             <p class="lead lang-pl">
                                 Zbiór zawiera 50&nbsp;000 faktur, z których 42,4% zostało opłaconych po terminie. Celem projektu jest oszacowanie terminu płatności nieopłaconych faktur oraz wskazanie klientów wymagających kontaktu w pierwszej kolejności.
+                                Narzędzia: Python, pandas, pytest.
                             </p>
                             <p class="lead lang-en">
                                 The set has 50,000 invoices, of which 42.4% were paid late. The project estimates when unpaid invoices will be paid and shows which customers to contact first.
+                                Tools: Python, pandas, pytest.
                             </p>
+
+                            <div id="pf-walkthrough" class="dc-walkthrough">
+                                <p class="dc-walkthrough-label lang-pl">Kroki projektu. Kliknij punkt, żeby zobaczyć treść.</p>
+                                <p class="dc-walkthrough-label lang-en">Project steps. Click a point to see the content.</p>
+
+                                <ol class="dc-steps" aria-label="Kroki projektu">
+                                    <li><button type="button" class="ep-chip active" data-pf="0"><span class="lang-pl">1. Dane źródłowe</span><span class="lang-en">1. Source data</span></button></li>
+                                    <li><button type="button" class="ep-chip" data-pf="1"><span class="lang-pl">2. Czyszczenie dat</span><span class="lang-en">2. Date cleaning</span></button></li>
+                                    <li><button type="button" class="ep-chip" data-pf="2"><span class="lang-pl">3. Czas płatności</span><span class="lang-en">3. Time to pay</span></button></li>
+                                    <li><button type="button" class="ep-chip" data-pf="3"><span class="lang-pl">4. Prognoza</span><span class="lang-en">4. Forecast</span></button></li>
+                                    <li><button type="button" class="ep-chip" data-pf="4"><span class="lang-pl">5. Priorytety</span><span class="lang-en">5. Priorities</span></button></li>
+                                    <li><button type="button" class="ep-chip" data-pf="5"><span class="lang-pl">6. SQL</span><span class="lang-en">6. SQL</span></button></li>
+                                </ol>
+
+                                <div class="dc-panel" data-pf-panel="0">
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Dane źródłowe</span><span class="lang-en">Source data</span></h2>
+                                        <span class="dc-progress">1 / 6</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Publiczna próbka należności, nie dane firmowe. 50&nbsp;000 faktur, 1&nbsp;461 klientów, waluty CAD i USD, stan na 19 maja 2020.</p>
+                                    <p class="dc-body lang-en">A public receivables set, not company data. 50,000 invoices, 1,461 customers, CAD and USD, as of 19 May 2020.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>Źródło: SkywalkerHub/Payment-Date-Prediction.</li>
+                                        <li>Część dat jest zapisana jako liczba, na przykład <code>20190307</code>.</li>
+                                        <li>W nagłówkach jest literówka <code>buisness_year</code>.</li>
+                                        <li>45&nbsp;181 faktur jest zamkniętych, 4&nbsp;819 pozostaje nieopłaconych.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>Source: SkywalkerHub/Payment-Date-Prediction.</li>
+                                        <li>Some dates are stored as numbers, for example <code>20190307</code>.</li>
+                                        <li>The headers include the typo <code>buisness_year</code>.</li>
+                                        <li>45,181 invoices are closed; 4,819 are still unpaid.</li>
+                                    </ul>
+                                    <pre class="hero-code dc-code"><code>SOURCE_URL = (
+    "https://raw.githubusercontent.com/SkywalkerHub/"
+    "Payment-Date-Prediction/main/Dataset.csv"
+)
+RENAME = {"buisness_year": "business_year"}</code></pre>
+                                </div>
+
+                                <div class="dc-panel" data-pf-panel="1" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Czyszczenie dat</span><span class="lang-en">Date cleaning</span></h2>
+                                        <span class="dc-progress">2 / 6</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Najpierw poprawiam nazwy kolumn i zamieniam daty liczbowe na prawdziwe daty. Bez tego nie da się policzyć czasu płatności ani opóźnienia.</p>
+                                    <p class="dc-body lang-en">I first fix column names and turn numeric dates into real dates. Without that, time to pay and days late cannot be computed.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li><code>20190307</code> zostaje zamienione na 7 marca 2019.</li>
+                                        <li>Termin płatności i data dokumentu są w tym formacie liczbowym.</li>
+                                        <li>Data księgowania i data spłaty są już w formacie daty — tylko je wczytuję.</li>
+                                        <li>Pusta kolumna <code>area_business</code> wypada z dalszej pracy.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li><code>20190307</code> becomes 7 March 2019.</li>
+                                        <li>The due date and document date use that numeric format.</li>
+                                        <li>Posting date and clear date are already dates — I only parse them.</li>
+                                        <li>The empty <code>area_business</code> column is dropped.</li>
+                                    </ul>
+                                    <pre class="hero-code dc-code"><code>def parse_ymd(series):
+    text = series.astype("Int64").astype(str)
+    return pd.to_datetime(text, format="%Y%m%d", errors="coerce")
+
+out["due_in_date"] = parse_ymd(out["due_in_date"])
+out["posting_date"] = pd.to_datetime(out["posting_date"], errors="coerce")
+out["clear_date"] = pd.to_datetime(out["clear_date"], errors="coerce")</code></pre>
+                                </div>
+
+                                <div class="dc-panel" data-pf-panel="2" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Czas płatności i opóźnienia</span><span class="lang-en">Time to pay and delays</span></h2>
+                                        <span class="dc-progress">3 / 6</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Dla faktur zamkniętych liczę liczbę dni od księgowania do spłaty oraz liczbę dni po terminie. Faktury otwarte nie mają daty spłaty, więc tych miar dla nich nie wypełniam.</p>
+                                    <p class="dc-body lang-en">For closed invoices I compute days from posting to payment and days after the due date. Open invoices have no clear date, so those fields stay empty.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>Czas płatności = data spłaty − data księgowania.</li>
+                                        <li>Dni po terminie = data spłaty − termin płatności.</li>
+                                        <li>42,4% zamkniętych faktur zostało opłaconych po terminie. Typowy czas spłaty to 15 dni.</li>
+                                        <li>Nieopłacone faktury grupuję według liczby dni po terminie na dzień 19 maja 2020.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>Time to pay = clear date − posting date.</li>
+                                        <li>Days late = clear date − due date.</li>
+                                        <li>42.4% of closed invoices were paid after the due date. Typical time to pay is 15 days.</li>
+                                        <li>Unpaid invoices are grouped by days past due as of 19 May 2020.</li>
+                                    </ul>
+                                    <pre class="hero-code dc-code"><code>out["days_to_pay"] = (out["clear_date"] - out["posting_date"]).dt.days
+out["days_late"] = (out["clear_date"] - out["due_in_date"]).dt.days
+out.loc[out["is_open"], ["days_to_pay", "days_late"]] = np.nan
+out["is_late"] = out["days_late"] &gt; 0</code></pre>
+                                </div>
+
+                                <div class="dc-panel" data-pf-panel="3" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Prognoza terminu płatności</span><span class="lang-en">Payment-date forecast</span></h2>
+                                        <span class="dc-progress">4 / 6</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Dla klienta biorę medianę jego wcześniejszych spłat. Jeżeli nie ma historii, używam mediany dla podobnych warunków płatności, a gdy i jej brak — mediany z całego zbioru.</p>
+                                    <p class="dc-body lang-en">For a customer I take the median of their earlier payments. If there is no history, I use the median for similar payment terms, and if that is missing too — the median of the whole set.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>Sprawdzenie jest na wydzielonym zbiorze późniejszych faktur, uporządkowanych według daty spłaty.</li>
+                                        <li>Średni błąd wyniósł 3,39 dnia. Dla prostego modelu bazowego (jedna mediana dla wszystkich) było to 5,48 dnia.</li>
+                                        <li>To nie jest model uczenia maszynowego — opiera się na historii klienta i warunkach płatności.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>The check uses later invoices, ordered by clear date.</li>
+                                        <li>Mean error was 3.39 days. A simple baseline (one median for everyone) was 5.48 days.</li>
+                                        <li>This is not a machine-learning model — it uses customer history and payment terms.</li>
+                                    </ul>
+                                    <pre class="hero-code dc-code"><code>if customer in customer_median:
+    return customer_median[customer]
+if term in term_median:
+    return term_median[term]
+return global_median</code></pre>
+                                </div>
+
+                                <div class="dc-panel" data-pf-panel="4" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Priorytety kontaktu</span><span class="lang-en">Contact priorities</span></h2>
+                                        <span class="dc-progress">5 / 6</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Dla faktur nieopłaconych liczę wskaźnik priorytetu: wartość faktury × większa z dwóch liczb — przewidywane dni po terminie albo faktyczne dni po terminie (nie mniej niż zero). To nie jest prawdopodobieństwo opóźnienia. Sam długi termin płatności nie podnosi pozycji na liście.</p>
+                                    <p class="dc-body lang-en">For unpaid invoices I compute a priority score: invoice amount × the larger of predicted days late and actual days past due (not below zero). That is not a probability of being late. A long payment term alone does not raise the rank.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>Wyżej są faktury, które już są po terminie albo według prognozy spóźnią się, i mają dużą kwotę.</li>
+                                        <li>Lista jest w <code>open_priority.csv</code> i na dashboardzie poniżej.</li>
+                                        <li>Kolumna statusu mówi tylko, czy prognozowana spłata wypada po terminie.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>Higher ranks go to invoices that are already late or forecast to be late, and that have a large amount.</li>
+                                        <li>The list is in <code>open_priority.csv</code> and on the dashboard below.</li>
+                                        <li>The status column only says whether the predicted payment falls after the due date.</li>
+                                    </ul>
+                                    <pre class="hero-code dc-code"><code>delay = np.maximum(
+    out["pred_days_late"], out["days_past_due"]
+).clip(min=0)
+out["priority_score"] = (out["total_open_amount"] * delay).round(0)
+out = out.sort_values("priority_score", ascending=False)</code></pre>
+                                </div>
+
+                                <div class="dc-panel" data-pf-panel="5" hidden>
+                                    <div class="dc-panel-head">
+                                        <h2><span class="lang-pl">Zapytania SQL</span><span class="lang-en">SQL queries</span></h2>
+                                        <span class="dc-progress">6 / 6</span>
+                                    </div>
+                                    <p class="dc-body lang-pl">Zapytania liczą odsetek płatności po terminie, strukturę należności według dni po terminie oraz wskaźnik priorytetu. Pełny plik jest w sekcji SQL poniżej.</p>
+                                    <p class="dc-body lang-en">The queries compute the share of payments after the due date, the structure of unpaid receivables by days overdue, and the priority score. The full file is in the SQL section below.</p>
+                                    <ul class="dc-issues lang-pl">
+                                        <li>Priorytet w SQL: kwota × max(przewidywane dni po terminie, dni po terminie, 0). W SQL średnia dni do spłaty; w Pythonie mediana.</li>
+                                        <li>Schemat gwiazdy na stronie pokazuje, jak te tabele się łączą.</li>
+                                    </ul>
+                                    <ul class="dc-issues lang-en">
+                                        <li>Priority in SQL: amount × max(predicted days late, days past due, 0). SQL uses the mean days to pay; Python uses the median.</li>
+                                        <li>The star schema on the page shows how the tables join.</li>
+                                    </ul>
+                                    <pre class="hero-code dc-code"><code>SELECT i.invoice_id, i.amount,
+       ROUND(i.amount * MAX(
+         COALESCE(c.avg_days, 15)
+           - (julianday(i.due_in_date) - julianday(i.posting_date)),
+         julianday('2020-05-19') - julianday(i.due_in_date),
+         0
+       ), 0) AS call_priority
+FROM fact_invoice i
+LEFT JOIN closed c USING (customer_id)
+WHERE i.is_open = 1
+ORDER BY call_priority DESC;</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="dc-nav">
+                                <button type="button" class="btn btn-outline" id="pf-prev" disabled>
+                                    <span class="lang-pl">← Poprzedni krok</span>
+                                    <span class="lang-en">← Previous step</span>
+                                </button>
+                                <button type="button" class="btn btn-primary" id="pf-next">
+                                    <span class="lang-pl">Następny krok →</span>
+                                    <span class="lang-en">Next step →</span>
+                                </button>
+                            </div>
 
                             <div id="pf-root" class="pf-root">
                                 <div class="pf-kpis" id="pf-metrics"></div>
-
-                                <p class="pf-story lang-pl">
-                                    Najpierw poprawiam daty zapisane w formacie liczbowym (<code>20190307</code>), a następnie obliczam czas płatności i liczbę dni opóźnienia. Prognoza wykorzystuje historię danego klienta. Jeżeli jest ona niedostępna, model korzysta z danych dla podobnych warunków płatności lub całego zbioru. Na wydzielonym zbiorze późniejszych faktur średni błąd wyniósł 3,39 dnia. Dla prostego modelu bazowego było to 5,48 dnia.
-                                </p>
-                                <p class="pf-story lang-en">
-                                    First I fix dates stored as numbers (<code>20190307</code>), then compute time to pay and days late. The forecast uses that customer’s history. If none is available, it uses similar payment terms or the whole set. On later invoices held out for testing, mean error was 3.39 days. A simple baseline was 5.48 days.
-                                </p>
 
                                 <div class="pf-grid">
                                     <section class="pf-panel">
@@ -130,8 +304,8 @@
 
                                 <section class="pf-panel">
                                     <h2><span class="lang-pl">Priorytety kontaktu z klientami</span><span class="lang-en">Customer contact priorities</span></h2>
-                                    <p class="pf-hint lang-pl">Wskaźnik priorytetu uwzględnia przewidywany czas płatności i wartość faktury.</p>
-                                    <p class="pf-hint lang-en">Priority score uses predicted days to pay and invoice amount.</p>
+                                    <p class="pf-hint lang-pl">Wskaźnik priorytetu: wartość faktury × większa z liczb — przewidywane dni po terminie albo faktyczne dni po terminie.</p>
+                                    <p class="pf-hint lang-en">Priority score: invoice amount × the larger of predicted days late and actual days past due.</p>
                                     <div id="pf-priority" class="pf-table-wrap"></div>
                                 </section>
 
@@ -201,24 +375,30 @@ pytest -q</code></pre>
 
                     <h3 class="sql-q lang-pl">SQL — priorytety kontaktu z klientami</h3>
                     <h3 class="sql-q lang-en">SQL — customer contact priorities</h3>
-                    <pre class="hero-code dc-code"><code>-- Wskaźnik priorytetu: przewidywana liczba dni × wartość faktury.
+                    <pre class="hero-code dc-code"><code>-- W SQL średnia dni do spłaty (AVG). W Pythonie model używa mediany.
+-- Priorytet: kwota × max(przewidywane dni po terminie, dni po terminie, 0).
 WITH closed AS (
   SELECT customer_id,
-         AVG(julianday(clear_date) - julianday(posting_date)) AS med_days
+         AVG(julianday(clear_date) - julianday(posting_date)) AS avg_days
   FROM fact_invoice
   WHERE is_open = 0
   GROUP BY customer_id
 )
 SELECT i.invoice_id, i.customer_id, i.amount,
-       ROUND(COALESCE(c.med_days, 15), 1) AS predicted_days,
-       ROUND(COALESCE(c.med_days, 15) * i.amount, 0) AS call_priority
+       ROUND(COALESCE(c.avg_days, 15), 1) AS predicted_days,
+       ROUND(i.amount * MAX(
+         COALESCE(c.avg_days, 15)
+           - (julianday(i.due_in_date) - julianday(i.posting_date)),
+         julianday('2020-05-19') - julianday(i.due_in_date),
+         0
+       ), 0) AS call_priority
 FROM fact_invoice i
 LEFT JOIN closed c USING (customer_id)
 WHERE i.is_open = 1
 ORDER BY call_priority DESC
 LIMIT 20;</code></pre>
-                    <p class="sql-result lang-pl">Na wydzielonym zbiorze późniejszych faktur średni błąd wyniósł 3,39 dnia. Dla prostego modelu bazowego było to 5,48 dnia. Lista priorytetów jest w <code>open_priority.csv</code>.</p>
-                    <p class="sql-result lang-en">On later invoices held out for testing, mean error was 3.39 days. A simple baseline was 5.48 days. The priority list is in <code>open_priority.csv</code>.</p>
+                    <p class="sql-result lang-pl">SQL liczy średnią liczbę dni do spłaty. W Pythonie prognoza używa mediany historii klienta. Lista priorytetów jest w <code>open_priority.csv</code>.</p>
+                    <p class="sql-result lang-en">SQL uses the mean days to pay. In Python the forecast uses the customer-history median. The priority list is in <code>open_priority.csv</code>.</p>
                 </section>
 
             </div>
@@ -239,7 +419,7 @@ LIMIT 20;</code></pre>
     <script src="../../lang.js"></script>
     <script src="../../glossary.js"></script>
     <script src="../../nav.js"></script>
-    <script src="payment-data.js?v=3"></script>
-    <script src="payment.js?v=6"></script>
+    <script src="payment-data.js?v=4"></script>
+    <script src="payment.js?v=8"></script>
 </body>
 </html>

@@ -94,6 +94,16 @@
         return true;
     }
 
+    function reloadSnapshotFile() {
+        return new Promise(function (resolve) {
+            var s = document.createElement("script");
+            s.src = "snapshot.js?t=" + Date.now();
+            s.onload = function () { resolve(loadSnapshot()); };
+            s.onerror = function () { resolve(loadSnapshot()); };
+            document.body.appendChild(s);
+        });
+    }
+
     function fetchLive() {
         state.loading = true;
         renderStatus();
@@ -110,8 +120,10 @@
                 }, "live");
             })
             .catch(function () {
-                if (!loadSnapshot()) showError();
-                else state.source = "snapshot-cors";
+                return reloadSnapshotFile().then(function (ok) {
+                    if (!ok) showError();
+                    else state.source = "snapshot-cors";
+                });
             })
             .finally(function () {
                 state.loading = false;
@@ -446,12 +458,12 @@
         }
         if (state.source === "snapshot-cors") {
             return en
-                ? "Saved dataset — current data could not be fetched (the browser cannot call OpenSky directly)."
-                : "Zapisany zestaw — nie udało się pobrać aktualnych danych (przeglądarka nie może wywołać OpenSky bezpośrednio).";
+                ? "Saved OpenSky set. The API does not allow the browser to call it directly (CORS), so the page uses the last server download."
+                : "Zapis z API OpenSky. Przeglądarka nie może wywołać tego API bezpośrednio (ograniczenie CORS), więc strona pokazuje ostatnie pobranie po stronie serwera.";
         }
         return en
-            ? "Saved OpenSky dataset (used when a current fetch is not possible)."
-            : "Zapisany zestaw danych OpenSky (gdy aktualne pobranie nie jest możliwe).";
+            ? "Saved OpenSky set from the last server download."
+            : "Zapis z API OpenSky z ostatniego pobrania po stronie serwera.";
     }
 
     function renderStatus() {
@@ -705,8 +717,8 @@
             "<div class=\"dash-panel dash-panel-wide dash-api\">" +
             "<h4>" + (en ? "Data source and freshness" : "Źródło i aktualność danych") + "</h4>" +
             vizDesc(
-                en ? "Endpoint used to fetch state vectors. If current data cannot be fetched (CORS on GitHub Pages, or the API is down), a saved dataset is shown and the fetch date appears in the status line."
-                    : "Adres do pobrania wektorów stanu. Gdy nie uda się pobrać aktualnych danych (CORS na GitHub Pages albo API nie odpowiada), pokazywany jest zapisany zestaw, a data pobrania jest w statusie.",
+                en ? "Endpoint for state vectors. OpenSky allows this call from a server, not from a page on GitHub Pages (CORS). A GitHub Action downloads the set and saves it; the date is in the status line. If the API ever allows a browser call, the page uses that instead."
+                    : "Adres do pobrania wektorów stanu. OpenSky pozwala na to wywołanie z serwera, nie ze strony na GitHub Pages (CORS). Zadanie na GitHubie pobiera zestaw i zapisuje go; data jest w statusie. Gdy API pozwoli na wywołanie z przeglądarki, strona użyje go w pierwszej kolejności.",
                 null
             ) +
             "<pre class=\"hero-code dc-code\"><code>GET " + API_URL + "</code></pre>" +

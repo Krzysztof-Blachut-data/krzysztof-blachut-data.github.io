@@ -538,7 +538,7 @@
             row(en ? "Unresolved labels" : "Etykiety nierozwiązane", T.categoriesRaw + T.paymentRaw + T.statusRaw + T.issueRaw + T.sentimentRaw, 0, "canonical") +
             row(en ? "Order dates unusable" : "Daty zamówień nie do użycia", T.orderDateBad + T.orderDateRescued, T.orderDateBad) +
             row(en ? "Unique customers" : "Unikalni klienci", T.crm, T.crmUnique, "grain") +
-            row(en ? "Rows in dataset" : "Rekordy w secie", T.rows, T.rows - T.crmDups) +
+            row(en ? "Rows in dataset" : "Rekordy w zbiorze", T.rows, T.rows - T.crmDups) +
             "</tbody></table>";
     }
 

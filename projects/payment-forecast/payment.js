@@ -117,6 +117,7 @@
             "<th>" + t("Klient", "Customer") + "</th>" +
             "<th>" + t("Kwota", "Amount") + "</th>" +
             "<th>" + t("Termin płatności", "Due date") + "</th>" +
+            "<th>" + t("Dni po terminie", "Days past due") + "</th>" +
             "<th>" + t("Prognozowana spłata", "Predicted clear") + "</th>" +
             "<th>" + t("Prognozowany status", "Predicted status") + "</th>" +
             "</tr>";
@@ -124,11 +125,13 @@
             var flag = r.pred_late
                 ? "<span class=\"pf-flag pf-flag-bad\">" + t("spóźnienie", "likely late") + "</span>"
                 : "<span class=\"pf-flag pf-flag-ok\">" + t("w terminie", "on time") + "</span>";
+            var past = r.days_past_due == null ? "—" : String(r.days_past_due);
             return "<tr>" +
                 "<td class=\"pf-rank\">" + (i + 1) + "</td>" +
                 "<td>" + r.customer + "</td>" +
                 "<td class=\"pf-num\">" + money(r.amount) + " " + (r.currency || "") + "</td>" +
                 "<td class=\"pf-num\">" + r.due + "</td>" +
+                "<td class=\"pf-num\">" + past + "</td>" +
                 "<td class=\"pf-num\">" + r.pred_clear + "</td>" +
                 "<td>" + flag + "</td>" +
                 "</tr>";
@@ -266,4 +269,38 @@
             setTimeout(render, 0);
         });
     });
+})();
+
+(function () {
+    var root = document.getElementById("pf-walkthrough");
+    if (!root) return;
+    var step = 0;
+    var total = root.querySelectorAll("[data-pf-panel]").length;
+
+    function show(i) {
+        step = i;
+        root.querySelectorAll("[data-pf-panel]").forEach(function (panel) {
+            panel.hidden = Number(panel.getAttribute("data-pf-panel")) !== i;
+        });
+        root.querySelectorAll("[data-pf]").forEach(function (btn) {
+            var n = Number(btn.getAttribute("data-pf"));
+            btn.classList.toggle("active", n === i);
+            btn.classList.toggle("done", n < i);
+        });
+        var prev = document.getElementById("pf-prev");
+        var next = document.getElementById("pf-next");
+        if (prev) prev.disabled = i === 0;
+        if (next) next.disabled = i === total - 1;
+    }
+
+    root.querySelectorAll("[data-pf]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            show(Number(btn.getAttribute("data-pf")));
+        });
+    });
+    var prevBtn = document.getElementById("pf-prev");
+    var nextBtn = document.getElementById("pf-next");
+    if (prevBtn) prevBtn.addEventListener("click", function () { if (step > 0) show(step - 1); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { if (step < total - 1) show(step + 1); });
+    show(0);
 })();

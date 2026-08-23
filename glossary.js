@@ -13,8 +13,8 @@
             en: "A result that cannot be analysed: blank cell, “not collected”, sentinel −999, or non-numeric text (e.g. N/A). 101 records in total."
         },
         implausible: {
-            pl: "Wartość liczbowa, ale skrajnie mało prawdopodobna (np. 500 mmol/L glukozy). Najpierw ją oznaczam, a z analizy wykluczam później.",
-            en: "A numeric value that is extremely unlikely (e.g. 500 mmol/L glucose). The pipeline flags it first; only the analysis set excludes it."
+            pl: "Wartość liczbowa, ale skrajnie mało prawdopodobna (np. wynik 500 mmol/L glukozy jest niemożliwy). Proces najpierw oznacza taką wartość, a z analizy wykluczam później.",
+            en: "A numeric value that is extremely unlikely (e.g. a 500 mmol/L glucose result is impossible). The process marks it first; only the analysis set excludes it."
         },
         non_numeric: {
             pl: "Tekst w kolumnie, która powinna być liczbą — np. N/A. Standaryzuję do NaN, rekordu nie usuwam.",

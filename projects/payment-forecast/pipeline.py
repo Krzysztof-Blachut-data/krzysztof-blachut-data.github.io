@@ -295,9 +295,10 @@ def score_open(
     out["pred_clear_date"] = out["posting_date"] + pd.to_timedelta(out["pred_days_to_pay"], unit="D")
     out["pred_days_late"] = (out["pred_clear_date"] - out["due_in_date"]).dt.days
     out["pred_late"] = out["pred_days_late"] > 0
-    # priority: predicted days to pay × invoice amount (not a late-payment probability)
+    # priority: amount × max(predicted days late, days past due, 0)
     out["days_past_due"] = (as_of - out["due_in_date"]).dt.days
-    out["priority_score"] = (out["pred_days_to_pay"] * out["total_open_amount"]).round(0)
+    delay = pd.concat([out["pred_days_late"], out["days_past_due"]], axis=1).max(axis=1).clip(lower=0)
+    out["priority_score"] = (out["total_open_amount"] * delay).round(0)
     out = out.sort_values("priority_score", ascending=False)
     return out
 

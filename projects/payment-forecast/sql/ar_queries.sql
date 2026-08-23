@@ -1,5 +1,6 @@
 -- Pytania o należności. To samo ziarno co na dashboardzie.
 -- Tabele jak na stronie projektu (fact_invoice, dim_customer, dim_terms). Dialekt SQLite.
+-- AVG to średnia. W Pythonie model używa mediany historii klienta.
 
 -- 1. Odsetek płatności po terminie oraz kwota spłacona po terminie.
 SELECT
@@ -13,7 +14,7 @@ WHERE is_open = 0;
 SELECT term,
        COUNT(*) AS invoices,
        ROUND(AVG(CASE WHEN clear_date > due_in_date THEN 1.0 ELSE 0 END), 4) AS paid_after_due_share,
-       ROUND(AVG(julianday(clear_date) - julianday(posting_date)), 1) AS median_days_to_pay
+       ROUND(AVG(julianday(clear_date) - julianday(posting_date)), 1) AS avg_days_to_pay
 FROM fact_invoice
 WHERE is_open = 0
 GROUP BY term
@@ -36,11 +37,11 @@ WHERE is_open = 1
 GROUP BY 1
 ORDER BY 1;
 
--- 4. Priorytet kontaktu: przewidywana liczba dni × wartość faktury.
---    To nie jest prawdopodobieństwo opóźnienia.
+-- 4. Priorytet kontaktu: kwota × max(przewidywane dni po terminie, dni po terminie, 0).
+--    W SQL średnia dni do spłaty; w Pythonie mediana.
 WITH closed AS (
     SELECT customer_id,
-           AVG(julianday(clear_date) - julianday(posting_date)) AS med_days
+           AVG(julianday(clear_date) - julianday(posting_date)) AS avg_days
     FROM fact_invoice
     WHERE is_open = 0
     GROUP BY customer_id
@@ -48,8 +49,15 @@ WITH closed AS (
 SELECT i.invoice_id,
        i.customer_id,
        ROUND(i.amount, 2) AS amount,
-       ROUND(COALESCE(c.med_days, 15), 1) AS predicted_days,
-       ROUND(COALESCE(c.med_days, 15) * i.amount, 0) AS call_priority
+       ROUND(COALESCE(c.avg_days, 15), 1) AS predicted_days,
+       ROUND(
+           i.amount * MAX(
+               COALESCE(c.avg_days, 15) - (julianday(i.due_in_date) - julianday(i.posting_date)),
+               julianday('2020-05-19') - julianday(i.due_in_date),
+               0
+           ),
+           0
+       ) AS call_priority
 FROM fact_invoice i
 LEFT JOIN closed c USING (customer_id)
 WHERE i.is_open = 1
