@@ -2,13 +2,13 @@
 <html lang="pl" data-lang="pl"
     data-title-pl="E-commerce — jakość danych | Krzysztof Blachut"
     data-title-en="E-commerce data quality | Krzysztof Blachut"
-    data-desc-pl="Najważniejszy projekt: 880 500 wierszy, pięć eksportów. session_id nie jest kluczem sesji — lejek konwersji na nim byłby fikcją."
-    data-desc-en="Featured case study: 880,500 rows, five exports. session_id is not a session key — a funnel on it would be fiction.">
+    data-desc-pl="Najważniejszy projekt: 880 500 wierszy, pięć eksportów. session_id nie jest kluczem sesji — lejek konwersji obliczony na jego podstawie byłby niewiarygodny."
+    data-desc-en="Featured case study: 880,500 rows, five exports. session_id is not a session key — a conversion funnel computed from it would be unreliable.">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Najważniejszy projekt: 880 500 wierszy, pięć eksportów. session_id nie jest kluczem sesji — lejek konwersji na nim byłby fikcją.">
+    <meta name="description" content="Najważniejszy projekt: 880 500 wierszy, pięć eksportów. session_id nie jest kluczem sesji — lejek konwersji obliczony na jego podstawie byłby niewiarygodny.">
     <meta name="author" content="Krzysztof Blachut">
     <meta name="theme-color" content="#0f1419">
     <title>E-commerce — jakość danych | Krzysztof Blachut</title>
@@ -20,7 +20,7 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Krzysztof Blachut | Data Analyst">
     <meta property="og:title" content="E-commerce — jakość danych | Krzysztof Blachut">
-    <meta property="og:description" content="Najważniejszy projekt: 880 500 wierszy, pięć eksportów. session_id nie jest kluczem sesji — lejek konwersji na nim byłby fikcją.">
+    <meta property="og:description" content="Najważniejszy projekt: 880 500 wierszy, pięć eksportów. session_id nie jest kluczem sesji — lejek konwersji obliczony na jego podstawie byłby niewiarygodny.">
     <meta property="og:url" content="https://krzysztof-blachut-data.github.io/projects/ecom-cleaning/">
     <meta property="og:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -76,8 +76,8 @@
                 <p class="featured-ribbon"><span class="lang-pl">Najważniejszy projekt</span><span class="lang-en">Featured case study</span></p>
                 <div class="case-meta">
                     <p class="source-badge">
-                        <span class="lang-pl">Dane syntetyczne. Pięć powiązanych eksportów sklepu: CRM, katalog, zamówienia, zgłoszenia i clickstream. Kwoty są wygenerowane i bez waluty. Chodzi o jakość kluczy i etykiet, nie o wynik finansowy.</span>
-                        <span class="lang-en">Synthetic data. Five linked shop exports: CRM, catalog, orders, tickets and clickstream. Amounts are generated and have no currency. The point is key and label quality, not a financial result.</span>
+                        <span class="lang-pl">Dane syntetyczne. Pięć powiązanych eksportów sklepu: CRM, katalog, zamówienia, zgłoszenia i clickstream. Kwoty są syntetyczne i nie mają przypisanej waluty, dlatego analiza koncentruje się na jakości danych, a nie na wynikach finansowych.</span>
+                        <span class="lang-en">Synthetic data. Five linked shop exports: CRM, catalog, orders, tickets and clickstream. Amounts are synthetic and have no currency, so the analysis focuses on data quality rather than financial results.</span>
                     </p>
                     <p class="result-callout">
                         <span class="lang-pl">Wynik: odrzuciłem session_id jako klucz, bo każda z 8 000 wartości występuje przy wielu klientach. device_id nie łączy się z CRM. 150 553 zdarzenia (30,1%) oznaczyłem jako niemożliwe do przypisania. Odzyskałem 36 160 dat zamówień zamiast je kasować. Metody płatności ujednoliciłem z 11 do 4.</span>
@@ -98,14 +98,16 @@
                             <span class="lang-en">Five linked files from an online shop</span>
                         </h3>
                         <p class="lead lang-pl">
-                            Pięć plików, 880 500 wierszy: CRM (50 000), katalog (500), zamówienia (300 000), tickety (30 000) i clickstream (500 000).
+                            Pięć plików, 880 500 wierszy: CRM (50 000), katalog (500), zamówienia (300 000), zgłoszenia (30 000) i clickstream (500 000).
                             Żeby policzyć sprzedaż, sposoby płatności i konwersję, trzeba najpierw ujednolicić klucze, nazwy i daty między plikami.
-                            Pipeline w pandas czyści całość. Każda liczba poniżej, także wiersze w tabelach, pochodzi z raportu jakości, a nie z ręcznego wpisywania.
+                            Pipeline przygotowany w Pandas automatyzuje czyszczenie wszystkich pięciu zbiorów.
+                            Prezentowane wyniki są generowane automatycznie na podstawie raportu jakości.
                         </p>
                         <p class="lead lang-en">
                             Five files, 880,500 rows: CRM (50,000), catalog (500), orders (300,000), tickets (30,000) and clickstream (500,000).
                             To calculate sales, payment methods and conversion, keys, labels and dates must be aligned across files first.
-                            A pandas pipeline cleans all of it. Every figure below, including the table rows, comes from the quality report rather than being typed in by hand.
+                            A pipeline in Pandas automates cleaning of all five datasets.
+                            The figures shown here are generated automatically from the quality report.
                         </p>
 
                         <div class="ecom-sources">
@@ -126,7 +128,7 @@
                             </div>
                             <div class="ecom-source">
                                 <strong>30 000</strong>
-                                <span class="lang-pl">Tickety · 35 typów</span>
+                                <span class="lang-pl">Zgłoszenia · 35 typów</span>
                                 <span class="lang-en">Tickets · 35 types</span>
                             </div>
                             <div class="ecom-source">
@@ -139,16 +141,16 @@
                         <section class="content-block dc-problems">
                             <h2><span class="lang-pl">Co jest nie tak w tych danych</span><span class="lang-en">What is wrong with this dataset</span></h2>
                             <p class="lang-pl">
-                                W laboratorium była jedna tabela. Tutaj każdy plik ma inne błędy, a po połączeniu danych te błędy się sumują. W jednym raporcie może się wtedy pojawić zdublowany klient, literówka w płatności i niemożliwa data.
+                                Każdy plik ma inne błędy. Po połączeniu danych w jednym raporcie mogą się pojawić zdublowany klient, literówka w płatności i niemożliwa data.
                             </p>
                             <p class="lang-en">
-                                The lab project was one table. Here each file has different errors, and after a join those errors add up. One report can then mix a duplicated customer, a payment typo and an impossible date.
+                                Each file has different errors. After a join, one report can mix a duplicated customer, a payment typo and an impossible date.
                             </p>
                             <ul class="lang-pl">
                                 <li>CRM: 1 800 zdublowanych <code>customer_id</code>, imiona <code>mARIA</code> / <code>KKeevvin</code>, 1 040 pustych e-maili.</li>
                                 <li>Katalog: 46 zapisów kategorii zamiast 8 (<code>clo</code>, <code>3l3ctronics</code>, <code>hom3</code>) plus 30 pustych, cena <code>1,200</code> i wartość strażnicza <code>−100</code>.</li>
                                 <li>Zamówienia: 10 statusów, 11 metod płatności (<code>CRAD</code>, <code>c@rd</code>, <code>wall-et</code>), ilość <code>five</code> / <code>−3</code>, data <code>2024/31/01</code>.</li>
-                                <li>Tickety: <code>tnemyap</code> (słowo „payment” wspak), <code>n3gativ3</code>, godzina <code>T28:77:10</code>, 2 677 zgłoszeń zamkniętych przed otwarciem.</li>
+                                <li>Zgłoszenia: <code>tnemyap</code> (słowo „payment” wspak), <code>n3gativ3</code>, godzina <code>T28:77:10</code>, 2 677 zgłoszeń zamkniętych przed otwarciem.</li>
                                 <li>Clickstream: 150 553 zdarzeń bez powiązanego klienta (także logowanie i dodanie do koszyka), zegar <code>25:61:00</code>.</li>
                             </ul>
                             <ul class="lang-en">
@@ -162,35 +164,27 @@
 
                         <section class="content-block ecom-keys">
                             <h2>
-                                <span class="lang-pl">Najważniejszy wynik jest negatywny</span>
-                                <span class="lang-en">The most important result is a negative one</span>
+                                <span class="lang-pl">Sprawdzenie kluczy przed analizą</span>
+                                <span class="lang-en">Checking keys before analysis</span>
                             </h2>
                             <p class="lang-pl">
-                                Zanim policzyłem jakikolwiek lejek, sprawdziłem, czy kolumny, które wyglądają na klucze, faktycznie nimi są.
-                                Dwie z nich nie są. To przesądza, których analiz <strong>nie wolno</strong> tu robić.
+                                Sprawdziłem, czy kolumny, które wyglądają na klucze, faktycznie nimi są. Dwie z nich nie są.
+                                Wynik tej weryfikacji określa, które analizy można wykonać wiarygodnie.
                             </p>
                             <p class="lang-en">
-                                Before computing any funnel, I checked whether the columns that look like keys actually behave like keys.
-                                Two of them are not. That decides which analyses are <strong>not allowed</strong> here.
+                                I checked whether the columns that look like keys actually behave like keys. Two of them do not.
+                                The result of that check determines which analyses can be done reliably.
                             </p>
                             <ul class="lang-pl">
-                                <li><strong><code>session_id</code> nie jest kluczem sesji.</strong> Wszystkie 8 000 wartości obejmują wielu różnych klientów naraz (średnio 62 zdarzenia na „sesję”). Lejek liczony po sesjach dawał 100% dodań do koszyka, bo grupowanie nic nie znaczy. Dlatego konwersję liczę <strong>na klienta</strong>.</li>
-                                <li><strong><code>device_id</code> nie łączy się z CRM.</strong> W clickstreamie jest 498 949 identyfikatorów urządzeń na 500 000 zdarzeń (średnio jedno zdarzenie na urządzenie) i <strong>żaden</strong> nie występuje wśród 51 854 urządzeń z CRM. 150 553 anonimowych zdarzeń nie da się więc odzyskać przez urządzenie.</li>
-                                <li><strong><code>customer_id</code> trzyma się dobrze.</strong> Zamówienia, tickety i rozpoznane zdarzenia łączą się z CRM z zerową liczbą sierot.</li>
+                                <li><strong><code>session_id</code> nie jest kluczem sesji.</strong> Wszystkie 8 000 wartości obejmują wielu różnych klientów naraz (średnio 62 zdarzenia na „sesję”). Lejek konwersji obliczony na jego podstawie byłby niewiarygodny. Konwersję liczę <strong>na klienta</strong>.</li>
+                                <li><strong><code>device_id</code> nie łączy się z CRM.</strong> W clickstreamie jest 498 949 identyfikatorów urządzeń na 500 000 zdarzeń i żaden nie występuje wśród 51 854 urządzeń z CRM. 150 553 anonimowych zdarzeń nie da się przypisać przez urządzenie.</li>
+                                <li><strong><code>customer_id</code> jest poprawnym kluczem.</strong> Zamówienia, zgłoszenia i rozpoznane zdarzenia łączą się z CRM z zerową liczbą sierot.</li>
                             </ul>
                             <ul class="lang-en">
-                                <li><strong><code>session_id</code> is not a session key.</strong> All 8,000 values span several customers at once (62 events per "session" on average). A session-level funnel returned a 100% add-to-cart rate because the grouping means nothing. Conversion is therefore measured <strong>per customer</strong>.</li>
-                                <li><strong><code>device_id</code> does not join to CRM.</strong> The clickstream holds 498,949 device ids across 500,000 events (about one event per device) and <strong>none</strong> appear among the 51,854 devices in CRM. The 150,553 anonymous events cannot be recovered through the device.</li>
-                                <li><strong><code>customer_id</code> does hold up.</strong> Orders, tickets and identified events all join to CRM with zero orphans.</li>
+                                <li><strong><code>session_id</code> is not a session key.</strong> All 8,000 values span several customers at once (62 events per "session" on average). A conversion funnel computed from it would be unreliable. Conversion is measured <strong>per customer</strong>.</li>
+                                <li><strong><code>device_id</code> does not join to CRM.</strong> The clickstream holds 498,949 device ids across 500,000 events and none appear among the 51,854 devices in CRM. The 150,553 anonymous events cannot be attributed by device.</li>
+                                <li><strong><code>customer_id</code> is a valid key.</strong> Orders, tickets and identified events all join to CRM with zero orphans.</li>
                             </ul>
-                            <p class="lang-pl">
-                                Kwoty w tych plikach są wygenerowane, nie rynkowe (ceny w katalogu dochodzą do 851 374, bez waluty).
-                                Przychód i średni koszyk są policzone poprawnie, ale nie są wynikiem biznesowym. Wniosek dotyczy jakości danych i tego, które klucze naprawdę działają.
-                            </p>
-                            <p class="lang-en">
-                                The amounts in these files are generated, not market data (catalog prices reach 851,374, with no currency).
-                                Revenue and average order value are computed correctly, but they are not a business result. The finding is data quality and which keys actually work.
-                            </p>
                         </section>
 
                         <div id="ecom-walkthrough" class="dc-walkthrough">
@@ -198,15 +192,15 @@
                             <p class="dc-walkthrough-label lang-en">How these issues are fixed, step by step</p>
 
                             <ol class="dc-steps" aria-label="Cleaning steps">
-                                <li><button type="button" class="dc-step active" data-step="0">1. Raw</button></li>
-                                <li><button type="button" class="dc-step" data-step="1">2. Identity</button></li>
-                                <li><button type="button" class="dc-step" data-step="2">3. Catalog</button></li>
-                                <li><button type="button" class="dc-step" data-step="3">4. Orders</button></li>
-                                <li><button type="button" class="dc-step" data-step="4">5. Tickets</button></li>
-                                <li><button type="button" class="dc-step" data-step="5">6. Click</button></li>
-                                <li><button type="button" class="dc-step" data-step="6">7. Join</button></li>
+                                <li><button type="button" class="dc-step active" data-step="0"><span class="lang-pl">1. Dane źródłowe</span><span class="lang-en">1. Raw</span></button></li>
+                                <li><button type="button" class="dc-step" data-step="1"><span class="lang-pl">2. Klienci</span><span class="lang-en">2. Identity</span></button></li>
+                                <li><button type="button" class="dc-step" data-step="2"><span class="lang-pl">3. Katalog</span><span class="lang-en">3. Catalog</span></button></li>
+                                <li><button type="button" class="dc-step" data-step="3"><span class="lang-pl">4. Zamówienia</span><span class="lang-en">4. Orders</span></button></li>
+                                <li><button type="button" class="dc-step" data-step="4"><span class="lang-pl">5. Zgłoszenia</span><span class="lang-en">5. Tickets</span></button></li>
+                                <li><button type="button" class="dc-step" data-step="5"><span class="lang-pl">6. Zdarzenia</span><span class="lang-en">6. Click</span></button></li>
+                                <li><button type="button" class="dc-step" data-step="6"><span class="lang-pl">7. Łączenie</span><span class="lang-en">7. Join</span></button></li>
                                 <li><button type="button" class="dc-step" data-step="7"><span class="lang-pl">8. Analiza</span><span class="lang-en">8. Analysis</span></button></li>
-                                <li><button type="button" class="dc-step" data-step="8">9. Insights</button></li>
+                                <li><button type="button" class="dc-step" data-step="8"><span class="lang-pl">9. Wnioski</span><span class="lang-en">9. Insights</span></button></li>
                             </ol>
 
                             <div class="dc-panel">
@@ -291,6 +285,6 @@
     <script src="../../glossary.js"></script>
     <script src="../../nav.js"></script>
     <script src="ecom-data.js"></script>
-    <script src="ecom.js"></script>
+    <script src="ecom.js?v=2"></script>
 </body>
 </html>
