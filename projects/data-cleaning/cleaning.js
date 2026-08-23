@@ -20,74 +20,74 @@
 
     var STEPS = [
         {
-            titlePl: "Surowe dane — ocena jakości",
-            titleEn: "Raw data — quality assessment",
-            bodyPl: "Zanim cokolwiek usunę, liczę problemy w każdym wymiarze jakości danych. Na tym etapie nic nie znika — tylko wykrywam braki, strażniki, niespójne nazwy i wartości mało prawdopodobne (np. 500 mmol/L glukozy).",
-            bodyEn: "Before removing anything, I count issues across each data-quality dimension. At this stage nothing is dropped — I only detect missing values, sentinels, inconsistent labels and implausible values (e.g. 500 mmol/L glucose).",
+            titlePl: "Ocena jakości danych źródłowych",
+            titleEn: "Source data — quality check",
+            bodyPl: "Najpierw sprawdzam liczbę brakujących, niespójnych i nieprawdopodobnych wartości. Na tym etapie nie usuwam żadnych rekordów.",
+            bodyEn: "I first count missing, inconsistent and implausible values. At this stage I do not remove any records.",
             issuesPl: [],
             issuesEn: [],
             code: "profile = {\n  \"missing_empty\": (df[\"test_value\"].isna() | df[\"test_value\"].eq(\"\")).sum(),\n  \"sentinel_-999\": (df[\"test_value\"] == -999).sum(),\n  \"implausible\": flag_implausible_values(df).sum(),\n  \"name_variants\": df[\"test_name\"].nunique(),\n  \"range_mismatches\": flag_range_unit_mismatch(df).sum()\n}\nprint(profile)"
         },
         {
-            titlePl: "Braki i wartości strażnicze",
-            titleEn: "Missing & sentinel values",
-            bodyPl: "Puste wartości, tekst „not collected” oraz kod −999 reprezentują brak dostępnego wyniku, ale pochodzą z różnych sposobów zapisu w systemach źródłowych. Przed analizą ujednolicam je do NaN, zachowując surową wartość i przyczynę braku — rekordy nie są usuwane (NaN ≠ delete row).",
-            bodyEn: "Empty values, “not collected” text and the −999 code all represent a missing result, but they come from different source-system conventions. Before analysis I standardise them to NaN while keeping the raw value and the reason — rows are not deleted (NaN ≠ delete row).",
+            titlePl: "Brakujące wartości",
+            titleEn: "Missing values",
+            bodyPl: "Puste komórki, tekst „not collected” i kod −999 oznaczają brak wyniku, tylko zapisany na różne sposoby. Oznaczam je jako brakujące — to nie powoduje usunięcia całego rekordu.",
+            bodyEn: "Empty cells, “not collected” and the −999 code all mean a missing result, just stored in different ways. I mark them as missing — that does not delete the whole row.",
             missingStory: true,
             code: "df[\"test_value_raw\"] = df[\"test_value\"]\n\ndf[\"missing_reason\"] = np.select(\n    [\n        df[\"test_value\"].isna(),\n        df[\"test_value\"].astype(str).str.strip().eq(\"\"),\n        df[\"test_value\"].astype(str).str.lower().eq(\"not collected\"),\n        df[\"test_value\"].astype(str).eq(\"-999\")\n    ],\n    [\"missing\", \"blank\", \"not_collected\", \"sentinel_-999\"],\n    default=None\n)\n\ndf[\"test_value\"] = pd.to_numeric(df[\"test_value\"], errors=\"coerce\")\ndf.loc[df[\"test_value\"] == -999, \"test_value\"] = np.nan\n# 1,500 rows kept — exclusion happens only at the analysis-ready step"
         },
         {
-            titlePl: "Słownik nazw badań",
-            titleEn: "Standardise test names",
-            bodyPl: "Dziewięć wariantów nazw reprezentuje trzy rzeczywiste anality. Standaryzuję etykiety do jednej nazwy kanonicznej dla każdego badania, żeby uniknąć sztucznego rozbijania agregacji, KPI i porównań między szpitalami. Grupuję tylko semantycznie równoważne etykiety — bez automatycznego fuzzy matchingu.",
-            bodyEn: "Nine label variants represent three real analytes. I standardise labels to one canonical name per test to avoid artificially splitting aggregations, KPIs and cross-hospital comparisons. Only semantically equivalent labels are grouped — no automatic fuzzy matching.",
+            titlePl: "Nazwy badań",
+            titleEn: "Test names",
+            bodyPl: "Trzy rodzaje badań występują pod dziewięcioma nazwami. Ujednolicam je, aby wyniki tego samego badania były analizowane wspólnie.",
+            bodyEn: "Three tests appear under nine names. I unify them so results of the same test are analysed together.",
             namesStory: true,
             code: "name_map = {\n    \"Glucose\": [\"Glucose\", \"Fasting Glucose\", \"Blood Sugar\"],\n    \"Cholesterol\": [\"Cholesterol\", \"Serum Cholesterol\", \"Total Chol\"],\n    \"HbA1c\": [\"HbA1c\", \"Hemoglobin A1c\", \"Glycated Hemoglobin\"]\n}\n\ncanonical_map = {\n    variant: canonical\n    for canonical, variants in name_map.items()\n    for variant in variants\n}\n\ndf[\"test_name_raw\"] = df[\"test_name\"]\ndf[\"test_name\"] = df[\"test_name\"].replace(canonical_map)\n# only semantically equivalent labels — no fuzzy matching"
         },
         {
-            titlePl: "Jednostki SI",
-            titleEn: "Harmonise units (SI)",
-            bodyPl: "Wyniki tego samego analitu zapisane w mg/dL i mmol/L nie są bezpośrednio porównywalne. Wartości standaryzuję do jednej jednostki docelowej, stosując współczynnik konwersji właściwy dla danego analitu. Konwersja wartości ≠ kompletna standaryzacja rekordu — zakresy referencyjne nadal mogą być niedopasowane (krok 5).",
-            bodyEn: "Results for the same analyte recorded in mg/dL and mmol/L are not directly comparable. I standardise values to one target unit using the conversion factor appropriate to each analyte. Value conversion ≠ full record standardisation — reference ranges may still be incompatible (Step 5).",
+            titlePl: "Ujednolicenie jednostek",
+            titleEn: "Harmonise units",
+            bodyPl: "Wyników tego samego badania w mg/dL i mmol/L nie da się bezpośrednio porównać. Glukozę i cholesterol przeliczam do mmol/L. HbA1c zostaje w procentach. Zakresy referencyjne poprawiam w następnym kroku.",
+            bodyEn: "The same test in mg/dL and mmol/L cannot be compared directly. I convert glucose and cholesterol to mmol/L. HbA1c stays in percent. Reference ranges are fixed in the next step.",
             story: true,
             code: "# Glucose: mg/dL → mmol/L\nmask_glucose = (\n    (df[\"test_name\"] == \"Glucose\") &\n    (df[\"unit\"] == \"mg/dL\")\n)\ndf.loc[mask_glucose, \"test_value\"] = (\n    df.loc[mask_glucose, \"test_value\"] / 18.0182\n).round(2)\ndf.loc[mask_glucose, \"unit\"] = \"mmol/L\"\n\n# Cholesterol: mg/dL → mmol/L\nmask_cholesterol = (\n    (df[\"test_name\"] == \"Cholesterol\") &\n    (df[\"unit\"] == \"mg/dL\")\n)\ndf.loc[mask_cholesterol, \"test_value\"] = (\n    df.loc[mask_cholesterol, \"test_value\"] / 38.67\n).round(2)\ndf.loc[mask_cholesterol, \"unit\"] = \"mmol/L\""
         },
         {
             titlePl: "Zakresy referencyjne",
-            titleEn: "Align reference ranges",
-            bodyPl: "Standaryzuję format zakresów referencyjnych do jednego słownika na analit. Na potrzeby tego syntetycznego case study przyjmuję jeden zestaw wartości docelowych — celem jest demonstracja standaryzacji danych, a nie interpretacja kliniczna. W praktyce zakres zależy od metody, laboratorium, populacji i kontekstu pobrania.",
+            titleEn: "Reference ranges",
+            bodyPl: "Ujednolicam zakresy referencyjne do jednego zestawu na badanie. W tym projekcie służy to pokazaniu czyszczenia danych, a nie interpretacji klinicznej. W praktyce zakres zależy od metody, laboratorium i populacji.",
             bodyEn: "I standardise reference-range format to one dictionary per analyte. For this synthetic case study I apply one set of target values — the goal is to demonstrate data standardisation, not clinical interpretation. In practice, ranges depend on method, laboratory, population and collection context.",
             code: "# case-study dictionary — not universal clinical ranges\nstudy_ranges = {\n  \"Glucose\": \"3.9–5.5 mmol/L\",\n  \"Cholesterol\": \"3.2–5.2 mmol/L\",\n  \"HbA1c\": \"<5.7%\"\n}\ndf[\"reference_range\"] = df[\"test_name\"].map(study_ranges)"
         },
         {
-            titlePl: "Wartości mało prawdopodobne — flagowanie",
-            titleEn: "Implausible values — flagging",
-            bodyPl: "500 mmol/L glukozy to mało prawdopodobna wartość, nie automatyczny błąd do usunięcia. Najpierw flaguję (quality_flag), potem decyduję o wykluczeniu z analizy — audytowalny pipeline: detection → flagging → decision → exclusion.",
-            bodyEn: "500 mmol/L glucose is implausible, not an automatic delete. I flag it first (quality_flag), then decide on exclusion — an auditable pipeline: detection → flagging → decision → exclusion.",
+            titlePl: "Oznaczenie błędnych wartości",
+            titleEn: "Flagging implausible values",
+            bodyPl: "500 mmol/L glukozy to mało prawdopodobna wartość, nie automatyczny błąd do usunięcia. Najpierw oznaczam taki wynik, a dopiero potem decyduję, czy wykluczyć go z analizy.",
+            bodyEn: "500 mmol/L glucose is implausible, not an automatic delete. I mark it first, then decide whether to exclude it from the analysis.",
             flagStory: true,
             code: "df[\"quality_flag\"] = \"valid\"\n\ndf.loc[\n    df[\"test_value\"].isna(),\n    \"quality_flag\"\n] = \"missing_value\"\n\ndf.loc[\n    (df[\"test_name\"] == \"Glucose\") &\n    (df[\"test_value\"] > 40),\n    \"quality_flag\"\n] = \"implausible_value\"\n# Glucose > 40 mmol/L — data-quality rule, not clinical diagnosis"
         },
         {
-            titlePl: "Zestaw gotowy do analizy",
-            titleEn: "Analysis-ready dataset",
-            bodyPl: "Wykluczam z analytical dataset rekordy z quality_flag ≠ valid (101 braków/invalid + 7 mało prawdopodobnych). Pozostaje 1 392 wiersze (92,8%). Surowe i standaryzowane dane zachowuję osobno — lineage: raw → standardized/audit → analysis.",
-            bodyEn: "I exclude records where quality_flag ≠ valid from the analytical dataset (101 missing/invalid + 7 implausible). 1,392 rows remain (92.8%). Raw and standardized data are kept separately — lineage: raw → standardized/audit → analysis.",
+            titlePl: "Dane po czyszczeniu",
+            titleEn: "Cleaned dataset",
+            bodyPl: "Z zbioru przeznaczonego do analizy wykluczam 101 brakujących lub nieprawidłowych rekordów oraz 7 nieprawdopodobnych. Zostaje 1 392 wiersze (92,8%). Zachowuję osobno dane źródłowe, ujednolicone i przeznaczone do analizy.",
+            bodyEn: "From the analysis set I exclude 101 missing or invalid records and 7 implausible ones. 1,392 rows remain (92.8%). Source, cleaned and analysis files are kept separately.",
             cleanStory: true,
             code: "df.to_csv(\"lab_results_standardized.csv\", index=False)  # 1,500 rows — audit trail\n\nanalysis = df.loc[df[\"quality_flag\"] == \"valid\"].copy()\nanalysis.to_csv(\"lab_results_analysis.csv\", index=False)  # 1,392 rows"
         },
         {
             titlePl: "Analiza — różnice między szpitalami",
             titleEn: "Analysis — differences between hospitals",
-            bodyPl: "1 392 obserwacji gotowych do analizy. Pytanie: czy wyniki laboratoryjne różnią się między szpitalami po standaryzacji? Poniżej mediana Glucose, Cholesterol i HbA1c wg Hospital A / B / C.",
-            bodyEn: "1,392 analysis-ready observations. Question: do laboratory results differ between hospitals after standardisation? Below: median Glucose, Cholesterol and HbA1c by Hospital A / B / C.",
+            bodyPl: "1 392 obserwacje. Czy wyniki laboratoryjne różnią się między szpitalami po ujednoliceniu? Poniżej mediana glukozy, cholesterolu i HbA1c dla szpitali A, B i C.",
+            bodyEn: "1,392 observations. Do laboratory results differ between hospitals after cleaning? Below: median glucose, cholesterol and HbA1c for hospitals A, B and C.",
             code: "raw = pd.read_csv(\"multi_hospital_lab_results.csv\")\n# ... cleaning pipeline ...\nanalysis = df.loc[df[\"quality_flag\"] == \"valid\"].copy()\n\nraw_name_count = raw[\"test_name\"].nunique()\nclean_name_count = analysis[\"test_name\"].nunique()\n\nanalysis.groupby([\"hospital\", \"test_name\"])[\"test_value\"].median().unstack()",
             visualize: true
         },
         {
             titlePl: "Wnioski z oczyszczonych danych",
-            titleEn: "What the cleaned data actually says",
-            bodyPl: "Czyszczenie nie jest celem samym w sobie. Bez niego porównanie szpitali byłoby fałszywe: Hospital_B wyglądałby na outlier, bo kilka błędów zapisu zawyża średnią glukozy.",
-            bodyEn: "Cleaning is not the end goal. Without it, the hospital comparison would be false: Hospital_B would look like an outlier because a few recording errors inflate the glucose mean.",
+            titleEn: "What the cleaned data shows",
+            bodyPl: "Przed usunięciem błędnych wartości średnia glukozy w szpitalu B jest wyraźnie zawyżona. Po oczyszczeniu danych wyniki trzech szpitali są do siebie zbliżone.",
+            bodyEn: "Before removing the bad values, the mean glucose at hospital B is clearly inflated. After cleaning, the three hospitals are close to each other.",
             code: "raw = pd.read_csv(\"multi_hospital_lab_results.csv\")\n# ... cleaning pipeline ...\nanalysis = df.loc[df[\"quality_flag\"] == \"valid\"].copy()\n\ng_unfiltered = df.loc[\n    (df[\"test_name\"] == \"Glucose\") &\n    df[\"quality_flag\"].isin([\"valid\", \"implausible_value\"])\n].groupby(\"hospital\")[\"test_value\"].mean()\n\ng_ready = analysis.loc[analysis[\"test_name\"] == \"Glucose\"].groupby(\"hospital\")[\"test_value\"].mean()\nprint(\"Standardized, unfiltered:\\n\", g_unfiltered.round(2))\nprint(\"Analysis-ready:\\n\", g_ready.round(2))",
             insights: true
         }
@@ -336,15 +336,15 @@
         var en = lang() === "en";
         return "<div class=\"dc-pipeline-funnel\">" +
             "<div class=\"dc-funnel-step\"><strong>1 500</strong><span>" +
-            (en ? "raw records" : "rekordów surowych") + "</span></div>" +
+            (en ? "source records" : "rekordów źródłowych") + "</span></div>" +
             "<div class=\"dc-funnel-arrow\">↓ " + pipe.excludedInvalid + " " +
-            term("missing_invalid", en ? "missing / invalid" : "braków / invalid") + "</div>" +
+            term("missing_invalid", en ? "missing / invalid" : "brakujących i nieprawidłowych") + "</div>" +
             "<div class=\"dc-funnel-step\"><strong>" + (1500 - pipe.excludedInvalid).toLocaleString("pl-PL") + "</strong><span>" +
             (en ? "after missing handling" : "po obsłudze braków") + "</span></div>" +
             "<div class=\"dc-funnel-arrow\">↓ " + pipe.excludedImplausible + " " +
             term("implausible", en ? "implausible values" : "wartości mało prawdopodobnych") + "</div>" +
             "<div class=\"dc-funnel-step highlight\"><strong>" + pipe.retained.toLocaleString("pl-PL") + "</strong><span>" +
-            term("analysis_ready", en ? "analysis-ready records" : "rekordów gotowych do analizy") + "</span></div>" +
+            term("analysis_ready", en ? "records for analysis" : "rekordów do analizy") + "</span></div>" +
             "</div>";
     }
 
@@ -357,19 +357,19 @@
             return "<tr><td>" + name + "</td><td>" + rawVal.toLocaleString("pl-PL") + "</td>" +
                 "<td class=\"dc-cell changed\">" + analysisVal.toLocaleString("pl-PL") + "</td></tr>";
         }
-        return "<h3>" + (en ? "Pipeline executive summary" : "Podsumowanie pipeline'u") + "</h3>" +
+        return "<h3>" + (en ? "Pipeline summary" : "Podsumowanie czyszczenia") + "</h3>" +
             "<p class=\"dc-progress-note\">" + (en
-                ? "Raw vs analysis set — excluded records remain in lab_results_standardized.csv."
-                : "Raw vs zestaw analityczny — wykluczone rekordy pozostają w lab_results_standardized.csv.") +
+                ? "Source data vs analysis set — excluded records remain in lab_results_standardized.csv."
+                : "Dane źródłowe i zbiór do analizy. Wykluczone rekordy zostają w lab_results_standardized.csv.") +
             "</p>" +
             "<table class=\"dc-table dc-progress-table dc-executive-table\">" +
-            "<thead><tr><th>" + (en ? "Problem" : "Problem") + "</th><th>Raw</th><th>" + (en ? "Analysis" : "Analiza") + "</th></tr></thead><tbody>" +
-            row(en ? "Missing / invalid test values" : "Braki / invalid wartości", raw.missingTestValues, 0, "missing_invalid") +
+            "<thead><tr><th>" + (en ? "Problem" : "Problem") + "</th><th>" + (en ? "Source" : "Źródło") + "</th><th>" + (en ? "Analysis" : "Analiza") + "</th></tr></thead><tbody>" +
+            row(en ? "Missing / invalid test values" : "Brakujące i nieprawidłowe wartości", raw.missingTestValues, 0, "missing_invalid") +
             row(en ? "Sentinel −999" : "Strażnik −999", raw.sentinelRaw, 0, "sentinel") +
             row(en ? "Non-numeric values" : "Wartości nienumeryczne", raw.nonNumeric, 0, "non_numeric") +
             row(en ? "Test-name variants" : "Warianty nazw", raw.names, analysis.names) +
             row(en ? "mg/dL records" : "Rekordy mg/dL", raw.mgdl, 0) +
-            row(en ? "Range / unit mismatches" : "Niedopas. zakres / jednostka", raw.rangeMismatch, 0, "range_mismatch") +
+            row(en ? "Range / unit mismatches" : "Zakres niepasujący do jednostki", raw.rangeMismatch, 0, "range_mismatch") +
             row(en ? "Implausible values" : "Mało prawdopodobne", raw.implausible, 0, "implausible") +
             row(en ? "Total excluded from analysis" : "Łącznie wykluczone z analizy", raw.missingTestValues + raw.implausible, 0) +
             row(en ? "Records in dataset" : "Rekordy w secie", raw.rows, analysis.rows) +
@@ -551,6 +551,7 @@
     }
 
     function renderNameTreeHtml() {
+        var en = lang() === "en";
         return Object.keys(NAME_GROUPS).map(function (canonical) {
             var variants = NAME_GROUPS[canonical];
             return "<div class=\"dc-name-tree-group\">" +
@@ -561,7 +562,7 @@
                     var isCanonical = v === canonical;
                     return "<li class=\"" + (isCanonical ? "canonical" : "variant") + "\">" +
                         prefix + v +
-                        (isCanonical ? " <span class=\"dc-name-tree-tag\">" + term("canonical", "canonical") + "</span>" : "") +
+                        (isCanonical ? " <span class=\"dc-name-tree-tag\">" + term("canonical", en ? "unified" : "ujednolicone") + "</span>" : "") +
                         "</li>";
                 }).join("") +
                 "</ul></div>";
@@ -593,43 +594,43 @@
         }
         if (currentStep === 2) {
             setMetricLabel("m-rows-label", en ? "records" : "rekordów");
-            setMetricLabel("m-names-label", en ? "raw labels" : "etykiet surowych");
-            setMetricLabel("m-missing-label", en ? "canonical analytes" : "anality kanoniczne", "canonical");
-            setMetricLabel("m-outliers-label", en ? "labels standardized" : "etykiet ustandaryz.");
+            setMetricLabel("m-names-label", en ? "source labels" : "nazw źródłowych");
+            setMetricLabel("m-missing-label", en ? "test types" : "rodzaje badań", "canonical");
+            setMetricLabel("m-outliers-label", en ? "labels unified" : "nazw ujednoliconych");
             return;
         }
         if (currentStep === 3) {
             setMetricLabel("m-rows-label", en ? "records" : "rekordów");
             setMetricLabel("m-names-label", en ? "mg/dL rows remaining" : "wierszy mg/dL");
             setMetricLabel("m-missing-label", en ? "values converted" : "wartości przeliczonych");
-            setMetricLabel("m-outliers-label", en ? "range mismatches left" : "niedopas. zakresów", "range_mismatch");
+            setMetricLabel("m-outliers-label", en ? "range mismatches left" : "niedopasowanych zakresów", "range_mismatch");
             return;
         }
         if (currentStep === 5) {
             setMetricLabel("m-rows-label", en ? "records" : "rekordów");
-            setMetricLabel("m-names-label", en ? "invalid flagged" : "ozn. invalid", "missing_invalid");
-            setMetricLabel("m-missing-label", en ? "implausible flagged" : "flag. mało prawd.", "implausible");
-            setMetricLabel("m-outliers-label", en ? "still in audit set" : "w secie audytowym", "quality_flag");
+            setMetricLabel("m-names-label", en ? "missing / invalid marked" : "brakujących i nieprawidłowych", "missing_invalid");
+            setMetricLabel("m-missing-label", en ? "implausible marked" : "nieprawdopodobnych", "implausible");
+            setMetricLabel("m-outliers-label", en ? "still in full set" : "nadal w pełnym zbiorze", "quality_flag");
             return;
         }
         if (currentStep === 6) {
-            setMetricLabel("m-rows-label", en ? "raw records" : "rekordów raw");
-            setMetricLabel("m-names-label", en ? "analysis records" : "rekordów analiza", "analysis_ready");
-            setMetricLabel("m-missing-label", en ? "invalid in analysis" : "invalid w analizie", "missing_invalid");
-            setMetricLabel("m-outliers-label", en ? "implausible in analysis" : "mało prawd. w analizie", "implausible");
+            setMetricLabel("m-rows-label", en ? "source records" : "rekordów źródłowych");
+            setMetricLabel("m-names-label", en ? "analysis records" : "rekordów do analizy", "analysis_ready");
+            setMetricLabel("m-missing-label", en ? "missing in analysis" : "braków w analizie", "missing_invalid");
+            setMetricLabel("m-outliers-label", en ? "implausible in analysis" : "nieprawdopodobnych w analizie", "implausible");
             return;
         }
         setMetricLabel("m-rows-label", en ? "rows" : "wierszy");
         setMetricLabel("m-names-label", en ? "test names" : "nazw badań");
         if (currentStep === 0) {
-            setMetricLabel("m-missing-label", en ? "invalid / missing values" : "invalid / braków", "missing_invalid");
-            setMetricLabel("m-outliers-label", en ? "flagged implausible" : "flag. mało prawd.", "implausible");
+            setMetricLabel("m-missing-label", en ? "missing / invalid values" : "brakujących i nieprawidłowych", "missing_invalid");
+            setMetricLabel("m-outliers-label", en ? "implausible values" : "nieprawdopodobnych", "implausible");
         } else if (currentStep >= 6) {
-            setMetricLabel("m-missing-label", en ? "invalid in analysis set" : "invalid w secie analizy", "missing_invalid");
-            setMetricLabel("m-outliers-label", en ? "implausible in analysis set" : "mało prawd. w analizie", "implausible");
+            setMetricLabel("m-missing-label", en ? "missing in analysis set" : "braków w zbiorze do analizy", "missing_invalid");
+            setMetricLabel("m-outliers-label", en ? "implausible in analysis set" : "nieprawdopodobnych w analizie", "implausible");
         } else {
-            setMetricLabel("m-missing-label", en ? "invalid test values" : "invalid wartości", "missing_invalid");
-            setMetricLabel("m-outliers-label", en ? "flagged implausible" : "flag. mało prawd.", "implausible");
+            setMetricLabel("m-missing-label", en ? "missing / invalid values" : "brakujących i nieprawidłowych", "missing_invalid");
+            setMetricLabel("m-outliers-label", en ? "implausible values" : "nieprawdopodobnych", "implausible");
         }
     }
 
@@ -647,19 +648,19 @@
             return renderExecutiveSummaryTable();
         }
         var stepLabel = en ? ("After step " + (currentStep + 1)) : ("Po kroku " + (currentStep + 1));
-        return "<h3>" + (en ? "Issues remaining in the dataset" : "Problemy pozostałe w secie") + "</h3>" +
+        return "<h3>" + (en ? "Issues remaining in the dataset" : "Problemy pozostałe w zbiorze") + "</h3>" +
             "<p class=\"dc-progress-note\">" + (en
-                ? "Counts reflect the current pipeline state — not the original raw file."
-                : "Liczniki odzwierciedlają aktualny stan pipeline'u — nie surowy plik.") +
+                ? "Counts reflect the current pipeline state — not the original source file."
+                : "Liczniki pokazują aktualny stan danych, nie plik źródłowy.") +
             "</p>" +
             "<table class=\"dc-table dc-progress-table\">" +
-            "<thead><tr><th>" + (en ? "Metric" : "Metryka") + "</th><th>Raw</th><th>" + stepLabel + "</th></tr></thead><tbody>" +
-            progressRow(en ? "Missing / invalid test values" : "Braki / invalid wartości", raw.missingTestValues, profile.missingTestValues, "missing_invalid") +
-            progressRow(en ? "Sentinel −999 (raw cells)" : "Strażnik −999 (surowe komórki)", raw.sentinelRaw, profile.sentinelRaw, "sentinel") +
+            "<thead><tr><th>" + (en ? "Metric" : "Metryka") + "</th><th>" + (en ? "Source" : "Źródło") + "</th><th>" + stepLabel + "</th></tr></thead><tbody>" +
+            progressRow(en ? "Missing / invalid test values" : "Brakujące i nieprawidłowe wartości", raw.missingTestValues, profile.missingTestValues, "missing_invalid") +
+            progressRow(en ? "Sentinel −999 (source cells)" : "Strażnik −999 (komórki źródłowe)", raw.sentinelRaw, profile.sentinelRaw, "sentinel") +
             progressRow(en ? "Non-numeric text (e.g. N/A)" : "Tekst nienumeryczny (np. N/A)", raw.nonNumeric, profile.nonNumeric, "non_numeric") +
             progressRow(en ? "Test-name variants" : "Warianty nazw badań", raw.names, profile.names) +
             progressRow(en ? "mg/dL rows" : "Wiersze mg/dL", raw.mgdl, profile.mgdl) +
-            progressRow(en ? "Range / unit mismatch" : "Niedopas. zakres / jednostka", raw.rangeMismatch, profile.rangeMismatch, "range_mismatch") +
+            progressRow(en ? "Range / unit mismatch" : "Zakres niepasujący do jednostki", raw.rangeMismatch, profile.rangeMismatch, "range_mismatch") +
             progressRow(en ? "Implausible values" : "Mało prawdopodobne", raw.implausible, profile.implausible, "implausible") +
             "</tbody></table>";
     }
@@ -684,8 +685,8 @@
                 "</p>" +
                 "<p class=\"dc-metrics-note\">" +
                 (en
-                    ? "All 1,500 records retained at this step — NaN ≠ delete row."
-                    : "Wszystkie 1 500 rekordów zachowane na tym etapie — NaN ≠ usunięcie wiersza.") +
+                    ? "All 1,500 records stay at this step — marking a value as missing does not delete the row."
+                    : "Wszystkie 1 500 rekordów zostają. Oznaczenie wartości jako brakującej nie usuwa całego rekordu.") +
                 "</p>";
             return;
         }
@@ -694,17 +695,17 @@
             el.hidden = false;
             el.innerHTML =
                 "<div class=\"dc-metrics-compare\">" +
-                "<div><span class=\"dc-metrics-compare-label\">BEFORE</span><strong>" + ns.rawLabels + "</strong> " +
-                (en ? "unique labels" : "unikalnych etykiet") + "</div>" +
+                "<div><span class=\"dc-metrics-compare-label\">" + (en ? "BEFORE" : "PRZED") + "</span><strong>" + ns.rawLabels + "</strong> " +
+                (en ? "unique labels" : "unikalnych nazw") + "</div>" +
                 "<div class=\"dc-metrics-compare-arrow\">→</div>" +
-                "<div><span class=\"dc-metrics-compare-label\">AFTER</span><strong>" + ns.canonical + "</strong> " +
-                (en ? "canonical analytes" : "anality kanoniczne") + "</div>" +
+                "<div><span class=\"dc-metrics-compare-label\">" + (en ? "AFTER" : "PO") + "</span><strong>" + ns.canonical + "</strong> " +
+                (en ? "test types" : "rodzaje badań") + "</div>" +
                 "</div>" +
                 "<p class=\"dc-metrics-total\">" +
-                (en ? "Reduction in label fragmentation: " : "Redukcja fragmentacji etykiet: ") +
+                (en ? "Fewer distinct labels: " : "Mniej różnych nazw: ") +
                 "<strong>" + ns.reduction + "%</strong>" +
                 " · " + ns.rowsRenamed.toLocaleString("pl-PL") + " " +
-                (en ? "rows mapped to a canonical label" : "wierszy zmapowanych do etykiety kanonicznej") +
+                (en ? "rows mapped to one name per test" : "wierszy przypisanych do jednej nazwy badania") +
                 "</p>";
             return;
         }
@@ -713,13 +714,13 @@
             el.innerHTML =
                 "<p class=\"dc-metrics-note\">" +
                 (en
-                    ? "Value conversion ≠ full record standardisation. Units are harmonised, but reference ranges may still reflect the original source format."
-                    : "Konwersja wartości ≠ pełna standaryzacja rekordu. Jednostki są ujednolicone, ale zakresy referencyjne mogą nadal pochodzić z formatu źródłowego.") +
+                    ? "Units are unified, but reference ranges may still follow the original source format."
+                    : "Jednostki są już wspólne, ale zakresy referencyjne mogą nadal pochodzić z pliku źródłowego.") +
                 "</p>" +
                 "<p class=\"dc-metrics-total\">" +
                 (en
-                    ? "Values are now in consistent units, but <strong>" + profile.rangeMismatch.toLocaleString("pl-PL") + "</strong> reference ranges remain incompatible with those units — resolved in Step 5 (Ranges)."
-                    : "Wartości są już w spójnych jednostkach, ale <strong>" + profile.rangeMismatch.toLocaleString("pl-PL") + "</strong> zakresów referencyjnych nadal nie pasuje do tych jednostek — rozwiązane w kroku 5 (Ranges).") +
+                    ? "Values are in consistent units, but <strong>" + profile.rangeMismatch.toLocaleString("pl-PL") + "</strong> reference ranges still do not match those units — fixed in step 5."
+                    : "Wartości są w spójnych jednostkach, ale <strong>" + profile.rangeMismatch.toLocaleString("pl-PL") + "</strong> zakresów referencyjnych nadal do nich nie pasuje — poprawiam to w kroku 5.") +
                 "</p>";
             return;
         }
@@ -729,18 +730,18 @@
             el.innerHTML =
                 renderPipelineFunnel(pipe) +
                 "<div class=\"dc-lineage\">" +
-                "<div class=\"dc-lineage-step\"><span class=\"label\">RAW</span><strong>1 500</strong><br>lab_results_raw.csv</div>" +
+                "<div class=\"dc-lineage-step\"><span class=\"label\">" + (en ? "SOURCE" : "Źródło") + "</span><strong>1 500</strong><br>lab_results_raw.csv</div>" +
                 "<div class=\"dc-lineage-arrow\">→</div>" +
-                "<div class=\"dc-lineage-step\"><span class=\"label\">STANDARDIZED / AUDIT</span><strong>1 500</strong><br>lab_results_standardized.csv<br>" +
-                "<span class=\"dc-lineage-meta\">quality_flag · missing_reason · names · units</span></div>" +
+                "<div class=\"dc-lineage-step\"><span class=\"label\">" + (en ? "CLEANED" : "Ujednolicone") + "</span><strong>1 500</strong><br>lab_results_standardized.csv<br>" +
+                "<span class=\"dc-lineage-meta\">" + (en ? "flags · missing reason · names · units" : "oznaczenia · przyczyna braku · nazwy · jednostki") + "</span></div>" +
                 "<div class=\"dc-lineage-arrow\">→</div>" +
-                "<div class=\"dc-lineage-step highlight\"><span class=\"label\">ANALYSIS</span><strong>" + pipe.retained.toLocaleString("pl-PL") + "</strong><br>lab_results_analysis.csv<br>" +
+                "<div class=\"dc-lineage-step highlight\"><span class=\"label\">" + (en ? "ANALYSIS" : "Do analizy") + "</span><strong>" + pipe.retained.toLocaleString("pl-PL") + "</strong><br>lab_results_analysis.csv<br>" +
                 "<span class=\"dc-lineage-meta\">" + pipe.retainedPct + "% " + (en ? "retained" : "zachowanych") + "</span></div>" +
                 "</div>" +
                 "<p class=\"dc-metrics-total\">" +
                 (en
-                    ? "<strong>1 500 → " + pipe.retained.toLocaleString("pl-PL") + "</strong> analysis-ready records · " + pipe.excludedInvalid + " missing/invalid + " + pipe.excludedImplausible + " implausible excluded from analysis (not deleted from audit set)"
-                    : "<strong>1 500 → " + pipe.retained.toLocaleString("pl-PL") + "</strong> rekordów gotowych do analizy · " + pipe.excludedInvalid + " braków/invalid + " + pipe.excludedImplausible + " mało prawdopodobnych wykluczonych z analizy (nie usuniętych z audytu)") +
+                    ? "<strong>1 500 → " + pipe.retained.toLocaleString("pl-PL") + "</strong> records for analysis · " + pipe.excludedInvalid + " missing/invalid + " + pipe.excludedImplausible + " implausible excluded from analysis (kept in the full cleaned file)"
+                    : "<strong>1 500 → " + pipe.retained.toLocaleString("pl-PL") + "</strong> rekordów do analizy · " + pipe.excludedInvalid + " brakujących lub nieprawidłowych + " + pipe.excludedImplausible + " nieprawdopodobnych wykluczonych z analizy (zostają w pełnym pliku po czyszczeniu)") +
                 "</p>";
             return;
         }
@@ -826,23 +827,23 @@
             panel.innerHTML =
                 "<h3>" + (en ? "Missing-value breakdown" : "Rozbicie brakujących wyników") + "</h3>" +
                 "<div class=\"dc-missing-breakdown\">" +
-                qualityItem("EMPTY", bd.blank, "empty") +
-                qualityItem("NOT COLLECTED", bd.notCollected, "not_collected") +
+                qualityItem(en ? "EMPTY" : "Puste", bd.blank, "empty") +
+                qualityItem(en ? "NOT COLLECTED" : "Nie pobrano", bd.notCollected, "not_collected") +
                 qualityItem("−999", bd.sentinel, "sentinel") +
-                (bd.nullish ? qualityItem("NULL / NaN", bd.nullish, "nan") : "") +
-                "<div class=\"dc-quality-item dc-quality-total\"><span>TOTAL</span><strong>" + bd.totalStandardized.toLocaleString("pl-PL") + "</strong></div>" +
+                (bd.nullish ? qualityItem(en ? "NULL / NaN" : "Puste (NaN)", bd.nullish, "nan") : "") +
+                "<div class=\"dc-quality-item dc-quality-total\"><span>" + (en ? "TOTAL" : "Razem") + "</span><strong>" + bd.totalStandardized.toLocaleString("pl-PL") + "</strong></div>" +
                 (bd.nonNumeric ? qualityItem(en ? "Non-numeric (e.g. N/A)" : "Nienumeryczne (np. N/A)", bd.nonNumeric, "non_numeric") : "") +
                 "</div>";
             return;
         }
         if (currentStep === 2) {
             panel.innerHTML =
-                "<h3>" + (en ? "Canonical name dictionary" : "Słownik nazw kanonicznych") + "</h3>" +
+                "<h3>" + (en ? "Name dictionary" : "Słownik nazw badań") + "</h3>" +
                 "<div class=\"dc-name-tree\">" + renderNameTreeHtml() + "</div>" +
                 "<p class=\"dc-name-tree-note\">" +
                 (en
-                    ? "Only semantically equivalent labels are grouped. No fuzzy matching is applied automatically, because similar test names may represent different analytes."
-                    : "Grupuję tylko semantycznie równoważne etykiety. Bez automatycznego fuzzy matchingu — podobne nazwy mogą oznaczać różne anality.") +
+                    ? "Only equivalent names are grouped. I do not automatically match similar names, because they may be different tests."
+                    : "Łączę tylko nazwy tego samego badania. Nie stosuję automatycznego dopasowania podobnych nazw, bo mogą oznaczać różne badania.") +
                 "</p>";
             return;
         }
@@ -850,15 +851,15 @@
             panel.innerHTML =
                 "<h3>" + (en ? "Validation rules (data quality)" : "Reguły walidacji (jakość danych)") + "</h3>" +
                 "<div class=\"dc-validation-rules\">" +
-                "<div class=\"dc-validation-rule\"><span class=\"label\">Rule</span><code>Glucose &gt; 40 mmol/L → implausible_value</code></div>" +
-                "<div class=\"dc-validation-rule\"><span class=\"label\">Rule</span><code>Cholesterol &gt; 20 mmol/L → implausible_value</code></div>" +
-                "<div class=\"dc-validation-rule\"><span class=\"label\">Rule</span><code>HbA1c &lt; 3 or &gt; 20 % → implausible_value</code></div>" +
-                "<div class=\"dc-validation-rule\"><span class=\"label\">Rule</span><code>test_value is NaN → missing_value</code></div>" +
+                "<div class=\"dc-validation-rule\"><span class=\"label\">" + (en ? "Rule" : "Reguła") + "</span><code>Glucose &gt; 40 mmol/L → implausible_value</code></div>" +
+                "<div class=\"dc-validation-rule\"><span class=\"label\">" + (en ? "Rule" : "Reguła") + "</span><code>Cholesterol &gt; 20 mmol/L → implausible_value</code></div>" +
+                "<div class=\"dc-validation-rule\"><span class=\"label\">" + (en ? "Rule" : "Reguła") + "</span><code>HbA1c &lt; 3 or &gt; 20 % → implausible_value</code></div>" +
+                "<div class=\"dc-validation-rule\"><span class=\"label\">" + (en ? "Rule" : "Reguła") + "</span><code>test_value is NaN → missing_value</code></div>" +
                 "</div>" +
                 "<p class=\"dc-name-tree-note\">" +
                 (en
                     ? "<strong>Purpose:</strong> data-quality flag, not clinical diagnosis. Thresholds are conservative bounds for detecting recording errors in this synthetic dataset (e.g. 500 mmol/L glucose)."
-                    : "<strong>Cel:</strong> flaga jakości danych, nie diagnoza kliniczna. Progi to konserwatywne granice wykrywania błędów zapisu w tym syntetycznym secie (np. 500 mmol/L glukozy).") +
+                    : "<strong>Cel:</strong> oznaczenie jakości danych, nie diagnoza kliniczna. Progi służą do wykrywania błędów zapisu w tym zbiorze (np. 500 mmol/L glukozy).") +
                 "</p>";
             return;
         }
@@ -870,15 +871,15 @@
             panel.innerHTML = renderIssuesProgressPanel(currentStep, profile);
             return;
         }
-        var title = en ? "Issues detected in raw data" : "Problemy wykryte w surowych danych";
+        var title = en ? "Issues detected in source data" : "Problemy w danych źródłowych";
         var items = [
-            [en ? "Missing / invalid test values" : "Braki / invalid wartości", profile.missingTestValues, "missing_invalid"],
+            [en ? "Missing / invalid test values" : "Brakujące i nieprawidłowe wartości", profile.missingTestValues, "missing_invalid"],
             [en ? "Sentinel −999" : "Strażnik −999", profile.sentinelRaw, "sentinel"],
             [en ? "Non-numeric text" : "Tekst nienumeryczny", profile.nonNumeric, "non_numeric"],
             [en ? "Implausible values" : "Mało prawdopodobne", profile.implausible, "implausible"],
             [en ? "Test-name variants" : "Warianty nazw badań", profile.names],
             [en ? "mg/dL rows" : "Wiersze mg/dL", profile.mgdl],
-            [en ? "Range / unit mismatch" : "Niedopas. zakres / jednostka", profile.rangeMismatch, "range_mismatch"]
+            [en ? "Range / unit mismatch" : "Zakres niepasujący do jednostki", profile.rangeMismatch, "range_mismatch"]
         ];
         items.push([en ? "Valid records (before cleaning)" : "Poprawne rekordy (przed czyszczeniem)", profile.valid]);
         panel.innerHTML = "<h3>" + title + "</h3><div class=\"dc-quality-grid\">" +
@@ -895,19 +896,19 @@
         var ns = computeNameStats();
         panel.hidden = false;
         panel.innerHTML =
-            "<h3>" + (en ? "Problem → transformation → result → impact" : "Problem → transformacja → wynik → wpływ") + "</h3>" +
+            "<h3>" + (en ? "Problem, fix and result" : "Problem, sposób poprawy i rezultat") + "</h3>" +
             "<div class=\"dc-story-flow dc-names-story-flow\">" +
             "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Problem" : "Problem") + "</span>" +
-            "<strong>" + ns.rawLabels + " " + (en ? "labels" : "etykiet") + "</strong><br>" +
+            "<strong>" + ns.rawLabels + " " + (en ? "labels" : "nazw") + "</strong><br>" +
             (en ? "describe 3 real tests" : "opisują 3 badania") + "</div>" +
             "<div class=\"dc-story-arrow\">→</div>" +
-            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Transformation" : "Transformacja") + "</span>" +
-            (en ? "Canonical name dictionary" : "Słownik nazw kanonicznych") + "<br>" +
-            "<span style=\"color:var(--text-muted)\">" + ns.variantLabels + " " + (en ? "variants mapped" : "wariantów zmapowanych") + "</span></div>" +
+            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Fix" : "Poprawa") + "</span>" +
+            (en ? "Name dictionary" : "Słownik nazw") + "<br>" +
+            "<span style=\"color:var(--text-muted)\">" + ns.variantLabels + " " + (en ? "variants mapped" : "wariantów przypisanych") + "</span></div>" +
             "<div class=\"dc-story-arrow\">→</div>" +
-            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Result" : "Wynik") + "</span>" +
-            "<strong>" + ns.canonical + " " + (en ? "analytes" : "anality") + "</strong><br>" +
-            (en ? "consistent labels" : "spójne etykiety") + "</div>" +
+            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Result" : "Rezultat") + "</span>" +
+            "<strong>" + ns.canonical + " " + (en ? "tests" : "badania") + "</strong><br>" +
+            (en ? "consistent labels" : "wspólne nazwy") + "</div>" +
             "<div class=\"dc-story-arrow\">→</div>" +
             "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Impact" : "Wpływ") + "</span>" +
             (en
@@ -932,13 +933,13 @@
             "<li><code>\"-999\"</code></li>" +
             "<li><code>NULL</code></li>" +
             "</ul></div>" +
-            "<div class=\"dc-missing-story-arrow\">" + (en ? "standardise" : "standaryzacja") + "<br>→</div>" +
+            "<div class=\"dc-missing-story-arrow\">" + (en ? "unify" : "ujednolicenie") + "<br>→</div>" +
             "<div class=\"dc-missing-story-col dc-missing-target\">" +
-            "<span class=\"label\">" + (en ? "Standardised" : "Ustandaryzowane") + "</span>" +
+            "<span class=\"label\">" + (en ? "Unified" : "Po ujednoliceniu") + "</span>" +
             "<p class=\"dc-missing-nan\"><code>NaN</code></p>" +
             "<p class=\"dc-missing-why\">" + (en
-                ? "Standardizing missing-value representations prevents sentinel values such as −999 from contaminating statistical calculations while preserving the original record and missing_reason."
-                : "Ujednolicenie reprezentacji braków zapobiega zanieczyszczaniu statystyk wartościami strażniczymi (np. −999), zachowując oryginalny rekord i missing_reason.") +
+                ? "Unifying missing-value codes keeps −999 out of the calculations, while the original record and the reason for the gap stay in the file."
+                : "Dzięki ujednoliceniu braków kod −999 nie wchodzi do obliczeń. Oryginalny rekord i przyczyna braku zostają w pliku.") +
             "</p></div></div>";
     }
 
@@ -952,32 +953,32 @@
         var cholSi = cholRaw / CHOL_MGDL;
         panel.hidden = false;
         panel.innerHTML =
-            "<h3>" + (en ? "Before → transformation → after" : "Przed → transformacja → po") + "</h3>" +
+            "<h3>" + (en ? "Before, conversion and after" : "Przed, przeliczenie i po") + "</h3>" +
             "<div class=\"dc-unit-examples\">" +
             "<div class=\"dc-unit-example\">" +
             "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Problem" : "Problem") + "</span>" +
             "<strong>Glucose</strong><br>" + glucoseRaw.toFixed(1) + " mg/dL</div>" +
             "<div class=\"dc-story-arrow\">↓</div>" +
-            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Transformation" : "Transformacja") + "</span>" +
+            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Conversion" : "Przeliczenie") + "</span>" +
             glucoseRaw.toFixed(1) + " ÷ " + GLUCOSE_MGDL.toFixed(4) + "</div>" +
             "<div class=\"dc-story-arrow\">↓</div>" +
-            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Standardised" : "Ustandaryzowane") + "</span>" +
+            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "After" : "Po") + "</span>" +
             "<strong>Glucose</strong><br>" + glucoseSi.toFixed(2) + " mmol/L</div>" +
             "</div>" +
             "<div class=\"dc-unit-example\">" +
             "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Problem" : "Problem") + "</span>" +
             "<strong>Cholesterol</strong><br>" + cholRaw.toFixed(2) + " mg/dL</div>" +
             "<div class=\"dc-story-arrow\">↓</div>" +
-            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Transformation" : "Transformacja") + "</span>" +
+            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Conversion" : "Przeliczenie") + "</span>" +
             cholRaw.toFixed(2) + " ÷ " + CHOL_MGDL.toFixed(2) + "</div>" +
             "<div class=\"dc-story-arrow\">↓</div>" +
-            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "Standardised" : "Ustandaryzowane") + "</span>" +
+            "<div class=\"dc-story-step\"><span class=\"label\">" + (en ? "After" : "Po") + "</span>" +
             "<strong>Cholesterol</strong><br>" + cholSi.toFixed(2) + " mmol/L</div>" +
             "</div></div>" +
             "<p class=\"dc-name-tree-note\">" +
             (en
                 ? "Each analyte uses its own conversion factor — glucose ÷ 18.0182, cholesterol ÷ 38.67."
-                : "Każdy analit ma własny współczynnik — glukoza ÷ 18.0182, cholesterol ÷ 38.67.") +
+                : "Każde badanie ma własny współczynnik — glukoza ÷ 18,0182, cholesterol ÷ 38,67.") +
             "</p>";
     }
 
@@ -1048,12 +1049,12 @@
         var en = lang() === "en";
         document.getElementById("dc-caption").textContent = step === 1
             ? (en
-                ? "Showing " + preview.length + " of " + visible.length + " rows — all records kept; missing values standardised to NaN"
-                : "Podgląd " + preview.length + " z " + visible.length + " wierszy — wszystkie rekordy zachowane; braki ujednolicone do NaN")
+                ? "Showing " + preview.length + " of " + visible.length + " rows — all records kept; missing values marked as NaN"
+                : "Podgląd " + preview.length + " z " + visible.length + " wierszy — wszystkie rekordy zostają; braki oznaczone jako NaN")
             : step === 2
                 ? (en
-                    ? "Showing " + preview.length + " of " + visible.length + " rows — raw label preserved in test_name_raw; canonical name in test_name"
-                    : "Podgląd " + preview.length + " z " + visible.length + " wierszy — surowa etykieta w test_name_raw; nazwa kanoniczna w test_name")
+                    ? "Showing " + preview.length + " of " + visible.length + " rows — source label in test_name_raw; unified name in test_name"
+                    : "Podgląd " + preview.length + " z " + visible.length + " wierszy — nazwa źródłowa w test_name_raw; ujednolicona w test_name")
                 : step === 3
                     ? (en
                         ? "Showing " + preview.length + " of " + visible.length + " rows — converted values in mmol/L; reference_range may still be incompatible"
@@ -1150,8 +1151,8 @@
             return "<div class=\"dc-dual-bar-row\">" +
                 "<span class=\"dc-dual-bar-label\">" + h.name + "</span>" +
                 "<div class=\"dc-dual-bars\">" +
-                barRow(en ? "Unfiltered" : "Niefiltrowane", h.before, maxGlucoseMean, "#f87171") +
-                barRow(en ? "Analysis-ready" : "Analiza", h.after, maxGlucoseMean, "#86efac") +
+                barRow(en ? "Before" : "Przed", h.before, maxGlucoseMean, "#f87171") +
+                barRow(en ? "After" : "Po", h.after, maxGlucoseMean, "#86efac") +
                 "</div></div>";
         }).join("");
 
@@ -1181,23 +1182,23 @@
             "<div class=\"dc-viz-lead\">" +
             "<p class=\"dc-insight-kicker\">" + (en ? "Analysis question" : "Pytanie analityczne") + "</p>" +
             "<p><strong>" + (en ? "How do laboratory results differ between hospitals?" : "Czy wyniki laboratoryjne różnią się między szpitalami?") + "</strong> — " +
-            d.cleanCount.toLocaleString("pl-PL") + " " + (en ? "analysis-ready observations after cleaning." : "obserwacji gotowych do analizy po czyszczeniu.") +
+            d.cleanCount.toLocaleString("pl-PL") + " " + (en ? "observations after cleaning." : "obserwacji po czyszczeniu.") +
             "</p></div>" +
             "<div class=\"dc-viz-grid\">" +
             "<div class=\"dc-chart dc-chart-wide\">" +
-            "<h3>" + (en ? "Mean glucose by hospital (mmol/L, SI)" : "Średnia glukoza wg szpitala (mmol/L, SI)") + "</h3>" +
+            "<h3>" + (en ? "Mean glucose by hospital (mmol/L)" : "Średnia glukoza wg szpitala (mmol/L)") + "</h3>" +
             "<p class=\"dc-chart-note\">" + (en
-                ? "Before = standardized & unfiltered (includes implausible). After = analysis-ready only."
-                : "Przed = standaryzowane i niefiltrowane (z mało prawdopodobnymi). Po = tylko gotowe do analizy.") +
+                ? "Before includes implausible values. After uses only records kept for analysis."
+                : "Przed: z nieprawdopodobnymi wartościami. Po: tylko rekordy przeznaczone do analizy.") +
             "</p>" +
             glucoseCompareHtml +
             "</div>" +
             "<div class=\"dc-chart\">" +
-            "<h3>" + (en ? "Median Glucose (mmol/L)" : "Mediana Glucose (mmol/L)") + "</h3>" +
+            "<h3>" + (en ? "Median glucose (mmol/L)" : "Mediana glukozy (mmol/L)") + "</h3>" +
             glucoseHtml +
             "</div>" +
             "<div class=\"dc-chart\">" +
-            "<h3>" + (en ? "Median Cholesterol (mmol/L)" : "Mediana Cholesterol (mmol/L)") + "</h3>" +
+            "<h3>" + (en ? "Median cholesterol (mmol/L)" : "Mediana cholesterolu (mmol/L)") + "</h3>" +
             cholHtml +
             "</div>" +
             "<div class=\"dc-chart\">" +
@@ -1286,17 +1287,17 @@
         return "<div class=\"dc-portfolio-summary\">" +
             "<h3>" + (en ? "Project outcome" : "Wynik projektu") + "</h3>" +
             "<div class=\"dc-portfolio-kpi-grid\">" +
-            card("1 500", en ? "RAW RECORDS" : "REKORDÓW RAW") +
-            card(pipe.excludedTotal.toLocaleString("pl-PL"), en ? "RECORDS EXCLUDED FROM ANALYSIS" : "REKORDÓW WYKLUCZONYCH Z ANALIZY") +
-            card(pipe.retainedPct + "%", en ? "DATA RETAINED" : "DANYCH ZACHOWANYCH") +
-            card(raw.names + " → " + analysis.names, en ? "TEST LABELS STANDARDIZED" : "ETYKIET BADAŃ USTANDARYZOWANYCH") +
-            card(raw.mgdl + " → 0", en ? "MIXED-UNIT RECORDS" : "REKORDÓW MIESZANYCH JEDNOSTEK") +
-            card(raw.rangeMismatch + " → 0", en ? "RANGE / UNIT MISMATCHES" : "NIEDOPAS. ZAKRES / JEDNOSTKA") +
-            card(raw.implausible + " → 0", en ? "FLAGGED IMPLAUSIBLE VALUES" : "FLAG. WARTOŚCI MAŁO PRAWD.") +
+            card("1 500", en ? "Source records" : "Rekordy źródłowe") +
+            card(pipe.excludedTotal.toLocaleString("pl-PL"), en ? "Records excluded from analysis" : "Rekordy wykluczone z analizy") +
+            card(pipe.retainedPct + "%", en ? "Data retained" : "Danych zachowanych") +
+            card(raw.names + " → " + analysis.names, en ? "Test names unified" : "Nazwy badań ujednolicone") +
+            card(raw.mgdl + " → 0", en ? "Mixed-unit records" : "Rekordy w mieszanych jednostkach") +
+            card(raw.rangeMismatch + " → 0", en ? "Range / unit mismatches" : "Zakres niepasujący do jednostki") +
+            card(raw.implausible + " → 0", en ? "Implausible values marked" : "Nieprawdopodobne wartości") +
             "</div>" +
             "<p class=\"dc-portfolio-result\">" + (en
-                ? "Result: " + pipe.retained.toLocaleString("pl-PL") + " analysis-ready laboratory records with standardized analytes, units and reference-range representation."
-                : "Rezultat: " + pipe.retained.toLocaleString("pl-PL") + " rekordów laboratoryjnych gotowych do analizy ze standaryzowanymi analitymi, jednostkami i reprezentacją zakresów referencyjnych.") +
+                ? "Result: " + pipe.retained.toLocaleString("pl-PL") + " laboratory records for analysis, with unified test names, units and reference ranges."
+                : "Wynik: " + pipe.retained.toLocaleString("pl-PL") + " rekordów laboratoryjnych do analizy, z ujednoliconymi nazwami badań, jednostkami i zakresami referencyjnymi.") +
             "</p></div>";
     }
 
@@ -1341,33 +1342,33 @@
 
         document.getElementById("dc-insights").innerHTML =
             "<div class=\"dc-false-signal\">" +
-            "<p class=\"dc-insight-kicker\">FALSE SIGNAL REMOVED</p>" +
+            "<p class=\"dc-insight-kicker\">" + (en ? "After cleaning" : "Po oczyszczeniu") + "</p>" +
             "<div class=\"dc-false-signal-grid\">" +
             "<div class=\"dc-false-signal-block\">" +
-            "<span class=\"dc-false-signal-label\">" + (en ? "Standardized, unfiltered" : "Standaryzowane, niefiltrowane") + "</span>" +
-            "<strong>Hospital B: " + fmtNum(b.before, 2) + " mmol/L</strong>" +
+            "<span class=\"dc-false-signal-label\">" + (en ? "Before excluding errors" : "Przed wykluczeniem błędów") + "</span>" +
+            "<strong>" + (en ? "Hospital B: " : "Szpital B: ") + fmtNum(b.before, 2) + " mmol/L</strong>" +
             "</div>" +
             "<div class=\"dc-false-signal-arrow\">→</div>" +
             "<div class=\"dc-false-signal-block highlight\">" +
-            "<span class=\"dc-false-signal-label\">" + (en ? "Analysis-ready" : "Gotowe do analizy") + "</span>" +
-            "<strong>Hospital B: " + fmtNum(b.after, 2) + " mmol/L</strong>" +
+            "<span class=\"dc-false-signal-label\">" + (en ? "For analysis" : "Do analizy") + "</span>" +
+            "<strong>" + (en ? "Hospital B: " : "Szpital B: ") + fmtNum(b.after, 2) + " mmol/L</strong>" +
             "</div>" +
             "</div>" +
             "<p class=\"dc-false-signal-compare\">" + (en ? "After cleaning — A " : "Po czyszczeniu — A ") +
             fmtNum(a.after, 2) + " | B " + fmtNum(b.after, 2) + " | C " + fmtNum(c.after, 2) + " mmol/L</p>" +
             "<p class=\"dc-false-signal-note\">" + (en
-                ? "Without data-quality controls, a handful of implausible records would have produced a misleading cross-hospital comparison."
-                : "Bez kontroli jakości danych kilka mało prawdopodobnych rekordów dałoby mylące porównanie między szpitalami.") +
+                ? "A few implausible records would have made the hospital comparison misleading."
+                : "Kilka nieprawdopodobnych rekordów dałoby mylące porównanie szpitali.") +
             "</p></div>" +
             "<div class=\"dc-insight-lead\">" +
-            "<p class=\"dc-insight-kicker\">" + (en ? "Business problem" : "Problem biznesowy") + "</p>" +
+            "<p class=\"dc-insight-kicker\">" + (en ? "Impact on the analysis" : "Wpływ na analizę") + "</p>" +
             "<p>" + (en
-                ? "<strong>Before validation:</strong> Hospital_B looked like an operational outlier at <strong>" + fmtNum(b.before, 2) + " mmol/L</strong> mean glucose — after SI standardisation but still including implausible values."
-                : "<strong>Przed walidacją:</strong> Hospital_B wyglądał na outlier operacyjny ze średnią glukozy <strong>" + fmtNum(b.before, 2) + " mmol/L</strong> — po standaryzacji SI, ale z wartościami mało prawdopodobnymi.") +
+                ? "Before the bad values were removed, hospital B looked clearly higher, with mean glucose <strong>" + fmtNum(b.before, 2) + " mmol/L</strong>."
+                : "Przed usunięciem błędnych wartości średnia glukozy w szpitalu B jest wyraźnie zawyżona: <strong>" + fmtNum(b.before, 2) + " mmol/L</strong>.") +
             "</p>" +
             "<p>" + (en
-                ? "<strong>After validation:</strong> excluding seven implausible records brings all three hospitals to comparable means — <strong>" + fmtNum(a.after, 2) + " / " + fmtNum(b.after, 2) + " / " + fmtNum(c.after, 2) + " mmol/L</strong> — not a false crisis."
-                : "<strong>Po walidacji:</strong> wykluczenie siedmiu mało prawdopodobnych rekordów sprowadza trzy szpitale do porównywalnych średnich — <strong>" + fmtNum(a.after, 2) + " / " + fmtNum(b.after, 2) + " / " + fmtNum(c.after, 2) + " mmol/L</strong> — bez fałszywego kryzysu.") +
+                ? "After excluding seven implausible results the three hospitals become comparable: <strong>" + fmtNum(a.after, 2) + " / " + fmtNum(b.after, 2) + " / " + fmtNum(c.after, 2) + " mmol/L</strong>."
+                : "Po wykluczeniu siedmiu nieprawdopodobnych wyników średnie dla trzech szpitali stają się porównywalne: <strong>" + fmtNum(a.after, 2) + " / " + fmtNum(b.after, 2) + " / " + fmtNum(c.after, 2) + " mmol/L</strong>.") +
             "</p>" +
             "</div>" +
             "<div class=\"dc-table-wrap dc-insight-table-wrap\">" +
@@ -1375,23 +1376,23 @@
             "</div>" +
             renderPipelineFunnel(pipe) +
             "<div class=\"dc-lineage dc-lineage-insight\">" +
-            "<div class=\"dc-lineage-step\"><span class=\"label\">RAW</span><strong>1 500</strong></div>" +
+            "<div class=\"dc-lineage-step\"><span class=\"label\">" + (en ? "SOURCE" : "Źródło") + "</span><strong>1 500</strong></div>" +
             "<div class=\"dc-lineage-arrow\">→</div>" +
-            "<div class=\"dc-lineage-step\"><span class=\"label\">STANDARDIZED</span><strong>1 500</strong></div>" +
+            "<div class=\"dc-lineage-step\"><span class=\"label\">" + (en ? "CLEANED" : "Ujednolicone") + "</span><strong>1 500</strong></div>" +
             "<div class=\"dc-lineage-arrow\">→</div>" +
-            "<div class=\"dc-lineage-step highlight\"><span class=\"label\">ANALYSIS</span><strong>" + analysis.rows.toLocaleString("pl-PL") + "</strong><br><span class=\"dc-lineage-meta\">" + pipe.retainedPct + "%</span></div>" +
+            "<div class=\"dc-lineage-step highlight\"><span class=\"label\">" + (en ? "ANALYSIS" : "Do analizy") + "</span><strong>" + analysis.rows.toLocaleString("pl-PL") + "</strong><br><span class=\"dc-lineage-meta\">" + pipe.retainedPct + "%</span></div>" +
             "</div>" +
             "<div class=\"dc-insight-section\">" +
-            "<h3 style=\"margin:0 0 0.35rem;font-size:0.9rem\">" + (en ? "9 variants → 3 standardized analytes" : "9 wariantów → 3 ustandaryzowane anality") + "</h3>" +
+            "<h3 style=\"margin:0 0 0.35rem;font-size:0.9rem\">" + (en ? "9 names → 3 tests" : "9 nazw → 3 badania") + "</h3>" +
             nameMapHtml +
             "</div>" +
             "<div class=\"dc-table-wrap dc-insight-table-wrap\">" +
-            "<h3 style=\"margin:0 0 0.75rem;font-size:0.9rem\">" + (en ? "Mean glucose by hospital (mmol/L, SI)" : "Średnia glukoza wg szpitala (mmol/L, SI)") + "</h3>" +
+            "<h3 style=\"margin:0 0 0.75rem;font-size:0.9rem\">" + (en ? "Mean glucose by hospital (mmol/L)" : "Średnia glukoza wg szpitala (mmol/L)") + "</h3>" +
             "<table class=\"dc-table\">" +
             "<thead><tr>" +
-            "<th>hospital</th>" +
-            "<th>" + (en ? "Standardized, unfiltered" : "Standaryzowane, niefiltrowane") + "</th>" +
-            "<th>" + (en ? "Analysis-ready" : "Gotowe do analizy") + "</th>" +
+            "<th>" + (en ? "hospital" : "szpital") + "</th>" +
+            "<th>" + (en ? "Before excluding errors" : "Przed wykluczeniem błędów") + "</th>" +
+            "<th>" + (en ? "For analysis" : "Do analizy") + "</th>" +
             "</tr></thead><tbody>" +
             hospitalRow(a) + hospitalRow(b) + hospitalRow(c) +
             "</tbody></table>" +
@@ -1402,7 +1403,7 @@
             "<h3>" + (en ? "Excluded from analysis, not deleted" : "Wykluczone z analizy, nie usunięte") + "</h3>" +
             "<p>" + (en
                 ? "101 missing/invalid and 7 implausible records remain in lab_results_standardized.csv with quality_flag — excluded only from lab_results_analysis.csv."
-                : "101 braków/invalid i 7 mało prawdopodobnych pozostaje w lab_results_standardized.csv z quality_flag — wykluczone tylko z lab_results_analysis.csv.") +
+                : "101 brakujących lub nieprawidłowych i 7 nieprawdopodobnych rekordów zostaje w lab_results_standardized.csv. Do lab_results_analysis.csv nie wchodzą.") +
             "</p>" +
             "</article>" +
             "<article class=\"dc-insight-card\">" +
@@ -1410,7 +1411,7 @@
             "<h3>" + (en ? "Labels, not tests" : "Etykiety, nie badania") + "</h3>" +
             "<p>" + (en
                 ? "Nine names collapse into three analytes. Without a dictionary, glucose would be counted as three separate tests."
-                : "Dziewięć nazw sprowadza się do trzech anality. Bez słownika glukoza liczyłaby się jako trzy osobne badania.") +
+                : "Dziewięć nazw sprowadza się do trzech badań. Bez słownika glukoza liczyłaby się jako trzy osobne testy.") +
             "</p>" +
             "</article>" +
             "<article class=\"dc-insight-card\">" +
@@ -1418,7 +1419,7 @@
             "<h3>" + (en ? "500 / 1860 mmol/L — values requiring validation" : "500 / 1860 mmol/L — wartości wymagające walidacji") + "</h3>" +
             "<p>" + (en
                 ? "Values of 500 and 1860 mmol/L glucose were flagged as extremely implausible. The pipeline does not delete them automatically: they receive a quality_flag first, and only the analytical dataset excludes them. Detection ≠ deletion."
-                : "Wartości 500 i 1860 mmol/L glukozy zostały oznaczone jako skrajnie mało prawdopodobne. Pipeline ich nie usuwa automatycznie: najpierw otrzymują quality_flag, a dopiero zestaw analityczny je wyklucza. Detection ≠ deletion.") +
+                : "Wartości 500 i 1860 mmol/L glukozy zostały oznaczone jako skrajnie mało prawdopodobne. Nie usuwam ich od razu z pliku — najpierw dostają oznaczenie, a z analizy wykluczam je dopiero w zbiorze przeznaczonym do obliczeń.") +
             "</p>" +
             "<p>" + (en
                 ? "After filtering, seven extreme 50+ mmol/L observations disappear — they had strongly distorted the means; nearly all remaining mass sits below 10 mmol/L."

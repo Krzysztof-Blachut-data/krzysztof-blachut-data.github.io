@@ -13,7 +13,7 @@
             en: "A result that cannot be analysed: blank cell, “not collected”, sentinel −999, or non-numeric text (e.g. N/A). 101 records in total."
         },
         implausible: {
-            pl: "Wartość liczbowa, ale skrajnie mało prawdopodobna (np. 500 mmol/L glukozy). Pipeline najpierw ją flaguje, dopiero zestaw analityczny wyklucza.",
+            pl: "Wartość liczbowa, ale skrajnie mało prawdopodobna (np. 500 mmol/L glukozy). Najpierw ją oznaczam, a z analizy wykluczam później.",
             en: "A numeric value that is extremely unlikely (e.g. 500 mmol/L glucose). The pipeline flags it first; only the analysis set excludes it."
         },
         non_numeric: {
@@ -29,7 +29,7 @@
             en: "An explicit source-system message that the test was not collected. Also missing, just stored as text."
         },
         nan: {
-            pl: "Not a Number — standardowa reprezentacja braku po czyszczeniu. NaN ≠ usunięcie wiersza.",
+            pl: "Oznaczenie braku po czyszczeniu. Oznaczenie wartości jako brakującej nie usuwa całego rekordu.",
             en: "Not a Number — the standardised missing-value representation after cleaning. NaN ≠ deleting the row."
         },
         range_mismatch: {
@@ -37,15 +37,15 @@
             en: "The reference range does not match the result unit — e.g. 70–99 with mmol/L, or 3.9–5.5 with mg/dL."
         },
         canonical: {
-            pl: "Jedna uzgodniona nazwa analitu po mapowaniu wariantów (np. Blood Sugar, Fasting Glucose → Glucose).",
+            pl: "Jedna uzgodniona nazwa badania po przypisaniu wariantów (np. Blood Sugar, Fasting Glucose → Glucose).",
             en: "One agreed analyte name after mapping variants (e.g. Blood Sugar, Fasting Glucose → Glucose)."
         },
         quality_flag: {
-            pl: "Znacznik jakości rekordu (valid, missing, implausible_value). Detection ≠ deletion: flaga nie usuwa wiersza z audytu.",
+            pl: "Oznaczenie jakości rekordu. Samo oznaczenie nie usuwa wiersza z pełnego pliku.",
             en: "A record-level quality marker (valid, missing, implausible_value). Detection ≠ deletion: the flag does not remove the row from the audit set."
         },
         analysis_ready: {
-            pl: "Zestaw do analizy: tylko rekordy z quality_flag = valid. Surowe i standaryzowane dane zostają osobno do audytu.",
+            pl: "Zbiór przeznaczony do analizy: tylko rekordy oznaczone jako poprawne. Dane źródłowe i ujednolicone zostają osobno.",
             en: "The analysis set: only records with quality_flag = valid. Raw and standardised data are kept separately for audit."
         },
         duplicate: {
