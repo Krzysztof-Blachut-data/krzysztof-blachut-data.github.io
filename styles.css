@@ -267,15 +267,6 @@ html[data-lang="en"] .lang-pl {
     font-weight: 600;
 }
 
-.hero-aim {
-    font-size: 1.05rem;
-    color: var(--text);
-    margin: 0.85rem 0 0;
-    max-width: 48ch;
-    line-height: 1.6;
-    font-weight: 500;
-}
-
 .hero-cta {
     display: flex;
     flex-wrap: wrap;
