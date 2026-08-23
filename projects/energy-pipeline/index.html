@@ -109,7 +109,7 @@
                                 <ul class="lang-pl">
                                     <li>Pobieram Brent i WTI z EIA oraz kursy USD/PLN i EUR/PLN z NBP. Każde wywołanie ma limit czasu wynoszący 30 sekund, sprawdza kod HTTP i potrafi ponowić żądanie.</li>
                                     <li>Błędy połączenia są zapisywane w logach i nie prowadzą do utworzenia niepełnego wyniku.</li>
-                                    <li>Odpowiedzi JSON trafiają do pandas i łączę trzy źródła po miesiącu.</li>
+                                    <li>Dane z API i arkuszy trafiają do pandas, gdzie łączę trzy źródła po miesiącu.</li>
                                     <li>Pobrane dane zapisuję w <code>data/raw/</code> w ujednoliconym formacie JSON, wraz z datą uruchomienia. Przetworzone zbiory trafiają osobno do <code>data/processed/</code>.</li>
                                     <li>Potem przetwarzanie, walidacja i zapis do SQLite (<code>energy.db</code>) oraz CSV.</li>
                                     <li>29 testów pytest sprawdza strukturę, zakresy kursów, jednostki, waluty i to, czy ujemne WTI z kwietnia 2020 nie zostało odfiltrowane.</li>
@@ -118,7 +118,7 @@
                                 <ul class="lang-en">
                                     <li>I fetch Brent and WTI from EIA and USD/PLN plus EUR/PLN from NBP. Each call has a 30-second time limit, checks the HTTP status and can retry.</li>
                                     <li>Connection errors are written to the logs and do not produce a partial result.</li>
-                                    <li>JSON responses go into pandas and I join the three sources on month.</li>
+                                    <li>Data from APIs and workbooks go into pandas, where I join the three sources on month.</li>
                                     <li>Fetched data are saved under <code>data/raw/</code> in a unified JSON format, with the run date in the filename. Processed files go separately to <code>data/processed/</code>.</li>
                                     <li>Then processing, validation and a write to SQLite (<code>energy.db</code>) and CSV.</li>
                                     <li>29 pytest checks cover structure, FX ranges, units, currencies and whether April 2020 negative WTI was filtered out.</li>
@@ -149,14 +149,14 @@
                                     <p class="dc-body lang-pl">Automatyczny proces pobiera trzy źródła, zapisuje dane źródłowe, przetwarza je, sprawdza poprawność i zapisuje wyniki w SQLite.</p>
                                     <p class="dc-body lang-en">An automated process fetches three sources, stores the source files, transforms them, checks validity and writes the results to SQLite.</p>
                                     <ul class="dc-issues lang-pl">
-                                        <li>EIA: Brent i WTI w USD za baryłkę (JSON).</li>
+                                        <li>EIA: Brent i WTI w USD za baryłkę (JSON/XLS).</li>
                                         <li>NBP: kursy USD/PLN i EUR/PLN, tabela A (JSON).</li>
                                         <li>Weekly Oil Bulletin KE: ceny Pb95 i diesla w Polsce (XLSX).</li>
                                         <li>Python łączy źródła, waliduje je i zapisuje do SQLite.</li>
                                         <li>Analiza (korelacja, różnica cen, zmiana rok do roku) jest na końcu, po walidacji danych.</li>
                                     </ul>
                                     <ul class="dc-issues lang-en">
-                                        <li>EIA: Brent and WTI in USD per barrel (JSON).</li>
+                                        <li>EIA: Brent and WTI in USD per barrel (JSON/XLS).</li>
                                         <li>NBP: USD/PLN and EUR/PLN rates, table A (JSON).</li>
                                         <li>EC Weekly Oil Bulletin: Pb95 and diesel prices in Poland (XLSX).</li>
                                         <li>Python merges the sources, validates them and writes to SQLite.</li>
@@ -164,7 +164,7 @@
                                     </ul>
                                     <div class="ep-arch">
                                         <div class="ep-arch-row">
-                                            <div class="ep-arch-box ep-src">EIA API<br><span>Brent / WTI · JSON</span></div>
+                                            <div class="ep-arch-box ep-src">EIA API / arkusze publiczne<br><span>Brent i WTI · JSON/XLS</span></div>
                                             <div class="ep-arch-box ep-src">NBP API<br><span>USD/PLN · JSON</span></div>
                                             <div class="ep-arch-box ep-src">EU fuel<br><span>Pb95 / Diesel · XLSX</span></div>
                                         </div>

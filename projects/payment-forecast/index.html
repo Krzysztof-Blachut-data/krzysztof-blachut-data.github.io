@@ -2,13 +2,13 @@
 <html lang="pl" data-lang="pl"
     data-title-pl="Prognoza należności | Krzysztof Blachut"
     data-title-en="Receivables forecast | Krzysztof Blachut"
-    data-desc-pl="50 000 faktur: 42,4% opłaconych po terminie. Prognoza terminu płatności i lista priorytetów kontaktu."
-    data-desc-en="50,000 invoices: 42.4% paid late. Payment-date forecast and a prioritized contact list.">
+    data-desc-pl="50 000 faktur: 42,4% zamkniętych opłaconych po terminie. Prognoza terminu płatności i lista priorytetów kontaktu."
+    data-desc-en="50,000 invoices: 42.4% of closed invoices paid late. Payment-date forecast and a prioritized contact list.">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="50 000 faktur: 42,4% opłaconych po terminie. Prognoza terminu płatności i lista priorytetów kontaktu.">
+    <meta name="description" content="50 000 faktur: 42,4% zamkniętych opłaconych po terminie. Prognoza terminu płatności i lista priorytetów kontaktu.">
     <meta name="author" content="Krzysztof Blachut">
     <meta name="theme-color" content="#0f1419">
     <title>Prognoza należności | Krzysztof Blachut</title>
@@ -20,7 +20,7 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Krzysztof Blachut | Data Analyst">
     <meta property="og:title" content="Prognoza należności | Krzysztof Blachut">
-    <meta property="og:description" content="50 000 faktur: 42,4% opłaconych po terminie. Prognoza terminu płatności i lista priorytetów kontaktu.">
+    <meta property="og:description" content="50 000 faktur: 42,4% zamkniętych opłaconych po terminie. Prognoza terminu płatności i lista priorytetów kontaktu.">
     <meta property="og:url" content="https://krzysztof-blachut-data.github.io/projects/payment-forecast/">
     <meta property="og:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -79,8 +79,8 @@
                         <span class="lang-en">Public data. Receivables sample (SkywalkerHub/Payment-Date-Prediction), not company data. 50,000 invoices, CAD and USD, as of 19 May 2020.</span>
                     </p>
                     <p class="result-callout">
-                        <span class="lang-pl">Wynik: 42,4% faktur zostało opłaconych po terminie. Średni błąd prognozy to 3,39 dnia, przy 5,48 dnia dla prostego modelu bazowego. Wynikiem projektu jest lista klientów uporządkowana według priorytetu kontaktu.</span>
-                        <span class="lang-en">Result: 42.4% of invoices were paid late. Mean forecast error is 3.39 days, versus 5.48 days for a simple baseline. The output is a customer list ranked by contact priority.</span>
+                        <span class="lang-pl">Wynik: 42,4% zamkniętych faktur zostało opłaconych po terminie. Średni błąd prognozy to 3,39 dnia, przy 5,48 dnia dla prostego modelu bazowego. Wynikiem projektu jest lista nieopłaconych faktur uporządkowana według priorytetu kontaktu z klientem.</span>
+                        <span class="lang-en">Result: 42.4% of closed invoices were paid late. Mean forecast error is 3.39 days, versus 5.48 days for a simple baseline. The output is a list of unpaid invoices ranked by contact priority.</span>
                     </p>
                     <p class="case-code-link">
                         <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/payment-forecast" target="_blank" rel="noopener">
@@ -96,11 +96,11 @@
                                 <span class="lang-en">When will the customer pay?</span>
                             </h3>
                             <p class="lead lang-pl">
-                                Zbiór zawiera 50&nbsp;000 faktur, z których 42,4% zostało opłaconych po terminie. Celem projektu jest oszacowanie terminu płatności nieopłaconych faktur oraz wskazanie klientów wymagających kontaktu w pierwszej kolejności.
+                                Zbiór zawiera 50&nbsp;000 faktur. 42,4% zamkniętych faktur zostało opłaconych po terminie. Celem projektu jest oszacowanie terminu płatności nieopłaconych faktur oraz wskazanie klientów wymagających kontaktu w pierwszej kolejności.
                                 Narzędzia: Python, pandas, pytest.
                             </p>
                             <p class="lead lang-en">
-                                The set has 50,000 invoices, of which 42.4% were paid late. The project estimates when unpaid invoices will be paid and shows which customers to contact first.
+                                The set has 50,000 invoices; 42.4% of the closed ones were paid late. The project estimates when unpaid invoices will be paid and shows which customers to contact first.
                                 Tools: Python, pandas, pytest.
                             </p>
 
@@ -420,6 +420,6 @@ LIMIT 20;</code></pre>
     <script src="../../glossary.js"></script>
     <script src="../../nav.js"></script>
     <script src="payment-data.js?v=4"></script>
-    <script src="payment.js?v=8"></script>
+    <script src="payment.js?v=9"></script>
 </body>
 </html>
