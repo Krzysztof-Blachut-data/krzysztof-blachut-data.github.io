@@ -28,7 +28,8 @@
 
     function pct1(n) {
         if (n == null || isNaN(n)) return "—";
-        return (100 * n).toFixed(1) + "%";
+        var v = (100 * n).toFixed(1);
+        return (isEn() ? v : v.replace(".", ",")) + "%";
     }
 
     function num(n, d) {
@@ -52,10 +53,10 @@
         var rows = String(tot.rows || "—").replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
         el.innerHTML =
             metric(rows, "faktur w zbiorze", "invoices in the set") +
-            metric(pct(cy.late_rate), "zamkniętych po terminie", "closed invoices late") +
+            metric(pct1(cy.late_rate), "opłaconych po terminie", "paid after due date") +
             metric(num(cy.median_days_to_pay, 0) + " dni", "typowy czas do spłaty", "typical days to pay") +
             metric(num(pred.mae_days, 1) + " vs " + num(pred.naive_mae_days, 1),
-                "błąd prognozy (dni) vs naiwna", "forecast error (days) vs naive");
+                "błąd prognozy i wynik modelu bazowego", "forecast error vs baseline");
     }
 
     function buildAging() {
@@ -117,7 +118,7 @@
             "<th>" + t("Kwota", "Amount") + "</th>" +
             "<th>" + t("Termin płatności", "Due date") + "</th>" +
             "<th>" + t("Prognozowana spłata", "Predicted clear") + "</th>" +
-            "<th>" + t("Ryzyko", "Risk") + "</th>" +
+            "<th>" + t("Prognozowany status", "Predicted status") + "</th>" +
             "</tr>";
         var body = rows.map(function (r, i) {
             var flag = r.pred_late
@@ -222,7 +223,7 @@
         el.innerHTML = "<figure class=\"ep-chart-wrap pf-chart\">" +
             "<svg class=\"ep-chart\" viewBox=\"0 0 " + W + " " + H +
             "\" role=\"img\" aria-label=\"" +
-            t("Odsetek faktur po terminie miesiąc po miesiącu", "Late invoice share by month") +
+            t("Faktury opłacone po terminie w kolejnych miesiącach", "Invoices paid late by month") +
             "\">" + grid + bars + labels + "</svg>" +
             "<figcaption class=\"pf-chart-cap\">" + caption + "</figcaption></figure>";
     }
@@ -234,18 +235,18 @@
         var pred = DATA.prediction || {};
         var sc = DATA.scenario || {};
         el.innerHTML = t(
-            "Co czwarta–piąta zamknięta faktura jest po terminie (<strong>" + pct1(cy.late_rate) +
+            "Około dwie na pięć zamkniętych faktur zostały opłacone po terminie (<strong>" + pct1(cy.late_rate) +
             "</strong>). Prognoza z historii klienta myli się średnio o <strong>" +
-            num(pred.mae_days, 1) + " dni</strong> (bez niej: " + num(pred.naive_mae_days, 1) +
-            "). Dwudziestu najbardziej spóźnionych klientów to <strong>" +
+            num(pred.mae_days, 1) + " dni</strong> (model bazowy: " + num(pred.naive_mae_days, 1) +
+            "). Dwudziestu klientów z największymi opóźnieniami to <strong>" +
             money(sc.late_amount_top20) +
             "</strong> kwoty po terminie — od nich warto zacząć kontakt i przegląd warunków płatności.",
-            "About two in five closed invoices are late (<strong>" + pct1(cy.late_rate) +
+            "About two in five closed invoices were paid late (<strong>" + pct1(cy.late_rate) +
             "</strong>). A customer-history forecast misses by <strong>" +
-            num(pred.mae_days, 1) + " days</strong> on average (naive: " + num(pred.naive_mae_days, 1) +
-            "). The twenty worst late payers account for <strong>" +
+            num(pred.mae_days, 1) + " days</strong> on average (baseline: " + num(pred.naive_mae_days, 1) +
+            "). The twenty customers with the largest late amounts account for <strong>" +
             money(sc.late_amount_top20) +
-            "</strong> of late amount — start outreach and term reviews there."
+            "</strong> of late amount — start contact and term reviews there."
         );
     }
 

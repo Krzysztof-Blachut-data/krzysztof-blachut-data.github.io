@@ -418,7 +418,7 @@
     "top20_late_customers": 20,
     "late_amount_top20": 318970290.52,
     "cash_day_exposure_top20": 1516106376.09,
-    "note": "amount \u00d7 excess days vs on-time median (priority signal, not NPV)"
+    "note": "top late customers by historical late amount; not the contact-priority score"
   },
   "open_priority_top": [
     {
@@ -442,34 +442,24 @@
       "days_past_due": 33
     },
     {
-      "invoice_id": "1930767733",
-      "customer": "DECA in",
-      "amount": 341278.88,
-      "currency": "USD",
-      "due": "2020-04-11",
-      "pred_clear": "2020-04-16",
-      "pred_late": true,
-      "days_past_due": 38
-    },
-    {
-      "invoice_id": "2960619220",
-      "customer": "LOB associates",
-      "amount": 263371.68,
+      "invoice_id": "2960617908",
+      "customer": "SOB in",
+      "amount": 175815.63,
       "currency": "CAD",
       "due": "2020-03-19",
-      "pred_clear": "2020-03-22",
+      "pred_clear": "2020-03-24",
       "pred_late": true,
       "days_past_due": 61
     },
     {
-      "invoice_id": "2960632077",
-      "customer": "LOB corp",
-      "amount": 236435.52,
+      "invoice_id": "2960621021",
+      "customer": "SOB co",
+      "amount": 173942.9,
       "currency": "CAD",
-      "due": "2020-05-18",
-      "pred_clear": "2020-05-21",
+      "due": "2020-04-02",
+      "pred_clear": "2020-04-06",
       "pred_late": true,
-      "days_past_due": 1
+      "days_past_due": 47
     },
     {
       "invoice_id": "2960628676",
@@ -482,24 +472,34 @@
       "days_past_due": 18
     },
     {
-      "invoice_id": "1930607202",
-      "customer": "DEC systems",
-      "amount": 204170.87,
-      "currency": "USD",
-      "due": "2020-03-08",
-      "pred_clear": "2020-03-14",
+      "invoice_id": "2960619220",
+      "customer": "LOB associates",
+      "amount": 263371.68,
+      "currency": "CAD",
+      "due": "2020-03-19",
+      "pred_clear": "2020-03-22",
       "pred_late": true,
-      "days_past_due": 72
+      "days_past_due": 61
     },
     {
-      "invoice_id": "2960619908",
-      "customer": "SO in",
-      "amount": 203227.16,
-      "currency": "CAD",
-      "due": "2020-03-21",
-      "pred_clear": "2020-03-26",
+      "invoice_id": "1930846712",
+      "customer": "MDV/ associates",
+      "amount": 152514.79,
+      "currency": "USD",
+      "due": "2020-05-16",
+      "pred_clear": "2020-05-24",
       "pred_late": true,
-      "days_past_due": 59
+      "days_past_due": 3
+    },
+    {
+      "invoice_id": "2960628834",
+      "customer": "WAL-M corp",
+      "amount": 168940.99,
+      "currency": "CAD",
+      "due": "2020-04-26",
+      "pred_clear": "2020-05-05",
+      "pred_late": true,
+      "days_past_due": 23
     }
   ]
 }

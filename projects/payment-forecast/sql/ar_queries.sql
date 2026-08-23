@@ -1,27 +1,26 @@
--- Order-to-cash questions. Same grain as the collections dashboard.
--- Tables match the star schema on the case-study page
--- (fact_invoice, dim_customer, dim_terms). SQLite flavour.
+-- Pytania o należności. To samo ziarno co na dashboardzie.
+-- Tabele jak na stronie projektu (fact_invoice, dim_customer, dim_terms). Dialekt SQLite.
 
--- 1. Late rate and cash that cleared after due date.
+-- 1. Odsetek płatności po terminie oraz kwota spłacona po terminie.
 SELECT
     COUNT(*) AS closed_invoices,
-    ROUND(AVG(CASE WHEN clear_date > due_in_date THEN 1.0 ELSE 0 END), 4) AS late_rate,
-    ROUND(SUM(CASE WHEN clear_date > due_in_date THEN amount ELSE 0 END), 2) AS late_amount
+    ROUND(AVG(CASE WHEN clear_date > due_in_date THEN 1.0 ELSE 0 END), 4) AS paid_after_due_share,
+    ROUND(SUM(CASE WHEN clear_date > due_in_date THEN amount ELSE 0 END), 2) AS paid_after_due_amount
 FROM fact_invoice
 WHERE is_open = 0;
 
--- 2. Terms that look cheap until you see the late rate (CA10 vs NAM4).
+-- 2. Terminy płatności a odsetek płatności po terminie (CA10 vs NAM4).
 SELECT term,
        COUNT(*) AS invoices,
-       ROUND(AVG(CASE WHEN clear_date > due_in_date THEN 1.0 ELSE 0 END), 4) AS late_rate,
+       ROUND(AVG(CASE WHEN clear_date > due_in_date THEN 1.0 ELSE 0 END), 4) AS paid_after_due_share,
        ROUND(AVG(julianday(clear_date) - julianday(posting_date)), 1) AS median_days_to_pay
 FROM fact_invoice
 WHERE is_open = 0
 GROUP BY term
 HAVING COUNT(*) >= 200
-ORDER BY late_rate DESC;
+ORDER BY paid_after_due_share DESC;
 
--- 3. Open AR aging — what is sitting past due right now.
+-- 3. Struktura nieopłaconych należności według dni po terminie.
 SELECT
     CASE
         WHEN julianday('2020-05-19') - julianday(due_in_date) <= 0 THEN 'current'
@@ -37,7 +36,8 @@ WHERE is_open = 1
 GROUP BY 1
 ORDER BY 1;
 
--- 4. Who to call tomorrow: customer historical median × open amount.
+-- 4. Priorytet kontaktu: przewidywana liczba dni × wartość faktury.
+--    To nie jest prawdopodobieństwo opóźnienia.
 WITH closed AS (
     SELECT customer_id,
            AVG(julianday(clear_date) - julianday(posting_date)) AS med_days

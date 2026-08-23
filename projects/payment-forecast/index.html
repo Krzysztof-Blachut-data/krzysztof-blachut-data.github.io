@@ -2,13 +2,13 @@
 <html lang="pl" data-lang="pl"
     data-title-pl="Prognoza należności | Krzysztof Blachut"
     data-title-en="Receivables forecast | Krzysztof Blachut"
-    data-desc-pl="50 000 faktur AR: kto zapłaci po terminie i do kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie."
-    data-desc-en="50,000 AR invoices: who pays late and who to call first. MAE 3.39 days vs 5.48 naive.">
+    data-desc-pl="50 000 faktur: 42,4% opłaconych po terminie. Prognoza terminu płatności i lista priorytetów kontaktu."
+    data-desc-en="50,000 invoices: 42.4% paid late. Payment-date forecast and a prioritized contact list.">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="50 000 faktur AR: kto zapłaci po terminie i do kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie.">
+    <meta name="description" content="50 000 faktur: 42,4% opłaconych po terminie. Prognoza terminu płatności i lista priorytetów kontaktu.">
     <meta name="author" content="Krzysztof Blachut">
     <meta name="theme-color" content="#0f1419">
     <title>Prognoza należności | Krzysztof Blachut</title>
@@ -20,7 +20,7 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Krzysztof Blachut | Data Analyst">
     <meta property="og:title" content="Prognoza należności | Krzysztof Blachut">
-    <meta property="og:description" content="50 000 faktur AR: kto zapłaci po terminie i do kogo dzwonić najpierw. MAE 3,39 dnia vs 5,48 naiwnie.">
+    <meta property="og:description" content="50 000 faktur: 42,4% opłaconych po terminie. Prognoza terminu płatności i lista priorytetów kontaktu.">
     <meta property="og:url" content="https://krzysztof-blachut-data.github.io/projects/payment-forecast/">
     <meta property="og:image" content="https://krzysztof-blachut-data.github.io/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -79,8 +79,8 @@
                         <span class="lang-en">Public data. Receivables sample (SkywalkerHub/Payment-Date-Prediction), not company data. 50,000 invoices, CAD and USD, as of 19 May 2020.</span>
                     </p>
                     <p class="result-callout">
-                        <span class="lang-pl">Wynik: 42,4% faktur jest opłacanych po terminie. Średni błąd prognozy to 3,39 dnia, przy 5,48 dnia dla prostej mediany. Na końcu jest priorytetowa kolejka kontaktu z klientami, nie sam wykres.</span>
-                        <span class="lang-en">Result: 42.4% of invoices are paid late. Mean forecast error is 3.39 days, versus 5.48 days for a simple median. The output is a prioritized contact queue, not just a chart.</span>
+                        <span class="lang-pl">Wynik: 42,4% faktur zostało opłaconych po terminie. Średni błąd prognozy to 3,39 dnia, przy 5,48 dnia dla prostego modelu bazowego. Wynikiem projektu jest lista klientów uporządkowana według priorytetu kontaktu.</span>
+                        <span class="lang-en">Result: 42.4% of invoices were paid late. Mean forecast error is 3.39 days, versus 5.48 days for a simple baseline. The output is a customer list ranked by contact priority.</span>
                     </p>
                     <p class="case-code-link">
                         <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/payment-forecast" target="_blank" rel="noopener">
@@ -97,49 +97,47 @@
                                 <span class="lang-en">When will the customer pay?</span>
                             </h3>
                             <p class="lead lang-pl">
-                                Na 50&nbsp;000 faktur należności ok. 42% schodzi po terminie.
-                                Liczę, kiedy otwarta faktura najpewniej zostanie spłacona, i układam priorytetową kolejkę kontaktu z klientami od największego ryzyka.
+                                Zbiór zawiera 50&nbsp;000 faktur, z których 42,4% zostało opłaconych po terminie. Celem projektu jest oszacowanie terminu płatności nieopłaconych faktur oraz wskazanie klientów wymagających kontaktu w pierwszej kolejności.
                             </p>
                             <p class="lead lang-en">
-                                Of 50,000 receivables invoices, about 42% clear late.
-                                I estimate when an open invoice is likely to clear and rank a prioritized customer contact queue by risk.
+                                The set has 50,000 invoices, of which 42.4% were paid late. The project estimates when unpaid invoices will be paid and shows which customers to contact first.
                             </p>
 
                             <div id="pf-root" class="pf-root">
                                 <div class="pf-kpis" id="pf-metrics"></div>
 
                                 <p class="pf-story lang-pl">
-                                    Najpierw naprawiam daty zapisane jako liczby (<code>20190307</code>), potem liczę opóźnienia i porównuję terminy płatności. Prognoza to mediana historii klienta (z fallbackiem na termin i całość). Na holdoucie czasowym pomyłka to średnio ok. 3 dni zamiast 5 przy naiwnej medianie.
+                                    Najpierw poprawiam daty zapisane w formacie liczbowym (<code>20190307</code>), a następnie obliczam czas płatności i liczbę dni opóźnienia. Prognoza wykorzystuje historię danego klienta. Jeżeli jest ona niedostępna, model korzysta z danych dla podobnych warunków płatności lub całego zbioru. Na wydzielonym zbiorze późniejszych faktur średni błąd wyniósł 3,39 dnia. Dla prostego modelu bazowego było to 5,48 dnia.
                                 </p>
                                 <p class="pf-story lang-en">
-                                    First I fix dates stored as integers (<code>20190307</code>), then measure delays and compare payment terms. The forecast is the customer’s historical median (with term and global fallbacks). On a time-ordered holdout the average error is about 3 days versus 5 for a naive median.
+                                    First I fix dates stored as numbers (<code>20190307</code>), then compute time to pay and days late. The forecast uses that customer’s history. If none is available, it uses similar payment terms or the whole set. On later invoices held out for testing, mean error was 3.39 days. A simple baseline was 5.48 days.
                                 </p>
 
                                 <div class="pf-grid">
                                     <section class="pf-panel">
-                                        <h2><span class="lang-pl">Otwarte faktury według spóźnienia</span><span class="lang-en">Open invoices by how overdue</span></h2>
-                                        <p class="pf-hint lang-pl">Suma salda w koszykach dni po terminie płatności.</p>
+                                        <h2><span class="lang-pl">Nieopłacone faktury według liczby dni po terminie</span><span class="lang-en">Unpaid invoices by days past due</span></h2>
+                                        <p class="pf-hint lang-pl">Suma salda w przedziałach liczby dni po terminie.</p>
                                         <p class="pf-hint lang-en">Open balance by days past due.</p>
                                         <div id="pf-aging" class="pf-bars"></div>
                                     </section>
                                     <section class="pf-panel">
-                                        <h2><span class="lang-pl">Najczęstsze terminy</span><span class="lang-en">Most common terms</span></h2>
-                                        <p class="pf-hint lang-pl">Ile faktur, ile % po terminie, ile dni do spłaty.</p>
-                                        <p class="pf-hint lang-en">Invoice count, late share, days to pay.</p>
+                                        <h2><span class="lang-pl">Najczęściej stosowane terminy płatności</span><span class="lang-en">Most common payment terms</span></h2>
+                                        <p class="pf-hint lang-pl">Ile faktur, jaki odsetek opłaconych po terminie, ile dni do spłaty.</p>
+                                        <p class="pf-hint lang-en">Invoice count, share paid after due date, days to pay.</p>
                                         <div id="pf-terms" class="pf-table-wrap"></div>
                                     </section>
                                 </div>
 
                                 <section class="pf-panel">
-                                    <h2><span class="lang-pl">Do kogo dzwonić najpierw</span><span class="lang-en">Who to call first</span></h2>
-                                    <p class="pf-hint lang-pl">Otwarte faktury z najwyższym priorytetem: prognoza spóźnienia × kwota.</p>
-                                    <p class="pf-hint lang-en">Open invoices with the highest priority: predicted late × amount.</p>
+                                    <h2><span class="lang-pl">Priorytety kontaktu z klientami</span><span class="lang-en">Customer contact priorities</span></h2>
+                                    <p class="pf-hint lang-pl">Wskaźnik priorytetu uwzględnia przewidywany czas płatności i wartość faktury.</p>
+                                    <p class="pf-hint lang-en">Priority score uses predicted days to pay and invoice amount.</p>
                                     <div id="pf-priority" class="pf-table-wrap"></div>
                                 </section>
 
                                 <section class="pf-panel">
-                                    <h2><span class="lang-pl">Odsetek spóźnień w czasie</span><span class="lang-en">Late share over time</span></h2>
-                                    <p class="pf-hint lang-pl">Udział faktur zamkniętych po terminie, miesiąc po miesiącu.</p>
+                                    <h2><span class="lang-pl">Faktury opłacone po terminie w kolejnych miesiącach</span><span class="lang-en">Invoices paid late by month</span></h2>
+                                    <p class="pf-hint lang-pl">Udział faktur opłaconych po terminie, miesiąc po miesiącu.</p>
                                     <p class="pf-hint lang-en">Share of closed invoices that cleared late, month by month.</p>
                                     <div id="pf-monthly"></div>
                                 </section>
@@ -150,7 +148,7 @@
                                 </section>
 
                                 <details class="pf-run">
-                                    <summary><span class="lang-pl">Jak odpalić pipeline</span><span class="lang-en">How to run the pipeline</span></summary>
+                                    <summary><span class="lang-pl">Uruchomienie projektu</span><span class="lang-en">How to run the project</span></summary>
                                     <pre class="hero-code dc-code"><code>cd projects\payment-forecast
 pip install -r requirements.txt
 python pipeline.py
@@ -160,22 +158,22 @@ pytest -q</code></pre>
 
                                 <p class="dc-download ep-download">
                                     <a href="data/processed/open_priority.csv" download>
-                                        <span class="lang-pl">Pobierz kolejkę (CSV) →</span>
-                                        <span class="lang-en">Download queue (CSV) →</span>
+                                        <span class="lang-pl">Pobierz listę priorytetów (CSV) →</span>
+                                        <span class="lang-en">Download priority list (CSV) →</span>
                                     </a>
                                     <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/payment-forecast" target="_blank" rel="noopener">
                                         <span class="lang-pl">Kod na GitHubie →</span>
                                         <span class="lang-en">Code on GitHub →</span>
                                     </a>
                                 </p>
-                                <p class="ep-load-note lang-pl">Źródło: publiczny sample należności (nie dane firmowe).</p>
+                                <p class="ep-load-note lang-pl">Źródło: publiczna próbka należności (nie dane firmowe).</p>
                                 <p class="ep-load-note lang-en">Source: public receivables sample (not company data).</p>
                         </div>
 
                 <section class="content-block sql-proof" id="sql">
                     <h2><span class="lang-pl">Zapytania SQL do należności</span><span class="lang-en">SQL queries on receivables</span></h2>
-                    <p class="lang-pl">Dashboard na tej stronie liczy te same rzeczy co zapytania poniżej: late rate, aging i priorytetową kolejkę kontaktu z klientami. Pełny plik: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
-                    <p class="lang-en">The dashboard on this page computes the same things as the queries below: late rate, aging and the prioritized customer contact queue. Full file: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
+                    <p class="lang-pl">Zapytania SQL obliczają odsetek płatności po terminie, strukturę należności według dni po terminie oraz wskaźnik priorytetu kontaktu. Pełny plik: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
+                    <p class="lang-en">The SQL queries compute the share of payments after the due date, the structure of unpaid receivables by days overdue, and the contact-priority score. Full file: <a href="sql/ar_queries.sql"><code>sql/ar_queries.sql</code></a>.</p>
 
                     <h3 class="sql-q lang-pl">Tabele</h3>
                     <h3 class="sql-q lang-en">Tables</h3>
@@ -201,9 +199,10 @@ pytest -q</code></pre>
                         <li><code>fact_invoice.posting_date</code> → <code>dim_date</code></li>
                     </ul>
 
-                    <h3 class="sql-q lang-pl">SQL — do kogo dzwonić jutro</h3>
-                    <h3 class="sql-q lang-en">SQL — who to call tomorrow</h3>
-                    <pre class="hero-code dc-code"><code>WITH closed AS (
+                    <h3 class="sql-q lang-pl">SQL — priorytety kontaktu z klientami</h3>
+                    <h3 class="sql-q lang-en">SQL — customer contact priorities</h3>
+                    <pre class="hero-code dc-code"><code>-- Wskaźnik priorytetu: przewidywana liczba dni × wartość faktury.
+WITH closed AS (
   SELECT customer_id,
          AVG(julianday(clear_date) - julianday(posting_date)) AS med_days
   FROM fact_invoice
@@ -218,8 +217,8 @@ LEFT JOIN closed c USING (customer_id)
 WHERE i.is_open = 1
 ORDER BY call_priority DESC
 LIMIT 20;</code></pre>
-                    <p class="sql-result lang-pl">Wynik na holdoucie: MAE 3,39 dnia vs 5,48 przy naiwnej medianie globalnej. Kolejka jest w <code>open_priority.csv</code>.</p>
-                    <p class="sql-result lang-en">Holdout result: MAE 3.39 days vs 5.48 for a naive global median. The queue is in <code>open_priority.csv</code>.</p>
+                    <p class="sql-result lang-pl">Na wydzielonym zbiorze późniejszych faktur średni błąd wyniósł 3,39 dnia. Dla prostego modelu bazowego było to 5,48 dnia. Lista priorytetów jest w <code>open_priority.csv</code>.</p>
+                    <p class="sql-result lang-en">On later invoices held out for testing, mean error was 3.39 days. A simple baseline was 5.48 days. The priority list is in <code>open_priority.csv</code>.</p>
                 </section>
 
             </div>
@@ -240,7 +239,7 @@ LIMIT 20;</code></pre>
     <script src="../../lang.js"></script>
     <script src="../../glossary.js"></script>
     <script src="../../nav.js"></script>
-    <script src="payment-data.js?v=2"></script>
-    <script src="payment.js?v=4"></script>
+    <script src="payment-data.js?v=3"></script>
+    <script src="payment.js?v=6"></script>
 </body>
 </html>

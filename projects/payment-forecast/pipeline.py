@@ -243,7 +243,7 @@ def _monthly(closed: pd.DataFrame) -> list[dict]:
 
 
 def build_predictor(closed: pd.DataFrame) -> tuple[dict, dict, dict]:
-    """Customer median days_to_pay + term median fallback. MAE on time-ordered holdout."""
+    """Customer median days_to_pay; if missing, term or global median. MAE on later invoices."""
     closed = closed.sort_values("clear_date").reset_index(drop=True)
     cut = int(len(closed) * (1 - HOLDOUT_FRAC))
     train, test = closed.iloc[:cut], closed.iloc[cut:]
@@ -295,12 +295,9 @@ def score_open(
     out["pred_clear_date"] = out["posting_date"] + pd.to_timedelta(out["pred_days_to_pay"], unit="D")
     out["pred_days_late"] = (out["pred_clear_date"] - out["due_in_date"]).dt.days
     out["pred_late"] = out["pred_days_late"] > 0
-    # priority: predicted late amount first, then days past due
+    # priority: predicted days to pay × invoice amount (not a late-payment probability)
     out["days_past_due"] = (as_of - out["due_in_date"]).dt.days
-    out["priority_score"] = (
-        out["pred_late"].astype(int) * out["total_open_amount"]
-        + out["days_past_due"].clip(lower=0) * 10
-    )
+    out["priority_score"] = (out["pred_days_to_pay"] * out["total_open_amount"]).round(0)
     out = out.sort_values("priority_score", ascending=False)
     return out
 
@@ -330,7 +327,7 @@ def scenario(closed: pd.DataFrame) -> dict:
         "top20_late_customers": int(len(top)),
         "late_amount_top20": round(float(top["late_amount"].sum()), 2),
         "cash_day_exposure_top20": round(float(top["cash_day_exposure"].sum()), 2),
-        "note": "amount × excess days vs on-time median (priority signal, not NPV)",
+        "note": "top late customers by historical late amount; not the contact-priority score",
     }
 
 

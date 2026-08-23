@@ -20,6 +20,6 @@ CLEAN_CSV = PROCESSED / "invoices_clean.csv"
 OPEN_PRIORITY_CSV = PROCESSED / "open_priority.csv"
 REPORT_JSON = REPORTS / "analysis_report.json"
 
-# holdout share for prediction check (by clear_date order)
+# share of later invoices (by clear_date) used to check the forecast
 HOLDOUT_FRAC = 0.2
 RANDOM_SEED = 42

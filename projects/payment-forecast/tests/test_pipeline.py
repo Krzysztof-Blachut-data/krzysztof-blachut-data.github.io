@@ -15,7 +15,7 @@ for _shadowed in ("config", "pipeline"):
     sys.modules.pop(_shadowed, None)
 
 from config import CLEAN_CSV, REPORT_JSON, SAMPLES  # noqa: E402
-from pipeline import analyse, build_predictor, load_raw, parse_ymd, transform  # noqa: E402
+from pipeline import analyse, build_predictor, load_raw, parse_ymd, score_open, transform  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -92,6 +92,26 @@ def test_payment_data_js_exists():
     text = js.read_text(encoding="utf-8")
     assert "window.__PAYMENT_DATA" in text
     assert "late_rate" in text
+
+
+def test_priority_is_predicted_days_times_amount():
+    open_inv = pd.DataFrame({
+        "cust_number": ["A", "B"],
+        "cust_payment_terms": ["NA10", "CA10"],
+        "total_open_amount": [1000.0, 400.0],
+        "posting_date": pd.to_datetime(["2020-03-01", "2020-04-01"]),
+        "due_in_date": pd.to_datetime(["2020-03-15", "2020-04-15"]),
+    })
+    scored = score_open(
+        open_inv,
+        cust_med={"A": 20.0},
+        term_med={"CA10": 10.0},
+        global_med=15.0,
+        as_of=pd.Timestamp("2020-05-19"),
+    )
+    assert scored.iloc[0]["cust_number"] == "A"
+    assert scored.iloc[0]["priority_score"] == 20000.0
+    assert scored.iloc[1]["priority_score"] == 4000.0
 
 
 def test_analyse_open_aging(clean: pd.DataFrame):
