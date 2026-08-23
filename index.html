@@ -161,8 +161,8 @@
                     <span class="hero-shot-body">
                         <strong class="lang-pl">Do kogo dzwonić najpierw</strong>
                         <strong class="lang-en">Who to call first</strong>
-                        <span class="lang-pl">50 000 faktur AR. Prognoza MAE 3,4 dnia zamiast 5,5. Wynikiem jest priorytetowa kolejka kontaktu z klientami.</span>
-                        <span class="lang-en">50,000 AR invoices. Forecast MAE 3.4 days vs 5.5. The result is a prioritized customer contact queue.</span>
+                        <span class="lang-pl">50 000 faktur. Średni błąd prognozy 3,4 dnia zamiast 5,5. Wynikiem projektu jest lista klientów uporządkowana według priorytetu kontaktu.</span>
+                        <span class="lang-en">50,000 invoices. Mean forecast error 3.4 days vs 5.5. The result is a customer list ranked by contact priority.</span>
                     </span>
                 </a>
                 <a class="hero-shot" href="projects/energy-pipeline/">
@@ -170,7 +170,7 @@
                     <span class="hero-shot-body">
                         <strong class="lang-pl">Trzy źródła, jedna waluta</strong>
                         <strong class="lang-en">Three sources, one currency</strong>
-                        <span class="lang-pl">EIA + NBP + KE. Spread 2,72–5,11 PLN/l. pytest pilnuje, żeby nie odejmować PLN od EUR.</span>
+                        <span class="lang-pl">EIA + NBP + KE. Różnica Pb95 i kosztu ropy 2,72–5,11 PLN/l. Test sprawdza, czy nie odejmuje PLN od EUR.</span>
                         <span class="lang-en">EIA + NBP + EC. Spread 2.72–5.11 PLN/l. pytest guards against subtracting PLN from EUR.</span>
                     </span>
                 </a>
@@ -265,19 +265,19 @@
                             <span class="lang-pl">Należności: prognoza płatności i ustalanie priorytetów</span>
                             <span class="lang-en">Receivables: payment forecast and contact priorities</span>
                         </h3>
-                        <p class="project-problem lang-pl"><strong>Problem:</strong> 42,4% faktur jest opłacanych po terminie. Celem analizy było oszacowanie terminu płatności oraz wskazanie klientów wymagających kontaktu w pierwszej kolejności.</p>
+                        <p class="project-problem lang-pl"><strong>Problem:</strong> 42,4% faktur zostało opłaconych po terminie. Celem analizy było oszacowanie terminu płatności oraz wskazanie klientów wymagających kontaktu w pierwszej kolejności.</p>
                         <p class="project-problem lang-en"><strong>Problem:</strong> 42.4% of invoices are paid late. The analysis was meant to estimate the payment date and show which customers to contact first.</p>
                         <p class="project-scale lang-pl"><strong>Skala:</strong> 50 000 faktur i 1 461 klientów. Dane pochodzą z publicznego zbioru AR.</p>
-                        <p class="project-scale lang-en"><strong>Scale:</strong> 50,000 invoices and 1,461 customers. Public AR sample.</p>
+                        <p class="project-scale lang-en"><strong>Scale:</strong> 50,000 invoices and 1,461 customers. Public receivables dataset.</p>
                         <ul class="project-actions-list lang-pl">
                             <li>Poprawiłem formaty dat oraz obliczyłem opóźnienia i strukturę otwartych należności.</li>
                             <li>Przygotowałem prognozę na podstawie historii klienta i warunków płatności.</li>
-                            <li>Utworzyłem kolejkę kontaktu uwzględniającą ryzyko opóźnienia i wartość faktury.</li>
+                            <li>Ułożyłem listę priorytetów kontaktu na podstawie przewidywanego czasu płatności i wartości faktury.</li>
                         </ul>
                         <ul class="project-actions-list lang-en">
                             <li>I fixed date formats and computed delays and the structure of open receivables.</li>
                             <li>I built a forecast from customer history and payment terms.</li>
-                            <li>I built a contact queue using late risk and invoice amount.</li>
+                            <li>I ranked a contact list using predicted days to pay and invoice amount.</li>
                         </ul>
                         <p class="result-callout lang-pl"><strong>Wynik:</strong> Średni błąd prognozy wyniósł 3,39 dnia w porównaniu z 5,48 dnia dla modelu bazowego. Lista priorytetów została zapisana w pliku <code>open_priority.csv</code>.</p>
                         <p class="result-callout lang-en"><strong>Result:</strong> Mean forecast error was 3.39 days versus 5.48 days for the baseline. The priority list is in <code>open_priority.csv</code>.</p>
@@ -294,7 +294,7 @@
                             <span class="source-badge source-badge-inline lang-en">Public data</span>
                         </div>
                         <h3>
-                            <span class="lang-pl">Od ceny ropy do ceny paliwa</span>
+                            <span class="lang-pl">Od ceny ropy do ceny benzyny</span>
                             <span class="lang-en">From crude price to pump price</span>
                         </h3>
                         <p class="project-problem lang-pl"><strong>Problem:</strong> Sprawdziłem, jak zmiany ceny ropy przekładają się na cenę benzyny Pb95 w Polsce. Analiza wymagała połączenia trzech źródeł wykorzystujących różne waluty i jednostki.</p>
@@ -302,17 +302,17 @@
                         <p class="project-scale lang-pl"><strong>Skala:</strong> 103 miesiące i 2 186 notowań dziennych z EIA, NBP i Komisji Europejskiej.</p>
                         <p class="project-scale lang-en"><strong>Scale:</strong> 103 months and 2,186 daily quotes from EIA, NBP and the European Commission.</p>
                         <ul class="project-actions-list lang-pl">
-                            <li>Zbudowałem pipeline ETL zapisujący dane źródłowe i przetworzone w bazie SQLite.</li>
+                            <li>Zbudowałem automatyczny proces pobierania, przetwarzania i zapisu danych w SQLite.</li>
                             <li>Przeliczyłem wszystkie wartości na PLN za litr.</li>
                             <li>Przygotowałem dzienną i miesięczną warstwę analityczną oraz zapytania SQL.</li>
                         </ul>
                         <ul class="project-actions-list lang-en">
-                            <li>I built an ETL pipeline that stores raw and processed data in SQLite.</li>
+                            <li>I built an automated process that fetches, processes and stores the data in SQLite.</li>
                             <li>I converted all values to PLN per litre.</li>
                             <li>I prepared a daily and a monthly analytical layer plus SQL queries.</li>
                         </ul>
-                        <p class="result-callout lang-pl"><strong>Wynik:</strong> Korelacja między ceną ropy Brent a ceną Pb95 wyniosła około 0,77. Różnica między ceną paliwa i przeliczonym kosztem ropy mieściła się w przedziale od 2,72 do 5,11 PLN/l.</p>
-                        <p class="result-callout lang-en"><strong>Result:</strong> The correlation between Brent and Pb95 was about 0.77. The gap between the pump price and converted crude cost ranged from 2.72 to 5.11 PLN/l.</p>
+                        <p class="result-callout lang-pl"><strong>Wynik:</strong> Korelacja miesięcznych cen Brent i Pb95 wyniosła około 0,77 i wskazuje na współzmienność, nie na związek przyczynowy. Różnica między ceną Pb95 a przeliczonym kosztem ropy wynosiła od 2,72 do 5,11 PLN/l.</p>
+                        <p class="result-callout lang-en"><strong>Result:</strong> The monthly Brent–Pb95 correlation was about 0.77 and shows they move together, not that one causes the other. The gap between Pb95 and converted crude cost was 2.72 to 5.11 PLN/l.</p>
                         <div class="project-card-links">
                             <a href="projects/energy-pipeline/"><span class="lang-pl">Case study →</span><span class="lang-en">Case study →</span></a>
                             <a href="https://github.com/krzysztof-blachut-data/krzysztof-blachut-data.github.io/tree/main/projects/energy-pipeline" target="_blank" rel="noopener">GitHub</a>
@@ -322,17 +322,17 @@
                     <article class="project-card">
                         <div class="project-card-top">
                             <span class="project-index">05</span>
-                            <span class="source-badge source-badge-inline lang-pl">API publiczne + snapshot</span>
-                            <span class="source-badge source-badge-inline lang-en">Public APIs + snapshot</span>
+                            <span class="source-badge source-badge-inline lang-pl">API publiczne + zapis</span>
+                            <span class="source-badge source-badge-inline lang-en">Public APIs + saved set</span>
                         </div>
                         <h3>
                             <span class="lang-pl">Dashboardy wykorzystujące dane z publicznych API</span>
                             <span class="lang-en">Dashboards using public APIs</span>
                         </h3>
                         <p class="project-problem lang-pl"><strong>Problem:</strong> Celem było przygotowanie dashboardów pobierających dane bezpośrednio ze źródła oraz zapewnienie dostępu do ostatniego zapisu w przypadku niedostępności API.</p>
-                        <p class="project-problem lang-en"><strong>Problem:</strong> The aim was dashboards that fetch data from the source, with the last saved snapshot available if the API is down.</p>
-                        <p class="project-scale lang-pl"><strong>Skala:</strong> Dane o ruchu lotniczym nad Polską z OpenSky oraz miesięczne dane rynku pracy z BLS od 2018 roku.</p>
-                        <p class="project-scale lang-en"><strong>Scale:</strong> Air traffic over Poland from OpenSky and monthly BLS labour-market series since 2018.</p>
+                        <p class="project-problem lang-en"><strong>Problem:</strong> The aim was dashboards that fetch data from the source, with the last saved set available if the API is down.</p>
+                        <p class="project-scale lang-pl"><strong>Skala:</strong> Dane o ruchu lotniczym w obszarze obejmującym Polskę z OpenSky oraz miesięczne dane rynku pracy z BLS od 2018 roku.</p>
+                        <p class="project-scale lang-en"><strong>Scale:</strong> Air traffic in the area covering Poland from OpenSky and monthly BLS labour-market series since 2018.</p>
                         <ul class="project-actions-list lang-pl">
                             <li>Pobrałem dane z API i przygotowałem wskaźniki, mapę oraz wykresy działające w przeglądarce.</li>
                             <li>Dodałem zapis danych wraz z datą pobrania, wykorzystywany w przypadku braku odpowiedzi API.</li>
@@ -340,8 +340,8 @@
                         </ul>
                         <ul class="project-actions-list lang-en">
                             <li>I fetched the APIs and built KPIs, a map and charts that run in the browser.</li>
-                            <li>I added a snapshot with a fetch date, used when the API does not respond.</li>
-                            <li>I labelled whether the dashboard shows live data or the last saved snapshot.</li>
+                            <li>I added a saved dataset with a fetch date, used when the API does not respond.</li>
+                            <li>I labelled whether the dashboard shows current data or the last saved set.</li>
                         </ul>
                         <p class="result-callout lang-pl"><strong>Wynik:</strong> Dashboard BLS pokazuje między innymi wzrost bezrobocia do 14,8% w kwietniu 2020 roku oraz późniejszą poprawę sytuacji na rynku pracy.</p>
                         <p class="result-callout lang-en"><strong>Result:</strong> The BLS dashboard shows, among other things, unemployment rising to 14.8% in April 2020 and the later recovery.</p>

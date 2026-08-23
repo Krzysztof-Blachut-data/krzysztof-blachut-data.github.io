@@ -416,8 +416,8 @@
         var sorted = rows.slice().sort(function (a, b) { return (b.alt || 0) - (a.alt || 0); }).slice(0, 12);
         var en = lang() === "en";
         var html = "<table class=\"dc-table dash-table\"><thead><tr>" +
-            "<th>" + (en ? "Callsign" : "Znaki") + "</th>" +
-            "<th>" + (en ? "Country" : "Kraj") + "</th>" +
+            "<th>" + (en ? "Callsign" : "Znak wywoławczy") + "</th>" +
+            "<th>" + (en ? "Registration" : "Kraj rejestracji") + "</th>" +
             "<th>" + (en ? "Alt (m)" : "Wys. (m)") + "</th>" +
             "<th>" + (en ? "Spd" : "Prędk.") + "</th>" +
             "<th>" + (en ? "Hdg°" : "Kurs°") + "</th>" +
@@ -441,17 +441,17 @@
         var en = lang() === "en";
         if (state.source === "live") {
             return en
-                ? "Live data from OpenSky Network."
-                : "Dane na żywo z OpenSky Network.";
+                ? "Current data fetched from the OpenSky API."
+                : "Dane pobierane na bieżąco z API OpenSky.";
         }
         if (state.source === "snapshot-cors") {
             return en
-                ? "Fallback snapshot — the browser cannot call OpenSky directly (CORS)."
-                : "Snapshot zapasowy — przeglądarka nie może wywołać OpenSky (CORS).";
+                ? "Saved dataset — current data could not be fetched (the browser cannot call OpenSky directly)."
+                : "Zapisany zestaw — nie udało się pobrać aktualnych danych (przeglądarka nie może wywołać OpenSky bezpośrednio).";
         }
         return en
-            ? "Embedded OpenSky snapshot (offline / GitHub Pages)."
-            : "Osadzony snapshot OpenSky (offline / GitHub Pages).";
+            ? "Saved OpenSky dataset (used when a current fetch is not possible)."
+            : "Zapisany zestaw danych OpenSky (gdy aktualne pobranie nie jest możliwe).";
     }
 
     function renderStatus() {
@@ -475,16 +475,16 @@
         var en = lang() === "en";
         if (!kpis.total) return "";
         if (en) {
-            return "Right now there are <strong>" + fmtInt(kpis.airborne) + "</strong> aircraft flying and " +
-                "<strong>" + fmtInt(kpis.ground) + "</strong> on the ground over Poland " +
-                "(<strong>" + fmtInt(kpis.total) + "</strong> total in the map area). " +
-                "They come from <strong>" + fmtInt(kpis.countries) + "</strong> countries; " +
+            return "In the observed area there are <strong>" + fmtInt(kpis.airborne) + "</strong> aircraft airborne. " +
+                "They are registered in <strong>" + fmtInt(kpis.countries) + "</strong> countries. " +
+                "<strong>" + fmtInt(kpis.ground) + "</strong> are on the ground " +
+                "(<strong>" + fmtInt(kpis.total) + "</strong> total in the map area); " +
                 "<strong>" + fmtInt(kpis.poland) + "</strong> are registered in Poland.";
         }
-        return "Teraz nad Polską leci <strong>" + fmtInt(kpis.airborne) + "</strong> samolotów, a na ziemi stoi " +
-            "<strong>" + fmtInt(kpis.ground) + "</strong> " +
-            "(łącznie <strong>" + fmtInt(kpis.total) + "</strong> w obszarze mapy). " +
-            "Pochodzą z <strong>" + fmtInt(kpis.countries) + "</strong> krajów; " +
+        return "W obserwowanym obszarze znajduje się <strong>" + fmtInt(kpis.airborne) + "</strong> samolotów w powietrzu. " +
+            "Są one zarejestrowane w <strong>" + fmtInt(kpis.countries) + "</strong> krajach. " +
+            "Na ziemi stoi <strong>" + fmtInt(kpis.ground) + "</strong> " +
+            "(łącznie <strong>" + fmtInt(kpis.total) + "</strong> w obszarze mapy); " +
             "<strong>" + fmtInt(kpis.poland) + "</strong> ma rejestrację polską.";
     }
 
@@ -515,8 +515,8 @@
         var en = lang() === "en";
         return "<div class=\"dash-method\"><strong>" + (en ? "How it is built:" : "Jak to zrobione:") + "</strong> " +
             (en
-                ? "Custom code in JavaScript — HTML Canvas charts, live fetch to the OpenSky REST API, no charting library and no manual CSV upload."
-                : "Własny kod w JavaScript — wykresy na Canvas, pobieranie na żywo z OpenSky REST API, bez biblioteki wykresów i bez ręcznego wgrywania CSV.") +
+                ? "Custom JavaScript — Canvas charts and data fetched from the OpenSky REST API."
+                : "Własny kod w JavaScript — wykresy na Canvas i dane pobierane z REST API OpenSky.") +
             "</div>";
     }
 
@@ -537,12 +537,12 @@
         var topHdg = hdgBins.slice().sort(function (a, b) { return b.count - a.count; })[0];
         var vsTotal = kpis.climbing + kpis.level + kpis.descending;
         var takeMap = en
-            ? "Clusters of dots are busy corridors and airports. Empty map = little traffic, not missing data."
-            : "Zagęszczenie kropek to korytarze i lotniska. Puste pole na mapie = mało ruchu, nie brak danych.";
+            ? "Clusters of dots are busy corridors and airports. Fewer points can mean lighter traffic, but also limited ADS-B receiver coverage."
+            : "Zagęszczenie kropek to korytarze i lotniska. Mniejsza liczba punktów może oznaczać mniejszy ruch, ale również ograniczenia zasięgu odbiorników ADS-B.";
         var takeCountries = countries.length
             ? (en
-                ? countries[0].name + " leads (" + fmtInt(countries[0].count) + "). The bars above sum to " + fmtInt(kpis.total) + " — top countries plus any “Other countries” row."
-                : countries[0].name + " ma najwięcej (" + fmtInt(countries[0].count) + "). Słupki powyżej dają łącznie " + fmtInt(kpis.total) + " — top kraje plus ewentualny wiersz „Pozostałe kraje”.")
+                ? countries[0].name + " leads (" + fmtInt(countries[0].count) + "). The bars above sum to " + fmtInt(kpis.total) + " — the most frequent registration countries plus any “Other countries” row."
+                : countries[0].name + " ma najwięcej (" + fmtInt(countries[0].count) + "). Słupki powyżej dają łącznie " + fmtInt(kpis.total) + " — najczęstsze kraje rejestracji plus ewentualny wiersz „Pozostałe kraje”.")
             : "";
         var takeAlt = topAlt
             ? (en
@@ -556,8 +556,8 @@
             : "";
         var takeHdg = topHdg
             ? (en
-                ? "The longest spoke is " + topHdg.label + " — that direction has the most flights in this snapshot."
-                : "Najdłuższy promień to " + topHdg.label + " — w tę stronę leci teraz najwięcej maszyn.")
+                ? "The longest spoke is " + topHdg.label + " — that direction has the most flights at the last update."
+                : "Najdłuższy promień to " + topHdg.label + " — w tę stronę leci najwięcej maszyn w chwili ostatniej aktualizacji.")
             : "";
         var takeVs = vsTotal
             ? (en
@@ -566,7 +566,7 @@
             : "";
         var takeCat = cats.length
             ? (en
-                ? "Most transponders send no type (“" + cats[0].name + "”: " + fmtInt(cats[0].count) + "). Only " + fmtInt(cats.length) + " labels appear in this snapshot."
+                ? "Most transponders send no type (“" + cats[0].name + "”: " + fmtInt(cats[0].count) + "). Only " + fmtInt(cats.length) + " labels appear in this view."
                 : "Większość transponderów nie podaje typu („" + cats[0].name + "”: " + fmtInt(cats[0].count) + "). W tym ujęciu widać tylko " + fmtInt(cats.length) + " etykiety.")
             : "";
         var takeTable = en
@@ -587,32 +587,32 @@
             vizGuide([
                 {
                     title: en ? "Map" : "Mapa",
-                    text: en ? "Geographic snapshot — where aircraft are relative to Poland." : "Obraz geograficzny — gdzie względem Polski znajdują się samoloty."
+                    text: en ? "Positions in the geographic rectangle covering Poland." : "Pozycje w prostokącie geograficznym obejmującym Polskę."
                 },
                 {
-                    title: en ? "Country bars" : "Słupki krajów",
-                    text: en ? "Which countries the visible aircraft are registered in." : "W jakich krajach zarejestrowane są widoczne samoloty."
+                    title: en ? "Aircraft by registration country" : "Samoloty według kraju rejestracji",
+                    text: en ? "How many visible aircraft are registered in each country." : "Liczba samolotów według kraju rejestracji."
                 },
                 {
                     title: en ? "Altitude & speed" : "Wysokość i prędkość",
                     text: en ? "How high and how fast airborne traffic moves — cruise vs approach patterns." : "Jak wysoko i jak szybko porusza się ruch w powietrzu — typowe wzorce lotu."
                 },
                 {
-                    title: en ? "Heading rose" : "Róża kierunków",
+                    title: en ? "Heading rose" : "Róża kierunków lotu",
                     text: en ? "Dominant flight directions over the area (N/NE/E…)." : "Dominujące kierunki lotu nad obszarem (N/NE/E…)."
                 },
                 {
-                    title: en ? "Top-12 table" : "Tabela top 12",
-                    text: en ? "Concrete examples — callsigns of the highest-flying aircraft right now." : "Konkretne przykłady — znaki samolotów lecących najwyżej."
+                    title: en ? "Highest aircraft" : "Najwyżej lecące",
+                    text: en ? "Example observations — callsigns of the highest-flying aircraft." : "Przykładowe obserwacje — znaki wywoławcze samolotów lecących najwyżej."
                 }
             ]) +
             "<div class=\"dash-kpi-grid\">" +
-            "<div class=\"dash-kpi\"><strong>" + fmtInt(kpis.total) + "</strong><span>" + (en ? "Aircraft on the map (Poland area)" : "Samolotów na mapie (obszar Polski)") + "</span></div>" +
-            "<div class=\"dash-kpi\"><strong>" + fmtInt(kpis.airborne) + "</strong><span>" + (en ? "Currently flying" : "Obecnie w powietrzu") + "</span></div>" +
+            "<div class=\"dash-kpi\"><strong>" + fmtInt(kpis.total) + "</strong><span>" + (en ? "Aircraft on the map (area covering Poland)" : "Samolotów na mapie (obszar obejmujący Polskę)") + "</span></div>" +
+            "<div class=\"dash-kpi\"><strong>" + fmtInt(kpis.airborne) + "</strong><span>" + (en ? "Airborne at last update" : "W powietrzu w chwili ostatniej aktualizacji") + "</span></div>" +
             "<div class=\"dash-kpi\"><strong>" + fmtInt(kpis.ground) + "</strong><span>" + (en ? "On the ground" : "Na ziemi (lotniska)") + "</span></div>" +
             "<div class=\"dash-kpi\"><strong>" + fmtInt(kpis.poland) + "</strong><span>" + (en ? "Registered in Poland" : "Zarejestrowanych w Polsce") + "</span></div>" +
-            "<div class=\"dash-kpi\"><strong>" + fmtInt(kpis.countries) + "</strong><span>" + (en ? "Different countries of origin" : "Różnych krajów pochodzenia") + "</span></div>" +
-            "<div class=\"dash-kpi\"><strong>" + fmtInt(kpis.withCallsign) + "</strong><span>" + (en ? "With a callsign (flight number)" : "Ze znakiem rozpoznawczym (numer lotu)") + "</span></div>" +
+            "<div class=\"dash-kpi\"><strong>" + fmtInt(kpis.countries) + "</strong><span>" + (en ? "Different registration countries" : "Różnych krajów rejestracji") + "</span></div>" +
+            "<div class=\"dash-kpi\"><strong>" + fmtInt(kpis.withCallsign) + "</strong><span>" + (en ? "With a callsign" : "Ze znakiem wywoławczym") + "</span></div>" +
             "<div class=\"dash-kpi\"><strong>" + (kpis.maxAlt ? Math.round(kpis.maxAlt).toLocaleString("pl-PL") : "—") + "</strong><span>" + (en ? "Highest altitude (metres)" : "Najwyższa wysokość (metry)") + "</span></div>" +
             "<div class=\"dash-kpi\"><strong>" + (kpis.avgVel ? kpis.avgVel.toFixed(0) : "—") + "</strong><span>" + (en ? "Average speed (m/s)" : "Średnia prędkość (m/s)") + "</span></div>" +
             "</div>" +
@@ -627,10 +627,10 @@
             ) +
             "<canvas id=\"dash-canvas\" width=\"520\" height=\"360\"></canvas></div>" +
             "<div class=\"dash-panel\">" +
-            "<h4>" + (en ? "Bar chart — countries of origin" : "Wykres słupkowy — kraje pochodzenia") + "</h4>" +
+            "<h4>" + (en ? "Aircraft by registration country" : "Samoloty według kraju rejestracji") + "</h4>" +
             vizDesc(
-                en ? "Top 6 registration countries; any remaining aircraft are grouped in “Other countries”. All bars together equal the total on the map."
-                    : "Top 6 krajów rejestracji; reszta samolotów trafia do „Pozostałe kraje”. Suma wszystkich słupków = liczba kropek na mapie.",
+                en ? "The six most frequent registration countries; remaining aircraft are grouped in “Other countries”. All bars together equal the total on the map."
+                    : "Sześć najczęstszych krajów rejestracji; pozostałe samoloty są w grupie „Pozostałe kraje”. Suma wszystkich słupków = liczba kropek na mapie.",
                 takeCountries
             ) +
             countries.map(function (c) {
@@ -641,24 +641,24 @@
             "<div class=\"dash-panel\">" +
             "<h4>" + (en ? "Histogram — flight altitude" : "Histogram — wysokość lotu") + "</h4>" +
             vizDesc(
-                en ? "Distribution of barometric altitude for airborne aircraft only. Most airliners cruise between 9–12 km."
-                    : "Rozkład wysokości barometrycznej tylko dla samolotów w powietrzu. Większość airlinerów leci na 9–12 km.",
+                en ? "Distribution of barometric altitude for airborne aircraft only. Most passenger aircraft cruise between 9–12 km."
+                    : "Rozkład wysokości barometrycznej tylko dla samolotów w powietrzu. Większość samolotów pasażerskich leci na 9–12 km.",
                 takeAlt
             ) +
             binsHtml(altBins, "#86efac") +
             "</div>" +
             "<div class=\"dash-panel\">" +
-            "<h4>" + (en ? "Histogram — ground speed" : "Histogram — prędkość nad ziemią") + "</h4>" +
+            "<h4>" + (en ? "Ground-speed distribution" : "Rozkład prędkości względem ziemi") + "</h4>" +
             vizDesc(
                 en ? "How fast aircraft move over the ground (m/s). Higher speeds usually mean en-route flight."
-                    : "Jak szybko samoloty poruszają się nad ziemią (m/s). Wyższe prędkości = zwykle lot przelotowy.",
+                    : "Jak szybko samoloty poruszają się względem ziemi (m/s). Wyższe prędkości = zwykle lot przelotowy.",
                 takeSpd
             ) +
             binsHtml(spdBins, "#c084fc") +
             "</div>" +
             "<div class=\"dash-flight-split\">" +
             "<div class=\"dash-panel dash-polar-panel\">" +
-            "<h4>" + (en ? "Polar chart — flight direction" : "Wykres polarny — kierunek lotu") + "</h4>" +
+            "<h4>" + (en ? "Heading rose" : "Róża kierunków lotu") + "</h4>" +
             vizDesc(
                 en ? "Eight compass sectors (45°). Brighter wedge = most aircraft; number under label = count in that direction."
                     : "Osiem sektorów kompasu (45°). Jaśniejszy wycinek = najwięcej maszyn; liczba pod etykietą = ile leci w tę stronę.",
@@ -689,24 +689,24 @@
                 cats.map(function (c) { return dashBarRow(c.name, c.count, maxCat, "#7dd3fc", kpis.airborne); }).join("") +
                 "</div></div>"
                 : "<div class=\"dash-panel\"><h4>" + (en ? "Aircraft type" : "Typ statku") + "</h4><p class=\"dash-map-note\">" +
-                (en ? "No ADS-B category in this snapshot." : "W tym ujęciu brak kategorii ADS-B.") + "</p></div>") +
+                (en ? "No ADS-B category in this view." : "W tym ujęciu brak kategorii ADS-B.") + "</p></div>") +
             "</div></div>" +
             vizSection(en ? "3 · Examples" : "3 · Przykłady") +
             "<div class=\"dash-panel dash-panel-wide\">" +
             "<h4>" + (en ? "Table — 12 highest aircraft" : "Tabela — 12 najwyżej lecących") + "</h4>" +
             vizDesc(
-                en ? "Sorts visible aircraft by altitude and lists callsign, country, speed and heading — concrete rows behind the aggregates."
-                    : "Sortuje widoczne samoloty wg wysokości i podaje znak, kraj, prędkość i kurs — konkretne wiersze za agregatami.",
+                en ? "Sorts visible aircraft by altitude and lists callsign, registration country, speed and heading — example observations that complement the summary."
+                    : "Sortuje widoczne samoloty wg wysokości i podaje znak wywoławczy, kraj rejestracji, prędkość i kurs — przykładowe obserwacje uzupełniające podsumowanie.",
                 takeTable
             ) +
             renderTable(rows) +
             "</div>" +
             methodNote() +
             "<div class=\"dash-panel dash-panel-wide dash-api\">" +
-            "<h4>" + (en ? "Data source (API)" : "Źródło danych (API)") + "</h4>" +
+            "<h4>" + (en ? "Data source and freshness" : "Źródło i aktualność danych") + "</h4>" +
             vizDesc(
-                en ? "Technical endpoint used to fetch state vectors. If the live call fails (CORS on GitHub Pages, or the API is down), a saved snapshot is shown and the fetch date is labelled in the status line."
-                    : "Endpoint techniczny do pobrania wektorów stanu. Gdy wywołanie na żywo nie przejdzie (CORS na GitHub Pages albo API nie odpowiada), pokazywany jest snapshot, a data pobrania jest w statusie.",
+                en ? "Endpoint used to fetch state vectors. If current data cannot be fetched (CORS on GitHub Pages, or the API is down), a saved dataset is shown and the fetch date appears in the status line."
+                    : "Adres do pobrania wektorów stanu. Gdy nie uda się pobrać aktualnych danych (CORS na GitHub Pages albo API nie odpowiada), pokazywany jest zapisany zestaw, a data pobrania jest w statusie.",
                 null
             ) +
             "<pre class=\"hero-code dc-code\"><code>GET " + API_URL + "</code></pre>" +
