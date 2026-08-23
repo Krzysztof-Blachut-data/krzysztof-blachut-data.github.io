@@ -273,7 +273,7 @@ raise RuntimeError(f"NBP API unavailable for {currency}")</code></pre>
                                         <li>Brent PLN/bbl ÷ 158,987 l = Brent PLN/l.</li>
                                         <li>Pb95 EUR/l × EUR/PLN = Pb95 PLN/l — bez tego kroku różnica cen mieszałaby dwie waluty.</li>
                                         <li>Różnica = Pb95 PLN/l − Brent PLN/l. To nie tylko podatki i marża: w pozostałej części ceny są też rafinacja, transport i dystrybucja.</li>
-                                        <li>Zmiany MoM i YoY liczone na cenie w PLN.</li>
+                                        <li>Liczone są też zmiany z miesiąca na miesiąc oraz względem tego samego miesiąca rok wcześniej. Dla Pb95 na cenie w PLN/l, dla Brent na notowaniu w USD.</li>
                                     </ul>
                                     <ul class="dc-issues lang-en">
                                         <li>JSON / XLSX → pandas DataFrame.</li>
@@ -282,7 +282,7 @@ raise RuntimeError(f"NBP API unavailable for {currency}")</code></pre>
                                         <li>Brent PLN/bbl ÷ 158.987 l = Brent PLN/l.</li>
                                         <li>Pb95 EUR/l × EUR/PLN = Pb95 PLN/l — without this step the comparison would mix two currencies.</li>
                                         <li>Gap = Pb95 PLN/l − Brent PLN/l. That remainder is not only tax and margin: it also includes refining, transport and distribution.</li>
-                                        <li>MoM and YoY computed on the PLN price.</li>
+                                        <li>Month-on-month and year-on-year changes are also computed. For Pb95 on the PLN/l price, for Brent on the USD quote.</li>
                                     </ul>
                                     <div class="ep-chain" id="ep-chain"></div>
                                     <pre class="hero-code dc-code"><code>df["brent_pln_bbl"] = df["brent_usd"] * df["usd_pln"]
