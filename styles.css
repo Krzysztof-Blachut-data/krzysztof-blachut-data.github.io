@@ -891,13 +891,13 @@ section {
 .contact-grid {
     display: grid;
     gap: 1rem;
-    max-width: 720px;
+    max-width: 960px;
     margin-inline: auto;
 }
 
 @media (min-width: 640px) {
     .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -934,6 +934,7 @@ section {
     font-size: 0.95rem;
     color: var(--text);
     font-weight: 500;
+    overflow-wrap: anywhere;
 }
 
 /* Footer */
